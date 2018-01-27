@@ -1,6 +1,11 @@
 TODO
 ----
-Create Objects
-Create Samples
-List Routines
+lstRoutines
+- UI
+- Click
+Create Poses & Sample Routines
+Play Routine
 
+UI
+- "New Routine" button image
+- App Icon

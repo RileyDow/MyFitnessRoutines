@@ -8,8 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ListView lstRoutines;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // btnNewRoutine
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        // lstRoutines
+        lstRoutines = (ListView) findViewById(R.id.lstRoutines);
+        ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Routine.getDefaultRoutines());
+        lstRoutines.setAdapter(arrayAdapter);
     }
 
     @Override
@@ -61,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() { // ensure resources are freed before being destroyed
         super.onDestroy();
-        
+
     }
 
     @Override
