@@ -29,6 +29,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() { // becoming visible
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onResume() { // becoming interactive
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() { // still visible
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onStop() { // no longer visible
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onRestart() { // restore from stopped
+        super.onRestart();
+
+    }
+
+    @Override
+    protected void onDestroy() { // ensure resources are freed before being destroyed
+        super.onDestroy();
+        
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
