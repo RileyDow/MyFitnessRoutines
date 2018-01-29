@@ -7,9 +7,13 @@ import java.util.ArrayList;
  */
 
 public class Routine {
+
+    // Public Properties
     public String Name;
     public ArrayList<Step> Steps;
 
+
+    // Public Fields
     public int getDuration() {
         int duration = 0;
         for (Step step : Steps) {
@@ -18,17 +22,17 @@ public class Routine {
         return duration;
     }
 
+
+    // Constructors
+    public Routine(String name) {
+        this.Name = name;
+    }
+
+
+    // Overrides
     @Override
     public String toString() {
         return Name;
     }
 
-
-
-    // Step class
-    public class Step {
-        public Pose Pose;
-        public int Duration;
-        public int RestDuration;
-    }
 }

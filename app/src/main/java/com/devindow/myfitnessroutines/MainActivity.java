@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     private ListView lstRoutines;
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         // lstRoutines
         lstRoutines = (ListView) findViewById(R.id.lstRoutines);
-        ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getDefaultRoutines());
+        ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getSampleRoutines());
         lstRoutines.setAdapter(arrayAdapter);
     }
 

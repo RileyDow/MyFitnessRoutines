@@ -9,22 +9,42 @@ import java.util.ArrayList;
 public class Samples {
 
     // Default Routines
-    public static ArrayList<Routine> getDefaultRoutines() {
+    public static ArrayList<Routine> getSampleRoutines() {
         ArrayList<Routine> defaultRoutines = new ArrayList<Routine>();
 
-        Routine stretchRoutine = new Routine();
-        stretchRoutine.Name = "Stretch Routine";
-        defaultRoutines.add(stretchRoutine);
+        defaultRoutines.add(getStretchSample());
 
-        Routine yogaRoutine = new Routine();
-        yogaRoutine.Name = "Yoga Routine";
-        defaultRoutines.add(yogaRoutine);
+        defaultRoutines.add(getYogaSample());
 
-        Routine liftRoutine = new Routine();
-        liftRoutine.Name = "Lift Routine";
-        defaultRoutines.add(liftRoutine);
+        defaultRoutines.add(getLiftSample());
 
         return defaultRoutines;
+    }
+
+
+    // Private Methods
+    private static Routine getStretchSample() {
+        Routine routine = new Routine("Stretch Routine");
+
+        routine.Steps.add(new Step(new Pose("Touch Toes", Category.STRETCH), 30));
+
+        return routine;
+    }
+
+    private static Routine getYogaSample() {
+        Routine routine = new Routine("Yoga Routine");
+
+        //Pose downDog = new Pose();
+
+        return routine;
+    }
+
+    private static Routine getLiftSample() {
+        Routine routine = new Routine("Lift Routine");
+
+        //Pose pushups = new Pose();
+
+        return routine;
     }
 
 }
