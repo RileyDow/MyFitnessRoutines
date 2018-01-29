@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Routine routine = (Routine)lstRoutines.getItemAtPosition(position);
                 Intent intent = new Intent(view.getContext(), PlayRoutineActivity.class);
+                intent.putExtra("routine", routine);
                 startActivity(intent);
             }
         });

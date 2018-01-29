@@ -1,10 +1,12 @@
 package com.devindow.myfitnessroutines;
 
+import java.io.Serializable;
+
 /**
  * Created by Devin on 1/29/2018.
  */
 
-public class Step {
+public class Step implements Serializable {
 
     public Pose Pose;
     public int Duration;

@@ -7,7 +7,7 @@
     tools:context="com.devindow.myfitnessroutines.PlayRoutineActivity">
 
     <TextView
-        android:id="@+id/text_header"
+        android:id="@+id/txtRoutineName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

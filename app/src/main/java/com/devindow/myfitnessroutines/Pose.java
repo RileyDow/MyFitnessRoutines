@@ -2,11 +2,13 @@ package com.devindow.myfitnessroutines;
 
 import android.media.Image;
 
+import java.io.Serializable;
+
 /**
  * Created by Devin on 1/27/2018.
  */
 
-public class Pose {
+public class Pose implements Serializable {
 
     public String Name;
     public Category Category;
