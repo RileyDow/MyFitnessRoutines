@@ -1,13 +1,12 @@
 TODO
 ----
 lstRoutines
-- UI
-- Click
-Create Poses & Sample Routines
-Play Routine
+- fix UI layout
+- Click launches PlayRoutine Activity
 
 UI
-- "New Routine" button image
 - App Icon
 
-Drawing
+Drawing Person in Poses
+
+Logging
