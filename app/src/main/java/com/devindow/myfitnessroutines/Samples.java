@@ -34,7 +34,7 @@ public class Samples {
     private static Routine getYogaSample() {
         Routine routine = new Routine("Yoga Routine");
 
-        //Pose downDog = new Pose();
+        routine.Steps.add(new Step(new Pose("Down Dog", Category.YOGA), 30));
 
         return routine;
     }
@@ -42,7 +42,7 @@ public class Samples {
     private static Routine getLiftSample() {
         Routine routine = new Routine("Lift Routine");
 
-        //Pose pushups = new Pose();
+        routine.Steps.add(new Step(new Pose("Push-Ups", Category.LIFTING), 30));
 
         return routine;
     }
