@@ -1,6 +1,12 @@
 TODO
 ----
-Create Objects
-Create Samples
-List Routines
+lstRoutines
+- fix UI layout
+- Click launches PlayRoutine Activity
 
+UI
+- App Icon
+
+Drawing Person in Poses
+
+Logging
