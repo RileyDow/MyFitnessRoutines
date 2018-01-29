@@ -10,8 +10,20 @@
         android:id="@+id/txtRoutineName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Routine" />
+
+    <ImageView
+        android:id="@+id/imgPose"
+        android:layout_width="182dp"
+        android:layout_height="146dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="54dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/darker_gray" />
 </android.support.constraint.ConstraintLayout>
