@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // btnNewRoutine
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
+        btnNewRoutine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Create Routine", Snackbar.LENGTH_LONG)
