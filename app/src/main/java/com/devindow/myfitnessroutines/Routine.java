@@ -10,7 +10,7 @@ public class Routine {
 
     // Public Properties
     public String Name;
-    public ArrayList<Step> Steps;
+    public ArrayList<Step> Steps = new ArrayList<Step>();
 
 
     // Public Fields
