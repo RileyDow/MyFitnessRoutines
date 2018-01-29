@@ -1,5 +1,6 @@
 package com.devindow.myfitnessroutines;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Routine routine = (Routine)lstRoutines.getItemAtPosition(position);
-                Snackbar.make(view, routine.Name, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(view.getContext(), PlayRoutineActivity.class);
+                startActivity(intent);
             }
         });
     }
