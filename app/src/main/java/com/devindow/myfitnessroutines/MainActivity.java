@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // lstRoutines
         lstRoutines = (ListView) findViewById(R.id.lstRoutines);
-        ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Routine.getDefaultRoutines());
+        ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getDefaultRoutines());
         lstRoutines.setAdapter(arrayAdapter);
     }
 
