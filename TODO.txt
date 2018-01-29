@@ -1,8 +1,13 @@
 TODO
 ----
+Play Routine activity
+- Pass in Routine
+- Show Poses
+- Timer, Pause/Play
+- Next/Back
+
 lstRoutines
 - fix UI layout
-- Click launches PlayRoutine Activity
 
 UI
 - App Icon
