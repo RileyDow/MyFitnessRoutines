@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -39,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
         lstRoutines = (ListView) findViewById(R.id.lstRoutines);
         ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getSampleRoutines());
         lstRoutines.setAdapter(arrayAdapter);
+        lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Routine routine = (Routine)lstRoutines.getItemAtPosition(position);
+                Snackbar.make(view, routine.Name, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     @Override
