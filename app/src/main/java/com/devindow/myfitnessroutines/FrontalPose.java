@@ -48,8 +48,24 @@ public class FrontalPose extends Pose {
 
         // Draw Legs
         p.setStrokeWidth(legThickness);
-        canvas.drawLine(waistX + legThickness/2, waistY, rFootX, rFootY, p);
-        canvas.drawLine(waistX - legThickness/2, waistY, lFootX, lFootY, p);
+        // Right
+        int rHipX = waistX + legThickness / 3;
+        if (rKneeX != null && rKneeY != null) {
+            canvas.drawLine(rHipX, waistY, rKneeX, rKneeY, p);
+            canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
+        }
+        else {
+            canvas.drawLine(rHipX, waistY, rFootX, rFootY, p);
+        }
+        // Left
+        int lHipX = waistX - legThickness / 3;
+        if (lKneeX != null && lKneeY != null) {
+            canvas.drawLine(lHipX, waistY, lKneeX, lKneeY, p);
+            canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
+        }
+        else {
+            canvas.drawLine(lHipX, waistY, lFootX, lFootY, p);
+        }
 
         return bitmap;
     }
