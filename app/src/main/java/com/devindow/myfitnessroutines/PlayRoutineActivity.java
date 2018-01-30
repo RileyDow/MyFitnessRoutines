@@ -25,7 +25,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		Step step1 = routine.Steps.get(0);
 		int w = imgPose.getWidth();
 		int h = imgPose.getHeight();
-		Bitmap bitmap = step1.Pose.getBitmap(40, 40);
+		Bitmap bitmap = step1.Pose.getBitmap(900, 900);
 		imgPose.setImageBitmap(bitmap);
 	}
 }
