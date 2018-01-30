@@ -1,12 +1,13 @@
 package com.devindow.myfitnessroutines;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Devin on 1/27/2018.
  */
 
-public class Routine {
+public class Routine implements Serializable {
 
     // Public Properties
     public String Name;

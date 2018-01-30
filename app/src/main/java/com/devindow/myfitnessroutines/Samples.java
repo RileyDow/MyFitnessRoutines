@@ -26,7 +26,7 @@ public class Samples {
     private static Routine getStretchSample() {
         Routine routine = new Routine("Stretch Routine");
 
-        routine.Steps.add(new Step(new Pose("Touch Toes", Category.STRETCH), 30));
+        routine.Steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
 
         return routine;
     }
@@ -34,7 +34,7 @@ public class Samples {
     private static Routine getYogaSample() {
         Routine routine = new Routine("Yoga Routine");
 
-        routine.Steps.add(new Step(new Pose("Down Dog", Category.YOGA), 30));
+        routine.Steps.add(new Step(new FrontalPose("Down Dog", Category.YOGA), 30));
 
         return routine;
     }
@@ -42,7 +42,16 @@ public class Samples {
     private static Routine getLiftSample() {
         Routine routine = new Routine("Lift Routine");
 
-        routine.Steps.add(new Step(new Pose("Push-Ups", Category.LIFTING), 30));
+        ProfilePose pushup = new ProfilePose("Push-Ups", Category.LIFTING);
+        pushup.headX = 30;
+        pushup.headY = 24;
+        pushup.waistX = 0;
+        pushup.waistY = 12;
+        pushup.rHandX = pushup.lHandX = 25;
+        pushup.rHandY = pushup.lHandY = 0;
+        pushup.rFootX = pushup.lFootX = -30;
+        pushup.rFootY = pushup.lFootY = 0;
+        routine.Steps.add(new Step(pushup, 30));
 
         return routine;
     }
