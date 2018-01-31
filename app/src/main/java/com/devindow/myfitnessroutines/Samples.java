@@ -18,6 +18,8 @@ public class Samples {
 
         defaultRoutines.add(getLiftSample());
 
+        defaultRoutines.add(getCardioSample());
+
         return defaultRoutines;
     }
 
@@ -42,7 +44,15 @@ public class Samples {
     private static Routine getLiftSample() {
         Routine routine = new Routine("Lift Routine");
 
-        routine.Steps.add(new Step(PoseLibrary.Poses.get("Push-Ups"), 30));
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 30));
+
+        return routine;
+    }
+
+    private static Routine getCardioSample() {
+        Routine routine = new Routine("Cardio Routine");
+
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 30));
 
         return routine;
     }

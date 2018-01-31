@@ -10,13 +10,18 @@ import java.util.Map;
 
 public class PoseLibrary {
 
+
+	// Constants
+	public static final String PUSHUPS = "Push-Ups";
+
+
 	// Public Static Fields
 	public static Dictionary<String, Pose> Poses = new Hashtable<String, Pose>();
 
 
 	// Public Static Methods
 	public static void GeneratePoses() {
-		Pose pushup = new ProfilePose("Push-Ups", Category.LIFTING);
+		Pose pushup = new ProfilePose(PUSHUPS, Category.LIFTING);
 		pushup.headX = 30;
 		pushup.headY = 24;
 		pushup.waistX = 0;
