@@ -16,10 +16,10 @@ import java.io.Serializable;
 public class FrontalPose extends Pose {
 
     // Public Properties
-    public Bitmap getBitmap(int w, int h) {
-        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+    public Bitmap getBitmap() {
+        Bitmap bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        canvas.translate(w/2, h-1); // Origin a floor center
+        canvas.translate(bitmapSize/2, bitmapSize-1); // Origin a floor center
         canvas.scale(10, -10); // up is positive Y, 10x scale
 
         Paint p = new Paint();
@@ -29,7 +29,7 @@ public class FrontalPose extends Pose {
 
         // Draw Floor
         p.setStrokeWidth(1);
-        canvas.drawLine(-w/2, 0,w/2,0, p);
+        canvas.drawLine(-bitmapSize/2, 0,bitmapSize/2,0, p);
 
         // Draw Head
         p.setStrokeWidth(headSize);

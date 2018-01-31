@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 public class PlayRoutineActivity extends AppCompatActivity {
 
+	// Private Fields
+	private Routine routine;
+
+
+	// Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -16,16 +21,20 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_play_routine);
 
 		Intent intent = getIntent();
-		Routine routine = (Routine)intent.getSerializableExtra("routine");
+		routine = (Routine)intent.getSerializableExtra("routine");
 
 		TextView txtRoutineName = (TextView) findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(routine.Name);
 
+		ShowStep(0);
+	}
+
+	private void ShowStep(int num) {
 		ImageView imgPose = (ImageView) findViewById(R.id.imgPose);
-		Step step1 = routine.Steps.get(0);
+		Step step = routine.Steps.get(num);
 		int w = imgPose.getWidth();
 		int h = imgPose.getHeight();
-		Bitmap bitmap = step1.Pose.getBitmap(900, 900);
+		Bitmap bitmap = step.Pose.getBitmap();
 		imgPose.setImageBitmap(bitmap);
 	}
 }

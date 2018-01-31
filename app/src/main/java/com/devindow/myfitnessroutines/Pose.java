@@ -46,6 +46,7 @@ public abstract class Pose implements Serializable {
 
 
     // Protected Constants
+    protected static final int bitmapSize = 900;
     protected static final int headSize = 10;
     protected static final int torsoThickness = 10;
     protected static final int armThickness = 4;
@@ -67,7 +68,7 @@ public abstract class Pose implements Serializable {
 
 
     // Public Abstract Methods
-    public abstract Bitmap getBitmap(int w, int h);
+    public abstract Bitmap getBitmap();
 
 
     // Overrides
