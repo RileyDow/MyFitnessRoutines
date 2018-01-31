@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        // PoseLibrary
+        PoseLibrary.GeneratePoses();
+
+
         // btnNewRoutine
         FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
         btnNewRoutine.setOnClickListener(new View.OnClickListener() {

@@ -41,15 +41,45 @@ public class FrontalPose extends Pose {
 
         // Draw Arms
         p.setStrokeWidth(armThickness);
+        // Right Arm
         int rShoulderX = getNeckX() + torsoThickness/2;
-        canvas.drawLine(rShoulderX, getNeckY(), rHandX, rHandY, p);
+        if (rElbowX != null && rElbowY != null) {
+            canvas.drawLine(rShoulderX, getNeckY(), rElbowX, rElbowY, p);
+            canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
+        }
+        else {
+            canvas.drawLine(rShoulderX, getNeckY(), rHandX, rHandY, p);
+        }
+        // Left Arm
         int lShoulderX = getNeckX() - torsoThickness/2;
-        canvas.drawLine(lShoulderX, getNeckY(), lHandX, lHandY, p);
+        if (lElbowX != null && lElbowY != null) {
+            canvas.drawLine(lShoulderX, getNeckY(), lElbowX, lElbowY, p);
+            canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
+        }
+        else {
+            canvas.drawLine(lShoulderX, getNeckY(), lHandX, lHandY, p);
+        }
 
         // Draw Legs
         p.setStrokeWidth(legThickness);
-        canvas.drawLine(waistX + legThickness/2, waistY, rFootX, rFootY, p);
-        canvas.drawLine(waistX - legThickness/2, waistY, lFootX, lFootY, p);
+        // Right Leg
+        int rHipX = waistX + legThickness / 3;
+        if (rKneeX != null && rKneeY != null) {
+            canvas.drawLine(rHipX, waistY, rKneeX, rKneeY, p);
+            canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
+        }
+        else {
+            canvas.drawLine(rHipX, waistY, rFootX, rFootY, p);
+        }
+        // Left Leg
+        int lHipX = waistX - legThickness / 3;
+        if (lKneeX != null && lKneeY != null) {
+            canvas.drawLine(lHipX, waistY, lKneeX, lKneeY, p);
+            canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
+        }
+        else {
+            canvas.drawLine(lHipX, waistY, lFootX, lFootY, p);
+        }
 
         return bitmap;
     }

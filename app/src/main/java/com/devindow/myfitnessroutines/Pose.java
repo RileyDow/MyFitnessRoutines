@@ -36,6 +36,9 @@ public abstract class Pose implements Serializable {
     public int lFootX = -4;
     public int lFootY = 0;
 
+    public Integer rKneeX, rKneeY, lKneeX, lKneeY;
+    public Integer rElbowX, rElbowY, lElbowX, lElbowY;
+
 
     // Private Properties
     protected int getNeckX() { return waistX + (int)Math.round(0.7*(headX-waistX)); } // TODO
