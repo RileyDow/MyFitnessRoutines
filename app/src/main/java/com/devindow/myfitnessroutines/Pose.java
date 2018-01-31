@@ -40,6 +40,13 @@ public abstract class Pose implements Serializable {
     public Integer rElbowX, rElbowY, lElbowX, lElbowY;
 
 
+    // Protected Fields
+    protected Bitmap bitmap;
+    protected Canvas canvas;
+    protected Paint p;
+
+
+
     // Private Properties
     protected int getNeckX() { return waistX + (int)Math.round(0.7*(headX-waistX)); } // TODO
     protected int getNeckY() { return waistY + (int)Math.round(0.7*(headY-waistY)); } // TODO
@@ -69,6 +76,20 @@ public abstract class Pose implements Serializable {
 
     // Public Abstract Methods
     public abstract Bitmap getBitmap();
+
+
+    // Protected Methods
+    protected void prepCanvas() {
+        bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
+        canvas = new Canvas(bitmap);
+        canvas.translate(bitmapSize/2, bitmapSize-1); // Origin a floor center
+        canvas.scale(10, -10); // up is positive Y, 10x scale
+
+        p = new Paint();
+        p.setStrokeCap(Paint.Cap.ROUND);
+        p.setStrokeJoin(Paint.Join.ROUND);
+        p.setColor(Color.BLACK);
+    }
 
 
     // Overrides

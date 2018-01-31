@@ -17,15 +17,7 @@ public class FrontalPose extends Pose {
 
     // Public Properties
     public Bitmap getBitmap() {
-        Bitmap bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        canvas.translate(bitmapSize/2, bitmapSize-1); // Origin a floor center
-        canvas.scale(10, -10); // up is positive Y, 10x scale
-
-        Paint p = new Paint();
-        p.setStrokeCap(Paint.Cap.ROUND);
-        p.setStrokeJoin(Paint.Join.ROUND);
-        p.setColor(Color.BLACK);
+        prepCanvas();
 
         // Draw Floor
         p.setStrokeWidth(1);
