@@ -23,6 +23,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		Intent intent = getIntent();
 		routine = (Routine)intent.getSerializableExtra("routine");
 
+		// txtRoutineName
 		TextView txtRoutineName = (TextView) findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(routine.Name);
 
@@ -30,8 +31,14 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void ShowStep(int num) {
-		ImageView imgPose = (ImageView) findViewById(R.id.imgPose);
 		Step step = routine.Steps.get(num);
+
+		// txtPoseName
+		TextView txtPoseName = (TextView) findViewById(R.id.txtPoseName);
+		txtPoseName.setText(step.Pose.Name);
+
+		// imgPose
+		ImageView imgPose = (ImageView) findViewById(R.id.imgPose);
 		int w = imgPose.getWidth();
 		int h = imgPose.getHeight();
 		Bitmap bitmap = step.Pose.getBitmap();
