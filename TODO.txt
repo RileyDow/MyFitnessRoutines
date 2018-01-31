@@ -1,10 +1,6 @@
 TODO
 ----
-Pose Library with lookup
-
 Play Routine activity
-- Pass in Routine
-- Show Poses
 - Timer, Pause/Play
 - Next/Back
 
@@ -13,7 +9,5 @@ lstRoutines
 
 UI
 - App Icon
-
-Drawing Person in Poses
 
 Logging
