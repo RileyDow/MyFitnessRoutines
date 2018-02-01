@@ -4,9 +4,6 @@ Play Routine activity
 - Timer, Pause/Play
 - Next/Back
 
-lstRoutines
-- fix UI layout
-
 UI
 - App Icon
 
