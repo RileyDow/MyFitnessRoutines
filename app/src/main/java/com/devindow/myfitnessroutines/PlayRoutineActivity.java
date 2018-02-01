@@ -49,6 +49,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	public void onGoClick(View v) {
+		stepNum = 0;
+		ShowStep();
 	}
 
 	public void onNextClick(View v) {

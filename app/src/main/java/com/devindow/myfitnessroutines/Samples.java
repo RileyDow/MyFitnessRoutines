@@ -53,6 +53,7 @@ public class Samples {
         Routine routine = new Routine("Cardio Routine");
 
         routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 30));
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.DOWNDOG), 30));
 
         return routine;
     }

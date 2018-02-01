@@ -13,6 +13,7 @@ public class PoseLibrary {
 
 	// Constants
 	public static final String PUSHUPS = "Push-Ups";
+	public static final String DOWNDOG = "Down Dog";
 
 
 	// Public Static Fields
@@ -21,16 +22,27 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void GeneratePoses() {
-		Pose pushup = new ProfilePose(PUSHUPS, Category.LIFTING);
-		pushup.headX = 30;
-		pushup.headY = 24;
-		pushup.waistX = 0;
-		pushup.waistY = 12;
-		pushup.rHandX = pushup.lHandX = 25;
-		pushup.rHandY = pushup.lHandY = 0;
-		pushup.rFootX = pushup.lFootX = -30;
-		pushup.rFootY = pushup.lFootY = 0;
-		Poses.put(pushup.Name, pushup);
+		Pose pose = new ProfilePose(PUSHUPS, Category.LIFTING);
+		pose.headX = 30;
+		pose.headY = 24;
+		pose.waistX = 0;
+		pose.waistY = 12;
+		pose.rHandX = pose.lHandX = 25;
+		pose.rHandY = pose.lHandY = 0;
+		pose.rFootX = pose.lFootX = -30;
+		pose.rFootY = pose.lFootY = 0;
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(DOWNDOG, Category.YOGA);
+		pose.headX = 30;
+		pose.headY = 24;
+		pose.waistX = 0;
+		pose.waistY = 40;
+		pose.rHandX = pose.lHandX = 25;
+		pose.rHandY = pose.lHandY = 0;
+		pose.rFootX = pose.lFootX = -30;
+		pose.rFootY = pose.lFootY = 0;
+		Poses.put(pose.Name, pose);
 
 	}
 
