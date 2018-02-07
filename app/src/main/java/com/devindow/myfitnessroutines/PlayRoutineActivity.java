@@ -13,7 +13,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	// Private Fields
 	private Routine routine;
-	private int stepNum = 0;
+	private int stepNum = 1;
 
 
 	// Methods
@@ -34,7 +34,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void ShowStep() {
-		Step step = routine.Steps.get(stepNum);
+		Step step = routine.Steps.get(stepNum-1);
 
 		// txtPoseName
 		final TextView txtPoseName = (TextView) findViewById(R.id.txtPoseName);
@@ -49,7 +49,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	public void onGoClick(View v) {
-		stepNum = 0;
+		stepNum = 1;
 		ShowStep();
 	}
 
@@ -61,7 +61,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	public void onPrevClick(View v) {
-		if (stepNum > 0) {
+		if (stepNum > 1) {
 			stepNum--;
 			ShowStep();
 		}

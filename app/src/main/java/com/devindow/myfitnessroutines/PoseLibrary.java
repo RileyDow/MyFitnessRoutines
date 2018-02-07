@@ -24,25 +24,17 @@ public class PoseLibrary {
 	// Public Static Methods
 	public static void GeneratePoses() {
 		Pose pose = new ProfilePose(PUSHUPS, Category.LIFTING);
-		pose.headX = 30;
-		pose.headY = 24;
-		pose.waistX = 0;
-		pose.waistY = 12;
-		pose.rHandX = pose.lHandX = 25;
-		pose.rHandY = pose.lHandY = 0;
-		pose.rFootX = pose.lFootX = -30;
-		pose.rFootY = pose.lFootY = 0;
+		pose.headX = 30; pose.headY = 24;
+		pose.waistX = 0; pose.waistY = 12;
+		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
+		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = 0;
 		Poses.put(pose.Name, pose);
 
 		pose = new ProfilePose(DOWNDOG, Category.YOGA);
-		pose.headX = 30;
-		pose.headY = 24;
-		pose.waistX = 0;
-		pose.waistY = 40;
-		pose.rHandX = pose.lHandX = 25;
-		pose.rHandY = pose.lHandY = 0;
-		pose.rFootX = pose.lFootX = -30;
-		pose.rFootY = pose.lFootY = 0;
+		pose.headX = 30; pose.headY = 13;
+		pose.waistX = 0; pose.waistY = 35;
+		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
+		pose.rFootX = pose.lFootX = -24; pose.rFootY = pose.lFootY = 0;
 		Poses.put(pose.Name, pose);
 
 		pose = new FrontalPose(LOTUS, Category.YOGA);
