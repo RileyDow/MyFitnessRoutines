@@ -20,6 +20,8 @@ public class Samples {
 
         defaultRoutines.add(getCardioSample());
 
+        defaultRoutines.add(getMeditationSample());
+
         return defaultRoutines;
     }
 
@@ -54,6 +56,14 @@ public class Samples {
 
         routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 30));
         routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.DOWNDOG), 30));
+
+        return routine;
+    }
+
+    private static Routine getMeditationSample() {
+        Routine routine = new Routine("Meditation Routine");
+
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.LOTUS), 30));
 
         return routine;
     }
