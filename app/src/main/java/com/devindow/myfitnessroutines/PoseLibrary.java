@@ -13,6 +13,17 @@ public class PoseLibrary {
 
 	// Constants
 	public static final String PUSHUPS = "Push-Ups";
+	public static final String JUMPING_JACKS = "Jumping Jacks";
+	public static final String WALL_SIT = "Wall Sit";
+	public static final String CRUNCHES = "Crunches";
+	public static final String STEP_UPS = "Step-Ups";
+	public static final String SQUATS = "Squats";
+	public static final String CHAIR_DIPS = "Chair Dips";
+	public static final String PLANK = "Plank";
+	public static final String HIGH_KNEES = "High Knees";
+	public static final String LUNGES = "Lunges";
+	public static final String PUSHUP_ROLL = "Push-Up & Roll";
+	public static final String SIDE_PLANK = "Side Plank";
 	public static final String DOWNDOG = "Down Dog";
 	public static final String LOTUS = "Lotus";
 
@@ -23,11 +34,50 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void GeneratePoses() {
-		Pose pose = new ProfilePose(PUSHUPS, Category.LIFTING);
+		Pose pose;
+
+		pose = new ProfilePose(PUSHUPS, Category.LIFTING);
 		pose.headX = 30; pose.headY = 24;
 		pose.waistX = 0; pose.waistY = 12;
 		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
 		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = 0;
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(JUMPING_JACKS, Category.CARDIO);
+		pose.headX = 0; pose.headY = 66;
+		pose.waistX = 0; pose.waistY = 34;
+		pose.rHandX = 25; pose.lHandX = -25; pose.rHandY = pose.lHandY = 70;
+		pose.rFootX = 15; pose.lFootX = -15; pose.rFootY = pose.lFootY = 0;
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(SQUATS, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(PLANK, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(LUNGES, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(PUSHUP_ROLL, Category.LIFTING);
+		Poses.put(pose.Name, pose);
+
+		pose = new ProfilePose(SIDE_PLANK, Category.LIFTING);
 		Poses.put(pose.Name, pose);
 
 		pose = new ProfilePose(DOWNDOG, Category.YOGA);

@@ -1,10 +1,19 @@
 TODO
 ----
+Samples
+- Pose Drawings
+  - Shoulder & Hip location
+
 Play Routine activity
-- Timer, Pause/Play
-- Next/Back
+- Timer, Pause/Play, Done
+- Disable/Hide Next/Prev button
+
+Notifications
 
 UI
 - App Icon
 
-Logging
+Log Activity
+- Saving to Google Doc or persistent storage
+
+Logging app

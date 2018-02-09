@@ -21,7 +21,7 @@ public abstract class Pose implements Serializable {
     public boolean TwoSides;
 
     public int headX = 0;
-    public int headY = 60;
+    public int headY = 66;
 
     public int waistX = 0;
     public int waistY = 34;
