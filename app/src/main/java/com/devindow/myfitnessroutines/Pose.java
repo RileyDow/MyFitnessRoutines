@@ -1,11 +1,9 @@
 package com.devindow.myfitnessroutines;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.media.Image;
 
 import java.io.Serializable;
 
@@ -16,9 +14,9 @@ import java.io.Serializable;
 public abstract class Pose implements Serializable {
 
     // Public Fields
-    public String Name;
-    public Category Category;
-    public boolean TwoSides;
+    public String name;
+    public Category category;
+    public boolean twoSides;
 
     public int headX = 0;
     public int headY = 66;
@@ -62,15 +60,15 @@ public abstract class Pose implements Serializable {
 
     // Constructors
     public Pose(String name, Category category) {
-        this.Name = name;
-        this.Category = category;
-        this.TwoSides = false;
+        this.name = name;
+        this.category = category;
+        this.twoSides = false;
     }
 
     public Pose(String name, Category category, boolean twoSides) {
-        this.Name = name;
-        this.Category = category;
-        this.TwoSides = twoSides;
+        this.name = name;
+        this.category = category;
+        this.twoSides = twoSides;
     }
 
 
@@ -95,6 +93,6 @@ public abstract class Pose implements Serializable {
     // Overrides
     @Override
     public String toString() {
-        return this.Name;
+        return this.name;
     }
 }

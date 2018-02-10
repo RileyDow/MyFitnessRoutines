@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // PoseLibrary
-        PoseLibrary.GeneratePoses();
+        PoseLibrary.generatePoses();
 
 
         // btnNewRoutine

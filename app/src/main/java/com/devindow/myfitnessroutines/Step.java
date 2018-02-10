@@ -8,22 +8,22 @@ import java.io.Serializable;
 
 public class Step implements Serializable {
 
-    public Pose Pose;
-    public int Duration;
-    public int RestDuration;
+    public Pose pose;
+    public int poseDuration;
+    public int restDuration;
 
 
     // Constructors
-    public Step(Pose pose, int duration) {
-        this.Pose = pose;
-        this.Duration = duration;
-        this.RestDuration = 0;
+    public Step(Pose pose, int poseDuration) {
+        this.pose = pose;
+        this.poseDuration = poseDuration;
+        this.restDuration = 0;
     }
 
-    public Step(Pose pose, int duration, int restDuration) {
-        this.Pose = pose;
-        this.Duration = duration;
-        this.RestDuration = restDuration;
+    public Step(Pose pose, int poseDuration, int restDuration) {
+        this.pose = pose;
+        this.poseDuration = poseDuration;
+        this.restDuration = restDuration;
     }
 
 }

@@ -10,15 +10,15 @@ import java.util.ArrayList;
 public class Routine implements Serializable {
 
     // Public Properties
-    public String Name;
-    public ArrayList<Step> Steps = new ArrayList<Step>();
+    public String name;
+    public ArrayList<Step> steps = new ArrayList<Step>();
 
 
     // Public Fields
     public int getDuration() {
         int duration = 0;
-        for (Step step : Steps) {
-            duration += step.Duration;
+        for (Step step : steps) {
+            duration += step.poseDuration;
         }
         return duration;
     }
@@ -26,14 +26,14 @@ public class Routine implements Serializable {
 
     // Constructors
     public Routine(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
 
     // Overrides
     @Override
     public String toString() {
-        return Name;
+        return name;
     }
 
 }
