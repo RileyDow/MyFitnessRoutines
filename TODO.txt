@@ -6,6 +6,7 @@ Samples
 
 Play Routine activity
 - Disable/Hide Next/Prev button
+- Show Duration of full Routine
 
 Chime
 Notifications

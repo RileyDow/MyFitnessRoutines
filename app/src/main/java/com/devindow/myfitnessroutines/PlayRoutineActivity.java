@@ -1,6 +1,8 @@
 package com.devindow.myfitnessroutines;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -134,6 +136,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 			@Override
 			public void onFinish() {
+				playChime();
+
 				if (restSecondsRemaining > 0) {
 					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
 					showNextStep();
@@ -156,10 +160,16 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 			@Override
 			public void onFinish() {
+				playChime();
 				stepNum++;
 				showStep();
 			}
 		}.start();
+	}
+
+	private void playChime() {
+		ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+		toneGenerator.startTone(AudioManager.STREAM_NOTIFICATION,300);
 	}
 
 	public void onNextClick(View v) {
