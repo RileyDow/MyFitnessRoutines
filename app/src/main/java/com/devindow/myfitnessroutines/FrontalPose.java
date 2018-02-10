@@ -19,10 +19,6 @@ public class FrontalPose extends Pose {
     public Bitmap getBitmap() {
         prepCanvas();
 
-        // Draw Floor
-        p.setStrokeWidth(1);
-        canvas.drawLine(-bitmapSize/2, 0,bitmapSize/2,0, p);
-
         // Draw Head
         p.setStrokeWidth(headSize);
         canvas.drawPoint(headX, headY, p);

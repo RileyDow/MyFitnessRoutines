@@ -21,7 +21,7 @@ public abstract class Pose implements Serializable {
     public boolean TwoSides;
 
     public int headX = 0;
-    public int headY = 60;
+    public int headY = 66;
 
     public int waistX = 0;
     public int waistY = 34;
@@ -52,12 +52,12 @@ public abstract class Pose implements Serializable {
     protected int getNeckY() { return waistY + (int)Math.round(0.7*(headY-waistY)); } // TODO
 
 
-    // Protected Constants
+    // Constants
     protected static final int bitmapSize = 900;
-    protected static final int headSize = 10;
-    protected static final int torsoThickness = 10;
-    protected static final int armThickness = 4;
-    protected static final int legThickness = 6;
+    public static final int headSize = 10;
+    public static final int torsoThickness = 10;
+    public static final int armThickness = 4;
+    public static final int legThickness = 6;
 
 
     // Constructors
