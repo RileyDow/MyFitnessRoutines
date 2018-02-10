@@ -21,6 +21,16 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	long restSecondsRemaining;
 
 
+	// Private Properties
+	private Step getCurrentStep() {
+		return routine.Steps.get(stepNum - 1);
+	}
+
+	private Step getNextStep() {
+		return routine.Steps.get(stepNum);
+	}
+
+
 	// Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +57,10 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			pose = PoseLibrary.Poses.get(PoseLibrary.DONE);
 			countDownTimer = null;
 		} else {
-			Step step = routine.Steps.get(stepNum - 1);
-			pose = step.Pose;
-			poseSecondsRemaining = step.Duration;
-			restSecondsRemaining = step.RestDuration;
+			Step currentStep = getCurrentStep();
+			pose = currentStep.Pose;
+			poseSecondsRemaining = currentStep.Duration;
+			restSecondsRemaining = currentStep.RestDuration;
 			UpdateTimerView(poseSecondsRemaining);
 		}
 
@@ -79,7 +89,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		String text = "Rest";
 		if (stepNum < routine.Steps.size()) {
-			Step nextStep = routine.Steps.get(stepNum);
+			Step nextStep = getNextStep();
 			text += ". Next: " + nextStep.Pose.Name;
 		}
 		txtPoseName.setText(text);
