@@ -5,7 +5,8 @@ Samples
   - Shoulder & Hip location
 
 Play Routine activity
-- Rest Pose, Done Pose
+- Rest Pose (Lotus or Prone), Done Pose (Arms Up)
+- btnGo wider
 - Disable/Hide Next/Prev button
 
 Chime

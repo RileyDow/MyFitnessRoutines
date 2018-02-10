@@ -127,6 +127,9 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	public void onNextClick(View v) {
 		if (stepNum < routine.Steps.size()) {
+			if (countDownTimer != null) {
+				countDownTimer.cancel();
+			}
 			stepNum++;
 			ShowStep();
 		}
@@ -134,6 +137,9 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	public void onPrevClick(View v) {
 		if (stepNum > 1) {
+			if (countDownTimer != null) {
+				countDownTimer.cancel();
+			}
 			stepNum--;
 			ShowStep();
 		}
