@@ -1,7 +1,6 @@
 package com.devindow.myfitnessroutines;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,14 +22,14 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	// Private Properties
 	private Step getCurrentStep() {
-		return routine.Steps.get(stepNum - 1);
+		return routine.steps.get(stepNum - 1);
 	}
 
 	private Step getNextStep() {
-		if (stepNum >= routine.Steps.size()) {
+		if (stepNum >= routine.steps.size()) {
 			return null;
 		}
-		return routine.Steps.get(stepNum);
+		return routine.steps.get(stepNum);
 	}
 
 
@@ -46,29 +45,30 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 		// txtRoutineName
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
-		txtRoutineName.setText(routine.Name);
+		txtRoutineName.setText(routine.name);
 
 		// txtTimer
 		txtTimer = findViewById(R.id.txtTimer);
 
-		ShowStep();
+		showStep();
 	}
 
-	private void ShowStep() {
+	private void showStep() {
+		clearNextStep();
+
 		Pose pose;
-		if (stepNum > routine.Steps.size()) {
-			pose = PoseLibrary.Poses.get(PoseLibrary.DONE);
+		if (stepNum > routine.steps.size()) {
+			pose = PoseLibrary.poses.get(PoseLibrary.DONE);
 			countDownTimer = null;
 		} else {
 			Step currentStep = getCurrentStep();
-			pose = currentStep.Pose;
-			poseSecondsRemaining = currentStep.Duration;
-			restSecondsRemaining = currentStep.RestDuration;
-			UpdateTimerView(poseSecondsRemaining);
+			pose = currentStep.pose;
+			poseSecondsRemaining = currentStep.poseDuration;
+			restSecondsRemaining = currentStep.restDuration;
+			updateTimerView(poseSecondsRemaining);
 		}
 
-		ShowPose(pose);
-		ClearNextStep();
+		showPose(pose);
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
@@ -76,32 +76,32 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		}
 	}
 
-	private void ShowPose(Pose pose) {
+	private void showPose(Pose pose) {
 		// txtPoseName
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		txtPoseName.setText(pose.Name);
+		txtPoseName.setText(pose.name);
 
 		// imgPose
 		final ImageView imgPose = findViewById(R.id.imgPose);
 		imgPose.setImageBitmap(pose.getBitmap());
 	}
 
-	private void ClearNextStep() {
+	private void clearNextStep() {
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		txtNextStep.setText("");
 	}
 
-	private void ShowNextStep() {
+	private void showNextStep() {
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		Step nextStep = getNextStep();
 		if (nextStep == null) {
 			txtNextStep.setText("");
 		} else {
-			txtNextStep.setText("Next up: " + nextStep.Pose.Name);
+			txtNextStep.setText("Next up: " + nextStep.pose.name);
 		}
 	}
 
-	private void UpdateTimerView(long secondsRemaining) {
+	private void updateTimerView(long secondsRemaining) {
 		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
 	}
 
@@ -129,18 +129,18 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			@Override
 			public void onTick(long millisRemaining) {
 				poseSecondsRemaining = millisRemaining / 1000;
-				UpdateTimerView(poseSecondsRemaining);
+				updateTimerView(poseSecondsRemaining);
 			}
 
 			@Override
 			public void onFinish() {
 				if (restSecondsRemaining > 0) {
-					ShowPose(PoseLibrary.Poses.get(PoseLibrary.REST));
-					ShowNextStep();
+					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
+					showNextStep();
 					runRestTimer();
 				} else {
 					stepNum++;
-					ShowStep();
+					showStep();
 				}
 			}
 		}.start();
@@ -151,24 +151,24 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			@Override
 			public void onTick(long millisRemaining) {
 				restSecondsRemaining = millisRemaining / 1000;
-				UpdateTimerView(restSecondsRemaining);
+				updateTimerView(restSecondsRemaining);
 			}
 
 			@Override
 			public void onFinish() {
 				stepNum++;
-				ShowStep();
+				showStep();
 			}
 		}.start();
 	}
 
 	public void onNextClick(View v) {
-		if (stepNum < routine.Steps.size()) {
+		if (stepNum < routine.steps.size()) {
 			if (countDownTimer != null) {
 				countDownTimer.cancel();
 			}
 			stepNum++;
-			ShowStep();
+			showStep();
 		}
 	}
 
@@ -178,7 +178,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 				countDownTimer.cancel();
 			}
 			stepNum--;
-			ShowStep();
+			showStep();
 		}
 	}
 }

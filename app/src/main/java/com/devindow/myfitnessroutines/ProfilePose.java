@@ -1,13 +1,6 @@
 package com.devindow.myfitnessroutines;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.media.Image;
-
-import java.io.Serializable;
 
 /**
  * Created by Devin on 1/27/2018.
@@ -77,6 +70,6 @@ public class ProfilePose extends Pose {
     // Overrides
     @Override
     public String toString() {
-        return this.Name;
+        return this.name;
     }
 }
