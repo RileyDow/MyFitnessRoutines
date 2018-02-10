@@ -54,6 +54,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void showStep() {
+		clearNextStep();
+
 		Pose pose;
 		if (stepNum > routine.steps.size()) {
 			pose = PoseLibrary.poses.get(PoseLibrary.DONE);
@@ -67,7 +69,6 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		}
 
 		showPose(pose);
-		clearNextStep();
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
