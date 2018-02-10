@@ -2,11 +2,10 @@ package com.devindow.myfitnessroutines;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,26 +15,10 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private Routine routine;
 	private int stepNum = 1;
 
+	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	private int secondsRemaining;
-	private long startTime = 0;
+	long secondsRemaining;
 
-	// Runs without a timer by reposting this handler at the end of the runnable
-	Handler timerHandler = new Handler();
-	Runnable timerRunnable = new Runnable() {
-		@Override
-		public void run() {
-			long millis = System.currentTimeMillis() - startTime;
-			int secondsElapsed = (int) (millis / 1000);
-			int secondsRemaining =
-			int minutesRemaining = seconds / 60;
-			seconds = seconds % 60;
-
-			txtTimer.setText(String.format("%d:%02d", minutes, seconds));
-
-			timerHandler.postDelayed(this, 500);
-		}
-	};
 
 	// Methods
 	@Override
@@ -71,21 +54,25 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		Bitmap bitmap = step.Pose.getBitmap();
 		imgPose.setImageBitmap(bitmap);
 
-		// secondsRemaining
-		secondsRemaining = step.Duration;
+		// Timer
+		countDownTimer = new CountDownTimer(step.Duration * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				long secondsRemaining = millisRemaining / 1000;
+				txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
+			}
+
+			@Override
+			public void onFinish() {
+
+			}
+		}.start();
 	}
 
 	public void onGoClick(View v) {
 		// Toggle Play/Pause button image
 
-		if (startTime == 0) {
-			startTime = System.currentTimeMillis();
-			timerHandler.postDelayed(timerRunnable, 0);
-		}
-		else {
-			timerHandler.removeCallbacks(timerRunnable);
-			startTime = 0;
-		}
+		countDownTimer.cancel();
 	}
 
 	public void onNextClick(View v) {
