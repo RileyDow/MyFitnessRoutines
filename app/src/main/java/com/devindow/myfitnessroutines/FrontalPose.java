@@ -19,10 +19,12 @@ public class FrontalPose extends Pose {
     public Bitmap getBitmap() {
         prepCanvas();
 
+        //p.setColor(Color.BLACK);
         // Draw Head
         p.setStrokeWidth(headSize);
         canvas.drawPoint(headX, headY, p);
 
+        //p.setColor(Color.RED);
         // Draw Torso
         p.setStrokeWidth(torsoThickness);
         canvas.drawLine(getNeckX(), getNeckY(), waistX, waistY, p);
@@ -48,6 +50,7 @@ public class FrontalPose extends Pose {
             canvas.drawLine(lShoulderX, getNeckY(), lHandX, lHandY, p);
         }
 
+        //p.setColor(Color.BLUE);
         // Draw Legs
         p.setStrokeWidth(legThickness);
         // Right Leg
