@@ -44,7 +44,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private void ShowStep() {
 		Pose pose;
 		if (stepNum > routine.Steps.size()) {
-			pose = new FrontalPose("Done", Category.MEDITATION);
+			pose = PoseLibrary.Poses.get(PoseLibrary.DONE);
 			countDownTimer = null;
 		} else {
 			Step step = routine.Steps.get(stepNum - 1);
@@ -54,6 +54,19 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			UpdateTimerView(poseSecondsRemaining);
 		}
 
+		ShowPose(pose);
+
+		if (stepNum < routine.Steps.size()) {
+			// Show next Step
+		}
+
+		// If timer was running then run.
+		if (countDownTimer != null) {
+			runPoseTimer();
+		}
+	}
+
+	private void ShowPose(Pose pose) {
 		// txtPoseName
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		txtPoseName.setText(pose.Name);
@@ -64,11 +77,6 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		int h = imgPose.getHeight();
 		Bitmap bitmap = pose.getBitmap();
 		imgPose.setImageBitmap(bitmap);
-
-		// If timer was running then run.
-		if (countDownTimer != null) {
-			runPoseTimer();
-		}
 	}
 
 	private void UpdateTimerView(long secondsRemaining) {
@@ -104,7 +112,13 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 			@Override
 			public void onFinish() {
-				runRestTimer();
+				if (restSecondsRemaining > 0) {
+					ShowPose(PoseLibrary.Poses.get(PoseLibrary.REST));
+					runRestTimer();
+				} else {
+					stepNum++;
+					ShowStep();
+				}
 			}
 		}.start();
 	}

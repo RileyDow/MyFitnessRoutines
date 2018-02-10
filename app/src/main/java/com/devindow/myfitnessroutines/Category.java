@@ -5,5 +5,5 @@ package com.devindow.myfitnessroutines;
  */
 
 public enum Category {
-    STRETCH, YOGA, LIFTING, CARDIO, MEDITATION
+    NONE, STRETCH, YOGA, LIFTING, CARDIO, MEDITATION
 }

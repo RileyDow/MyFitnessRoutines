@@ -36,7 +36,8 @@ public class Samples {
     private static Routine getTestSample() {
         Routine routine = new Routine("Test Routine");
 
-        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 5, 3));
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 3, 2));
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.DOWNDOG), 3, 0));
 
         return routine;
     }
