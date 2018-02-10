@@ -54,11 +54,11 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			UpdateTimerView(poseSecondsRemaining);
 		}
 
-		ShowPose(pose);
+		// txtPoseName
+		final TextView txtPoseName = findViewById(R.id.txtPoseName);
+		txtPoseName.setText(pose.Name);
 
-		if (stepNum < routine.Steps.size()) {
-			// Show next Step
-		}
+		ShowPose(pose);
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
@@ -67,16 +67,22 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void ShowPose(Pose pose) {
-		// txtPoseName
-		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		txtPoseName.setText(pose.Name);
-
 		// imgPose
 		final ImageView imgPose = findViewById(R.id.imgPose);
 		int w = imgPose.getWidth();
 		int h = imgPose.getHeight();
 		Bitmap bitmap = pose.getBitmap();
 		imgPose.setImageBitmap(bitmap);
+	}
+
+	private void ShowNextStep() {
+		final TextView txtPoseName = findViewById(R.id.txtPoseName);
+		String text = "Rest";
+		if (stepNum < routine.Steps.size()) {
+			Step nextStep = routine.Steps.get(stepNum);
+			text += ". Next: " + nextStep.Pose.Name;
+		}
+		txtPoseName.setText(text);
 	}
 
 	private void UpdateTimerView(long secondsRemaining) {
@@ -114,6 +120,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			public void onFinish() {
 				if (restSecondsRemaining > 0) {
 					ShowPose(PoseLibrary.Poses.get(PoseLibrary.REST));
+					ShowNextStep();
 					runRestTimer();
 				} else {
 					stepNum++;
