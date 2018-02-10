@@ -12,6 +12,8 @@ public class Samples {
     public static ArrayList<Routine> getSampleRoutines() {
         ArrayList<Routine> defaultRoutines = new ArrayList<Routine>();
 
+        defaultRoutines.add(getTestSample());
+
         defaultRoutines.add(get7MinuteSample());
 
         defaultRoutines.add(getStretchSample());
@@ -31,6 +33,15 @@ public class Samples {
 
 
     // Private Methods
+    private static Routine getTestSample() {
+        Routine routine = new Routine("Test Routine");
+
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.PUSHUPS), 3, 2));
+        routine.Steps.add(new Step(PoseLibrary.Poses.get(PoseLibrary.DOWNDOG), 3, 0));
+
+        return routine;
+    }
+
     private static Routine get7MinuteSample() {
         Routine routine = new Routine("7 Minute Routine");
 

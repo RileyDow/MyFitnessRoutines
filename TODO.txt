@@ -5,7 +5,6 @@ Samples
   - Shoulder & Hip location
 
 Play Routine activity
-- Timer, Pause/Play, Done
 - Disable/Hide Next/Prev button
 
 Chime

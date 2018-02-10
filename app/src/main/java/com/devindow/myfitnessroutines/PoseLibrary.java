@@ -12,6 +12,8 @@ public class PoseLibrary {
 
 
 	// Constants
+	public static final String DONE = "Done!";
+	public static final String REST = "Rest";
 	public static final String PUSHUPS = "Push-Ups";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String WALL_SIT = "Wall Sit";
@@ -36,6 +38,23 @@ public class PoseLibrary {
 	public static void GeneratePoses() {
 		Pose pose;
 
+		pose = new FrontalPose(DONE, Category.NONE);
+		pose.headX = 0; pose.headY = 66;
+		pose.waistX = 0; pose.waistY = 34;
+		pose.rHandX = 19; pose.lHandX = -19; pose.rHandY = pose.lHandY = 73;
+		pose.rElbowX = 17; pose.lElbowX = -17; pose.rElbowY = pose.lElbowY = 59;
+		pose.rFootX = 4; pose.lFootX = -4; pose.rFootY = pose.lFootY = 0;
+		Poses.put(pose.Name, pose);
+
+		pose = new FrontalPose(REST, Category.NONE);
+		pose.headX = 0; pose.headY = 33;
+		pose.waistX = 0; pose.waistY = 3;
+		pose.rHandX = 15; pose.lHandX = -15; pose.rHandY = pose.lHandY = 7;
+		pose.rElbowX = 9; pose.lElbowX = -9; pose.rElbowY = pose.lElbowY = 10;
+		pose.rFootX = 5; pose.lFootX = -5; pose.rFootY = pose.lFootY = 2;
+		pose.rKneeX = 15; pose.lKneeX = -15; pose.rKneeY = pose.lKneeY = 5;
+		Poses.put(pose.Name, pose);
+
 		pose = new ProfilePose(PUSHUPS, Category.LIFTING);
 		pose.headX = 30; pose.headY = 24;
 		pose.waistX = 0; pose.waistY = 12;
@@ -43,7 +62,7 @@ public class PoseLibrary {
 		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = 0;
 		Poses.put(pose.Name, pose);
 
-		pose = new ProfilePose(JUMPING_JACKS, Category.CARDIO);
+		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
 		pose.headX = 0; pose.headY = 66;
 		pose.waistX = 0; pose.waistY = 34;
 		pose.rHandX = 25; pose.lHandX = -25; pose.rHandY = pose.lHandY = 70;
