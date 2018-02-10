@@ -17,7 +17,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	long secondsRemaining;
+	long poseSecondsRemaining;
+	long restSecondsRemaining;
 
 
 	// Methods
@@ -41,38 +42,87 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void ShowStep() {
-		Step step = routine.Steps.get(stepNum-1);
+		Pose pose;
+		if (stepNum > routine.Steps.size()) {
+			pose = new FrontalPose("Done", Category.MEDITATION);
+			countDownTimer = null;
+		} else {
+			Step step = routine.Steps.get(stepNum - 1);
+			pose = step.Pose;
+			poseSecondsRemaining = step.Duration;
+			restSecondsRemaining = step.RestDuration;
+			UpdateTimerView(poseSecondsRemaining);
+		}
 
 		// txtPoseName
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		txtPoseName.setText(step.Pose.Name);
+		txtPoseName.setText(pose.Name);
 
 		// imgPose
 		final ImageView imgPose = findViewById(R.id.imgPose);
 		int w = imgPose.getWidth();
 		int h = imgPose.getHeight();
-		Bitmap bitmap = step.Pose.getBitmap();
+		Bitmap bitmap = pose.getBitmap();
 		imgPose.setImageBitmap(bitmap);
 
-		// Timer
-		countDownTimer = new CountDownTimer(step.Duration * 1000, 1000) {
+		// If timer was running then run.
+		if (countDownTimer != null) {
+			runPoseTimer();
+		}
+	}
+
+	private void UpdateTimerView(long secondsRemaining) {
+		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
+	}
+
+	public void onGoClick(View v) {
+		// Pause
+		if (countDownTimer != null) {
+			countDownTimer.cancel();
+			countDownTimer = null;
+			// Set btnGo image to Play
+			return;
+		}
+
+		// Play
+		// Set btnGo image to Pause
+
+		if (poseSecondsRemaining > 0) {
+			runPoseTimer();
+		} else {
+			runRestTimer();
+		}
+	}
+
+	private void runPoseTimer() {
+		countDownTimer = new CountDownTimer(poseSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				long secondsRemaining = millisRemaining / 1000;
-				txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
+				poseSecondsRemaining = millisRemaining / 1000;
+				UpdateTimerView(poseSecondsRemaining);
 			}
 
 			@Override
 			public void onFinish() {
-
+				runRestTimer();
 			}
 		}.start();
 	}
 
-	public void onGoClick(View v) {
-		// Toggle Play/Pause button image
+	private void runRestTimer() {
+		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				restSecondsRemaining = millisRemaining / 1000;
+				UpdateTimerView(restSecondsRemaining);
+			}
 
-		countDownTimer.cancel();
+			@Override
+			public void onFinish() {
+				stepNum++;
+				ShowStep();
+			}
+		}.start();
 	}
 
 	public void onNextClick(View v) {
