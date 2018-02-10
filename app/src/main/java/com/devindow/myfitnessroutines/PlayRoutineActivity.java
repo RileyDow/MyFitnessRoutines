@@ -27,6 +27,9 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private Step getNextStep() {
+		if (stepNum >= routine.Steps.size()) {
+			return null;
+		}
 		return routine.Steps.get(stepNum);
 	}
 
@@ -64,11 +67,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			UpdateTimerView(poseSecondsRemaining);
 		}
 
-		// txtPoseName
-		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		txtPoseName.setText(pose.Name);
-
 		ShowPose(pose);
+		ClearNextStep();
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
@@ -77,22 +77,28 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void ShowPose(Pose pose) {
+		// txtPoseName
+		final TextView txtPoseName = findViewById(R.id.txtPoseName);
+		txtPoseName.setText(pose.Name);
+
 		// imgPose
 		final ImageView imgPose = findViewById(R.id.imgPose);
-		int w = imgPose.getWidth();
-		int h = imgPose.getHeight();
-		Bitmap bitmap = pose.getBitmap();
-		imgPose.setImageBitmap(bitmap);
+		imgPose.setImageBitmap(pose.getBitmap());
+	}
+
+	private void ClearNextStep() {
+		final TextView txtNextStep = findViewById(R.id.txtNextStep);
+		txtNextStep.setText("");
 	}
 
 	private void ShowNextStep() {
-		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		String text = "Rest";
-		if (stepNum < routine.Steps.size()) {
-			Step nextStep = getNextStep();
-			text += ". Next: " + nextStep.Pose.Name;
+		final TextView txtNextStep = findViewById(R.id.txtNextStep);
+		Step nextStep = getNextStep();
+		if (nextStep == null) {
+			txtNextStep.setText("");
+		} else {
+			txtNextStep.setText("Next up: " + nextStep.Pose.Name);
 		}
-		txtPoseName.setText(text);
 	}
 
 	private void UpdateTimerView(long secondsRemaining) {
