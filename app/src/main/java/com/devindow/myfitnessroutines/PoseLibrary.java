@@ -80,6 +80,12 @@ public class PoseLibrary {
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(SQUATS, Category.LIFTING);
+		pose.headX = pose.waistX = -pose.legSegmentLength/2;
+		pose.waistY = pose.lKneeY = pose.rKneeY = pose.legSegmentLength;
+		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.lHandX = pose.rHandX = pose.headX + pose.armSegmentLength * 2;
+		pose.lHandY = pose.rHandY = pose.getNeckY();
+		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
