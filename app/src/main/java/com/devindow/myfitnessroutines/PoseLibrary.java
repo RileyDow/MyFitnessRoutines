@@ -55,15 +55,15 @@ public class PoseLibrary {
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(PUSHUPS, Category.LIFTING);
-		pose.headX = 30; pose.headY = 24;
+		pose.headX = 30; pose.headY = 23;
 		pose.waistX = 1; pose.waistY = 14;
-		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
-		pose.rFootX = pose.lFootX = -33; pose.rFootY = pose.lFootY = 0;
+		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = pose.armThickness/2;
+		pose.rFootX = pose.lFootX = -33; pose.rFootY = pose.lFootY = pose.legThickness/2;
 		poses.put(pose.name, pose);
 
 		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
 		pose.rHandX = 25; pose.lHandX = -25; pose.rHandY = pose.lHandY = 70;
-		pose.rFootX = 15; pose.lFootX = -15; pose.rFootY = pose.lFootY = 0;
+		pose.rFootX = 15; pose.lFootX = -15;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
@@ -71,6 +71,7 @@ public class PoseLibrary {
 		pose.waistY = pose.lKneeY = pose.rKneeY = pose.lHandY = pose.rHandY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
 		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
+		pose.rFootY = pose.lFootY = 0;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
@@ -93,12 +94,19 @@ public class PoseLibrary {
 		pose.lHandX = pose.rHandX = pose.headX + pose.armSegmentLength * 2;
 		pose.lHandY = pose.rHandY = pose.getNeckY();
 		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
+		pose.rFootY = pose.lFootY = 0;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(PLANK, Category.LIFTING);
+		pose.headX = 30; pose.headY = 16;
+		pose.waistX = 1; pose.waistY = 10;
+		pose.rHandY = pose.lHandY = pose.rElbowY = pose.lElbowY = pose.armThickness/2;
+		pose.rElbowX = pose.lElbowX = pose.getNeckX();
+		pose.rHandX = pose.lHandX = pose.rElbowX + pose.armSegmentLength;
+		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = pose.legThickness/2;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);

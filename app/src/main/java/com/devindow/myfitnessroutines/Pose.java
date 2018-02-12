@@ -41,9 +41,9 @@ public abstract class Pose implements Serializable {
     public int lHandY = 60;
 
     public int rFootX = 4;
-    public int rFootY = 0;
+    public int rFootY = legThickness/2;
     public int lFootX = -4;
-    public int lFootY = 0;
+    public int lFootY = legThickness/2;
 
     public Integer rKneeX, rKneeY, lKneeX, lKneeY;
     public Integer rElbowX, rElbowY, lElbowX, lElbowY;
