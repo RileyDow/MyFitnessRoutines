@@ -74,6 +74,13 @@ public class PoseLibrary {
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
+		pose.headY = pose.waistY = pose.torsoThickness/2;
+		pose.headX = -20;
+		pose.waistX = pose.rKneeX = pose.lKneeX = pose.headX + pose.headSize/2 + pose.torsoThickness/2 + pose.torsoLength;
+		pose.rFootX = pose.lFootX = pose.waistX + pose.legSegmentLength;
+		pose.rKneeY = pose.lKneeY = pose.rFootY = pose.lFootY = pose.legSegmentLength;
+		pose.rHandX = pose.lHandX = pose.getNeckX() + 10;
+		pose.rHandY = pose.lHandY = pose.armSegmentLength * 2;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
