@@ -12,21 +12,23 @@ public class Samples {
     public static ArrayList<Routine> getSampleRoutines() {
         ArrayList<Routine> defaultRoutines = new ArrayList<Routine>();
 
-        defaultRoutines.add(getTestSample());
-
         defaultRoutines.add(get7MinuteSample());
 
-        defaultRoutines.add(getStretchSample());
+        if (Debug.ON) {
+            defaultRoutines.add(getTestSample());
 
-        defaultRoutines.add(getYogaSample());
+            defaultRoutines.add(getStretchSample());
 
-        defaultRoutines.add(getLiftSample());
+            defaultRoutines.add(getYogaSample());
 
-        defaultRoutines.add(getCardioSample());
+            defaultRoutines.add(getLiftSample());
 
-        defaultRoutines.add(getWarmupSample());
+            defaultRoutines.add(getCardioSample());
 
-        defaultRoutines.add(getMeditationSample());
+            defaultRoutines.add(getWarmupSample());
+
+            defaultRoutines.add(getMeditationSample());
+        }
 
         return defaultRoutines;
     }

@@ -1,6 +1,8 @@
 package com.devindow.myfitnessroutines;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,7 +93,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		txtNextStep.setText("");
 	}
 
-	private void showNextStep() {
+	private void showNextPoseName() {
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		Step nextStep = getNextStep();
 		if (nextStep == null) {
@@ -106,21 +108,22 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	public void onGoClick(View v) {
-		// Pause
-		if (countDownTimer != null) {
+		if (countDownTimer != null) { // Pause Routine
 			countDownTimer.cancel();
 			countDownTimer = null;
 			// Set btnGo image to Play
-			return;
-		}
+		} else { // Play Routine
+			if (stepNum > routine.steps.size()) {
+				stepNum = 1; // Restart ended Routine
+				showStep();
+			}
+			// Set btnGo image to Pause
 
-		// Play
-		// Set btnGo image to Pause
-
-		if (poseSecondsRemaining > 0) {
-			runPoseTimer();
-		} else {
-			runRestTimer();
+			if (poseSecondsRemaining > 0) {
+				runPoseTimer();
+			} else {
+				runRestTimer();
+			}
 		}
 	}
 
@@ -134,9 +137,11 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 			@Override
 			public void onFinish() {
+				playChime();
+
 				if (restSecondsRemaining > 0) {
 					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
-					showNextStep();
+					showNextPoseName();
 					runRestTimer();
 				} else {
 					stepNum++;
@@ -156,10 +161,16 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 			@Override
 			public void onFinish() {
+				playChime();
 				stepNum++;
 				showStep();
 			}
 		}.start();
+	}
+
+	private void playChime() {
+		ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+		toneGenerator.startTone(AudioManager.STREAM_NOTIFICATION,100);
 	}
 
 	public void onNextClick(View v) {
