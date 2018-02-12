@@ -13,6 +13,17 @@ import java.io.Serializable;
 
 public abstract class Pose implements Serializable {
 
+    // Constants
+    protected final int bitmapSize = 900;
+    public final int headSize = 10;
+    public final int torsoThickness = 10;
+    public final int torsoLength = 20;
+    public final int armThickness = 4;
+    public final int armSegmentLength = 12;
+    public final int legThickness = 6;
+    public final int legSegmentLength = 17;
+
+
     // Public Fields
     public String name;
     public Category category;
@@ -22,7 +33,7 @@ public abstract class Pose implements Serializable {
     public int headY = 66;
 
     public int waistX = 0;
-    public int waistY = 34;
+    public int waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length
 
     public int rHandX = 25;
     public int rHandY = 60;
@@ -45,17 +56,10 @@ public abstract class Pose implements Serializable {
 
 
 
-    // Private Properties
-    protected int getNeckX() { return waistX + (int)Math.round(0.7*(headX-waistX)); } // TODO
-    protected int getNeckY() { return waistY + (int)Math.round(0.7*(headY-waistY)); } // TODO
-
-
-    // Constants
-    protected static final int bitmapSize = 900;
-    public static final int headSize = 10;
-    public static final int torsoThickness = 10;
-    public static final int armThickness = 4;
-    public static final int legThickness = 6;
+    // Protected Properties
+    protected double getBodyAngle() { return Math.atan2(headY - waistY, headX - waistX); }
+    protected int getNeckX() { return waistX + (int)Math.round(torsoLength * Math.cos(getBodyAngle())); }
+    protected int getNeckY() { return waistY + (int)Math.round(torsoLength * Math.sin(getBodyAngle())); }
 
 
     // Constructors

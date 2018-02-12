@@ -3,6 +3,10 @@ TODO
 Samples
 - Pose Drawings
   - Shoulder & Hip location
+  - Props
+    - Wall
+    - Strap/Band
+    - Block
 
 Play Routine activity
 - Disable/Hide Next/Prev button

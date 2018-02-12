@@ -43,7 +43,7 @@ public class ProfilePose extends Pose {
         p.setStrokeWidth(legThickness);
         // Right Leg
         if (rKneeX != null && rKneeY != null) {
-            canvas.drawLine(getNeckX(), getNeckY(), rKneeX, rKneeY, p);
+            canvas.drawLine(waistX, waistY, rKneeX, rKneeY, p);
             canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
         }
         else {
@@ -51,7 +51,7 @@ public class ProfilePose extends Pose {
         }
         // Left Leg
         if (lKneeX != null && lKneeY != null) {
-            canvas.drawLine(getNeckX(), getNeckY(), lKneeX, lKneeY, p);
+            canvas.drawLine(waistX, waistY, lKneeX, lKneeY, p);
             canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
         }
         else {

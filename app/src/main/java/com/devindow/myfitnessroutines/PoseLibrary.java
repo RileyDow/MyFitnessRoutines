@@ -56,19 +56,21 @@ public class PoseLibrary {
 
 		pose = new ProfilePose(PUSHUPS, Category.LIFTING);
 		pose.headX = 30; pose.headY = 24;
-		pose.waistX = 0; pose.waistY = 12;
+		pose.waistX = 1; pose.waistY = 14;
 		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
-		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = 0;
+		pose.rFootX = pose.lFootX = -33; pose.rFootY = pose.lFootY = 0;
 		poses.put(pose.name, pose);
 
 		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
-		pose.headX = 0; pose.headY = 66;
-		pose.waistX = 0; pose.waistY = 34;
 		pose.rHandX = 25; pose.lHandX = -25; pose.rHandY = pose.lHandY = 70;
 		pose.rFootX = 15; pose.lFootX = -15; pose.rFootY = pose.lFootY = 0;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
+		pose.headX = pose.waistX = pose.lHandX = pose.rHandX = -pose.legSegmentLength/2;
+		pose.waistY = pose.lKneeY = pose.rKneeY = pose.lHandY = pose.rHandY = pose.legSegmentLength;
+		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
