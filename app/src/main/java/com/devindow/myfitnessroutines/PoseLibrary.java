@@ -80,8 +80,8 @@ public class PoseLibrary {
 		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
-		float chairX = pose.waistX - pose.torsoThickness/2 - 2;
-		float chairSize = pose.legSegmentLength;
+		final float chairX = pose.waistX - pose.torsoThickness/2 - 2;
+		final float chairSize = pose.legSegmentLength;
 		pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
 		pose.rHandX = pose.lHandX = pose.rElbowX = pose.lElbowX = chairX - pose.armThickness/2;
 		pose.rHandY = pose.lHandY = chairSize + pose.armThickness/2;
@@ -90,20 +90,24 @@ public class PoseLibrary {
 
 		// Step-Ups & High Knees
 		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
-		float x = -pose.legSegmentLength/2;
+		final float x = -pose.legSegmentLength/2;
 		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
 		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
 		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
 		pose.rKneeY = pose.legSegmentLength*2;
-		float stepSize = pose.legSegmentLength;
+		final float stepSize = pose.legSegmentLength;
 		pose.prop = new Ledge(pose.rFootX - pose.legThickness/2, pose.rFootX + stepSize, stepSize);
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);
 		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
+		final float kneeBendDistance = 4;
+		pose.lKneeX = pose.lFootX + kneeBendDistance;
+		pose.lKneeY = pose.legSegmentLength;
 		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
-		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
-		pose.rKneeY = pose.waistY;
+		final float distanceAbovePerpendicular = 2;
+		pose.rFootY = pose.legSegmentLength + pose.legThickness/2 + distanceAbovePerpendicular;
+		pose.rKneeY = pose.waistY + distanceAbovePerpendicular;
 		poses.put(pose.name, pose);
 
 		// Lunges
@@ -114,7 +118,8 @@ public class PoseLibrary {
 		pose.rFootX = pose.rKneeX = pose.legSegmentLength;
 		pose.rFootY = pose.lFootY = pose.lKneeY = pose.legThickness/2;
 		pose.rKneeY = pose.legSegmentLength;
-		pose.lKneeX = -4f;
+		final float kneeDistance = 4;
+		pose.lKneeX = -kneeDistance;
 		pose.lFootX = pose.lKneeX - pose.legSegmentLength;
 		poses.put(pose.name, pose);
 
