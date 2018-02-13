@@ -32,6 +32,10 @@ public abstract class Pose implements Serializable {
     public int headX = 0;
     public int headY = 66;
 
+    public boolean coordsGenerated = false;
+    public int neckX;
+    public int neckY;
+
     public int waistX = 0;
     public int waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length
 
@@ -60,8 +64,6 @@ public abstract class Pose implements Serializable {
 
     // Protected Properties
     protected double getBodyAngle() { return Math.atan2(headY - waistY, headX - waistX); }
-    protected int getNeckX() { return waistX + (int)Math.round(torsoLength * Math.cos(getBodyAngle())); }
-    protected int getNeckY() { return waistY + (int)Math.round(torsoLength * Math.sin(getBodyAngle())); }
 
 
     // Constructors
@@ -78,11 +80,27 @@ public abstract class Pose implements Serializable {
     }
 
 
-    // Public Abstract Methods
-    public abstract Bitmap getBitmap();
+    // Public Methods
+    public Bitmap getBitmap() {
+        if (!coordsGenerated) {
+            generateCoords();
+        }
+
+        prepCanvas();
+
+        return bitmap;
+    }
 
 
     // Protected Methods
+    protected void generateCoords() {
+        double bodyAngle = getBodyAngle();
+        neckX = waistX + (int)Math.round(torsoLength * Math.cos(bodyAngle));
+        neckY = waistY + (int)Math.round(torsoLength * Math.sin(bodyAngle));
+
+        coordsGenerated = true;
+    }
+
     protected void prepCanvas() {
         bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
         canvas = new Canvas(bitmap);

@@ -10,7 +10,7 @@ public class ProfilePose extends Pose {
 
     // Public Properties
     public Bitmap getBitmap() {
-        prepCanvas();
+        super.getBitmap();
 
         // Draw Head
         p.setStrokeWidth(headSize);
@@ -18,25 +18,25 @@ public class ProfilePose extends Pose {
 
         // Draw Torso
         p.setStrokeWidth(torsoThickness);
-        canvas.drawLine(getNeckX(), getNeckY(), waistX, waistY, p);
+        canvas.drawLine(neckX, neckY, waistX, waistY, p);
 
         // Draw Arms
         p.setStrokeWidth(armThickness);
         // Right Arm
         if (rElbowX != null && rElbowY != null) {
-            canvas.drawLine(getNeckX(), getNeckY(), rElbowX, rElbowY, p);
+            canvas.drawLine(neckX, neckY, rElbowX, rElbowY, p);
             canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
         }
         else {
-            canvas.drawLine(getNeckX(), getNeckY(), rHandX, rHandY, p);
+            canvas.drawLine(neckX, neckY, rHandX, rHandY, p);
         }
         // Left Arm
         if (lElbowX != null && lElbowY != null) {
-            canvas.drawLine(getNeckX(), getNeckY(), lElbowX, lElbowY, p);
+            canvas.drawLine(neckX, neckY, lElbowX, lElbowY, p);
             canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
         }
         else {
-            canvas.drawLine(getNeckX(), getNeckY(), lHandX, lHandY, p);
+            canvas.drawLine(neckX, neckY, lHandX, lHandY, p);
         }
 
         // Draw Legs
