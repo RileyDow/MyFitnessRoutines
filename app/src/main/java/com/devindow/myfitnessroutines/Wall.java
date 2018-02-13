@@ -10,11 +10,11 @@ import android.graphics.Paint;
 public class Wall extends Prop {
 
 	// Private Fields
-	private int x;
+	private float x;
 
 
 	// Constructor
-	Wall(int x) {
+	Wall(float x) {
 		this.x = x;
 	}
 

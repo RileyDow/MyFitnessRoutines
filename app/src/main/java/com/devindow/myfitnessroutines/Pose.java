@@ -15,13 +15,13 @@ public abstract class Pose implements Serializable {
 
     // Constants
     protected final int bitmapSize = 900;
-    public final int headSize = 10;
-    public final int torsoThickness = 10;
-    public final int torsoLength = 20;
-    public final int armThickness = 4;
-    public final int armSegmentLength = 12;
-    public final int legThickness = 6;
-    public final int legSegmentLength = 17;
+    public final float headSize = 10;
+    public final float torsoThickness = 10;
+    public final float torsoLength = 20;
+    public final float armThickness = 4;
+    public final float armSegmentLength = 12;
+    public final float legThickness = 6;
+    public final float legSegmentLength = 17;
 
 
     // Public Fields
@@ -29,28 +29,29 @@ public abstract class Pose implements Serializable {
     public Category category;
     public boolean twoSides;
 
-    public int headX = 0;
-    public int headY = 66;
+    public float headX = 0;
+    public float headY = 66;
 
     public boolean coordsGenerated = false;
-    public int neckX;
-    public int neckY;
+    public double bodyAngle;
+    public float collarX;
+    public float collarY;
 
-    public int waistX = 0;
-    public int waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length
+    public float waistX = 0;
+    public float waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length
 
-    public int rHandX = 25;
-    public int rHandY = 60;
-    public int lHandX = -25;
-    public int lHandY = 60;
+    public float rHandX = 25;
+    public float rHandY = 60;
+    public float lHandX = -25;
+    public float lHandY = 60;
 
-    public int rFootX = 4;
-    public int rFootY = legThickness/2;
-    public int lFootX = -4;
-    public int lFootY = legThickness/2;
+    public float rFootX = 4;
+    public float rFootY = legThickness/2;
+    public float lFootX = -4;
+    public float lFootY = legThickness/2;
 
-    public Integer rKneeX, rKneeY, lKneeX, lKneeY;
-    public Integer rElbowX, rElbowY, lElbowX, lElbowY;
+    public Float rKneeX, rKneeY, lKneeX, lKneeY;
+    public Float rElbowX, rElbowY, lElbowX, lElbowY;
 
     public Prop prop;
 
@@ -94,9 +95,9 @@ public abstract class Pose implements Serializable {
 
     // Protected Methods
     protected void generateCoords() {
-        double bodyAngle = getBodyAngle();
-        neckX = waistX + (int)Math.round(torsoLength * Math.cos(bodyAngle));
-        neckY = waistY + (int)Math.round(torsoLength * Math.sin(bodyAngle));
+        bodyAngle = getBodyAngle();
+        collarX = waistX + (int)Math.round(torsoLength * Math.cos(bodyAngle));
+        collarY = waistY + (int)Math.round(torsoLength * Math.sin(bodyAngle));
 
         coordsGenerated = true;
     }

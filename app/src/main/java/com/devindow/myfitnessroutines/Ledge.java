@@ -10,13 +10,13 @@ import android.graphics.Paint;
 public class Ledge extends Prop {
 
 	// Private Fields
-	private int x1;
-	private int x2;
-	private int height;
+	private float x1;
+	private float x2;
+	private float height;
 
 
 	// Constructor
-	Ledge(int x1, int x2, int height) {
+	Ledge(float x1, float x2, float height) {
 		this.x1 = x1;
 		this.x2 = x2;
 		this.height = height;

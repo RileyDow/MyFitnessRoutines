@@ -9,15 +9,15 @@ import android.graphics.Bitmap;
 public class FrontalPose extends Pose {
 
     // Public Fields
-    public int rShoulderX;
-    public int rShoulderY;
-    public int lShoulderX;
-    public int lShoulderY;
+    public float rShoulderX;
+    public float rShoulderY;
+    public float lShoulderX;
+    public float lShoulderY;
 
-    public int rHipX;
-    public int rHipY;
-    public int lHipX;
-    public int lHipY;
+    public float rHipX;
+    public float rHipY;
+    public float lHipX;
+    public float lHipY;
 
 
     // Public Properties
@@ -32,25 +32,25 @@ public class FrontalPose extends Pose {
         //p.setColor(Color.RED);
         // Draw Torso
         p.setStrokeWidth(torsoThickness);
-        canvas.drawLine(neckX, neckY, waistX, waistY, p);
+        canvas.drawLine(collarX, collarY, waistX, waistY, p);
 
         // Draw Arms
         p.setStrokeWidth(armThickness);
         // Right Arm
         if (rElbowX != null && rElbowY != null) {
-            canvas.drawLine(rShoulderX, neckY, rElbowX, rElbowY, p);
+            canvas.drawLine(rShoulderX, collarY, rElbowX, rElbowY, p);
             canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
         }
         else {
-            canvas.drawLine(rShoulderX, neckY, rHandX, rHandY, p);
+            canvas.drawLine(rShoulderX, collarY, rHandX, rHandY, p);
         }
         // Left Arm
         if (lElbowX != null && lElbowY != null) {
-            canvas.drawLine(lShoulderX, neckY, lElbowX, lElbowY, p);
+            canvas.drawLine(lShoulderX, collarY, lElbowX, lElbowY, p);
             canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
         }
         else {
-            canvas.drawLine(lShoulderX, neckY, lHandX, lHandY, p);
+            canvas.drawLine(lShoulderX, collarY, lHandX, lHandY, p);
         }
 
         //p.setColor(Color.BLUE);
@@ -87,13 +87,17 @@ public class FrontalPose extends Pose {
     protected void generateCoords() {
         super.generateCoords();
 
-        rShoulderX = neckX + torsoThickness/2;
-        lShoulderX = neckX - torsoThickness/2;
-        rHipX = legThickness/2 + 1;
-        lHipX = -legThickness/2 - 1;
+        float distanceNeckToShoulder = 0.5f*torsoThickness + 0.5f*armThickness;
+        rShoulderX = collarX - distanceNeckToShoulder * (float)Math.sin(bodyAngle);
+        rShoulderY = collarY + distanceNeckToShoulder * (float)Math.sin(bodyAngle);
+        lShoulderX = collarX + distanceNeckToShoulder * (float)Math.sin(bodyAngle);
+        lShoulderY = collarY - distanceNeckToShoulder * (float)Math.cos(bodyAngle);
 
-        /*protected int getShoulderX() { return waistX + (int)Math.round(torsoLength * Math.cos(getBodyAngle())); }
-        protected int getShoulderY() { return waistY + (int)Math.round(torsoLength * Math.sin(getBodyAngle())); }*/
+        float distanceWaistToHip = 0.5f*legThickness + 1;
+        rHipX = waistX - distanceWaistToHip * (float)Math.sin(bodyAngle);
+        rHipY = waistY + distanceWaistToHip * (float)Math.sin(bodyAngle);
+        lHipX = waistX + distanceWaistToHip * (float)Math.sin(bodyAngle);
+        lHipY = waistY - distanceWaistToHip * (float)Math.cos(bodyAngle);
     }
 
 

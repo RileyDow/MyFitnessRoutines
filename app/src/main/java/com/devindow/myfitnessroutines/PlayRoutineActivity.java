@@ -18,8 +18,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	long poseSecondsRemaining;
-	long restSecondsRemaining;
+	int poseSecondsRemaining;
+	int restSecondsRemaining;
 
 
 	// Private Properties
@@ -131,7 +131,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		countDownTimer = new CountDownTimer(poseSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				poseSecondsRemaining = millisRemaining / 1000;
+				poseSecondsRemaining = (int)(millisRemaining / 1000);
 				updateTimerView(poseSecondsRemaining);
 			}
 
@@ -155,7 +155,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				restSecondsRemaining = millisRemaining / 1000;
+				restSecondsRemaining = (int)(millisRemaining / 1000);
 				updateTimerView(restSecondsRemaining);
 			}
 

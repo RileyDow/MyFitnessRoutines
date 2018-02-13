@@ -18,25 +18,25 @@ public class ProfilePose extends Pose {
 
         // Draw Torso
         p.setStrokeWidth(torsoThickness);
-        canvas.drawLine(neckX, neckY, waistX, waistY, p);
+        canvas.drawLine(collarX, collarY, waistX, waistY, p);
 
         // Draw Arms
         p.setStrokeWidth(armThickness);
         // Right Arm
         if (rElbowX != null && rElbowY != null) {
-            canvas.drawLine(neckX, neckY, rElbowX, rElbowY, p);
+            canvas.drawLine(collarX, collarY, rElbowX, rElbowY, p);
             canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
         }
         else {
-            canvas.drawLine(neckX, neckY, rHandX, rHandY, p);
+            canvas.drawLine(collarX, collarY, rHandX, rHandY, p);
         }
         // Left Arm
         if (lElbowX != null && lElbowY != null) {
-            canvas.drawLine(neckX, neckY, lElbowX, lElbowY, p);
+            canvas.drawLine(collarX, collarY, lElbowX, lElbowY, p);
             canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
         }
         else {
-            canvas.drawLine(neckX, neckY, lHandX, lHandY, p);
+            canvas.drawLine(collarX, collarY, lHandX, lHandY, p);
         }
 
         // Draw Legs
