@@ -38,11 +38,9 @@ public class PoseLibrary {
 		Pose pose;
 
 		pose = new FrontalPose(DONE, Category.NONE);
-		pose.headX = 0; pose.headY = 66;
-		pose.waistX = 0; pose.waistY = 34;
 		pose.rHandX = 19; pose.lHandX = -19; pose.rHandY = pose.lHandY = 73;
 		pose.rElbowX = 17; pose.lElbowX = -17; pose.rElbowY = pose.lElbowY = 59;
-		pose.rFootX = 4; pose.lFootX = -4; pose.rFootY = pose.lFootY = 0;
+		pose.rFootX = 4; pose.lFootX = -4;
 		poses.put(pose.name, pose);
 
 		pose = new FrontalPose(REST, Category.NONE);

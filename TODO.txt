@@ -2,7 +2,7 @@ TODO
 ----
 Samples
 - Pose Drawings
-  - Shoulder & Hip location
+  - Frontal Shoulder & Hip location
   - Props
     - Wall
     - Strap/Band
@@ -10,7 +10,7 @@ Samples
 
 Play Routine activity
 - Disable/Hide Next/Prev button
-- Show Duration of full Routine
+* Show Duration of full Routine
 
 Chime
 Notifications

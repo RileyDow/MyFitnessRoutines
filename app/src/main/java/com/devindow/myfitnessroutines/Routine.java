@@ -18,7 +18,7 @@ public class Routine implements Serializable {
     public int getDuration() {
         int duration = 0;
         for (Step step : steps) {
-            duration += step.poseDuration;
+            duration += step.poseDuration + step.restDuration;
         }
         return duration;
     }
@@ -33,7 +33,8 @@ public class Routine implements Serializable {
     // Overrides
     @Override
     public String toString() {
-        return name;
+        int minutes = (int)Math.round(1.0 * getDuration() / 60);
+        return name + " - " + minutes + " min";
     }
 
 }
