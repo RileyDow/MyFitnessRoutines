@@ -139,22 +139,32 @@ public class PoseLibrary {
 
 		// Push-Up & Rotate
 		pose = new FrontalPose(PUSH_UP_ROTATE, Category.LIFTING);
-		pose.headX = 30; pose.headY = 23;
-		pose.waistX = 1; pose.waistY = 14;
-		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = pose.armThickness/2;
-		pose.rFootX = pose.lFootX = -33; pose.rFootY = pose.lFootY = pose.legThickness/2;
+		pose.headX = 30; pose.headY = pose.armSegmentLength*2 + pose.torsoThickness/2 + pose.headSize/2;
+		pose.waistX = 1; pose.waistY = .6f * pose.headY;
+		pose.lFootX = -33;
+		pose.rFootX = pose.lFootX - 2;
+		pose.lFootY = pose.legThickness/2;
+		pose.rFootY = pose.lFootY + pose.legThickness;
+		pose.lHandX = 25; pose.lHandY = pose.armThickness/2;
+		pose.generateCoords();
+		pose.rHandX = ((FrontalPose)pose).rShoulderX - pose.armThickness;
+		pose.rHandY = ((FrontalPose)pose).rShoulderY + pose.armSegmentLength*2;
 		poses.put(pose.name, pose);
 
 		// Side Plank
 		pose = new FrontalPose(SIDE_PLANK, Category.LIFTING, true);
-		pose.headX = 30; pose.headY = 16;
-		pose.waistX = 1; pose.waistY = 10;
-		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = pose.legThickness/2;
+		pose.headX = 30; pose.headY = pose.armSegmentLength + pose.torsoThickness/2 + pose.headSize/2;
+		pose.waistX = 1; pose.waistY = .65f * pose.headY;
+		pose.lFootX = -30;
+		pose.rFootX = pose.lFootX - 1;
+		pose.lFootY = pose.legThickness/2;
+		pose.rFootY = pose.lFootY + pose.legThickness;
 		pose.generateCoords();
-		pose.lHandX = pose.collarX;
-		pose.lHandY = pose.armThickness/2;
-		pose.rHandX = ((FrontalPose)pose).rHipX;
-		pose.rHandY = ((FrontalPose)pose).rShoulderY;
+		pose.lElbowX = ((FrontalPose) pose).lShoulderX;
+		pose.lHandX = pose.lElbowX - 2;
+		pose.lElbowY = pose.lHandY = pose.armThickness/2;
+		pose.rHandX = ((FrontalPose)pose).rShoulderX - pose.armSegmentLength*2;
+		pose.rHandY = ((FrontalPose)pose).rHipY + pose.armThickness;
 		poses.put(pose.name, pose);
 
 
