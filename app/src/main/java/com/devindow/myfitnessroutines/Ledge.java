@@ -7,15 +7,19 @@ import android.graphics.Paint;
  * Created by Devin on 2/13/2018.
  */
 
-public class Wall extends Prop {
+public class Ledge extends Prop {
 
 	// Private Fields
-	private int x;
+	private int x1;
+	private int x2;
+	private int height;
 
 
 	// Constructor
-	Wall(int x) {
-		this.x = x;
+	Ledge(int x1, int x2, int height) {
+		this.x1 = x1;
+		this.x2 = x2;
+		this.height = height;
 	}
 
 
@@ -25,7 +29,8 @@ public class Wall extends Prop {
 		Paint p = new Paint();
 		p.setStrokeWidth(1);
 
-		canvas.drawLine(x, 0, x, 96, p);
+		canvas.drawLine(x1, 0, x1, height, p);
+		canvas.drawLine(x1, height, x2, height, p);
 	}
 
 }
