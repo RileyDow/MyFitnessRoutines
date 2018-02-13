@@ -14,7 +14,7 @@ public class Samples {
 
         defaultRoutines.add(get7MinuteWorkout());
 
-        if (Debug.ON) {
+        if (Debug.on) {
             defaultRoutines.add(getTestSample());
 
             defaultRoutines.add(getSunSalutation());

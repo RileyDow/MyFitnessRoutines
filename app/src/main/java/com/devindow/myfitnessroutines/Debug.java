@@ -5,6 +5,9 @@ package com.devindow.myfitnessroutines;
  */
 
 public final class Debug {
-	// Set to false to allow compiler to identify and eliminate unreachable code.
-	public static final boolean ON = true;
+
+	public static final boolean on = true; // Set to false to allow compiler to identify and eliminate unreachable code.
+
+	public static final boolean colors = false; // Set to true to help debug Pose bitmap issues using unique colors for body parts.
+
 }

@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 
 /**
  * Created by Devin on 1/27/2018.
@@ -24,19 +25,19 @@ public class FrontalPose extends Pose {
     public Bitmap getBitmap() {
         super.getBitmap();
 
-        //p.setColor(Color.BLACK);
         // Draw Head
         p.setStrokeWidth(headSize);
         canvas.drawPoint(headX, headY, p);
 
-        //p.setColor(Color.RED);
         // Draw Torso
+        if (Debug.colors) { p.setColor(Color.MAGENTA); }
         p.setStrokeWidth(torsoThickness);
         canvas.drawLine(collarX, collarY, waistX, waistY, p);
 
         // Draw Arms
         p.setStrokeWidth(armThickness);
         // Right Arm
+        if (Debug.colors) { p.setColor(Color.RED); }
         if (rElbowX != null && rElbowY != null) {
             canvas.drawLine(rShoulderX, rShoulderY, rElbowX, rElbowY, p);
             canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
@@ -45,6 +46,7 @@ public class FrontalPose extends Pose {
             canvas.drawLine(rShoulderX, rShoulderY, rHandX, rHandY, p);
         }
         // Left Arm
+        if (Debug.colors) { p.setColor(Color.YELLOW); }
         if (lElbowX != null && lElbowY != null) {
             canvas.drawLine(lShoulderX, lShoulderY, lElbowX, lElbowY, p);
             canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
@@ -53,10 +55,10 @@ public class FrontalPose extends Pose {
             canvas.drawLine(lShoulderX, lShoulderY, lHandX, lHandY, p);
         }
 
-        //p.setColor(Color.BLUE);
         // Draw Legs
         p.setStrokeWidth(legThickness);
         // Right Leg
+        if (Debug.colors) { p.setColor(Color.BLUE); }
         if (rKneeX != null && rKneeY != null) {
             canvas.drawLine(rHipX, rHipY, rKneeX, rKneeY, p);
             canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
@@ -65,6 +67,7 @@ public class FrontalPose extends Pose {
             canvas.drawLine(rHipX, rHipY, rFootX, rFootY, p);
         }
         // Left Leg
+        if (Debug.colors) { p.setColor(Color.CYAN); }
         if (lKneeX != null && lKneeY != null) {
             canvas.drawLine(lHipX, lHipY, lKneeX, lKneeY, p);
             canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
