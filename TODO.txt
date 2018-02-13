@@ -1,10 +1,12 @@
 TODO
 ----
+
+
 Samples
 - Pose Drawings
-  - Frontal Shoulder & Hip location
+  - "Jumping Jack" measurements
+  - hip connection
   - Props
-    - Wall
     - Strap/Band
     - Block
 
