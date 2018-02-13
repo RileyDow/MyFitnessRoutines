@@ -81,11 +81,11 @@ public class PoseLibrary {
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
 		float chairX = pose.waistX - pose.torsoThickness/2 - 2;
-		float chairY = pose.legSegmentLength;
-		pose.prop = new Ledge(chairX, chairX - 12, chairY);
+		float chairSize = pose.legSegmentLength;
+		pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
 		pose.rHandX = pose.lHandX = pose.rElbowX = pose.lElbowX = chairX - pose.armThickness/2;
-		pose.rHandY = pose.lHandY = chairY + pose.armThickness/2;
-		pose.rElbowY = pose.lElbowY = chairY + pose.armThickness/2 + pose.armSegmentLength;
+		pose.rHandY = pose.lHandY = chairSize + pose.armThickness/2;
+		pose.rElbowY = pose.lElbowY = chairSize + pose.armThickness/2 + pose.armSegmentLength;
 		poses.put(pose.name, pose);
 
 		// Step-Ups & High Knees
@@ -95,7 +95,8 @@ public class PoseLibrary {
 		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
 		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
 		pose.rKneeY = pose.legSegmentLength*2;
-		pose.prop = new Ledge(pose.rFootX - pose.legThickness/2, pose.rFootX + 12, pose.legSegmentLength);
+		float stepSize = pose.legSegmentLength;
+		pose.prop = new Ledge(pose.rFootX - pose.legThickness/2, pose.rFootX + stepSize, stepSize);
 		poses.put(pose.name, pose);
 
 		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);

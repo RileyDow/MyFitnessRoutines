@@ -1,11 +1,11 @@
 TODO
 ----
 
-
 Samples
 - Pose Drawings
   - "Jumping Jack" measurements
   - hip connection
+
   - Props
     - Strap/Band
     - Block
