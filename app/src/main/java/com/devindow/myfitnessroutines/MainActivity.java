@@ -15,9 +15,11 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Fields
     private ListView lstRoutines;
 
 
+    // Overrides
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

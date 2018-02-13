@@ -54,9 +54,9 @@ public class PoseLibrary {
 		// Wall Sit
 		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
 		pose.headX = pose.waistX = pose.lHandX = pose.rHandX = -pose.legSegmentLength/2;
-		pose.waistY = pose.lKneeY = pose.rKneeY = pose.lHandY = pose.rHandY = pose.legSegmentLength;
+		pose.waistY = pose.rKneeY = pose.lKneeY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
-		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
+		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
 		pose.prop = new Wall(pose.waistX - pose.torsoThickness/2);
 		poses.put(pose.name, pose);
@@ -64,12 +64,27 @@ public class PoseLibrary {
 		// Squats
 		pose = new ProfilePose(SQUATS, Category.LIFTING);
 		pose.headX = pose.waistX = -pose.legSegmentLength/2;
-		pose.waistY = pose.lKneeY = pose.rKneeY = pose.legSegmentLength;
+		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
-		pose.lHandX = pose.rHandX = pose.headX + pose.armSegmentLength * 2;
-		pose.lHandY = pose.rHandY = pose.getNeckY();
-		pose.lFootX = pose.rFootX = pose.lKneeX = pose.rKneeX = -pose.waistX;
+		pose.rHandX = pose.lHandX = pose.headX + pose.armSegmentLength * 2;
+		pose.rHandY = pose.lHandY = pose.getNeckY();
+		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
+		poses.put(pose.name, pose);
+
+		// Chair Dips
+		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
+		pose.headX = pose.waistX = -pose.legSegmentLength/2;
+		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
+		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
+		pose.rFootY = pose.lFootY = 0;
+		int chairX = pose.waistX - pose.torsoThickness/2 - 2;
+		int chairY = pose.legSegmentLength;
+		pose.prop = new Ledge(chairX, chairX - 12, chairY);
+		pose.rHandX = pose.lHandX = pose.rElbowX = pose.lElbowX = chairX - pose.armThickness/2;
+		pose.rHandY = pose.lHandY = chairY + pose.armThickness/2;
+		pose.rElbowY = pose.lElbowY = chairY + pose.armThickness/2 + pose.armSegmentLength;
 		poses.put(pose.name, pose);
 
 		// Step-Ups
@@ -88,11 +103,6 @@ public class PoseLibrary {
 
 		// Lunges
 		pose = new ProfilePose(LUNGES, Category.LIFTING);
-		poses.put(pose.name, pose);
-
-
-		// Chair Dips
-		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
 		poses.put(pose.name, pose);
 
 

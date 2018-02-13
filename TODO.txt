@@ -18,6 +18,8 @@ Notifications
 UI
 - App Icon
 
+MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
+
 Log Activity
 - Saving to Google Doc or persistent storage
 
