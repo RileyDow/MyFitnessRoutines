@@ -34,8 +34,8 @@ public abstract class Pose implements Serializable {
 
     public boolean coordsGenerated = false;
     public double bodyAngle;
-    public float collarX;
-    public float collarY;
+    public Float collarX; // Nullable so it will throw if generateCoords() has not been called.
+    public Float collarY;
 
     public float waistX = 0;
     public float waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length

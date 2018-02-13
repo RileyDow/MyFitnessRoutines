@@ -38,19 +38,19 @@ public class FrontalPose extends Pose {
         p.setStrokeWidth(armThickness);
         // Right Arm
         if (rElbowX != null && rElbowY != null) {
-            canvas.drawLine(rShoulderX, collarY, rElbowX, rElbowY, p);
+            canvas.drawLine(rShoulderX, rShoulderY, rElbowX, rElbowY, p);
             canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
         }
         else {
-            canvas.drawLine(rShoulderX, collarY, rHandX, rHandY, p);
+            canvas.drawLine(rShoulderX, rShoulderY, rHandX, rHandY, p);
         }
         // Left Arm
         if (lElbowX != null && lElbowY != null) {
-            canvas.drawLine(lShoulderX, collarY, lElbowX, lElbowY, p);
+            canvas.drawLine(lShoulderX, lShoulderY, lElbowX, lElbowY, p);
             canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
         }
         else {
-            canvas.drawLine(lShoulderX, collarY, lHandX, lHandY, p);
+            canvas.drawLine(lShoulderX, lShoulderY, lHandX, lHandY, p);
         }
 
         //p.setColor(Color.BLUE);
@@ -58,19 +58,19 @@ public class FrontalPose extends Pose {
         p.setStrokeWidth(legThickness);
         // Right Leg
         if (rKneeX != null && rKneeY != null) {
-            canvas.drawLine(rHipX, waistY, rKneeX, rKneeY, p);
+            canvas.drawLine(rHipX, rHipY, rKneeX, rKneeY, p);
             canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
         }
         else {
-            canvas.drawLine(rHipX, waistY, rFootX, rFootY, p);
+            canvas.drawLine(rHipX, rHipY, rFootX, rFootY, p);
         }
         // Left Leg
         if (lKneeX != null && lKneeY != null) {
-            canvas.drawLine(lHipX, waistY, lKneeX, lKneeY, p);
+            canvas.drawLine(lHipX, lHipY, lKneeX, lKneeY, p);
             canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
         }
         else {
-            canvas.drawLine(lHipX, waistY, lFootX, lFootY, p);
+            canvas.drawLine(lHipX, lHipY, lFootX, lFootY, p);
         }
 
         return bitmap;
@@ -89,13 +89,13 @@ public class FrontalPose extends Pose {
 
         float distanceNeckToShoulder = 0.5f*torsoThickness + 0.5f*armThickness;
         rShoulderX = collarX - distanceNeckToShoulder * (float)Math.sin(bodyAngle);
-        rShoulderY = collarY + distanceNeckToShoulder * (float)Math.sin(bodyAngle);
+        rShoulderY = collarY + distanceNeckToShoulder * (float)Math.cos(bodyAngle);
         lShoulderX = collarX + distanceNeckToShoulder * (float)Math.sin(bodyAngle);
         lShoulderY = collarY - distanceNeckToShoulder * (float)Math.cos(bodyAngle);
 
         float distanceWaistToHip = 0.5f*legThickness + 1;
         rHipX = waistX - distanceWaistToHip * (float)Math.sin(bodyAngle);
-        rHipY = waistY + distanceWaistToHip * (float)Math.sin(bodyAngle);
+        rHipY = waistY + distanceWaistToHip * (float)Math.cos(bodyAngle);
         lHipX = waistX + distanceWaistToHip * (float)Math.sin(bodyAngle);
         lHipY = waistY - distanceWaistToHip * (float)Math.cos(bodyAngle);
     }
