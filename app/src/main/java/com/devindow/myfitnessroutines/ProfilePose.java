@@ -58,6 +58,11 @@ public class ProfilePose extends Pose {
             canvas.drawLine(waistX, waistY, lFootX, lFootY, p);
         }
 
+        // Prop
+        if (prop != null) {
+            prop.draw(canvas);
+        }
+
         return bitmap;
     }
 

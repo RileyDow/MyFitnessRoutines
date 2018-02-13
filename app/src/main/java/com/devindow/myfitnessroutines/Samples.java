@@ -40,8 +40,8 @@ public class Samples {
     private static Routine getTestSample() {
         Routine routine = new Routine("Test Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWNDOG), 3, 0));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
 
         return routine;
     }
@@ -51,7 +51,7 @@ public class Samples {
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.WALL_SIT), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CRUNCHES), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.STEP_UPS), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SQUATS), 30, 5));
@@ -59,7 +59,7 @@ public class Samples {
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PLANK), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.HIGH_KNEES), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LUNGES), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUP_ROLL), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UP_ROTATE), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SIDE_PLANK), 30));
 
         return routine;
@@ -84,7 +84,7 @@ public class Samples {
     private static Routine getYogaRoutine() {
         Routine routine = new Routine("Yoga Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWNDOG), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30));
 
         return routine;
     }
@@ -92,7 +92,7 @@ public class Samples {
     private static Routine getLiftRoutine() {
         Routine routine = new Routine("Lift Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
         return routine;
     }
@@ -101,7 +101,7 @@ public class Samples {
         Routine routine = new Routine("Cardio Routine");
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
         return routine;
     }

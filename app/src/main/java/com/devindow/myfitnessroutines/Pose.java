@@ -48,6 +48,8 @@ public abstract class Pose implements Serializable {
     public Integer rKneeX, rKneeY, lKneeX, lKneeY;
     public Integer rElbowX, rElbowY, lElbowX, lElbowY;
 
+    public Prop prop;
+
 
     // Protected Fields
     protected Bitmap bitmap;
