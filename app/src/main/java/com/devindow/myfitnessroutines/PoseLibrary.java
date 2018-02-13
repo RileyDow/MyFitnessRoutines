@@ -55,7 +55,7 @@ public class PoseLibrary {
 		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
 		pose.headX = pose.waistX = pose.lHandX = pose.rHandX = -pose.legSegmentLength/2;
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
 		pose.prop = new Wall(pose.waistX - pose.torsoThickness/2);
@@ -65,7 +65,7 @@ public class PoseLibrary {
 		pose = new ProfilePose(SQUATS, Category.LIFTING);
 		pose.headX = pose.waistX = -pose.legSegmentLength/2;
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.rHandX = pose.lHandX = pose.headX + pose.armSegmentLength * 2;
 		pose.rHandY = pose.lHandY = pose.getNeckY();
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
@@ -76,7 +76,7 @@ public class PoseLibrary {
 		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
 		pose.headX = pose.waistX = -pose.legSegmentLength/2;
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.headSize/2 + pose.torsoThickness/2;
+		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
 		int chairX = pose.waistX - pose.torsoThickness/2 - 2;
@@ -87,7 +87,7 @@ public class PoseLibrary {
 		pose.rElbowY = pose.lElbowY = chairY + pose.armThickness/2 + pose.armSegmentLength;
 		poses.put(pose.name, pose);
 
-		// Step-Ups
+		// Step-Ups & High Knees
 		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
 		int x = -pose.legSegmentLength/2;
 		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
@@ -97,12 +97,23 @@ public class PoseLibrary {
 		pose.prop = new Ledge(pose.rFootX - pose.legThickness/2, pose.rFootX + 12, pose.legSegmentLength);
 		poses.put(pose.name, pose);
 
-		// High Knees
 		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);
+		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
+		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
+		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
+		pose.rKneeY = pose.legSegmentLength*2;
 		poses.put(pose.name, pose);
 
 		// Lunges
 		pose = new ProfilePose(LUNGES, Category.LIFTING);
+		pose.waistY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
+		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
+		pose.lHandX = pose.rHandX = 0;
+		pose.rFootX = pose.rKneeX = pose.legSegmentLength;
+		pose.rFootY = pose.lFootY = pose.lKneeY = pose.legThickness/2;
+		pose.rKneeY = pose.legSegmentLength;
+		pose.lKneeX = -4;
+		pose.lFootX = pose.lKneeX - pose.legSegmentLength;
 		poses.put(pose.name, pose);
 
 
@@ -163,14 +174,13 @@ public class PoseLibrary {
 		pose.rKneeX = 15; pose.lKneeX = -15; pose.rKneeY = pose.lKneeY = 5;
 		poses.put(pose.name, pose);
 
-		pose.name = REST;
-		/*pose = new FrontalPose(REST, Category.NONE);
+		pose = new FrontalPose(REST, Category.NONE);
 		pose.headX = 0; pose.headY = 33;
 		pose.waistX = 0; pose.waistY = 3;
 		pose.rHandX = 15; pose.lHandX = -15; pose.rHandY = pose.lHandY = 7;
 		pose.rElbowX = 9; pose.lElbowX = -9; pose.rElbowY = pose.lElbowY = 10;
 		pose.rFootX = 5; pose.lFootX = -5; pose.rFootY = pose.lFootY = 2;
-		pose.rKneeX = 15; pose.lKneeX = -15; pose.rKneeY = pose.lKneeY = 5;*/
+		pose.rKneeX = 15; pose.lKneeX = -15; pose.rKneeY = pose.lKneeY = 5;
 		poses.put(pose.name, pose);
 
 	}
