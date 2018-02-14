@@ -39,9 +39,9 @@ public class PoseLibrary {
 
 		// Done
 		pose = new FrontalPose(DONE, Category.NONE);
-		pose.rHandX = 19; pose.lHandX = -19; pose.rHandY = pose.lHandY = 73;
-		pose.rElbowX = 17f; pose.lElbowX = -17f; pose.rElbowY = pose.lElbowY = 59f;
-		pose.rFootX = 4; pose.lFootX = -4;
+		pose.rHandX = -19; pose.lHandX = 19; pose.rHandY = pose.lHandY = 73;
+		pose.rElbowX = -17f; pose.lElbowX = 17f; pose.rElbowY = pose.lElbowY = 59f;
+		pose.rFootX = -4; pose.lFootX = 4;
 		poses.put(pose.name, pose);
 
 		// Jumping Jacks
@@ -203,19 +203,19 @@ public class PoseLibrary {
 		pose = new FrontalPose(LOTUS, Category.YOGA);
 		pose.headX = 0; pose.headY = 33;
 		pose.waistX = 0; pose.waistY = 3;
-		pose.rHandX = 15; pose.lHandX = -15; pose.rHandY = pose.lHandY = 7;
-		pose.rElbowX = 9f; pose.lElbowX = -9f; pose.rElbowY = pose.lElbowY = 10f;
-		pose.rFootX = 5; pose.lFootX = -5; pose.rFootY = pose.lFootY = 2;
-		pose.rKneeX = 15f; pose.lKneeX = -15f; pose.rKneeY = pose.lKneeY = 5f;
+		pose.rHandX = -15; pose.lHandX = 15; pose.rHandY = pose.lHandY = 7;
+		pose.rElbowX = -9f; pose.lElbowX = 9f; pose.rElbowY = pose.lElbowY = 10f;
+		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
+		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
 		poses.put(pose.name, pose);
 
 		pose = new FrontalPose(REST, Category.NONE);
 		pose.headX = 0; pose.headY = 33;
 		pose.waistX = 0; pose.waistY = 3;
-		pose.rHandX = 15; pose.lHandX = -15; pose.rHandY = pose.lHandY = 7;
-		pose.rElbowX = 9f; pose.lElbowX = -9f; pose.rElbowY = pose.lElbowY = 10f;
-		pose.rFootX = 5; pose.lFootX = -5; pose.rFootY = pose.lFootY = 2;
-		pose.rKneeX = 15f; pose.lKneeX = -15f; pose.rKneeY = pose.lKneeY = 5f;
+		pose.rHandX = -15; pose.lHandX = 15; pose.rHandY = pose.lHandY = 7;
+		pose.rElbowX = -9f; pose.lElbowX = 9f; pose.rElbowY = pose.lElbowY = 10f;
+		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
+		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
 		poses.put(pose.name, pose);
 
 	}
