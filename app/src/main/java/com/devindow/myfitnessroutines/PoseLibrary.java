@@ -46,8 +46,13 @@ public class PoseLibrary {
 
 		// Jumping Jacks
 		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
-		pose.rHandX = -25; pose.lHandX = 25; pose.rHandY = pose.lHandY = 70;
-		pose.rFootX = -15; pose.lFootX = 15;
+		pose.rElbowX = -17f; pose.lElbowX = 17f;
+		float distanceHandOutsideOfElbow = 4;
+		pose.rHandX = pose.rElbowX - distanceHandOutsideOfElbow; pose.lHandX = pose.lElbowX + distanceHandOutsideOfElbow;
+		float elbowHeight = pose.headY;
+		pose.rElbowY = pose.lElbowY = elbowHeight;
+		pose.rHandY = pose.lHandY = elbowHeight + pose.armSegmentLength;
+		pose.rFootX = -11; pose.lFootX = 11;
 		poses.put(pose.name, pose);
 
 
