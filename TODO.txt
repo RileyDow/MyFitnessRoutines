@@ -3,10 +3,10 @@ TODO
 
 Samples
 - Pose Drawings
-  - "High Knee" arms
+  - "High Knee": add arms
   - hip connection
   - calc angle using atan, calc sin/cos to apply to legSegLength
-  - Use Z to show depth in 3D?
+  - ProfilePose use Z to show depth in 3D?
 
   - Props
     - Strap/Band
