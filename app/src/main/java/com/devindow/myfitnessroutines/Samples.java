@@ -12,22 +12,24 @@ public class Samples {
     public static ArrayList<Routine> getSampleRoutines() {
         ArrayList<Routine> defaultRoutines = new ArrayList<Routine>();
 
-        defaultRoutines.add(get7MinuteSample());
+        defaultRoutines.add(get7MinuteWorkout());
 
-        if (Debug.ON) {
+        if (Debug.on) {
             defaultRoutines.add(getTestSample());
 
-            defaultRoutines.add(getStretchSample());
+            defaultRoutines.add(getSunSalutation());
 
-            defaultRoutines.add(getYogaSample());
+            defaultRoutines.add(getStretchRoutine());
 
-            defaultRoutines.add(getLiftSample());
+            defaultRoutines.add(getYogaRoutine());
 
-            defaultRoutines.add(getCardioSample());
+            defaultRoutines.add(getLiftRoutine());
 
-            defaultRoutines.add(getWarmupSample());
+            defaultRoutines.add(getCardioRoutine());
 
-            defaultRoutines.add(getMeditationSample());
+            defaultRoutines.add(getWarmupRoutine());
+
+            defaultRoutines.add(getMeditationRoutine());
         }
 
         return defaultRoutines;
@@ -38,32 +40,40 @@ public class Samples {
     private static Routine getTestSample() {
         Routine routine = new Routine("Test Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWNDOG), 3, 0));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
 
         return routine;
     }
 
-    private static Routine get7MinuteSample() {
-        Routine routine = new Routine("7 Minute Routine");
+    private static Routine get7MinuteWorkout() {
+        Routine routine = new Routine("7 Minute Workout");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.WALL_SIT), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CRUNCHES), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.STEP_UPS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SQUATS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CHAIR_DIPS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PLANK), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.HIGH_KNEES), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LUNGES), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUP_ROLL), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.WALL_SIT), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CRUNCHES), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.STEP_UPS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SQUATS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CHAIR_DIPS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PLANK), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.HIGH_KNEES), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LUNGES), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UP_ROTATE), 30, 5));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SIDE_PLANK), 30));
 
         return routine;
     }
 
-    private static Routine getStretchSample() {
+    private static Routine getSunSalutation() {
+        Routine routine = new Routine("Sun Salutation");
+
+        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+
+        return routine;
+    }
+
+    private static Routine getStretchRoutine() {
         Routine routine = new Routine("Stretch Routine");
 
         routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
@@ -71,32 +81,32 @@ public class Samples {
         return routine;
     }
 
-    private static Routine getYogaSample() {
+    private static Routine getYogaRoutine() {
         Routine routine = new Routine("Yoga Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWNDOG), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30));
 
         return routine;
     }
 
-    private static Routine getLiftSample() {
+    private static Routine getLiftRoutine() {
         Routine routine = new Routine("Lift Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
         return routine;
     }
 
-    private static Routine getCardioSample() {
+    private static Routine getCardioRoutine() {
         Routine routine = new Routine("Cardio Routine");
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSHUPS), 30));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
         return routine;
     }
 
-    private static Routine getWarmupSample() {
+    private static Routine getWarmupRoutine() {
         Routine routine = new Routine("Warmup Routine");
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
@@ -104,7 +114,7 @@ public class Samples {
         return routine;
     }
 
-    private static Routine getMeditationSample() {
+    private static Routine getMeditationRoutine() {
         Routine routine = new Routine("Meditation Routine");
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 30));

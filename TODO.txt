@@ -1,20 +1,35 @@
 TODO
 ----
-Samples
+
+- Routines
+  - Warmup
+  - Soccer Warmup
+  - Sun Salutation
+
+
 - Pose Drawings
-  - Shoulder & Hip location
+  - "High Knee": add arms
+  - hip connection
+  - calc angle using atan, calc sin/cos to apply to legSegLength
+  - ProfilePose use Z to show depth in 3D?
 
-Play Routine activity
-- Disable/Hide Next/Prev button
-- Show Duration of full Routine
+  - Props
+    - Strap/Band
+    - Block
 
-Chime
-Notifications
+- Play Routine activity
+  - Disable/Hide Next/Prev button
+  * Show Duration of full Routine
 
-UI
-- App Icon
+- Chime
+- Notifications
 
-Log Activity
-- Saving to Google Doc or persistent storage
+- UI
+  - App Icon
 
-Logging app
+- MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
+
+- Log Activity
+  - Saving to Google Doc or persistent storage
+
+- java.util.logging
