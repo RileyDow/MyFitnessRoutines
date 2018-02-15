@@ -1,5 +1,6 @@
 TODO
 ----
+more poses
 
 Samples
 - Pose Drawings
