@@ -32,10 +32,19 @@ public abstract class Pose implements Serializable {
     public float headX = 0;
     public float headY = 66;
 
-    public boolean coordsGenerated = false;
     public double bodyAngle;
-    public Float collarX; // Nullable so it will throw if generateCoords() has not been called.
-    public Float collarY;
+    public float collarX;
+    public float collarY;
+
+    public float rShoulderX;
+    public float rShoulderY;
+    public float lShoulderX;
+    public float lShoulderY;
+
+    public float rHipX;
+    public float rHipY;
+    public float lHipX;
+    public float lHipY;
 
     public float waistX = 0;
     public float waistY = headY - headSize/2 - torsoThickness/2 - torsoLength; // head center - head radius - torso radius - torso length
@@ -83,25 +92,66 @@ public abstract class Pose implements Serializable {
 
     // Public Methods
     public Bitmap getBitmap() {
-        if (!coordsGenerated) {
-            generateCoords();
-        }
+        generateCoords();
 
         prepCanvas();
+
+        // Draw Head
+        p.setStrokeWidth(headSize);
+        canvas.drawPoint(headX, headY, p);
+
+        // Draw Torso
+        if (Debug.colors) { p.setColor(Color.MAGENTA); }
+        p.setStrokeWidth(torsoThickness);
+        canvas.drawLine(collarX, collarY, waistX, waistY, p);
+
+        // Draw Arms
+        p.setStrokeWidth(armThickness);
+        // Right Arm
+        if (Debug.colors) { p.setColor(Color.RED); }
+        if (rElbowX != null && rElbowY != null) {
+            canvas.drawLine(rShoulderX, rShoulderY, rElbowX, rElbowY, p);
+            canvas.drawLine(rElbowX, rElbowY, rHandX, rHandY, p);
+        }
+        else {
+            canvas.drawLine(rShoulderX, rShoulderY, rHandX, rHandY, p);
+        }
+        // Left Arm
+        if (Debug.colors) { p.setColor(Color.YELLOW); }
+        if (lElbowX != null && lElbowY != null) {
+            canvas.drawLine(lShoulderX, lShoulderY, lElbowX, lElbowY, p);
+            canvas.drawLine(lElbowX, lElbowY, lHandX, lHandY, p);
+        }
+        else {
+            canvas.drawLine(lShoulderX, lShoulderY, lHandX, lHandY, p);
+        }
+
+        // Draw Legs
+        p.setStrokeWidth(legThickness);
+        // Right Leg
+        if (Debug.colors) { p.setColor(Color.BLUE); }
+        if (rKneeX != null && rKneeY != null) {
+            canvas.drawLine(rHipX, rHipY, rKneeX, rKneeY, p);
+            canvas.drawLine(rKneeX, rKneeY, rFootX, rFootY, p);
+        }
+        else {
+            canvas.drawLine(rHipX, rHipY, rFootX, rFootY, p);
+        }
+        // Left Leg
+        if (Debug.colors) { p.setColor(Color.CYAN); }
+        if (lKneeX != null && lKneeY != null) {
+            canvas.drawLine(lHipX, lHipY, lKneeX, lKneeY, p);
+            canvas.drawLine(lKneeX, lKneeY, lFootX, lFootY, p);
+        }
+        else {
+            canvas.drawLine(lHipX, lHipY, lFootX, lFootY, p);
+        }
 
         return bitmap;
     }
 
 
     // Protected Methods
-    protected void generateCoords() {
-        bodyAngle = getBodyAngle();
-        collarX = waistX + (int)Math.round(torsoLength * Math.cos(bodyAngle));
-        collarY = waistY + (int)Math.round(torsoLength * Math.sin(bodyAngle));
-
-        coordsGenerated = true;
-    }
-
     protected void prepCanvas() {
         bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
         canvas = new Canvas(bitmap);
@@ -113,6 +163,16 @@ public abstract class Pose implements Serializable {
         p.setStrokeJoin(Paint.Join.ROUND);
         p.setColor(Color.BLACK);
     }
+
+    protected void generateCoords() {
+        bodyAngle = getBodyAngle();
+        collarX = waistX + (int)Math.round(torsoLength * Math.cos(bodyAngle));
+        collarY = waistY + (int)Math.round(torsoLength * Math.sin(bodyAngle));
+
+        generateShoulderAndHipCoords();
+    }
+
+    protected abstract void generateShoulderAndHipCoords();
 
 
     // Overrides
