@@ -15,6 +15,8 @@ public class Samples {
         defaultRoutines.add(get7MinuteWorkout());
 
         if (Debug.on) {
+            defaultRoutines.add(getRileySample());
+
             defaultRoutines.add(getTestSample());
 
             defaultRoutines.add(getSunSalutation());
@@ -47,6 +49,15 @@ public class Samples {
         return routine;
     }
 
+    private static Routine getRileySample() {
+        Routine routine = new Routine("Riley Routine");
+
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.BEHIND_THE_BACK_GRAB), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
+
+        return routine;
+    }
     private static Routine get7MinuteWorkout() {
         Routine routine = new Routine("7 Minute Workout");
 
