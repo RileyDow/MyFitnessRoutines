@@ -11,7 +11,8 @@ public class PoseLibrary {
 
 
 	// Constants
-	public static final String DONE = "Done!";
+    public static final String RILEY = "Riley!";
+    public static final String DONE = "Done!";
 	public static final String REST = "Rest";
 	public static final String PUSH_UPS = "Push-Ups";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
@@ -36,6 +37,21 @@ public class PoseLibrary {
 	// Public Static Methods
 	public static void generatePoses() {
 		Pose pose;
+
+
+		// Riley
+        pose = new ProfilePose(RILEY, Category.YOGA);
+        pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = 0;
+        final float kneeBendDistanceR = 4;
+        pose.lKneeX = pose.lFootX + kneeBendDistanceR;
+        pose.lKneeY = pose.legSegmentLength;
+        pose.rFootX = pose.rKneeX = pose.legSegmentLength;
+        final float distanceAbovePerpendicularR = 2;
+        pose.rFootY = pose.legSegmentLength + pose.legThickness/2 + distanceAbovePerpendicularR;
+        pose.rKneeY = pose.waistY + distanceAbovePerpendicularR;
+        poses.put(pose.name, pose);
+
+
 
 		// Done
 		pose = new FrontalPose(DONE, Category.NONE);
