@@ -147,6 +147,10 @@ public abstract class Pose implements Serializable {
             canvas.drawLine(lHipX, lHipY, lFootX, lFootY, p);
         }
 
+        if (prop != null) {
+            prop.draw(canvas);
+        }
+
         return bitmap;
     }
 

@@ -97,6 +97,7 @@ public class PoseLibrary {
 		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
 		final float x = -pose.legSegmentLength/2;
 		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
+		pose.rHandY = pose.lHandY = pose.waistY;
 		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
 		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
 		pose.rKneeY = pose.legSegmentLength*2;
@@ -106,6 +107,7 @@ public class PoseLibrary {
 
 		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);
 		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
+		pose.rHandY = pose.lHandY = pose.waistY;
 		final float kneeBendDistance = 4;
 		pose.lKneeX = pose.lFootX + kneeBendDistance;
 		pose.lKneeY = pose.legSegmentLength;
