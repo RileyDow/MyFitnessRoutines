@@ -52,9 +52,9 @@ public class Samples {
     private static Routine getRileySample() {
         Routine routine = new Routine("Riley Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.BEHIND_THE_BACK_GRAB), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.BEHIND_THE_BACK_GRAB), 20, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30, 0));
 
         return routine;
     }
