@@ -11,7 +11,7 @@ public class PoseLibrary {
 
 
 	// Constants
-    public static final String RILEY = "Riley!";
+    public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
     public static final String DONE = "Done!";
 	public static final String REST = "Rest";
 	public static final String PUSH_UPS = "Push-Ups";
@@ -39,16 +39,15 @@ public class PoseLibrary {
 		Pose pose;
 
 
-		// Riley
-        pose = new ProfilePose(RILEY, Category.YOGA);
-        pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = 0;
-        final float kneeBendDistanceR = 4;
-        pose.lKneeX = pose.lFootX + kneeBendDistanceR;
-        pose.lKneeY = pose.legSegmentLength;
-        pose.rFootX = pose.rKneeX = pose.legSegmentLength;
-        final float distanceAbovePerpendicularR = 2;
-        pose.rFootY = pose.legSegmentLength + pose.legThickness/2 + distanceAbovePerpendicularR;
-        pose.rKneeY = pose.waistY + distanceAbovePerpendicularR;
+		// Behind the Back Grab
+        pose = new ProfilePose(BEHIND_THE_BACK_GRAB, Category.YOGA);
+        pose.generateCoords();
+        pose.rElbowY = pose.collarY + pose.armSegmentLength;
+        pose.rHandY = pose.lHandY = pose.collarY;
+        pose.lElbowY = pose.collarY - pose.armSegmentLength;
+        pose.rElbowX = pose.lElbowX = pose.waistX - pose.torsoThickness/2 - pose.armThickness/2;
+        pose.rHandX = pose.lHandX = pose.lElbowX - 1;
+        pose.rFootX = pose.lFootX = 0;
         poses.put(pose.name, pose);
 
 

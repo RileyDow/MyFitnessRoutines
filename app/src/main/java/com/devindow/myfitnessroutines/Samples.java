@@ -40,7 +40,7 @@ public class Samples {
     private static Routine getTestSample() {
         Routine routine = new Routine("Test Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.RILEY), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.BEHIND_THE_BACK_GRAB), 3, 2));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
 
