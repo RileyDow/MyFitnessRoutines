@@ -1,7 +1,12 @@
 TODO
 ----
 
-Samples
+- Routines
+  - Warmup
+  - Soccer Warmup
+  - Sun Salutation
+
+
 - Pose Drawings
   - "High Knee": add arms
   - hip connection
@@ -12,19 +17,19 @@ Samples
     - Strap/Band
     - Block
 
-Play Routine activity
-- Disable/Hide Next/Prev button
-* Show Duration of full Routine
+- Play Routine activity
+  - Disable/Hide Next/Prev button
+  * Show Duration of full Routine
 
-Chime
-Notifications
+- Chime
+- Notifications
 
-UI
-- App Icon
+- UI
+  - App Icon
 
-MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
+- MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
 
-Log Activity
-- Saving to Google Doc or persistent storage
+- Log Activity
+  - Saving to Google Doc or persistent storage
 
-Logging app
+- java.util.logging
