@@ -68,7 +68,7 @@ public class Samples {
     private static Routine getSunSalutation() {
         Routine routine = new Routine("Sun Salutation");
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+        //routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
 
         return routine;
     }
@@ -76,7 +76,7 @@ public class Samples {
     private static Routine getStretchRoutine() {
         Routine routine = new Routine("Stretch Routine");
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+        //routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
 
         return routine;
     }

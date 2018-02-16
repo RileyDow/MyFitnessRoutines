@@ -1,6 +1,11 @@
 TODO
 ----
 
+- Pose generation
+  - Torso from angle & waist or angle & collar
+  - Arm/Leg from angle & length or 2 angles & lengths
+
+
 - Routines
   - Warmup
   - Soccer Warmup

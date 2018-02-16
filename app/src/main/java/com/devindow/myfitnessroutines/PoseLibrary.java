@@ -36,7 +36,7 @@ public class PoseLibrary {
 	// Public Static Methods
 	public static void generatePoses() {
 		Pose pose;
-
+/*
 		// Done
 		pose = new FrontalPose(DONE, Category.NONE);
 		pose.rHandX = -19; pose.lHandX = 19; pose.rHandY = pose.lHandY = 73;
@@ -72,7 +72,7 @@ public class PoseLibrary {
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.rHandX = pose.lHandX = pose.headX + pose.armSegmentLength * 2;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rHandY = pose.lHandY = pose.collarY;
 		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
 		pose.rFootY = pose.lFootY = 0;
@@ -144,7 +144,7 @@ public class PoseLibrary {
 		pose.headX = 30; pose.headY = 16;
 		pose.waistX = 1; pose.waistY = 10;
 		pose.rHandY = pose.lHandY = pose.rElbowY = pose.lElbowY = pose.armThickness/2;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rElbowX = pose.lElbowX = pose.collarX;
 		pose.rHandX = pose.lHandX = pose.rElbowX + pose.armSegmentLength;
 		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = pose.legThickness/2;
@@ -161,7 +161,7 @@ public class PoseLibrary {
 		pose.lFootY = pose.legThickness/2;
 		pose.rFootY = pose.lFootY + pose.legThickness - 1;
 		pose.lHandX = 25; pose.lHandY = pose.armThickness/2;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rHandX = ((FrontalPose)pose).rShoulderX - pose.armThickness;
 		pose.rHandY = ((FrontalPose)pose).rShoulderY + pose.armSegmentLength*2;
 		poses.put(pose.name, pose);
@@ -176,7 +176,7 @@ public class PoseLibrary {
 		pose.rFootX = pose.lFootX - 1;
 		pose.lFootY = pose.legThickness/2;
 		pose.rFootY = pose.lFootY + pose.legThickness - 1;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.lElbowX = ((FrontalPose) pose).lShoulderX;
 		pose.lHandX = pose.lElbowX - 2;
 		pose.lElbowY = pose.lHandY = pose.armThickness/2;
@@ -192,7 +192,7 @@ public class PoseLibrary {
 		pose.waistX = pose.rKneeX = pose.lKneeX = pose.headX + pose.headSize/2 + pose.torsoThickness/2 + pose.torsoLength;
 		pose.rFootX = pose.lFootX = pose.waistX + pose.legSegmentLength;
 		pose.rKneeY = pose.lKneeY = pose.rFootY = pose.lFootY = pose.legSegmentLength;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rHandX = pose.lHandX = pose.collarX + 10;
 		pose.rHandY = pose.lHandY = pose.armSegmentLength * 2;
 		poses.put(pose.name, pose);
@@ -224,7 +224,7 @@ public class PoseLibrary {
 		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
 		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
 		poses.put(pose.name, pose);
-
+*/
 	}
 
 }

@@ -81,6 +81,10 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private void showPose(Pose pose) {
 		// txtPoseName
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
+		if (pose == null) {
+			txtPoseName.setText("NULL");
+			return;
+		}
 		txtPoseName.setText(pose.name);
 
 		// imgPose
