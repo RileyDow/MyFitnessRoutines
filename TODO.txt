@@ -8,9 +8,7 @@ TODO
 
 
 - Pose Drawings
-  * Hip connection
   - "High Knee": add arms
-  - calc angle using atan, calc sin/cos to apply to legSegLength
   - ProfilePose use Z to show depth in 3D?
 
   - Props

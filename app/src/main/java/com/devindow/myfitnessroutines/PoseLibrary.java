@@ -40,9 +40,10 @@ public class PoseLibrary {
 		{
 			Pose pose = new Pose(DONE, Category.NONE);
 
-			pose.torso = new Torso(0, Leg.segmentLength * 2 + Leg.thickness / 2);
+			Angle legAngle = Angle.S.add(6);
 
-			Angle legAngle = new Angle(-88);
+			pose.torso = new Torso(0, Leg.getHeight(legAngle) + Leg.thickness/2);
+
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legAngle, Leg.segmentLength*2);
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle.mirror(), Leg.segmentLength*2);
 
@@ -163,6 +164,21 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
+
+		// Push-ups
+		{
+			Pose pose = new Pose(PUSH_UPS, Category.LIFTING);
+
+			Angle angle = new Angle(25);
+
+			pose.torso = new Torso((Leg.getWidth(angle.opposite()) - Torso.getWidth(angle))/2, Leg.getHeight(angle) + Leg.thickness/2, angle,true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite());
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(15));
+
+			poses.put(pose.name, pose);
+		}
 
 /*
 		// Push-ups
