@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Leg implements Serializable {
 
 	// Constants
-	public static final float thickness = 5;
+	public static final float thickness = 6;
 	public static final float segmentLength = 17;
 
 

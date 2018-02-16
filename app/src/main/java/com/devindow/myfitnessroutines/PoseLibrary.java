@@ -121,12 +121,11 @@ public class PoseLibrary {
 		{
 			Pose pose = new Pose(LUNGES, Category.LIFTING);
 
-			Angle lungeAngle = Angle.S.add(-10);
 			pose.torso = new Torso(0, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
 
-			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, lungeAngle);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S.add(-5));
 
-			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, lungeAngle, Angle.W);
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, Angle.S.add(-10), Angle.W);
 
 			poses.put(pose.name, pose);
 		}
@@ -163,7 +162,6 @@ public class PoseLibrary {
 
 			poses.put(pose.name, pose);
 		}
-
 
 
 /*
