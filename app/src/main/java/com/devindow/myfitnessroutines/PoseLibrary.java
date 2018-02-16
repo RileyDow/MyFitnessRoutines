@@ -36,14 +36,15 @@ public class PoseLibrary {
 	// Public Static Methods
 	public static void generatePoses() {
 		Pose pose;
-/*
-		// Done
-		pose = new FrontalPose(DONE, Category.NONE);
-		pose.rHandX = -19; pose.lHandX = 19; pose.rHandY = pose.lHandY = 73;
-		pose.rElbowX = -17f; pose.lElbowX = 17f; pose.rElbowY = pose.lElbowY = 59f;
-		pose.rFootX = -4; pose.lFootX = 4;
-		poses.put(pose.name, pose);
 
+		// Done
+		pose = new Pose(DONE, Category.NONE);
+		pose.torso = new Torso(0, Leg.segmentLength*2 + Leg.thickness/2);
+		Angle armAngle = new Angle(45);
+		pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armAngle, Arm.segmentLength*2);
+		pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armAngle.mirror(), Arm.segmentLength*2);
+		poses.put(pose.name, pose);
+/*
 		// Jumping Jacks
 		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
 		pose.rElbowX = -17f; pose.lElbowX = 17f;

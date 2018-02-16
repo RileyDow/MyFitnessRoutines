@@ -11,10 +11,10 @@ import java.io.Serializable;
  * Created by Devin on 1/27/2018.
  */
 
-public abstract class Pose implements Serializable {
+public class Pose implements Serializable {
 
     // Constants
-    protected final int bitmapSize = 900;
+    public static final int bitmapSize = 900;
 
 
     // Public Fields
@@ -22,11 +22,11 @@ public abstract class Pose implements Serializable {
     public Category category;
     public boolean twoSides;
 
-    Torso torso;
-    Arm rArm;
-    Arm lArm;
-    Leg rLeg;
-    Leg lLeg;
+    public Torso torso;
+    public Arm rArm;
+    public Arm lArm;
+    public Leg rLeg;
+    public Leg lLeg;
     public Prop prop;
 
 
@@ -55,10 +55,20 @@ public abstract class Pose implements Serializable {
         prepCanvas();
 
         torso.draw(canvas);
-        lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
-        rArm.draw(canvas, torso.rShoulderX, torso.rShoulderY);
-        lLeg.draw(canvas, torso.lHipX, torso.lHipY);
-        rLeg.draw(canvas, torso.rHipX, torso.rHipY);
+
+        if (lArm != null) {
+            lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
+        }
+        if (rArm != null) {
+            rArm.draw(canvas, torso.rShoulderX, torso.rShoulderY);
+        }
+
+        if (lLeg != null) {
+            lLeg.draw(canvas, torso.lHipX, torso.lHipY);
+        }
+        if (rLeg != null) {
+            rLeg.draw(canvas, torso.rHipX, torso.rHipY);
+        }
 
         if (prop != null) {
             prop.draw(canvas);

@@ -31,4 +31,14 @@ public class Angle {
 		radians = Math.atan2(dy, dx);
 	}
 
+
+	// Public Methods
+	public Angle mirror() {
+		return new Angle(Math.PI/2 - radians);
+	}
+
+	public Angle opposite() {
+		return new Angle(radians + Math.PI);
+	}
+
 }

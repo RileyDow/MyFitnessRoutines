@@ -4,11 +4,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.io.Serializable;
+
 /**
  * Created by Devin on 2/16/2018.
  */
 
-public class Arm {
+public class Arm implements Serializable {
 
 	// Constants
 	public static final float thickness = 4;

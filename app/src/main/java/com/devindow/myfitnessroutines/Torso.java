@@ -4,11 +4,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.io.Serializable;
+
 /**
  * Created by Devin on 2/16/2018.
  */
 
-public class Torso {
+public class Torso implements Serializable {
 
 	// Constants
 	public static final float headSize = 10;
@@ -44,6 +46,18 @@ public class Torso {
 
 
 	// Constructors
+	public Torso(float waistX, float waistY) {
+		this(waistX, waistY, 90, false);
+	}
+
+	public Torso(float waistX, float waistY, boolean isProfile) {
+		this(waistX, waistY, 90, isProfile);
+	}
+
+	public Torso(float waistX, float waistY, int degrees) {
+		this(waistX, waistY, degrees, false);
+	}
+
 	public Torso(float waistX, float waistY, int degrees, boolean isProfile) {
 		this.waistY = waistX;
 		this.waistY = waistY;
