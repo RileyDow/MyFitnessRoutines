@@ -75,9 +75,8 @@ public class Arm implements Serializable {
 		p.setStrokeCap(Paint.Cap.ROUND);
 		p.setStrokeJoin(Paint.Join.ROUND);
 		p.setStrokeWidth(thickness);
-		p.setColor(Color.BLACK);
+		Debug.setPenColor(p);
 
-		if (Debug.colors) { p.setColor(Color.RED); }
 		if (elbowX != null && elbowY != null) {
 			canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, p);
 			canvas.drawLine(elbowX, elbowY, handX, handY, p);
