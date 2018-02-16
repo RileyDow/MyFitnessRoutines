@@ -89,21 +89,25 @@ public class PoseLibrary {
 
 			poses.put(pose.name, pose);
 		}
-/*
+
 		// Squats
-		pose = new ProfilePose(SQUATS, Category.LIFTING);
-		pose.headX = pose.waistX = -pose.legSegmentLength/2;
-		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.rHandX = pose.lHandX = pose.headX + pose.armSegmentLength * 2;
-		pose.generateCollar();
-		pose.rHandY = pose.lHandY = pose.collarY;
-		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
-		pose.rFootY = pose.lFootY = 0;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(SQUATS, Category.LIFTING);
+
+			Angle legProximalAngle = new Angle(0);
+			Angle legDistalAngle = new Angle(-90);
+
+			pose.torso = new Torso(-Leg.getWidth(legProximalAngle, legDistalAngle)/2, Leg.getHeight(legProximalAngle, legDistalAngle) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legProximalAngle, legDistalAngle);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(0));
+
+			poses.put(pose.name, pose);
+		}
 
 		// Chair Dips
-		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
+/*		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
 		pose.headX = pose.waistX = -pose.legSegmentLength/2;
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
