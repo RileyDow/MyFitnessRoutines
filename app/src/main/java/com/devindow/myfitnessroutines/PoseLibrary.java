@@ -35,7 +35,7 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void generatePoses() {
-		
+
 		// Done
 		{
 			Pose pose = new Pose(DONE, Category.NONE);
@@ -46,11 +46,15 @@ public class PoseLibrary {
 			Angle armDistalAngle = new Angle(80);
 			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, Arm.segmentLength, armDistalAngle, Arm.segmentLength);
 			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), Arm.segmentLength, armDistalAngle.mirror(), Arm.segmentLength);
-
+/*
 			Angle legProximalAngle = new Angle(-80);
 			Angle legDistalAngle = new Angle(-90);
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legProximalAngle, Leg.segmentLength, legDistalAngle, Leg.segmentLength);
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legProximalAngle.mirror(), Leg.segmentLength, legDistalAngle.mirror(), Leg.segmentLength);
+*/
+			Angle legAngle = new Angle(-88);
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legAngle, Leg.segmentLength*2);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle.mirror(), Leg.segmentLength*2);
 
 			poses.put(pose.name, pose);
 		}

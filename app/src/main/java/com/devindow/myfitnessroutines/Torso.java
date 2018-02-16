@@ -81,7 +81,8 @@ public class Torso implements Serializable {
 			lShoulderX = collarX + distanceNeckToShoulder * angle.getSin();
 			lShoulderY = collarY - distanceNeckToShoulder * angle.getCos();
 
-			float distanceWaistToHip = 0.5f * Leg.thickness + 1;
+			// TODO: lower Hips by difference between Torso.thickness & Leg.thickness
+			float distanceWaistToHip = 0.5f * Leg.thickness;
 			rHipX = waistX - distanceWaistToHip * angle.getSin();
 			rHipY = waistY + distanceWaistToHip * angle.getCos();
 			lHipX = waistX + distanceWaistToHip * angle.getSin();

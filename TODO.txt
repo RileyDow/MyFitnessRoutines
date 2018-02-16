@@ -1,11 +1,6 @@
 TODO
 ----
 
-- Pose generation
-  - Torso from angle & waist or angle & collar
-  - Arm/Leg from angle & length or 2 angles & lengths
-
-
 - Routines
   - Warmup
   - Soccer Warmup
@@ -13,8 +8,8 @@ TODO
 
 
 - Pose Drawings
+  * Hip connection
   - "High Knee": add arms
-  - hip connection
   - calc angle using atan, calc sin/cos to apply to legSegLength
   - ProfilePose use Z to show depth in 3D?
 
