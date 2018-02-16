@@ -87,4 +87,14 @@ public class Leg implements Serializable {
 		}
 	}
 
+
+	// Public Static Methods
+	public static float getHeight(Angle angle) {
+		return getHeight(angle, angle);
+	}
+
+	public static float getHeight(Angle proximalAngle, Angle distalAngle) {
+		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
+	}
+
 }

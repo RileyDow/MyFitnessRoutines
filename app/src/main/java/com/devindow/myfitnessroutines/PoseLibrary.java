@@ -58,7 +58,9 @@ public class PoseLibrary {
 		{
 			Pose pose = new Pose(JUMPING_JACKS, Category.CARDIO);
 
-			pose.torso = new Torso(0, Leg.segmentLength * 2 + Leg.thickness / 2);
+			Angle legAngle = new Angle(-70);
+
+			pose.torso = new Torso(0, Leg.getHeight(legAngle) + Leg.thickness / 2);
 
 			Angle armProximalAngle = new Angle(30);
 			Angle armDistalAngle = new Angle(60);
@@ -70,7 +72,6 @@ public class PoseLibrary {
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legProximalAngle, legDistalAngle);
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legProximalAngle.mirror(), legDistalAngle.mirror());*/
 
-			Angle legAngle = new Angle(-70);
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legAngle);
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle.mirror());
 
