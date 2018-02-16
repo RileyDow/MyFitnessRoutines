@@ -37,7 +37,6 @@ public class PoseLibrary {
 	// Public Static Methods
 	public static void generatePoses() {
 
-
 		// Behind the Back Grab
 		{
 			Pose pose = new Pose(BEHIND_THE_BACK_GRAB, Category.YOGA);
@@ -46,21 +45,13 @@ public class PoseLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(9), Angle.S);
+			int proximalAngle = 34;
+			int distalAngle = 14;
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
 
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-9), Angle.N);
-
+			poses.put(pose.name, pose);
 		}
-        /*pose = new ProfilePose(BEHIND_THE_BACK_GRAB, Category.YOGA);
-        pose.generateCoords();
-        pose.rElbowY = pose.collarY + pose.armSegmentLength;
-        pose.rHandY = pose.lHandY = pose.collarY;
-        pose.lElbowY = pose.collarY - pose.armSegmentLength;
-        pose.rElbowX = pose.lElbowX = pose.waistX - pose.torsoThickness/2 - pose.armThickness/2;
-        pose.rHandX = pose.lHandX = pose.lElbowX - 1;
-        pose.rFootX = pose.lFootX = 0;
-        poses.put(pose.name, pose);*/
-
 
 
 		// Done
