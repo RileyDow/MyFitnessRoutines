@@ -126,9 +126,9 @@ public class PoseLibrary {
 
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, Angle.S);
 
-			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E.add(-5), Angle.S);
 
-			final float stepSize = Leg.segmentLength;
+			float stepSize = pose.rLeg.footY - Leg.thickness/2;
 			pose.prop = new Ledge(pose.rLeg.footX - Leg.thickness/2, pose.rLeg.footX + stepSize, stepSize);
 
 			poses.put(pose.name, pose);
@@ -151,9 +151,9 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
-/*
+
 		// Lunges
-		pose = new ProfilePose(LUNGES, Category.LIFTING);
+/*		pose = new ProfilePose(LUNGES, Category.LIFTING);
 		pose.waistY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
 		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
 		pose.lHandX = pose.rHandX = 0;
@@ -165,7 +165,7 @@ public class PoseLibrary {
 		pose.lFootX = pose.lKneeX - pose.legSegmentLength;
 		poses.put(pose.name, pose);
 
-
+/*
 		// Push-ups
 		pose = new ProfilePose(PUSH_UPS, Category.LIFTING);
 		pose.headX = 30; pose.headY = 23;
