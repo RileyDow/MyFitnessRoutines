@@ -107,6 +107,24 @@ public class PoseLibrary {
 		}
 
 		// Chair Dips
+		{
+			Pose pose = new Pose(CHAIR_DIPS, Category.LIFTING);
+
+			Angle legProximalAngle = new Angle(0);
+			Angle legDistalAngle = new Angle(-90);
+
+			pose.torso = new Torso(-Leg.getWidth(legProximalAngle, legDistalAngle)/2, Leg.getHeight(legProximalAngle, legDistalAngle) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legProximalAngle, legDistalAngle);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-130), new Angle(-90));
+
+			final float chairX = pose.torso.waistX - pose.torso.thickness/2 - 2;
+			final float chairSize = Leg.segmentLength;
+			pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
+
+			poses.put(pose.name, pose);
+		}
 /*		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
 		pose.headX = pose.waistX = -pose.legSegmentLength/2;
 		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
