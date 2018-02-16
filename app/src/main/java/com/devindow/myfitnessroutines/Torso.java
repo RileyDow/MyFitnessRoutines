@@ -40,16 +40,32 @@ public class Torso implements Serializable {
 
 
 	// Constructors
-	public Torso(float waistX, float waistY) {
-		this(waistX, waistY, new Angle(90), false);
+	public Torso() {
+		this(false);
 	}
 
-	public Torso(float waistX, float waistY, boolean isProfile) {
-		this(waistX, waistY, new Angle(90), isProfile);
+	public Torso(float waistX) {
+		this(waistX,false);
+	}
+
+	public Torso(float waistX, float waistY) {
+		this(waistX, waistY,false);
 	}
 
 	public Torso(float waistX, float waistY, Angle angle) {
 		this(waistX, waistY, angle, false);
+	}
+
+	public Torso(boolean isProfile) {
+		this(0, isProfile);
+	}
+
+	public Torso(float waistX, boolean isProfile) {
+		this(waistX, Leg.segmentLength*2 + Leg.thickness/2, isProfile);
+	}
+
+	public Torso(float waistX, float waistY, boolean isProfile) {
+		this(waistX, waistY, new Angle(90), isProfile);
 	}
 
 	public Torso(float waistX, float waistY, Angle angle, boolean isProfile) {

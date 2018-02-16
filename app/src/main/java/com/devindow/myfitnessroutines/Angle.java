@@ -6,6 +6,13 @@ package com.devindow.myfitnessroutines;
 
 public class Angle {
 
+	// Constants
+	public static final Angle N = new Angle(90);
+	public static final Angle S = new Angle(-90);
+	public static final Angle E = new Angle(0);
+	public static final Angle W = new Angle(180);
+
+
 	// Public Fields
 	public double radians;
 
@@ -45,8 +52,6 @@ public class Angle {
 
 
 	// Overrides
-
-
 	@Override
 	public String toString() {
 		return getDegrees() + "º";
