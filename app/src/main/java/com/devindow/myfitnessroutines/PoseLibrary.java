@@ -180,15 +180,39 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
-/*
-		// Push-ups
-		pose = new ProfilePose(PUSH_UPS, Category.LIFTING);
-		pose.headX = 30; pose.headY = 23;
-		pose.waistX = 1; pose.waistY = 14;
-		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = pose.armThickness/2;
-		pose.rFootX = pose.lFootX = -33; pose.rFootY = pose.lFootY = pose.legThickness/2;
-		poses.put(pose.name, pose);
+		// Plank
+		{
+			Pose pose = new Pose(PLANK, Category.LIFTING);
 
+			Angle angle = new Angle(12);
+
+			pose.torso = new Torso((Leg.getWidth(angle.opposite()) - Torso.getWidth(angle))/2, Leg.getHeight(angle) + Leg.thickness/2, angle,true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite());
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(15), Angle.E);
+
+			poses.put(pose.name, pose);
+		}
+
+		// Push-Up & Rotate
+		{
+			Pose pose = new Pose(PUSH_UP_ROTATE, Category.LIFTING);
+
+			Angle angle = new Angle(25);
+
+			pose.torso = new Torso((Leg.getWidth(angle.opposite()) - Torso.getWidth(angle))/2, Leg.getHeight(angle) + Leg.thickness/2, angle);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, angle.opposite());
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite().add(5));
+
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(15));
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(15));
+
+			poses.put(pose.name, pose);
+		}
+
+/*
 		// Plank
 		pose = new ProfilePose(PLANK, Category.LIFTING);
 		pose.headX = 30; pose.headY = 16;
