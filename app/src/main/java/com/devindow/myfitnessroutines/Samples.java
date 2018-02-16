@@ -43,8 +43,8 @@ public class Samples {
         Routine routine = new Routine("Test Routine");
 
         routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.BEHIND_THE_BACK_GRAB), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DONE), 3, 0));
 
         return routine;
     }
@@ -80,7 +80,7 @@ public class Samples {
     private static Routine getSunSalutation() {
         Routine routine = new Routine("Sun Salutation");
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+        //routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
 
         return routine;
     }
@@ -88,7 +88,7 @@ public class Samples {
     private static Routine getStretchRoutine() {
         Routine routine = new Routine("Stretch Routine");
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+        //routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
 
         return routine;
     }

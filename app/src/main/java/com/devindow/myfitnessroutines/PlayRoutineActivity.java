@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.CountDownTimer;
@@ -79,13 +80,16 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void showPose(Pose pose) {
-		// txtPoseName
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		txtPoseName.setText(pose.name);
-
-		// imgPose
 		final ImageView imgPose = findViewById(R.id.imgPose);
-		imgPose.setImageBitmap(pose.getBitmap());
+
+		if (pose == null) {
+			txtPoseName.setText("NULL");
+			imgPose.setImageBitmap(Bitmap.createBitmap(pose.bitmapSize, pose.bitmapSize, Bitmap.Config.ARGB_8888));
+		} else {
+			txtPoseName.setText(pose.name);
+			imgPose.setImageBitmap(pose.getBitmap());
+		}
 	}
 
 	private void clearNextStep() {

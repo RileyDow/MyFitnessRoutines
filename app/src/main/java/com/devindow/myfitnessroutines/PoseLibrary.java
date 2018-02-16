@@ -36,11 +36,22 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void generatePoses() {
-		Pose pose;
 
 
 		// Behind the Back Grab
-        pose = new ProfilePose(BEHIND_THE_BACK_GRAB, Category.YOGA);
+		{
+			Pose pose = new Pose(BEHIND_THE_BACK_GRAB, Category.YOGA);
+
+			pose.torso = new Torso(true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(9), Angle.S);
+
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-9), Angle.N);
+
+		}
+        /*pose = new ProfilePose(BEHIND_THE_BACK_GRAB, Category.YOGA);
         pose.generateCoords();
         pose.rElbowY = pose.collarY + pose.armSegmentLength;
         pose.rHandY = pose.lHandY = pose.collarY;
@@ -48,102 +59,155 @@ public class PoseLibrary {
         pose.rElbowX = pose.lElbowX = pose.waistX - pose.torsoThickness/2 - pose.armThickness/2;
         pose.rHandX = pose.lHandX = pose.lElbowX - 1;
         pose.rFootX = pose.lFootX = 0;
-        poses.put(pose.name, pose);
+        poses.put(pose.name, pose);*/
 
 
 
 		// Done
-		pose = new FrontalPose(DONE, Category.NONE);
-		pose.rHandX = -19; pose.lHandX = 19; pose.rHandY = pose.lHandY = 73;
-		pose.rElbowX = -17f; pose.lElbowX = 17f; pose.rElbowY = pose.lElbowY = 59f;
-		pose.rFootX = -4; pose.lFootX = 4;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(DONE, Category.NONE);
+
+			Angle legAngle = Angle.S.add(6);
+
+			pose.torso = new Torso(0, Leg.getHeight(legAngle) + Leg.thickness/2);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legAngle, Leg.segmentLength*2);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle.mirror(), Leg.segmentLength*2);
+
+			Angle armProximalAngle = new Angle(30);
+			Angle armDistalAngle = new Angle(80);
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, armDistalAngle);
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), armDistalAngle.mirror());
+
+			poses.put(pose.name, pose);
+		}
 
 		// Jumping Jacks
-		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);
-		pose.rElbowX = -17f; pose.lElbowX = 17f;
-		float distanceHandOutsideOfElbow = 4;
-		pose.rHandX = pose.rElbowX - distanceHandOutsideOfElbow; pose.lHandX = pose.lElbowX + distanceHandOutsideOfElbow;
-		float elbowHeight = pose.headY;
-		pose.rElbowY = pose.lElbowY = elbowHeight;
-		pose.rHandY = pose.lHandY = elbowHeight + pose.armSegmentLength;
-		pose.rFootX = -11; pose.lFootX = 11;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(JUMPING_JACKS, Category.CARDIO);
+
+			Angle legAngle = new Angle(-70);
+
+			pose.torso = new Torso(0, Leg.getHeight(legAngle) + Leg.thickness/2);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, legAngle);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle.mirror());
+
+			Angle armProximalAngle = new Angle(30);
+			Angle armDistalAngle = new Angle(60);
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, armDistalAngle);
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), armDistalAngle.mirror());
+
+			poses.put(pose.name, pose);
+		}
 
 
 		// Wall Sit
-		pose = new ProfilePose(WALL_SIT, Category.LIFTING);
-		pose.headX = pose.waistX = pose.lHandX = pose.rHandX = -pose.legSegmentLength/2;
-		pose.waistY = pose.rKneeY = pose.lKneeY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
-		pose.rFootY = pose.lFootY = 0;
-		pose.prop = new Wall(pose.waistX - pose.torsoThickness/2);
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(WALL_SIT, Category.LIFTING);
+
+			pose.torso = new Torso(-Leg.getWidth(Angle.E, Angle.S)/2, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
+
+			pose.prop = new Wall(pose.torso.waistX - pose.torso.thickness/2);
+
+			poses.put(pose.name, pose);
+		}
 
 		// Squats
-		pose = new ProfilePose(SQUATS, Category.LIFTING);
-		pose.headX = pose.waistX = -pose.legSegmentLength/2;
-		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.rHandX = pose.lHandX = pose.headX + pose.armSegmentLength * 2;
-		pose.generateCoords();
-		pose.rHandY = pose.lHandY = pose.collarY;
-		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
-		pose.rFootY = pose.lFootY = 0;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(SQUATS, Category.LIFTING);
+
+			pose.torso = new Torso(-Leg.getWidth(Angle.E, Angle.S)/2, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(0));
+
+			poses.put(pose.name, pose);
+		}
 
 		// Chair Dips
-		pose = new ProfilePose(CHAIR_DIPS, Category.LIFTING);
-		pose.headX = pose.waistX = -pose.legSegmentLength/2;
-		pose.waistY = pose.rKneeY = pose.lKneeY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.rFootX = pose.lFootX = pose.rKneeX = pose.lKneeX = -pose.waistX;
-		pose.rFootY = pose.lFootY = 0;
-		final float chairX = pose.waistX - pose.torsoThickness/2 - 2;
-		final float chairSize = pose.legSegmentLength;
-		pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
-		pose.rHandX = pose.lHandX = pose.rElbowX = pose.lElbowX = chairX - pose.armThickness/2;
-		pose.rHandY = pose.lHandY = chairSize + pose.armThickness/2;
-		pose.rElbowY = pose.lElbowY = chairSize + pose.armThickness/2 + pose.armSegmentLength;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(CHAIR_DIPS, Category.LIFTING);
 
-		// Step-Ups & High Knees
-		pose = new ProfilePose(STEP_UPS, Category.LIFTING);
-		final float x = -pose.legSegmentLength/2;
-		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
-		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
-		pose.rFootY = pose.legSegmentLength + pose.legThickness/2;
-		pose.rKneeY = pose.legSegmentLength*2;
-		final float stepSize = pose.legSegmentLength;
-		pose.prop = new Ledge(pose.rFootX - pose.legThickness/2, pose.rFootX + stepSize, stepSize);
-		poses.put(pose.name, pose);
+			pose.torso = new Torso(-Leg.getWidth(Angle.E, Angle.S)/2, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
 
-		pose = new ProfilePose(HIGH_KNEES, Category.LIFTING);
-		pose.headX = pose.waistX = pose.lFootX = pose.lHandX = pose.rHandX = x;
-		final float kneeBendDistance = 4;
-		pose.lKneeX = pose.lFootX + kneeBendDistance;
-		pose.lKneeY = pose.legSegmentLength;
-		pose.rFootX = pose.rKneeX = x + pose.legSegmentLength;
-		final float distanceAbovePerpendicular = 2;
-		pose.rFootY = pose.legSegmentLength + pose.legThickness/2 + distanceAbovePerpendicular;
-		pose.rKneeY = pose.waistY + distanceAbovePerpendicular;
-		poses.put(pose.name, pose);
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-130), new Angle(-90));
+
+			final float chairX = pose.torso.waistX - pose.torso.thickness/2 - 2;
+			final float chairSize = Leg.segmentLength;
+			pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
+
+			poses.put(pose.name, pose);
+		}
 
 		// Lunges
-		pose = new ProfilePose(LUNGES, Category.LIFTING);
-		pose.waistY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.lHandX = pose.rHandX = 0;
-		pose.rFootX = pose.rKneeX = pose.legSegmentLength;
-		pose.rFootY = pose.lFootY = pose.lKneeY = pose.legThickness/2;
-		pose.rKneeY = pose.legSegmentLength;
-		final float kneeDistance = 4;
-		pose.lKneeX = -kneeDistance;
-		pose.lFootX = pose.lKneeX - pose.legSegmentLength;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(LUNGES, Category.LIFTING);
+
+			pose.torso = new Torso(0, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S.add(-5));
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, Angle.S.add(-10), Angle.W);
+
+			poses.put(pose.name, pose);
+		}
+
+		// Step-Ups
+		{
+			Pose pose = new Pose(STEP_UPS, Category.LIFTING);
+
+			pose.torso = new Torso(-Leg.getWidth(Angle.E, Angle.S)/2, Leg.getHeight() + Leg.thickness/2, true);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, Angle.S);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E.add(-5), Angle.S);
+
+			float stepSize = pose.rLeg.footY - Leg.thickness/2;
+			pose.prop = new Ledge(pose.rLeg.footX - Leg.thickness/2, pose.rLeg.footX + stepSize, stepSize);
+
+			poses.put(pose.name, pose);
+		}
+
+		// High Knees
+		{
+			Pose pose = new Pose(HIGH_KNEES, Category.LIFTING);
+
+			Angle lLegProximalAngle = Angle.S.add(+10);
+			Angle lLegDistalAngle = Angle.S.add(-10);
+			Angle rLegAngle = Angle.E.add(10);
+
+			pose.torso = new Torso(-Leg.getWidth(rLegAngle, Angle.S)/2, Leg.getHeight(lLegProximalAngle, lLegDistalAngle) + Leg.thickness/2, true);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, lLegProximalAngle, lLegDistalAngle);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, rLegAngle, Angle.S);
+
+			poses.put(pose.name, pose);
+		}
 
 
+		// Push-ups
+		{
+			Pose pose = new Pose(PUSH_UPS, Category.LIFTING);
+
+			Angle angle = new Angle(25);
+
+			pose.torso = new Torso((Leg.getWidth(angle.opposite()) - Torso.getWidth(angle))/2, Leg.getHeight(angle) + Leg.thickness/2, angle,true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite());
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(15));
+
+			poses.put(pose.name, pose);
+		}
+
+/*
 		// Push-ups
 		pose = new ProfilePose(PUSH_UPS, Category.LIFTING);
 		pose.headX = 30; pose.headY = 23;
@@ -157,7 +221,7 @@ public class PoseLibrary {
 		pose.headX = 30; pose.headY = 16;
 		pose.waistX = 1; pose.waistY = 10;
 		pose.rHandY = pose.lHandY = pose.rElbowY = pose.lElbowY = pose.armThickness/2;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rElbowX = pose.lElbowX = pose.collarX;
 		pose.rHandX = pose.lHandX = pose.rElbowX + pose.armSegmentLength;
 		pose.rFootX = pose.lFootX = -30; pose.rFootY = pose.lFootY = pose.legThickness/2;
@@ -174,7 +238,7 @@ public class PoseLibrary {
 		pose.lFootY = pose.legThickness/2;
 		pose.rFootY = pose.lFootY + pose.legThickness - 1;
 		pose.lHandX = 25; pose.lHandY = pose.armThickness/2;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rHandX = ((FrontalPose)pose).rShoulderX - pose.armThickness;
 		pose.rHandY = ((FrontalPose)pose).rShoulderY + pose.armSegmentLength*2;
 		poses.put(pose.name, pose);
@@ -189,7 +253,7 @@ public class PoseLibrary {
 		pose.rFootX = pose.lFootX - 1;
 		pose.lFootY = pose.legThickness/2;
 		pose.rFootY = pose.lFootY + pose.legThickness - 1;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.lElbowX = ((FrontalPose) pose).lShoulderX;
 		pose.lHandX = pose.lElbowX - 2;
 		pose.lElbowY = pose.lHandY = pose.armThickness/2;
@@ -205,7 +269,7 @@ public class PoseLibrary {
 		pose.waistX = pose.rKneeX = pose.lKneeX = pose.headX + pose.headSize/2 + pose.torsoThickness/2 + pose.torsoLength;
 		pose.rFootX = pose.lFootX = pose.waistX + pose.legSegmentLength;
 		pose.rKneeY = pose.lKneeY = pose.rFootY = pose.lFootY = pose.legSegmentLength;
-		pose.generateCoords();
+		pose.generateCollar();
 		pose.rHandX = pose.lHandX = pose.collarX + 10;
 		pose.rHandY = pose.lHandY = pose.armSegmentLength * 2;
 		poses.put(pose.name, pose);
@@ -237,7 +301,7 @@ public class PoseLibrary {
 		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
 		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
 		poses.put(pose.name, pose);
-
+*/
 	}
 
 }
