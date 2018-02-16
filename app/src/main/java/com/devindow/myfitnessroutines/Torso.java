@@ -55,7 +55,7 @@ public class Torso implements Serializable {
 	public Torso(float waistX, float waistY, Angle angle, boolean isProfile) {
 
 		// Waist
-		this.waistY = waistX;
+		this.waistX = waistX;
 		this.waistY = waistY;
 
 		// Collar

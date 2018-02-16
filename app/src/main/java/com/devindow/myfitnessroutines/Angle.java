@@ -43,4 +43,12 @@ public class Angle {
 		return new Angle(radians + Math.PI);
 	}
 
+
+	// Overrides
+
+
+	@Override
+	public String toString() {
+		return getDegrees() + "º";
+	}
 }

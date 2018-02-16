@@ -97,4 +97,12 @@ public class Leg implements Serializable {
 		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
 	}
 
+	public static float getWidth(Angle angle) {
+		return getWidth(angle, angle);
+	}
+
+	public static float getWidth(Angle proximalAngle, Angle distalAngle) {
+		return  Math.abs(segmentLength * proximalAngle.getCos() + segmentLength * distalAngle.getCos());
+	}
+
 }
