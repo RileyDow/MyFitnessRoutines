@@ -117,6 +117,19 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
+		// Lunges
+		{
+			Pose pose = new Pose(LUNGES, Category.LIFTING);
+
+			Angle lungeAngle = Angle.S.add(-10);
+			pose.torso = new Torso(0, Leg.getHeight(Angle.E, Angle.S) + Leg.thickness/2, true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, lungeAngle);
+
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, lungeAngle, Angle.W);
+
+			poses.put(pose.name, pose);
+		}
 
 		// Step-Ups
 		{
@@ -152,18 +165,6 @@ public class PoseLibrary {
 		}
 
 
-		// Lunges
-/*		pose = new ProfilePose(LUNGES, Category.LIFTING);
-		pose.waistY = pose.rHandY = pose.lHandY = pose.legSegmentLength;
-		pose.headY = pose.waistY + pose.torsoLength + pose.torsoThickness/2 + pose.headSize/2;
-		pose.lHandX = pose.rHandX = 0;
-		pose.rFootX = pose.rKneeX = pose.legSegmentLength;
-		pose.rFootY = pose.lFootY = pose.lKneeY = pose.legThickness/2;
-		pose.rKneeY = pose.legSegmentLength;
-		final float kneeDistance = 4;
-		pose.lKneeX = -kneeDistance;
-		pose.lFootX = pose.lKneeX - pose.legSegmentLength;
-		poses.put(pose.name, pose);
 
 /*
 		// Push-ups
