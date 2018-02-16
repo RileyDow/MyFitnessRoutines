@@ -138,11 +138,15 @@ public class PoseLibrary {
 		{
 			Pose pose = new Pose(HIGH_KNEES, Category.LIFTING);
 
-			pose.torso = new Torso(-Leg.getWidth(Angle.E, Angle.S)/2, Leg.getHeight() + Leg.thickness/2, true);
+			Angle lLegProximalAngle = Angle.S.add(+10);
+			Angle lLegDistalAngle = Angle.S.add(-10);
+			Angle rLegAngle = Angle.E.add(10);
 
-			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, Angle.S);
+			pose.torso = new Torso(-Leg.getWidth(rLegAngle, Angle.S)/2, Leg.getHeight(lLegProximalAngle, lLegDistalAngle) + Leg.thickness/2, true);
 
-			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, lLegProximalAngle, lLegDistalAngle);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, rLegAngle, Angle.S);
 
 			poses.put(pose.name, pose);
 		}

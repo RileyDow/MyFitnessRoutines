@@ -50,6 +50,10 @@ public class Angle {
 		return new Angle(radians + Math.PI);
 	}
 
+	public Angle add(int degrees) {
+		return new Angle(getDegrees() + degrees);
+	}
+
 
 	// Overrides
 	@Override
