@@ -16,6 +16,8 @@ public class Torso implements Serializable {
 	public static final float headSize = 10;
 	public static final float thickness = 10;
 	public static final float length = 20;
+	private static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
+	private static final float distanceWaistToHip = Leg.thickness/2 - 1;
 
 
 	// Public Fields
@@ -91,13 +93,11 @@ public class Torso implements Serializable {
 			rHipX = lHipX = waistX;
 			rHipY = lHipY = waistY;
 		} else {
-			float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
 			rShoulderX = collarX - distanceNeckToShoulder * angle.getSin();
 			rShoulderY = collarY + distanceNeckToShoulder * angle.getCos();
 			lShoulderX = collarX + distanceNeckToShoulder * angle.getSin();
 			lShoulderY = collarY - distanceNeckToShoulder * angle.getCos();
 
-			float distanceWaistToHip = Leg.thickness/2 - 1;
 			rHipX = waistX - distanceWaistToHip * angle.getSin();
 			rHipY = waistY + distanceWaistToHip * angle.getCos();
 			lHipX = waistX + distanceWaistToHip * angle.getSin();
@@ -129,16 +129,33 @@ public class Torso implements Serializable {
 		return getHeight(new Angle(90));
 	}
 
-	public static float getHeight(Angle angle) {
-		return  Math.abs(length * angle.getSin() + length * angle.getSin());
+	public static float getHeight(Angle bodyAngle) {
+		return  Math.abs(length * bodyAngle.getSin());
 	}
 
 	public static float getWidth() {
 		return getWidth(new Angle(90));
 	}
 
-	public static float getWidth(Angle angle) {
-		return  Math.abs(length * angle.getCos() + length * angle.getCos());
+	public static float getWidth(Angle bodyAngle) {
+		return  Math.abs(length * bodyAngle.getCos());
+	}
+
+
+	public static float getHipHeight() {
+		return getHipHeight(new Angle(90));
+	}
+
+	public static float getHipHeight(Angle bodyAngle) {
+		return  Math.abs(distanceWaistToHip * bodyAngle.add(90).getSin());
+	}
+
+	public static float getHipWidth() {
+		return getHipWidth(new Angle(90));
+	}
+
+	public static float getHipWidth(Angle bodyAngle) {
+		return  Math.abs(distanceWaistToHip * bodyAngle.add(90).getCos());
 	}
 
 }

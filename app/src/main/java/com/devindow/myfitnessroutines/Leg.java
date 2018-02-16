@@ -92,16 +92,16 @@ public class Leg implements Serializable {
 		return getHeight(new Angle(-90));
 	}
 
-	public static float getHeight(Angle angle) {
-		return getHeight(angle, angle);
+	public static float getHeight(Angle legAngle) {
+		return getHeight(legAngle, legAngle);
 	}
 
 	public static float getHeight(Angle proximalAngle, Angle distalAngle) {
 		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
 	}
 
-	public static float getWidth(Angle angle) {
-		return getWidth(angle, angle);
+	public static float getWidth(Angle legAngle) {
+		return getWidth(legAngle, legAngle);
 	}
 
 	public static float getWidth(Angle proximalAngle, Angle distalAngle) {
