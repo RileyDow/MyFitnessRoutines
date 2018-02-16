@@ -12,6 +12,8 @@ public class Angle {
 
 	// Public Properties
 	public int getDegrees() { return (int)Math.round(Math.toDegrees(radians)); }
+	public float getSin() { return (float)Math.sin(radians); }
+	public float getCos() { return (float)Math.cos(radians); }
 
 
 	// Constructors
@@ -34,7 +36,7 @@ public class Angle {
 
 	// Public Methods
 	public Angle mirror() {
-		return new Angle(Math.PI/2 - radians);
+		return new Angle(Math.PI - radians);
 	}
 
 	public Angle opposite() {

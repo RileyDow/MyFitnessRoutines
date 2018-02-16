@@ -35,15 +35,16 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void generatePoses() {
-		Pose pose;
-
 		// Done
-		pose = new Pose(DONE, Category.NONE);
-		pose.torso = new Torso(0, Leg.segmentLength*2 + Leg.thickness/2);
-		Angle armAngle = new Angle(45);
-		pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armAngle, Arm.segmentLength*2);
-		pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armAngle.mirror(), Arm.segmentLength*2);
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(DONE, Category.NONE);
+			pose.torso = new Torso(0, Leg.segmentLength * 2 + Leg.thickness / 2);
+			Angle armProximalAngle = new Angle(30);
+			Angle armDistalAngle = new Angle(80);
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, Arm.segmentLength, armDistalAngle, Arm.segmentLength);
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), Arm.segmentLength, armDistalAngle.mirror(), Arm.segmentLength);
+			poses.put(pose.name, pose);
+		}
 /*
 		// Jumping Jacks
 		pose = new FrontalPose(JUMPING_JACKS, Category.CARDIO);

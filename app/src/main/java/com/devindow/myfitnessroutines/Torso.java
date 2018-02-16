@@ -19,8 +19,6 @@ public class Torso implements Serializable {
 
 
 	// Public Fields
-	public int degrees;
-
 	public float headX;
 	public float headY;
 
@@ -41,38 +39,54 @@ public class Torso implements Serializable {
 	public float lHipY;
 
 
-	// Public Properties
-	public double getRadians() { return Math.toRadians(degrees); }
-
-
 	// Constructors
 	public Torso(float waistX, float waistY) {
-		this(waistX, waistY, 90, false);
+		this(waistX, waistY, new Angle(90), false);
 	}
 
 	public Torso(float waistX, float waistY, boolean isProfile) {
-		this(waistX, waistY, 90, isProfile);
+		this(waistX, waistY, new Angle(90), isProfile);
 	}
 
-	public Torso(float waistX, float waistY, int degrees) {
-		this(waistX, waistY, degrees, false);
+	public Torso(float waistX, float waistY, Angle angle) {
+		this(waistX, waistY, angle, false);
 	}
 
-	public Torso(float waistX, float waistY, int degrees, boolean isProfile) {
+	public Torso(float waistX, float waistY, Angle angle, boolean isProfile) {
+
+		// Waist
 		this.waistY = waistX;
 		this.waistY = waistY;
-		this.degrees = degrees;
 
-		double radians = getRadians();
+		// Collar
+		collarX = waistX + Math.round(length * angle.getCos());
+		collarY = waistY + Math.round(length * angle.getSin());
 
-		collarX = waistX + (int)Math.round(length * Math.cos(radians));
-		collarY = waistY + (int)Math.round(length * Math.sin(radians));
-
+		// Head
 		float waistToHead = length + thickness/2 + headSize/2;
-		headX = waistX + (int)Math.round(waistToHead * Math.cos(radians));
-		headY = waistY + (int)Math.round(waistToHead * Math.sin(radians));
+		headX = waistX + Math.round(waistToHead * angle.getCos());
+		headY = waistY + Math.round(waistToHead * angle.getSin());
 
-		generateShoulderAndHipCoords(isProfile);
+		// Shoulders & Hips
+		if (isProfile) {
+			rShoulderX = lShoulderX = collarX;
+			rShoulderY = lShoulderY = collarY;
+
+			rHipX = lHipX = waistX;
+			rHipY = lHipY = waistY;
+		} else {
+			float distanceNeckToShoulder = 0.5f * thickness + 0.5f * Arm.thickness;
+			rShoulderX = collarX - distanceNeckToShoulder * angle.getSin();
+			rShoulderY = collarY + distanceNeckToShoulder * angle.getCos();
+			lShoulderX = collarX + distanceNeckToShoulder * angle.getSin();
+			lShoulderY = collarY - distanceNeckToShoulder * angle.getCos();
+
+			float distanceWaistToHip = 0.5f * Leg.thickness + 1;
+			rHipX = waistX - distanceWaistToHip * angle.getSin();
+			rHipY = waistY + distanceWaistToHip * angle.getCos();
+			lHipX = waistX + distanceWaistToHip * angle.getSin();
+			lHipY = waistY - distanceWaistToHip * angle.getCos();
+		}
 	}
 
 
@@ -92,31 +106,4 @@ public class Torso implements Serializable {
 		p.setStrokeWidth(thickness);
 		canvas.drawLine(collarX, collarY, waistX, waistY, p);
 	}
-
-
-	// Protected Methods
-	protected void generateShoulderAndHipCoords(boolean isProfile) {
-		if (isProfile) {
-			rShoulderX = lShoulderX = collarX;
-			rShoulderY = lShoulderY = collarY;
-
-			rHipX = lHipX = waistX;
-			rHipY = lHipY = waistY;
-		} else {
-			double radians = getRadians();
-
-			float distanceNeckToShoulder = 0.5f * thickness + 0.5f * Arm.thickness;
-			rShoulderX = collarX - distanceNeckToShoulder * (float) Math.sin(radians);
-			rShoulderY = collarY + distanceNeckToShoulder * (float) Math.cos(radians);
-			lShoulderX = collarX + distanceNeckToShoulder * (float) Math.sin(radians);
-			lShoulderY = collarY - distanceNeckToShoulder * (float) Math.cos(radians);
-
-			float distanceWaistToHip = 0.5f * Leg.thickness + 1;
-			rHipX = waistX - distanceWaistToHip * (float) Math.sin(radians);
-			rHipY = waistY + distanceWaistToHip * (float) Math.cos(radians);
-			lHipX = waistX + distanceWaistToHip * (float) Math.sin(radians);
-			lHipY = waistY - distanceWaistToHip * (float) Math.cos(radians);
-		}
-	}
-
 }

@@ -32,8 +32,8 @@ public class Arm implements Serializable {
 	}
 
 	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
-		/*this.handX = handX;
-		this.handY = handY;*/
+		handX = shoulderX + Math.round(length * angle.getCos());
+		handY = shoulderY + Math.round(length * angle.getSin());
 	}
 
 	public Arm(float handX, float handY, float elbowX, float elbowY) {
@@ -44,12 +44,12 @@ public class Arm implements Serializable {
 		this.elbowY = elbowY;
 	}
 
-	public Arm(float shoulderX, float shoulderY, Angle upperAngle, float upperLength, Angle lowerAngle, float lowerLength) {
-		/*this.handX = handX;
-		this.handY = handY;
+	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
+		elbowX = shoulderX + Math.round(proximalLength * proximalAngle.getCos());
+		elbowY = shoulderY + Math.round(proximalLength * proximalAngle.getSin());
 
-		this.elbowX = elbowX;
-		this.elbowY = elbowY;*/
+		handX = elbowX + Math.round(distalLength * distalAngle.getCos());
+		handY = elbowY + Math.round(distalLength * distalAngle.getSin());
 	}
 
 
