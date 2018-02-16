@@ -31,17 +31,33 @@ public class Arm implements Serializable {
 		this.handY = handY;
 	}
 
-	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
-		handX = shoulderX + Math.round(length * angle.getCos());
-		handY = shoulderY + Math.round(length * angle.getSin());
-	}
-
 	public Arm(float handX, float handY, float elbowX, float elbowY) {
 		this.handX = handX;
 		this.handY = handY;
 
 		this.elbowX = elbowX;
 		this.elbowY = elbowY;
+	}
+
+	public Arm(float shoulderX, float shoulderY, Angle angle) {
+		this(shoulderX, shoulderY, angle, segmentLength*2);
+	}
+
+	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
+		handX = shoulderX + Math.round(length * angle.getCos());
+		handY = shoulderY + Math.round(length * angle.getSin());
+	}
+
+	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle) {
+		this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, segmentLength);
+	}
+
+	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle) {
+		this(shoulderX, shoulderY, proximalAngle, proximalLength, distalAngle, segmentLength);
+	}
+
+	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle, float distalLength) {
+		this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, distalLength);
 	}
 
 	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {

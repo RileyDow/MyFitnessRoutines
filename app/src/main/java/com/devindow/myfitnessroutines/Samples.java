@@ -40,8 +40,8 @@ public class Samples {
     private static Routine getTestSample() {
         Routine routine = new Routine("Test Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DONE), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 3, 2));
+        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DONE), 3, 0));
 
         return routine;
     }
