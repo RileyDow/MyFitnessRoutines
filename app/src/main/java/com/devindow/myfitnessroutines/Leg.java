@@ -32,8 +32,8 @@ public class Leg implements Serializable {
 	}
 
 	public Leg(float hipX, float hipY, Angle angle, float length) {
-		/*this.footX = footX;
-		this.footY = footY;*/
+		footX = hipX + Math.round(length * angle.getCos());
+		footY = hipY + Math.round(length * angle.getSin());
 	}
 
 	public Leg(float footX, float footY, float kneeX, float kneeY) {
@@ -44,12 +44,12 @@ public class Leg implements Serializable {
 		this.kneeY = kneeY;
 	}
 
-	public Leg(float hipX, float hipY, Angle upperAngle, float upperLength, Angle lowerAngle, float lowerLength) {
-		/*this.footX = footX;
-		this.footY = footY;
+	public Leg(float hipX, float hipY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
+		kneeX = hipX + Math.round(proximalLength * proximalAngle.getCos());
+		kneeY = hipY + Math.round(proximalLength * proximalAngle.getSin());
 
-		this.kneeX = kneeX;
-		this.kneeY = kneeY;*/
+		footX = kneeX + Math.round(distalLength * distalAngle.getCos());
+		footY = kneeY + Math.round(distalLength * distalAngle.getSin());
 	}
 
 
