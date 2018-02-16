@@ -96,7 +96,7 @@ public class PoseLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(0));
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.E);
 
 			poses.put(pose.name, pose);
 		}
@@ -109,10 +109,10 @@ public class PoseLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-130), new Angle(-90));
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-140), Angle.S);
 
 			final float chairX = pose.torso.waistX - pose.torso.thickness/2 - 2;
-			final float chairSize = Leg.segmentLength;
+			final float chairSize = pose.rArm.handY - Arm.thickness/2;
 			pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
 
 			poses.put(pose.name, pose);
