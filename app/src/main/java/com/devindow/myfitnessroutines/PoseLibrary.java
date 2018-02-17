@@ -11,16 +11,17 @@ public class PoseLibrary {
 
 
 	// Constants
-	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String DONE = "Done!";
 	public static final String REST = "Rest";
-	public static final String PUSH_UPS = "Push-Ups";
+	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String CRUNCHES = "Crunches";
 	public static final String STEP_UPS = "Step-Ups";
 	public static final String SQUATS = "Squats";
 	public static final String CHAIR_DIPS = "Chair Dips";
+	public static final String PUSH_UPS = "Push-Ups";
 	public static final String PLANK = "Plank";
 	public static final String HIGH_KNEES = "High Knees";
 	public static final String LUNGES = "Lunges";
@@ -31,28 +32,11 @@ public class PoseLibrary {
 
 
 	// Public Static Fields
-	public static Dictionary<String, Pose> poses = new Hashtable<String, Pose>();
+	public static Dictionary<String, Pose> poses = new Hashtable<>();
 
 
 	// Public Static Methods
 	public static void generatePoses() {
-
-		// Behind the Back Grab
-		{
-			Pose pose = new Pose(BEHIND_THE_BACK_GRAB, Category.YOGA);
-
-			pose.torso = new Torso(true);
-
-			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
-
-			int proximalAngle = 34;
-			int distalAngle = 14;
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
-
-			poses.put(pose.name, pose);
-		}
-
 
 		// Done
 		{
@@ -93,6 +77,37 @@ public class PoseLibrary {
 		}
 
 
+		// Behind the Back Grab
+		{
+			Pose pose = new Pose(BEHIND_THE_BACK_GRAB, Category.YOGA);
+
+			pose.torso = new Torso(true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
+
+			int proximalAngle = 34;
+			int distalAngle = 14;
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
+
+			poses.put(pose.name, pose);
+		}
+
+		// Touch Toes
+		{
+			Pose pose = new Pose(TOUCH_TOES, Category.YOGA);
+
+			Angle torsoAngle = Angle.S.add(45);
+			pose.torso = new Torso(-Torso.getWidth(torsoAngle)/2, torsoAngle,true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S);
+
+			poses.put(pose.name, pose);
+		}
+
+
 		// Wall Sit
 		{
 			Pose pose = new Pose(WALL_SIT, Category.LIFTING);
@@ -101,7 +116,7 @@ public class PoseLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
 
-			pose.prop = new Wall(pose.torso.waistX - pose.torso.thickness/2);
+			pose.prop = new Wall(pose.torso.waistX - Torso.thickness/2);
 
 			poses.put(pose.name, pose);
 		}
@@ -129,7 +144,7 @@ public class PoseLibrary {
 
 			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-140), Angle.S);
 
-			final float chairX = pose.torso.waistX - pose.torso.thickness/2 - 2;
+			final float chairX = pose.torso.waistX - Torso.thickness/2 - 2;
 			final float chairSize = pose.rArm.handY - Arm.thickness/2;
 			pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
 

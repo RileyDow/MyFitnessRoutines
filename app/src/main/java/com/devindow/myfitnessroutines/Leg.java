@@ -26,17 +26,8 @@ public class Leg implements Serializable {
 
 
 	// Constructors
-	public Leg(float footX, float footY) {
-		this.footX = footX;
-		this.footY = footY;
-	}
-
-	public Leg(float footX, float footY, float kneeX, float kneeY) {
-		this.footX = footX;
-		this.footY = footY;
-
-		this.kneeX = kneeX;
-		this.kneeY = kneeY;
+	public Leg(float hipX, float hipY) {
+		this(hipX, hipY, Angle.S);
 	}
 
 	public Leg(float hipX, float hipY, Angle angle) {
@@ -48,17 +39,11 @@ public class Leg implements Serializable {
 		footY = hipY + Math.round(length * angle.getSin());
 	}
 
-	public Leg(float hipX, float hipY, Angle proximalAngle, Angle distalAngle) {
-		this(hipX, hipY, proximalAngle, segmentLength, distalAngle, segmentLength);
-	}
+	public Leg(float hipX, float hipY, Angle proximalAngle, Angle distalAngle) { this(hipX, hipY, proximalAngle, segmentLength, distalAngle, segmentLength); }
 
-	public Leg(float hipX, float hipY, Angle proximalAngle, float proximalLength, Angle distalAngle) {
-		this(hipX, hipY, proximalAngle, proximalLength, distalAngle, segmentLength);
-	}
+	public Leg(float hipX, float hipY, Angle proximalAngle, float proximalLength, Angle distalAngle) { this(hipX, hipY, proximalAngle, proximalLength, distalAngle, segmentLength); }
 
-	public Leg(float hipX, float hipY, Angle proximalAngle, Angle distalAngle, float distalLength) {
-		this(hipX, hipY, proximalAngle, segmentLength, distalAngle, distalLength);
-	}
+	public Leg(float hipX, float hipY, Angle proximalAngle, Angle distalAngle, float distalLength) { this(hipX, hipY, proximalAngle, segmentLength, distalAngle, distalLength); }
 
 	public Leg(float hipX, float hipY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
 		kneeX = hipX + Math.round(proximalLength * proximalAngle.getCos());
