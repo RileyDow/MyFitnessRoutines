@@ -75,9 +75,8 @@ public class Leg implements Serializable {
 		p.setStrokeCap(Paint.Cap.ROUND);
 		p.setStrokeJoin(Paint.Join.ROUND);
 		p.setStrokeWidth(thickness);
-		p.setColor(Color.BLACK);
+		Debug.setPenColor(p);
 
-		if (Debug.colors) { p.setColor(Color.RED); }
 		if (kneeX != null && kneeY != null) {
 			canvas.drawLine(hipX, hipY, kneeX, kneeY, p);
 			canvas.drawLine(kneeX, kneeY, footX, footY, p);
@@ -93,16 +92,16 @@ public class Leg implements Serializable {
 		return getHeight(new Angle(-90));
 	}
 
-	public static float getHeight(Angle angle) {
-		return getHeight(angle, angle);
+	public static float getHeight(Angle legAngle) {
+		return getHeight(legAngle, legAngle);
 	}
 
 	public static float getHeight(Angle proximalAngle, Angle distalAngle) {
 		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
 	}
 
-	public static float getWidth(Angle angle) {
-		return getWidth(angle, angle);
+	public static float getWidth(Angle legAngle) {
+		return getWidth(legAngle, legAngle);
 	}
 
 	public static float getWidth(Angle proximalAngle, Angle distalAngle) {
