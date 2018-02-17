@@ -8,118 +8,131 @@ import java.util.ArrayList;
 
 public class Samples {
 
-    // Default Routines
-    public static ArrayList<Routine> getSampleRoutines() {
-        ArrayList<Routine> defaultRoutines = new ArrayList<Routine>();
+	// Default Routines
+	public static ArrayList<Routine> getSampleRoutines() {
+		ArrayList<Routine> defaultRoutines = new ArrayList<>();
 
-        defaultRoutines.add(get7MinuteWorkout());
+		defaultRoutines.add(get7MinuteWorkout());
 
-        if (Debug.on) {
-            defaultRoutines.add(getTestSample());
+		if (Debug.on) {
+			defaultRoutines.add(getRileySample());
 
-            defaultRoutines.add(getSunSalutation());
+			defaultRoutines.add(getTestSample());
 
-            defaultRoutines.add(getStretchRoutine());
+			defaultRoutines.add(getSunSalutation());
 
-            defaultRoutines.add(getYogaRoutine());
+			defaultRoutines.add(getStretchRoutine());
 
-            defaultRoutines.add(getLiftRoutine());
+			defaultRoutines.add(getYogaRoutine());
 
-            defaultRoutines.add(getCardioRoutine());
+			defaultRoutines.add(getLiftRoutine());
 
-            defaultRoutines.add(getWarmupRoutine());
+			defaultRoutines.add(getCardioRoutine());
 
-            defaultRoutines.add(getMeditationRoutine());
-        }
+			defaultRoutines.add(getWarmupRoutine());
 
-        return defaultRoutines;
-    }
+			defaultRoutines.add(getMeditationRoutine());
+		}
+
+		return defaultRoutines;
+	}
 
 
-    // Private Methods
-    private static Routine getTestSample() {
-        Routine routine = new Routine("Test Routine");
+	// Private Methods
+	private static Routine getTestSample() {
+		Routine routine = new Routine("Test Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 3, 2));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 3, 0));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.TOUCH_TOES), 3, 2));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 3, 2));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DONE), 3, 0));
 
-        return routine;
-    }
+		return routine;
+	}
 
-    private static Routine get7MinuteWorkout() {
-        Routine routine = new Routine("7 Minute Workout");
+	private static Routine getRileySample() {
+		Routine routine = new Routine("Riley Routine");
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.WALL_SIT), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CRUNCHES), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.STEP_UPS), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SQUATS), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CHAIR_DIPS), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PLANK), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.HIGH_KNEES), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LUNGES), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UP_ROTATE), 30, 5));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SIDE_PLANK), 30));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.TOUCH_TOES), 20, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30, 0));
 
-        return routine;
-    }
+		return routine;
+	}
+	private static Routine get7MinuteWorkout() {
+		Routine routine = new Routine("7 Minute Workout");
 
-    private static Routine getSunSalutation() {
-        Routine routine = new Routine("Sun Salutation");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.WALL_SIT), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CRUNCHES), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.STEP_UPS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SQUATS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.CHAIR_DIPS), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PLANK), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.HIGH_KNEES), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LUNGES), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UP_ROTATE), 30, 5));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.SIDE_PLANK), 30));
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getSunSalutation() {
+		Routine routine = new Routine("Sun Salutation");
 
-    private static Routine getStretchRoutine() {
-        Routine routine = new Routine("Stretch Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.TOUCH_TOES), 30, 5));
 
-        routine.steps.add(new Step(new FrontalPose("Touch Toes", Category.STRETCH), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getStretchRoutine() {
+		Routine routine = new Routine("Stretch Routine");
 
-    private static Routine getYogaRoutine() {
-        Routine routine = new Routine("Yoga Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.TOUCH_TOES), 30, 5));
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getYogaRoutine() {
+		Routine routine = new Routine("Yoga Routine");
 
-    private static Routine getLiftRoutine() {
-        Routine routine = new Routine("Lift Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 30));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30));
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getLiftRoutine() {
+		Routine routine = new Routine("Lift Routine");
 
-    private static Routine getCardioRoutine() {
-        Routine routine = new Routine("Cardio Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getCardioRoutine() {
+		Routine routine = new Routine("Cardio Routine");
 
-    private static Routine getWarmupRoutine() {
-        Routine routine = new Routine("Warmup Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getWarmupRoutine() {
+		Routine routine = new Routine("Warmup Routine");
 
-    private static Routine getMeditationRoutine() {
-        Routine routine = new Routine("Meditation Routine");
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
 
-        routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 30));
+		return routine;
+	}
 
-        return routine;
-    }
+	private static Routine getMeditationRoutine() {
+		Routine routine = new Routine("Meditation Routine");
+
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 30));
+
+		return routine;
+	}
 
 }
