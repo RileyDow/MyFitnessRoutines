@@ -57,17 +57,17 @@ public class Pose implements Serializable {
 		torso.draw(canvas);
 
 		if (lArm != null) {
-			lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
+			lArm.draw(canvas);
 		}
 		if (rArm != null) {
-			rArm.draw(canvas, torso.rShoulderX, torso.rShoulderY);
+			rArm.draw(canvas);
 		}
 
 		if (lLeg != null) {
-			lLeg.draw(canvas, torso.lHipX, torso.lHipY);
+			lLeg.draw(canvas);
 		}
 		if (rLeg != null) {
-			rLeg.draw(canvas, torso.rHipX, torso.rHipY);
+			rLeg.draw(canvas);
 		}
 
 		if (prop != null) {

@@ -18,6 +18,9 @@ public class Arm implements Serializable {
 
 
 	// Public Fields
+	public float shoulderX;
+	public float shoulderY;
+
 	public float handX;
 	public float handY;
 
@@ -31,6 +34,9 @@ public class Arm implements Serializable {
 	public Arm(float shoulderX, float shoulderY, Angle angle) { this(shoulderX, shoulderY, angle, segmentLength*2); }
 
 	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
+		this.shoulderX = shoulderX;
+		this.shoulderY = shoulderY;
+
 		handX = shoulderX + Math.round(length * angle.getCos());
 		handY = shoulderY + Math.round(length * angle.getSin());
 	}
@@ -42,6 +48,9 @@ public class Arm implements Serializable {
 	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle, float distalLength) { this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, distalLength); }
 
 	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
+		this.shoulderX = shoulderX;
+		this.shoulderY = shoulderY;
+
 		elbowX = shoulderX + Math.round(proximalLength * proximalAngle.getCos());
 		elbowY = shoulderY + Math.round(proximalLength * proximalAngle.getSin());
 
@@ -51,7 +60,7 @@ public class Arm implements Serializable {
 
 
 	// Public Methods
-	public void draw(Canvas canvas, float shoulderX, float shoulderY) {
+	public void draw(Canvas canvas) {
 		Paint p = new Paint();
 		p.setStrokeCap(Paint.Cap.ROUND);
 		p.setStrokeJoin(Paint.Join.ROUND);

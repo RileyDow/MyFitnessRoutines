@@ -96,6 +96,7 @@ public class Samples {
 	private static Routine getYogaRoutine() {
 		Routine routine = new Routine("Yoga Routine");
 
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.LOTUS), 30));
 		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.DOWN_DOG), 30));
 
 		return routine;

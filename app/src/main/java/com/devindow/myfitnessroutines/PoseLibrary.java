@@ -302,26 +302,34 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
-/*
 		// Lotus & Rest
-		pose = new FrontalPose(LOTUS, Category.YOGA);
-		pose.headX = 0; pose.headY = 33;
-		pose.waistX = 0; pose.waistY = 3;
-		pose.rHandX = -15; pose.lHandX = 15; pose.rHandY = pose.lHandY = 7;
-		pose.rElbowX = -9f; pose.lElbowX = 9f; pose.rElbowY = pose.lElbowY = 10f;
-		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
-		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(LOTUS, Category.YOGA);
 
-		pose = new FrontalPose(REST, Category.NONE);
-		pose.headX = 0; pose.headY = 33;
-		pose.waistX = 0; pose.waistY = 3;
-		pose.rHandX = -15; pose.lHandX = 15; pose.rHandY = pose.lHandY = 7;
-		pose.rElbowX = -9f; pose.lElbowX = 9f; pose.rElbowY = pose.lElbowY = 10f;
-		pose.rFootX = -5; pose.lFootX = 5; pose.rFootY = pose.lFootY = 2;
-		pose.rKneeX = -15f; pose.lKneeX = 15f; pose.rKneeY = pose.lKneeY = 5f;
-		poses.put(pose.name, pose);
-*/
+			pose.torso = new Torso(0, Torso.thickness/2);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY - Torso.thickness/2, Angle.W.add(-20), Angle.E);
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY - Torso.thickness/2, Angle.E.add(20), Angle.W);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength*.9f);
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength*.9f);
+
+			poses.put(pose.name, pose);
+
+
+			pose = new Pose(REST, Category.NONE);
+
+			pose.torso = new Torso(0, Torso.thickness/2);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY - Torso.thickness/2, Angle.W.add(-20), Angle.E);
+			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY - Torso.thickness/2, Angle.E.add(20), Angle.W);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength*.9f);
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength*.9f);
+
+			poses.put(pose.name, pose);
+		}
+
 	}
 
 }

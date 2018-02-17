@@ -18,6 +18,9 @@ public class Leg implements Serializable {
 
 
 	// Public Fields
+	public float hipX;
+	public float hipY;
+
 	public float footX;
 	public float footY;
 
@@ -35,6 +38,9 @@ public class Leg implements Serializable {
 	}
 
 	public Leg(float hipX, float hipY, Angle angle, float length) {
+		this.hipX = hipX;
+		this.hipY = hipY;
+
 		footX = hipX + Math.round(length * angle.getCos());
 		footY = hipY + Math.round(length * angle.getSin());
 	}
@@ -46,6 +52,9 @@ public class Leg implements Serializable {
 	public Leg(float hipX, float hipY, Angle proximalAngle, Angle distalAngle, float distalLength) { this(hipX, hipY, proximalAngle, segmentLength, distalAngle, distalLength); }
 
 	public Leg(float hipX, float hipY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
+		this.hipX = hipX;
+		this.hipY = hipY;
+
 		kneeX = hipX + Math.round(proximalLength * proximalAngle.getCos());
 		kneeY = hipY + Math.round(proximalLength * proximalAngle.getSin());
 
@@ -55,7 +64,7 @@ public class Leg implements Serializable {
 
 
 	// Public Methods
-	public void draw(Canvas canvas, float hipX, float hipY) {
+	public void draw(Canvas canvas) {
 		Paint p = new Paint();
 		p.setStrokeCap(Paint.Cap.ROUND);
 		p.setStrokeJoin(Paint.Join.ROUND);
