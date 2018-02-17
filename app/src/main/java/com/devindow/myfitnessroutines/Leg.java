@@ -73,9 +73,7 @@ public class Leg implements Serializable {
 
 
 	// Public Static Methods
-	public static float getHeight() {
-		return getHeight(new Angle(-90));
-	}
+	public static float getHeight() { return getHeight(Angle.S); }
 
 	public static float getHeight(Angle legAngle) {
 		return getHeight(legAngle, legAngle);

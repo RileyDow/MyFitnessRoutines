@@ -66,4 +66,25 @@ public class Arm implements Serializable {
 			canvas.drawLine(shoulderX, shoulderY, handX, handY, p);
 		}
 	}
+
+
+	// Public Static Methods
+	public static float getHeight() { return getHeight(Angle.S); }
+
+	public static float getHeight(Angle armAngle) {
+		return getHeight(armAngle, armAngle);
+	}
+
+	public static float getHeight(Angle proximalAngle, Angle distalAngle) {
+		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
+	}
+
+	public static float getWidth(Angle armAngle) {
+		return getWidth(armAngle, armAngle);
+	}
+
+	public static float getWidth(Angle proximalAngle, Angle distalAngle) {
+		return  Math.abs(segmentLength * proximalAngle.getCos() + segmentLength * distalAngle.getCos());
+	}
+
 }

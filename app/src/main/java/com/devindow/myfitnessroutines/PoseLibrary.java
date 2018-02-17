@@ -107,6 +107,22 @@ public class PoseLibrary {
 			poses.put(pose.name, pose);
 		}
 
+		// Down Dog
+		{
+			Pose pose = new Pose(DOWN_DOG, Category.YOGA);
+
+			Angle legAngle = Angle.S.add(-35);
+			Angle torsoAngle = Angle.S.add(45);
+			Angle armAngle = Angle.S.add(52);
+			pose.torso = new Torso(-(Torso.getWidth(torsoAngle) + Arm.getWidth(armAngle) - Leg.getWidth(legAngle))/2, Leg.getHeight(legAngle) + Leg.thickness/2, torsoAngle,true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armAngle);
+
+			poses.put(pose.name, pose);
+		}
+
 
 		// Wall Sit
 		{
@@ -274,15 +290,6 @@ public class PoseLibrary {
 
 
 /*
-		// Down Dog
-		pose = new ProfilePose(DOWN_DOG, Category.YOGA);
-		pose.headX = 30; pose.headY = 13;
-		pose.waistX = 0; pose.waistY = 35;
-		pose.rHandX = pose.lHandX = 25; pose.rHandY = pose.lHandY = 0;
-		pose.rFootX = pose.lFootX = -24; pose.rFootY = pose.lFootY = 0;
-		poses.put(pose.name, pose);
-
-
 		// Crunches
 		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
 		pose.headY = pose.waistY = pose.torsoThickness/2;
