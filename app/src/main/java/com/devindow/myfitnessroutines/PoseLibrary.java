@@ -289,20 +289,20 @@ public class PoseLibrary {
 		}
 
 
-/*
 		// Crunches
-		pose = new ProfilePose(CRUNCHES, Category.LIFTING);
-		pose.headY = pose.waistY = pose.torsoThickness/2;
-		pose.headX = -20;
-		pose.waistX = pose.rKneeX = pose.lKneeX = pose.headX + pose.headSize/2 + pose.torsoThickness/2 + pose.torsoLength;
-		pose.rFootX = pose.lFootX = pose.waistX + pose.legSegmentLength;
-		pose.rKneeY = pose.lKneeY = pose.rFootY = pose.lFootY = pose.legSegmentLength;
-		pose.generateCollar();
-		pose.rHandX = pose.lHandX = pose.collarX + 10;
-		pose.rHandY = pose.lHandY = pose.armSegmentLength * 2;
-		poses.put(pose.name, pose);
+		{
+			Pose pose = new Pose(CRUNCHES, Category.LIFTING);
 
+			pose.torso = new Torso((Torso.getWidth(Angle.W) - Leg.getWidth(Angle.N, Angle.E))/2, Torso.thickness/2, Angle.W, true);
 
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.N, Angle.E);
+
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(-30));
+
+			poses.put(pose.name, pose);
+		}
+
+/*
 		// Lotus & Rest
 		pose = new FrontalPose(LOTUS, Category.YOGA);
 		pose.headX = 0; pose.headY = 33;

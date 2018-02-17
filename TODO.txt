@@ -1,12 +1,35 @@
 TODO
 ----
-more poses
+* 2 sides
+  - Duration calculation - Step should retunr a totalDuration
 
 - Routines
-  - Warmup
-  - Soccer Warmup
+  - Warmup/Thermoregulation
+    - Rotate on All Fours 5 * 2
+    - Push-Ups 20
+    - Twist & Pivot 20
+    - Safety Jacks 20
+    - Roman Lunges (Frontal) 20
+    - Down Dog 20
+    - Hip * 2
+    - Hammy * 2
+    - Leg Swings * 2
+  - Soccer Pre-Activation
+    - Walking-Backwards Lunges
+    - Foam Roller 30 * 2
+    - Thoracic Roll-outs (top view Frontal) 10 * 2
+    - Inch Worms 20
+    - Single-Leg Bridge 15 * 2
+    - Side-Lying Abduction
+    - Squats w/ Band 30
+    - Lateral Walk w/ Band
+    - Standing Hurdles w/ Band
+    - 180° Jumps
+    - 90° Jumps to 1 Foot Landing
   - Sun Salutation
 
+* Move has Pose1 & Pose2
+* Paid app for adding new Routine
 
 - Pose Drawings
   - "High Knee": add arms
@@ -26,7 +49,7 @@ more poses
 - UI
   - App Icon
 
-- MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
+* MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
 
 - Log Activity
   - Saving to Google Doc or persistent storage

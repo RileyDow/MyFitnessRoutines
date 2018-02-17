@@ -16,6 +16,7 @@ public class Torso implements Serializable {
 	public static final float headSize = 10;
 	public static final float thickness = 10;
 	public static final float length = 20;
+	public static final float lengthWithHead = length + headSize;
 	private static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
 	private static final float distanceWaistToHip = Leg.thickness/2 - 1;
 
@@ -131,25 +132,23 @@ public class Torso implements Serializable {
 
 
 	// Public Static Methods
-	public static float getHeight() {
-		return getHeight(new Angle(90));
-	}
+	public static float getHeight() { return getHeight(Angle.N); }
 
 	public static float getHeight(Angle bodyAngle) {
-		return  Math.abs(length * bodyAngle.getSin());
+		return  Math.abs(lengthWithHead * bodyAngle.getSin());
 	}
 
 	public static float getWidth() {
-		return getWidth(new Angle(90));
+		return getWidth(Angle.N);
 	}
 
 	public static float getWidth(Angle bodyAngle) {
-		return  Math.abs(length * bodyAngle.getCos());
+		return  Math.abs(lengthWithHead * bodyAngle.getCos());
 	}
 
 
 	public static float getHipHeight() {
-		return getHipHeight(new Angle(90));
+		return getHipHeight(Angle.N);
 	}
 
 	public static float getHipHeight(Angle bodyAngle) {
@@ -157,7 +156,7 @@ public class Torso implements Serializable {
 	}
 
 	public static float getHipWidth() {
-		return getHipWidth(new Angle(90));
+		return getHipWidth(Angle.N);
 	}
 
 	public static float getHipWidth(Angle bodyAngle) {
