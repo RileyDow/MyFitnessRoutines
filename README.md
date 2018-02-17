@@ -6,7 +6,7 @@ Android app to create fitness routines.
   * Name
   * Duration {get return Steps.Duration+Rest}
   * Steps
-  * Notification chime or watch
+  * Notification chime
 * Step
   * Pose
   * Duration
@@ -14,13 +14,10 @@ Android app to create fitness routines.
 * Pose
   * Name
   * Category
-    * Stretch
-    * Yoga
-    * Lifting
-    * Cardio
   * Singular or L&R
   * Image
   * Description
+  * Torso, rLeg, lLeg, rArm, lArm, Prop
 * Log
   * Session
     * Date
