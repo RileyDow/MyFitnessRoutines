@@ -11,8 +11,8 @@ public class PoseLibrary {
 
 
 	// Constants
-    public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
-    public static final String DONE = "Done!";
+	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String DONE = "Done!";
 	public static final String REST = "Rest";
 	public static final String PUSH_UPS = "Push-Ups";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
