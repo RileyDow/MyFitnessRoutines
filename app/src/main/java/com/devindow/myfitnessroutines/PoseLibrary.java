@@ -11,6 +11,7 @@ public class PoseLibrary {
 
 
 	// Constants
+	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String DONE = "Done!";
 	public static final String REST = "Rest";
 	public static final String PUSH_UPS = "Push-Ups";
@@ -35,6 +36,23 @@ public class PoseLibrary {
 
 	// Public Static Methods
 	public static void generatePoses() {
+
+		// Behind the Back Grab
+		{
+			Pose pose = new Pose(BEHIND_THE_BACK_GRAB, Category.YOGA);
+
+			pose.torso = new Torso(true);
+
+			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
+
+			int proximalAngle = 34;
+			int distalAngle = 14;
+			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
+			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
+
+			poses.put(pose.name, pose);
+		}
+
 
 		// Done
 		{

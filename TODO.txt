@@ -1,5 +1,6 @@
 TODO
 ----
+more poses
 
 - Routines
   - Warmup
