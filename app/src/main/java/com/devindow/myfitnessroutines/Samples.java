@@ -101,10 +101,19 @@ public class Samples {
 		return routine;
 	}
 
+	private static Routine getLiftRoutine() {
+		Routine routine = new Routine("Lift Routine");
+
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
+
+		return routine;
+	}
+
 	private static Routine getCardioRoutine() {
 		Routine routine = new Routine("Cardio Routine");
 
 		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.JUMPING_JACKS), 30));
+		routine.steps.add(new Step(PoseLibrary.poses.get(PoseLibrary.PUSH_UPS), 30));
 
 		return routine;
 	}
