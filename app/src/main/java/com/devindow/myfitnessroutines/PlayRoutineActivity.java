@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -120,16 +121,26 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	public void onPlayClick(View v) {
-		if (countDownTimer != null) { // Pause Routine
+		ImageButton btnPlay = findViewById(R.id.btnPlay);
+
+		// Pause Routine
+		if (countDownTimer != null) {
 			countDownTimer.cancel();
 			countDownTimer = null;
+
 			// Set btnPlay image to Play
-		} else { // Play Routine
+			btnPlay.setImageResource(android.R.drawable.ic_media_play);
+		}
+
+		// Play Routine
+		else {
 			if (stepNum > routine.steps.size()) {
 				stepNum = 1; // Restart ended Routine
 				showStep();
 			}
+
 			// Set btnPlay image to Pause
+			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
 
 			if (move1SecondsRemaining > 0) {
 				runMove1Timer();
@@ -139,6 +150,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 				runRestTimer();
 			}
 		}
+
 	}
 
 	private void runMove1Timer() {

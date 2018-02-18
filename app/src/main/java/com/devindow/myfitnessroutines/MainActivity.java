@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// lstRoutines
-		lstRoutines = (ListView) findViewById(R.id.lstRoutines);
+		lstRoutines = findViewById(R.id.lstRoutines);
 		ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getSampleRoutines());
 		lstRoutines.setAdapter(arrayAdapter);
 		lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {

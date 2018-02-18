@@ -34,7 +34,6 @@ TODO
     - Block
 
 - Play Routine activity
-  * Play/Pause button
   - Disable/Hide Next/Prev button
   * Show Duration of full Routine
   - Should we just pass Routine.name and have Routines be a Hashtable?
