@@ -14,9 +14,10 @@ import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.routine.*;
 
-public class PlayRoutineActivity extends AppCompatActivity {
+public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.TaskCallbacks {
 
 	// Private Fields
+	private PlayRoutineTaskFragment taskFragment;
 	private Routine routine;
 	private int stepNum = 1;
 	private Move move;
@@ -45,9 +46,9 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_play_routine);
 
+		// Get Routine passed in by Intent
 		Intent intent = getIntent();
 		routine = (Routine)intent.getSerializableExtra("routine");
 
@@ -245,4 +246,22 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			showStep();
 		}
 	}
+
+
+	// PlayRoutineTaskFragment.TaskCallbacks implementation
+	// The four methods below are called by the TaskFragment when new
+	// progress updates or results are available. PlayRoutineActivity
+	// should respond by updating its UI to indicate the change.
+
+	@Override
+	public void onPreExecute() {  }
+
+	@Override
+	public void onProgressUpdate(int percent) {  }
+
+	@Override
+	public void onCancelled() {  }
+
+	@Override
+	public void onPostExecute() {  }
 }
