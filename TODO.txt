@@ -1,8 +1,8 @@
 TODO
 ----
+* Play/Pause button
 * Landscape Layout
 * 2 sides
-  - Duration calculation - Step should retunr a totalDuration
 
 - Routines
   - Warmup/Thermoregulation

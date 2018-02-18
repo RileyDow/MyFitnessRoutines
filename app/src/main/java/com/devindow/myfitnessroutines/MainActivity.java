@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 		setSupportActionBar(toolbar);
 
 
-		// PoseLibrary
-		PoseLibrary.generatePoses();
+		// MoveLibrary
+		MoveLibrary.generateMoves();
 
 
 		// btnNewRoutine

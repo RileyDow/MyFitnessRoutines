@@ -19,7 +19,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	int poseSecondsRemaining;
+	int movesecondsRemaining;
 	int restSecondsRemaining;
 
 
@@ -59,19 +59,19 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private void showStep() {
 		clearNextStep();
 
-		Pose pose;
+		Move move;
 		if (stepNum > routine.steps.size()) {
-			pose = PoseLibrary.poses.get(PoseLibrary.DONE);
+			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			countDownTimer = null;
 		} else {
 			Step currentStep = getCurrentStep();
-			pose = currentStep.pose;
-			poseSecondsRemaining = currentStep.poseDuration;
+			move = currentStep.move;
+			movesecondsRemaining = currentStep.moveDuration;
 			restSecondsRemaining = currentStep.restDuration;
-			updateTimerView(poseSecondsRemaining);
+			updateTimerView(movesecondsRemaining);
 		}
 
-		showPose(pose);
+		showMove(move);
 
 		showNextPoseName();
 
@@ -81,16 +81,16 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		}
 	}
 
-	private void showPose(Pose pose) {
+	private void showMove(Move move) {
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
-		if (pose == null) {
+		if (move == null) {
 			txtPoseName.setText("NULL");
-			imgPose.setImageBitmap(Bitmap.createBitmap(pose.bitmapSize, pose.bitmapSize, Bitmap.Config.ARGB_8888));
+			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
-			txtPoseName.setText(pose.name);
-			imgPose.setImageBitmap(pose.getBitmap());
+			txtPoseName.setText(move.name);
+			imgPose.setImageBitmap(move.getBitmap());
 		}
 	}
 
@@ -105,7 +105,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		if (nextStep == null) {
 			txtNextStep.setText("");
 		} else {
-			txtNextStep.setText("Next up: " + nextStep.pose.name);
+			txtNextStep.setText("Next up: " + nextStep.move.name);
 		}
 	}
 
@@ -125,7 +125,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			}
 			// Set btnGo image to Pause
 
-			if (poseSecondsRemaining > 0) {
+			if (movesecondsRemaining > 0) {
 				runPoseTimer();
 			} else {
 				runRestTimer();
@@ -134,11 +134,11 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	}
 
 	private void runPoseTimer() {
-		countDownTimer = new CountDownTimer(poseSecondsRemaining * 1000, 1000) {
+		countDownTimer = new CountDownTimer(movesecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				poseSecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(poseSecondsRemaining);
+				movesecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(movesecondsRemaining);
 			}
 
 			@Override
@@ -146,7 +146,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 				playChime();
 
 				if (restSecondsRemaining > 0) {
-					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
+					showMove(MoveLibrary.moves.get(MoveLibrary.REST));
 					runRestTimer();
 				} else {
 					stepNum++;
