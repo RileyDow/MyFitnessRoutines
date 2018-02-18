@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.devindow.myfitnessroutines.routine.*;
+
 public class MainActivity extends AppCompatActivity {
 
 	// Fields

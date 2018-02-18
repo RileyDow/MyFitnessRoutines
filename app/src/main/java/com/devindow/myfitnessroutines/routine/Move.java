@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.routine;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

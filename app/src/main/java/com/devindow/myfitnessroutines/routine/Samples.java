@@ -1,4 +1,6 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.routine;
+
+import com.devindow.myfitnessroutines.Debug;
 
 import java.util.ArrayList;
 
