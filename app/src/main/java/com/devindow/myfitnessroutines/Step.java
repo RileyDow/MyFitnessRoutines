@@ -8,10 +8,16 @@ import java.io.Serializable;
 
 public class Step implements Serializable {
 
+	// Public Fields
 	public Pose pose;
 	public int poseDuration;
 	public int restDuration;
 
+
+	// Public Properties
+	public int getTotalDuration() {
+		return poseDuration + restDuration;
+	}
 
 	// Constructors
 	public Step(Pose pose, int poseDuration) {
