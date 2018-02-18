@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 import java.io.Serializable;

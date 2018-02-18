@@ -1,5 +1,7 @@
 package com.devindow.myfitnessroutines;
 
+import com.devindow.myfitnessroutines.pose.*;
+
 import java.util.Dictionary;
 import java.util.Hashtable;
 
