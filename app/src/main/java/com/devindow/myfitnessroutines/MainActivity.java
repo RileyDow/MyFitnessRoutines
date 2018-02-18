@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 		btnNewRoutine.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Snackbar.make(view, "Create Routine", Snackbar.LENGTH_LONG)
+				Snackbar.make(view, "Creating new Routines is coming soon.", Snackbar.LENGTH_LONG)
 						.setAction("Action", null).show();
 			}
 		});

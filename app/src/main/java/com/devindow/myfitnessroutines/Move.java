@@ -27,7 +27,6 @@ public class Move implements Serializable {
 	// Protected Fields
 	protected Bitmap bitmap;
 	protected Canvas canvas;
-	protected Paint p;
 
 
 	// Constructors
