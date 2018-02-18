@@ -1,5 +1,6 @@
 TODO
 ----
+* Landscape Layout
 * 2 sides
   - Duration calculation - Step should retunr a totalDuration
 
