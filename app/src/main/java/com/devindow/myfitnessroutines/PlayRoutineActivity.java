@@ -73,6 +73,8 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 		showPose(pose);
 
+		showNextPoseName();
+
 		// If timer was running then run.
 		if (countDownTimer != null) {
 			runPoseTimer();
@@ -145,7 +147,6 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 				if (restSecondsRemaining > 0) {
 					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
-					showNextPoseName();
 					runRestTimer();
 				} else {
 					stepNum++;
