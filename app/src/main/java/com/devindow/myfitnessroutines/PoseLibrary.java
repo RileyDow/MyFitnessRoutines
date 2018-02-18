@@ -29,6 +29,24 @@ public class PoseLibrary {
 	public static final String SIDE_PLANK = "Side Plank";
 	public static final String DOWN_DOG = "Down Dog";
 	public static final String LOTUS = "Lotus";
+	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
+	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String SAFETY_JACKS = "Safety Jacks";
+	public static final String ROMAN_LUNGES = "Roman Lunges";
+	public static final String HIP_STRETCH = "Hip Stretch";
+	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
+	public static final String LEG_SWINGS = "Leg Swings";
+	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
+	public static final String FOAM_ROLLER = "Foam Roller";
+	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
+	public static final String INCH_WORMS = "Inch Worms";
+	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
+	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
+	public static final String SQUATS_W_BAND = "Squats w/ Band";
+	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
+	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
+	public static final String JUMPS_180 = "180° Jumps";
+	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 
 
 	// Public Static Fields
@@ -329,6 +347,26 @@ public class PoseLibrary {
 
 			poses.put(pose.name, pose);
 		}
+
+		poses.put(ROTATE_ON_ALL_FOURS, new Pose(ROTATE_ON_ALL_FOURS, Category.STRETCH, true));
+		poses.put(TWIST_PIVOT, new Pose(TWIST_PIVOT, Category.STRETCH));
+		poses.put(SAFETY_JACKS, new Pose(SAFETY_JACKS, Category.CARDIO));
+		poses.put(ROMAN_LUNGES, new Pose(ROMAN_LUNGES, Category.CARDIO));
+		poses.put(HIP_STRETCH, new Pose(HIP_STRETCH, Category.STRETCH));
+		poses.put(HAMSTRING_STRETCH, new Pose(HAMSTRING_STRETCH, Category.STRETCH));
+		poses.put(LEG_SWINGS, new Pose(LEG_SWINGS, Category.STRETCH));
+
+		poses.put(WALKING_BACKWARD_LUNGES, new Pose(WALKING_BACKWARD_LUNGES, Category.CARDIO));
+		poses.put(FOAM_ROLLER, new Pose(FOAM_ROLLER, Category.STRETCH));
+		poses.put(THORACIC_ROLL_OUTS, new Pose(THORACIC_ROLL_OUTS, Category.STRETCH, true));
+		poses.put(INCH_WORMS, new Pose(INCH_WORMS, Category.CARDIO));
+		poses.put(SINGLE_LEG_BRIDGE, new Pose(SINGLE_LEG_BRIDGE, Category.CARDIO));
+		poses.put(SIDE_LYING_ABDUCTION_W_BAND, new Pose(SIDE_LYING_ABDUCTION_W_BAND, Category.STRETCH, true));
+		poses.put(SQUATS_W_BAND, new Pose(SQUATS_W_BAND, Category.STRETCH));
+		poses.put(LATERAL_WALK_W_BAND, new Pose(LATERAL_WALK_W_BAND, Category.STRETCH));
+		poses.put(STANDING_HURDLES_W_BAND, new Pose(STANDING_HURDLES_W_BAND, Category.STRETCH));
+		poses.put(JUMPS_180, new Pose(JUMPS_180, Category.STRETCH));
+		poses.put(JUMPS_90_TO_1_FOOT_LANDING, new Pose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
 
 	}
 

@@ -54,7 +54,9 @@ public class Pose implements Serializable {
 	public Bitmap getBitmap() {
 		prepCanvas();
 
-		torso.draw(canvas);
+		if (torso != null) {
+			torso.draw(canvas);
+		}
 
 		if (lArm != null) {
 			lArm.draw(canvas);
