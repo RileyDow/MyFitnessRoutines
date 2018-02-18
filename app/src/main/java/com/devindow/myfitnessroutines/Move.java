@@ -45,7 +45,7 @@ public class Move implements Serializable {
 
 
 	// Public Methods
-	public Bitmap getBitmap() {
+	public Bitmap getBitmap(boolean secondSide) {
 		if (pose1 == null) {
 			return null;
 		}
@@ -55,6 +55,9 @@ public class Move implements Serializable {
 		canvas = new Canvas(bitmap);
 		canvas.translate(bitmapSize/2, bitmapSize-1); // Origin a floor center
 		canvas.scale(10, -10); // up is positive Y, 10x scale
+		if (secondSide) {
+			canvas.scale(-1, 1); // mirror X
+		}
 
 		pose1.draw(canvas);
 

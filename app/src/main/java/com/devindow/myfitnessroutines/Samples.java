@@ -22,10 +22,10 @@ public class Samples {
 		defaultRoutines.add(get10MinMeditation());
 		defaultRoutines.add(get15MinMeditation());
 
-		/*if (Debug.on) {
-			defaultRoutines.add(getRileySample());
-
+		if (Debug.on) {
 			defaultRoutines.add(getTestSample());
+/*
+			defaultRoutines.add(getRileySample());
 
 			defaultRoutines.add(getSunSalutation());
 
@@ -36,7 +36,8 @@ public class Samples {
 			defaultRoutines.add(getLiftRoutine());
 
 			defaultRoutines.add(getCardioRoutine());
-		}*/
+*/
+		}
 
 		return defaultRoutines;
 	}
@@ -46,7 +47,7 @@ public class Samples {
 	private static Routine getTestSample() {
 		Routine routine = new Routine("Test Routine");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 3, 2));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 6, 2));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 3, 2));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DONE), 3, 0));
 

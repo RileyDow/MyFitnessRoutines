@@ -16,11 +16,13 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	// Private Fields
 	private Routine routine;
 	private int stepNum = 1;
+	private Move move;
+	private int move1SecondsRemaining;
+	private int move2SecondsRemaining;
+	private int restSecondsRemaining;
 
 	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	int movesecondsRemaining;
-	int restSecondsRemaining;
 
 
 	// Private Properties
@@ -59,29 +61,33 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private void showStep() {
 		clearNextStep();
 
-		Move move;
 		if (stepNum > routine.steps.size()) { // Finished
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			countDownTimer = null;
 		} else {
 			Step currentStep = getCurrentStep();
 			move = currentStep.move;
-			movesecondsRemaining = currentStep.moveDuration;
+			if (currentStep.move.twoSides) {
+				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+			} else {
+				move1SecondsRemaining = currentStep.moveDuration;
+				move2SecondsRemaining = 0;
+			}
 			restSecondsRemaining = currentStep.restDuration;
-			updateTimerView(movesecondsRemaining);
+			updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
 		}
 
-		showMove(move);
+		showMove(move, false);
 
 		showNextMoveName();
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
-			runMoveTimer();
+			runMove1Timer();
 		}
 	}
 
-	private void showMove(Move move) {
+	private void showMove(Move move, boolean secondSide) {
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
@@ -90,7 +96,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
 			txtPoseName.setText(move.name);
-			imgPose.setImageBitmap(move.getBitmap());
+			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 	}
 
@@ -117,28 +123,56 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		if (countDownTimer != null) { // Pause Routine
 			countDownTimer.cancel();
 			countDownTimer = null;
-			// Set btnGo image to Play
+			// Set btnPlay image to Play
 		} else { // Play Routine
 			if (stepNum > routine.steps.size()) {
 				stepNum = 1; // Restart ended Routine
 				showStep();
 			}
-			// Set btnGo image to Pause
+			// Set btnPlay image to Pause
 
-			if (moveSecondsRemaining > 0) {
-				runMoveTimer();
+			if (move1SecondsRemaining > 0) {
+				runMove1Timer();
+			} else if (move2SecondsRemaining > 0) {
+				runMove2Timer();
 			} else {
 				runRestTimer();
 			}
 		}
 	}
 
-	private void runMoveTimer() {
-		countDownTimer = new CountDownTimer(moveSecondsRemaining * 1000, 1000) {
+	private void runMove1Timer() {
+		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				moveSecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(moveSecondsRemaining);
+				move1SecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+			}
+
+			@Override
+			public void onFinish() {
+				playChime();
+
+				if (move2SecondsRemaining > 0) {
+					showMove(move, true);
+					runRestTimer();
+				} else if (restSecondsRemaining > 0) {
+					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+					runRestTimer();
+				} else {
+					stepNum++;
+					showStep();
+				}
+			}
+		}.start();
+	}
+
+	private void runMove2Timer() {
+		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				move2SecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(move2SecondsRemaining);
 			}
 
 			@Override
@@ -146,7 +180,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 				playChime();
 
 				if (restSecondsRemaining > 0) {
-					showMove(MoveLibrary.moves.get(MoveLibrary.REST));
+					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					runRestTimer();
 				} else {
 					stepNum++;

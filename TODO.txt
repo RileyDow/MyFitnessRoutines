@@ -1,7 +1,5 @@
 TODO
 ----
-* 2 sides
-
 - Routines
   - Warmup/Thermoregulation
     - Rotate on All Fours 5 * 2
