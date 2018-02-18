@@ -1,5 +1,5 @@
 # MyFitnessRoutines
-Android app to create fitness routines.
+Android app to guide you through fitness routines.
 
 ## OOD
 * Routine

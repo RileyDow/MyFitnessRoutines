@@ -60,7 +60,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		clearNextStep();
 
 		Move move;
-		if (stepNum > routine.steps.size()) {
+		if (stepNum > routine.steps.size()) { // Finished
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			countDownTimer = null;
 		} else {
@@ -73,11 +73,11 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 		showMove(move);
 
-		showNextPoseName();
+		showNextMoveName();
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
-			runPoseTimer();
+			runMoveTimer();
 		}
 	}
 
@@ -99,7 +99,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		txtNextStep.setText("");
 	}
 
-	private void showNextPoseName() {
+	private void showNextMoveName() {
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		Step nextStep = getNextStep();
 		if (nextStep == null) {
@@ -113,7 +113,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
 	}
 
-	public void onGoClick(View v) {
+	public void onPlayClick(View v) {
 		if (countDownTimer != null) { // Pause Routine
 			countDownTimer.cancel();
 			countDownTimer = null;
@@ -125,20 +125,20 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			}
 			// Set btnGo image to Pause
 
-			if (movesecondsRemaining > 0) {
-				runPoseTimer();
+			if (moveSecondsRemaining > 0) {
+				runMoveTimer();
 			} else {
 				runRestTimer();
 			}
 		}
 	}
 
-	private void runPoseTimer() {
-		countDownTimer = new CountDownTimer(movesecondsRemaining * 1000, 1000) {
+	private void runMoveTimer() {
+		countDownTimer = new CountDownTimer(moveSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				movesecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(movesecondsRemaining);
+				moveSecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(moveSecondsRemaining);
 			}
 
 			@Override

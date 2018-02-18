@@ -1,7 +1,5 @@
 TODO
 ----
-* Play/Pause button
-* Landscape Layout
 * 2 sides
 
 - Routines
@@ -29,7 +27,6 @@ TODO
     - 90° Jumps to 1 Foot Landing
   - Sun Salutation
 
-* Move has Pose1 & Pose2
 * Paid app for adding new Routine
 
 - Pose Drawings
@@ -41,15 +38,19 @@ TODO
     - Block
 
 - Play Routine activity
+  * Play/Pause button
   - Disable/Hide Next/Prev button
   * Show Duration of full Routine
+  - Should we just pass Routine.name and have Routines be a Hashtable?
 
 - Chime
 - Notifications
 
 - UI
+  * Landscape Layout
   - App Icon
 
+- Startup
 * MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
 
 - Log Activity
