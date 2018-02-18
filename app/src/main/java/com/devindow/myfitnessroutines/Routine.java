@@ -9,16 +9,16 @@ import java.util.ArrayList;
 
 public class Routine implements Serializable {
 
-	// Public Properties
+	// Public Fields
 	public String name;
 	public ArrayList<Step> steps = new ArrayList<Step>();
 
 
-	// Public Fields
+	// Public Properties
 	public int getDuration() {
 		int duration = 0;
 		for (Step step : steps) {
-			duration += step.poseDuration + step.restDuration;
+			duration += step.getTotalDuration();
 		}
 		return duration;
 	}

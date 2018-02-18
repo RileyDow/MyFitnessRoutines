@@ -1,5 +1,5 @@
 # MyFitnessRoutines
-Android app to create fitness routines.
+Android app to guide you through fitness routines.
 
 ## OOD
 * Routine
@@ -8,16 +8,24 @@ Android app to create fitness routines.
   * Steps
   * Notification chime
 * Step
-  * Pose
+  * Move
   * Duration
   * Rest Duration
-* Pose
+* Move
   * Name
   * Category
   * Singular or L&R
   * Image
   * Description
-  * Torso, rLeg, lLeg, rArm, lArm, Prop
+  * Pose1
+  * Pose2
+* Pose
+  * Torso
+  * rLeg
+  * lLeg
+  * rArm
+  * lArm
+  * Prop
 * Log
   * Session
     * Date

@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,11 +17,13 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	// Private Fields
 	private Routine routine;
 	private int stepNum = 1;
+	private Move move;
+	private int move1SecondsRemaining;
+	private int move2SecondsRemaining;
+	private int restSecondsRemaining;
 
 	private CountDownTimer countDownTimer;
 	private TextView txtTimer;
-	int poseSecondsRemaining;
-	int restSecondsRemaining;
 
 
 	// Private Properties
@@ -59,36 +62,42 @@ public class PlayRoutineActivity extends AppCompatActivity {
 	private void showStep() {
 		clearNextStep();
 
-		Pose pose;
-		if (stepNum > routine.steps.size()) {
-			pose = PoseLibrary.poses.get(PoseLibrary.DONE);
+		if (stepNum > routine.steps.size()) { // Finished
+			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			countDownTimer = null;
 		} else {
 			Step currentStep = getCurrentStep();
-			pose = currentStep.pose;
-			poseSecondsRemaining = currentStep.poseDuration;
+			move = currentStep.move;
+			if (currentStep.move.twoSides) {
+				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+			} else {
+				move1SecondsRemaining = currentStep.moveDuration;
+				move2SecondsRemaining = 0;
+			}
 			restSecondsRemaining = currentStep.restDuration;
-			updateTimerView(poseSecondsRemaining);
+			updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
 		}
 
-		showPose(pose);
+		showMove(move, false);
+
+		showNextMoveName();
 
 		// If timer was running then run.
 		if (countDownTimer != null) {
-			runPoseTimer();
+			runMove1Timer();
 		}
 	}
 
-	private void showPose(Pose pose) {
+	private void showMove(Move move, boolean secondSide) {
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
-		if (pose == null) {
+		if (move == null) {
 			txtPoseName.setText("NULL");
-			imgPose.setImageBitmap(Bitmap.createBitmap(pose.bitmapSize, pose.bitmapSize, Bitmap.Config.ARGB_8888));
+			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
-			txtPoseName.setText(pose.name);
-			imgPose.setImageBitmap(pose.getBitmap());
+			txtPoseName.setText(move.name);
+			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 	}
 
@@ -97,13 +106,13 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		txtNextStep.setText("");
 	}
 
-	private void showNextPoseName() {
+	private void showNextMoveName() {
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		Step nextStep = getNextStep();
 		if (nextStep == null) {
 			txtNextStep.setText("");
 		} else {
-			txtNextStep.setText("Next up: " + nextStep.pose.name);
+			txtNextStep.setText("Next up: " + nextStep.move.name);
 		}
 	}
 
@@ -111,32 +120,71 @@ public class PlayRoutineActivity extends AppCompatActivity {
 		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
 	}
 
-	public void onGoClick(View v) {
-		if (countDownTimer != null) { // Pause Routine
+	public void onPlayClick(View v) {
+		ImageButton btnPlay = findViewById(R.id.btnPlay);
+
+		// Pause Routine
+		if (countDownTimer != null) {
 			countDownTimer.cancel();
 			countDownTimer = null;
-			// Set btnGo image to Play
-		} else { // Play Routine
+
+			// Set btnPlay image to Play
+			btnPlay.setImageResource(android.R.drawable.ic_media_play);
+		}
+
+		// Play Routine
+		else {
 			if (stepNum > routine.steps.size()) {
 				stepNum = 1; // Restart ended Routine
 				showStep();
 			}
-			// Set btnGo image to Pause
 
-			if (poseSecondsRemaining > 0) {
-				runPoseTimer();
+			// Set btnPlay image to Pause
+			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+
+			if (move1SecondsRemaining > 0) {
+				runMove1Timer();
+			} else if (move2SecondsRemaining > 0) {
+				runMove2Timer();
 			} else {
 				runRestTimer();
 			}
 		}
+
 	}
 
-	private void runPoseTimer() {
-		countDownTimer = new CountDownTimer(poseSecondsRemaining * 1000, 1000) {
+	private void runMove1Timer() {
+		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
-				poseSecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(poseSecondsRemaining);
+				move1SecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+			}
+
+			@Override
+			public void onFinish() {
+				playChime();
+
+				if (move2SecondsRemaining > 0) {
+					showMove(move, true);
+					runRestTimer();
+				} else if (restSecondsRemaining > 0) {
+					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+					runRestTimer();
+				} else {
+					stepNum++;
+					showStep();
+				}
+			}
+		}.start();
+	}
+
+	private void runMove2Timer() {
+		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				move2SecondsRemaining = (int)(millisRemaining / 1000);
+				updateTimerView(move2SecondsRemaining);
 			}
 
 			@Override
@@ -144,8 +192,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 				playChime();
 
 				if (restSecondsRemaining > 0) {
-					showPose(PoseLibrary.poses.get(PoseLibrary.REST));
-					showNextPoseName();
+					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					runRestTimer();
 				} else {
 					stepNum++;
