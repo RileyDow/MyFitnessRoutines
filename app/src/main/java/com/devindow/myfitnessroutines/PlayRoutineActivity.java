@@ -98,7 +98,15 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			txtPoseName.setText("NULL");
 			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
-			txtPoseName.setText(move.name);
+			if (move.twoSides) {
+				if (secondSide) {
+					txtPoseName.setText(move.name + " ->");
+				} else {
+					txtPoseName.setText(move.name + " <-");
+				}
+			} else {
+				txtPoseName.setText(move.name);
+			}
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 	}

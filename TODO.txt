@@ -1,7 +1,5 @@
 TODO
 ----
-* Add L & R?  To Step.name?
-
 * Pose implements Drawable so we can have list of Drawable for Poses or Patterns
   - multiple Poses requires an offset for each
 
