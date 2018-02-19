@@ -1,5 +1,6 @@
 package com.devindow.myfitnessroutines;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -15,6 +16,10 @@ import android.widget.TextView;
 import com.devindow.myfitnessroutines.routine.*;
 
 public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.TaskCallbacks {
+
+	// Constants
+	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";
+
 
 	// Private Fields
 	private PlayRoutineTaskFragment taskFragment;
@@ -51,6 +56,16 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		// Get Routine passed in by Intent
 		Intent intent = getIntent();
 		routine = (Routine)intent.getSerializableExtra("routine");
+
+		FragmentManager fragmentManager = getFragmentManager();
+		taskFragment = (PlayRoutineTaskFragment) fragmentManager.findFragmentByTag(PLAY_ROUTINE_TASK_FRAGMENT);
+
+		// If the Fragment is non-null, then it is currently being
+		// retained across a configuration change.
+		if (taskFragment == null) {
+			taskFragment = new PlayRoutineTaskFragment();
+			fragmentManager.beginTransaction().add(taskFragment, PLAY_ROUTINE_TASK_FRAGMENT).commit();
+		}
 
 		// txtRoutineName
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
