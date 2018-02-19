@@ -6,118 +6,208 @@ package com.devindow.myfitnessroutines;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.os.AsyncTask;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.os.CountDownTimer;
+import android.util.Log;
 
-/**
- * This Fragment manages a single background task and retains
- * itself across configuration changes.
- */
+import com.devindow.myfitnessroutines.routine.Move;
+import com.devindow.myfitnessroutines.routine.MoveLibrary;
+import com.devindow.myfitnessroutines.routine.Routine;
+import com.devindow.myfitnessroutines.routine.Step;
+
+// This Fragment manages a the timers and retains itself across configuration changes.
 public class PlayRoutineTaskFragment extends Fragment {
 
-	/**
-	 * Callback interface through which the fragment will report the
-	 * task's progress and results back to the Activity.
-	 */
-	interface TaskCallbacks {
-		void onPreExecute();
-		void onProgressUpdate(int percent);
-		void onCancelled();
-		void onPostExecute();
+	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
+	interface PlayRoutineCallbacks {
+		void showStep(boolean startTimer);
+		void showMove(Move move, boolean secondSide);
+		void updateTimerView(long secondsRemaining);
 	}
 
-	private TaskCallbacks activityImplementingCallbacks;
-	private DummyTask task;
 
-	/**
-	 * Hold a reference to the parent Activity so we can report the
-	 * task's current progress and results. The Android framework
-	 * will pass us a reference to the newly created Activity after
-	 * each configuration change.
-	 */
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		activityImplementingCallbacks = (TaskCallbacks)activity;
+	// Public Fields
+	public CountDownTimer countDownTimer;
+	public int stepNum = 1;
+	public Routine routine;
+	public Move move;
+	public int move1SecondsRemaining;
+	public int move2SecondsRemaining;
+	public int restSecondsRemaining;
+
+
+	// Public Properties
+	public Step getCurrentStep() {
+		return routine.steps.get(stepNum - 1);
 	}
 
-	/**
-	 * This method will only be called once when the retained
-	 * Fragment is first created.
-	 */
+	public Step getNextStep() {
+		if (stepNum >= routine.steps.size()) {
+			return null;
+		}
+		return routine.steps.get(stepNum);
+	}
+
+	// Private Fields
+	private PlayRoutineCallbacks playRoutineActivity;
+
+
+	// Fragment Class Overrides
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
 		super.onCreate(savedInstanceState);
 
 		// Retain this fragment across configuration changes.
 		setRetainInstance(true);
-
-		// Create and execute the background task.
-		task = new DummyTask();
-		task.execute();
+		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
 
-	/**
-	 * Set the callback to null so we don't accidentally leak the
-	 * Activity instance.
-	 */
+	@Override
+	public void onAttach(Activity activity) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
+		super.onAttach(activity);
+
+		// set playRoutineActivity to Activity
+		playRoutineActivity = (PlayRoutineCallbacks)activity;
+		setSecondsRemaining();
+		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
+	}
+
 	@Override
 	public void onDetach() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
 		super.onDetach();
-		activityImplementingCallbacks = null;
+
+		// set playRoutineActivity to NULL
+		playRoutineActivity = null;
+		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
 	}
 
-	/**
-	 * A dummy task that performs some (dumb) background work and
-	 * proxies progress updates and results back to the Activity.
-	 *
-	 * Note that we need to check if the activityImplementingCallbacks is null in each
-	 * method in case one is invoked after the Activity's and
-	 * Fragment's onDestroy() methods have been called.
-	 */
-	private class DummyTask extends AsyncTask<Void, Integer, Void> {
 
-		@Override
-		protected void onPreExecute() {
-			if (activityImplementingCallbacks != null) {
-				activityImplementingCallbacks.onPreExecute();
-			}
+	// Public Methods
+	public void setSecondsRemaining() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.setSecondsRemaining()");
+		Step currentStep = getCurrentStep();
+		if (move.twoSides) {
+			move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+		} else {
+			move1SecondsRemaining = currentStep.moveDuration;
+			move2SecondsRemaining = 0;
 		}
-
-		/**
-		 * Note that we do NOT call the callback object's methods
-		 * directly from the background thread, as this could result
-		 * in a race condition.
-		 */
-		@Override
-		protected Void doInBackground(Void... ignore) {
-			for (int i = 0; !isCancelled() && i < 100; i++) {
-				SystemClock.sleep(100);
-				publishProgress(i);
-			}
-			return null;
-		}
-
-		@Override
-		protected void onProgressUpdate(Integer... percent) {
-			if (activityImplementingCallbacks != null) {
-				activityImplementingCallbacks.onProgressUpdate(percent[0]);
-			}
-		}
-
-		@Override
-		protected void onCancelled() {
-			if (activityImplementingCallbacks != null) {
-				activityImplementingCallbacks.onCancelled();
-			}
-		}
-
-		@Override
-		protected void onPostExecute(Void ignore) {
-			if (activityImplementingCallbacks != null) {
-				activityImplementingCallbacks.onPostExecute();
-			}
-		}
+		restSecondsRemaining = currentStep.restDuration;
+		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.setSecondsRemaining()");
 	}
+
+	public void runMove1Timer() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
+		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				move1SecondsRemaining = (int)(millisRemaining / 1000);
+				if (playRoutineActivity != null) {
+					playRoutineActivity.updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+				}
+			}
+
+			@Override
+			public void onFinish() {
+				playChime();
+
+				if (move2SecondsRemaining > 0) {
+					if (playRoutineActivity != null) {
+						playRoutineActivity.showMove(move, true);
+					}
+					runMove2Timer();
+				} else if (restSecondsRemaining > 0) {
+					if (playRoutineActivity != null) {
+						playRoutineActivity.showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+					}
+					runRestTimer();
+				} else {
+					stepNum++;
+					if (playRoutineActivity != null) {
+						playRoutineActivity.showStep(true);
+
+						// If timer was running then run.
+						if (countDownTimer != null) {
+							runMove1Timer();
+						}
+					}
+				}
+			}
+		}.start();
+	}
+
+	public void runMove2Timer() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
+		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				move2SecondsRemaining = (int)(millisRemaining / 1000);
+				if (playRoutineActivity != null) {
+					playRoutineActivity.updateTimerView(move2SecondsRemaining);
+				}
+			}
+
+			@Override
+			public void onFinish() {
+				playChime();
+
+				if (restSecondsRemaining > 0) {
+					if (playRoutineActivity != null) {
+						playRoutineActivity.showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+					}
+					runRestTimer();
+				} else {
+					stepNum++;
+					if (playRoutineActivity != null) {
+						playRoutineActivity.showStep(true);
+
+						// If timer was running then run.
+						if (countDownTimer != null) {
+							runMove1Timer();
+						}
+					}
+				}
+			}
+		}.start();
+	}
+
+	public void runRestTimer() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
+		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
+			@Override
+			public void onTick(long millisRemaining) {
+				restSecondsRemaining = (int)(millisRemaining / 1000);
+				if (playRoutineActivity != null) {
+					playRoutineActivity.updateTimerView(restSecondsRemaining);
+				}
+			}
+
+			@Override
+			public void onFinish() {
+				playChime();
+				stepNum++;
+				if (playRoutineActivity != null) {
+					playRoutineActivity.showStep(true);
+
+					// If timer was running then run.
+					if (countDownTimer != null) {
+						runMove1Timer();
+					}
+				}
+			}
+		}.start();
+	}
+
+
+	// Private Methods
+	private void playChime() {
+		ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+		toneGenerator.startTone(AudioManager.STREAM_NOTIFICATION,100);
+	}
+
 }

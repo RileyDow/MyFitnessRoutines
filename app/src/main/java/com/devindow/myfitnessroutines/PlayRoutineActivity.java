@@ -3,11 +3,9 @@ package com.devindow.myfitnessroutines;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.AudioManager;
-import android.media.ToneGenerator;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,7 +13,7 @@ import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.routine.*;
 
-public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.TaskCallbacks {
+public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 
 	// Constants
 	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";
@@ -23,90 +21,61 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	// Private Fields
 	private PlayRoutineTaskFragment taskFragment;
-	private Routine routine;
-	private int stepNum = 1;
-	private Move move;
-	private int move1SecondsRemaining;
-	private int move2SecondsRemaining;
-	private int restSecondsRemaining;
-
-	private CountDownTimer countDownTimer;
-	private TextView txtTimer;
-
-
-	// Private Properties
-	private Step getCurrentStep() {
-		return routine.steps.get(stepNum - 1);
-	}
-
-	private Step getNextStep() {
-		if (stepNum >= routine.steps.size()) {
-			return null;
-		}
-		return routine.steps.get(stepNum);
-	}
 
 
 	// Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
 
-		// Get Routine passed in by Intent
-		Intent intent = getIntent();
-		routine = (Routine)intent.getSerializableExtra("routine");
-
+		// If the Fragment is non-null, then it is currently being retained across a configuration change.
 		FragmentManager fragmentManager = getFragmentManager();
 		taskFragment = (PlayRoutineTaskFragment) fragmentManager.findFragmentByTag(PLAY_ROUTINE_TASK_FRAGMENT);
-
-		// If the Fragment is non-null, then it is currently being
-		// retained across a configuration change.
 		if (taskFragment == null) {
 			taskFragment = new PlayRoutineTaskFragment();
 			fragmentManager.beginTransaction().add(taskFragment, PLAY_ROUTINE_TASK_FRAGMENT).commit();
 		}
 
+		// Get Routine passed in by Intent
+		Intent intent = getIntent();
+		taskFragment.routine = (Routine)intent.getSerializableExtra("routine");
+
 		// txtRoutineName
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
-		txtRoutineName.setText(routine.name);
+		txtRoutineName.setText(taskFragment.routine.name);
 
-		// txtTimer
-		txtTimer = findViewById(R.id.txtTimer);
+		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
+		showStep(false);
 
-		showStep();
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 
-	private void showStep() {
+	@Override
+	public void showStep(boolean resetTimer) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.showStep()");
 		clearNextStep();
 
-		if (stepNum > routine.steps.size()) { // Finished
-			move = MoveLibrary.moves.get(MoveLibrary.DONE);
-			countDownTimer = null;
+		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
+			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
+			taskFragment.countDownTimer = null;
 		} else {
-			Step currentStep = getCurrentStep();
-			move = currentStep.move;
-			if (currentStep.move.twoSides) {
-				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
-			} else {
-				move1SecondsRemaining = currentStep.moveDuration;
-				move2SecondsRemaining = 0;
-			}
-			restSecondsRemaining = currentStep.restDuration;
-			updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+			Step currentStep = taskFragment.getCurrentStep();
+			taskFragment.move = currentStep.move;
+			updateTimerView(taskFragment.move1SecondsRemaining + taskFragment. move2SecondsRemaining);
 		}
 
-		showMove(move, false);
+		showMove(taskFragment.move, false);
 
 		showNextMoveName();
 
-		// If timer was running then run.
-		if (countDownTimer != null) {
-			runMove1Timer();
-		}
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.showStep()");
 	}
 
-	private void showMove(Move move, boolean secondSide) {
+	@Override
+	public void showMove(Move move, boolean secondSide) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.showMove()");
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
@@ -125,34 +94,49 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			}
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.showMove()");
 	}
 
 	private void clearNextStep() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextStep()");
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		txtNextStep.setText("");
-	}
-
-	private void showNextMoveName() {
-		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		Step nextStep = getNextStep();
-		if (nextStep == null) {
+		if (txtNextStep != null) {
 			txtNextStep.setText("");
-		} else {
-			txtNextStep.setText("Next up: " + nextStep.move.name);
 		}
 	}
 
-	private void updateTimerView(long secondsRemaining) {
-		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
+	private void showNextMoveName() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.showNextMoveName()");
+		final TextView txtNextStep = findViewById(R.id.txtNextStep);
+		if (txtNextStep != null) {
+			Step nextStep = taskFragment.getNextStep();
+			if (nextStep == null) {
+				txtNextStep.setText("");
+			} else {
+				txtNextStep.setText("Next up: " + nextStep.move.name);
+			}
+		}
+	}
+
+	@Override
+	public void updateTimerView(long secondsRemaining) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimerView()");
+		TextView txtTimer = findViewById(R.id.txtTimer);
+		if (txtTimer != null) {
+			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
+			Log.d(Debug.TAG_TIME, timeRemaining);
+			txtTimer.setText(timeRemaining);
+		}
 	}
 
 	public void onPlayClick(View v) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
 		ImageButton btnPlay = findViewById(R.id.btnPlay);
 
 		// Pause Routine
-		if (countDownTimer != null) {
-			countDownTimer.cancel();
-			countDownTimer = null;
+		if (taskFragment.countDownTimer != null) {
+			taskFragment.countDownTimer.cancel();
+			taskFragment.countDownTimer = null;
 
 			// Set btnPlay image to Play
 			btnPlay.setImageResource(android.R.drawable.ic_media_play);
@@ -160,131 +144,55 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		// Play Routine
 		else {
-			if (stepNum > routine.steps.size()) {
-				stepNum = 1; // Restart ended Routine
-				showStep();
+			if (taskFragment.stepNum > taskFragment.routine.steps.size()) {
+				taskFragment.stepNum = 1; // Restart ended Routine
+				showStep(true);
 			}
 
 			// Set btnPlay image to Pause
 			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
 
-			if (move1SecondsRemaining > 0) {
-				runMove1Timer();
-			} else if (move2SecondsRemaining > 0) {
-				runMove2Timer();
+			if (taskFragment.move1SecondsRemaining > 0) {
+				taskFragment.runMove1Timer();
+			} else if (taskFragment.move2SecondsRemaining > 0) {
+				taskFragment.runMove2Timer();
 			} else {
-				runRestTimer();
+				taskFragment.runRestTimer();
 			}
 		}
 
 	}
 
-	private void runMove1Timer() {
-		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				move1SecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-
-				if (move2SecondsRemaining > 0) {
-					showMove(move, true);
-					runMove2Timer();
-				} else if (restSecondsRemaining > 0) {
-					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
-					runRestTimer();
-				} else {
-					stepNum++;
-					showStep();
-				}
-			}
-		}.start();
-	}
-
-	private void runMove2Timer() {
-		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				move2SecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(move2SecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-
-				if (restSecondsRemaining > 0) {
-					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
-					runRestTimer();
-				} else {
-					stepNum++;
-					showStep();
-				}
-			}
-		}.start();
-	}
-
-	private void runRestTimer() {
-		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				restSecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(restSecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-				stepNum++;
-				showStep();
-			}
-		}.start();
-	}
-
-	private void playChime() {
-		ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
-		toneGenerator.startTone(AudioManager.STREAM_NOTIFICATION,100);
-	}
-
 	public void onNextClick(View v) {
-		if (stepNum < routine.steps.size()) {
-			if (countDownTimer != null) {
-				countDownTimer.cancel();
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
+		if (taskFragment.stepNum < taskFragment.routine.steps.size()) {
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.countDownTimer.cancel();
 			}
-			stepNum++;
-			showStep();
+			taskFragment.stepNum++;
+			showStep(true);
+
+			// If timer was running then run.
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.runMove1Timer();
+			}
 		}
 	}
 
 	public void onPrevClick(View v) {
-		if (stepNum > 1) {
-			if (countDownTimer != null) {
-				countDownTimer.cancel();
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
+		if (taskFragment.stepNum > 1) {
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.countDownTimer.cancel();
 			}
-			stepNum--;
-			showStep();
+			taskFragment.stepNum--;
+			showStep(true);
+
+			// If timer was running then run.
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.runMove1Timer();
+			}
 		}
 	}
 
-
-	// PlayRoutineTaskFragment.TaskCallbacks implementation
-	// The four methods below are called by the TaskFragment when new
-	// progress updates or results are available. PlayRoutineActivity
-	// should respond by updating its UI to indicate the change.
-
-	@Override
-	public void onPreExecute() {  }
-
-	@Override
-	public void onProgressUpdate(int percent) {  }
-
-	@Override
-	public void onCancelled() {  }
-
-	@Override
-	public void onPostExecute() {  }
 }

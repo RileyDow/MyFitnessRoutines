@@ -16,7 +16,9 @@ public final class Debug {
 
 	public static final boolean colors = false; // Set to true to help debug Pose bitmap issues using unique colors for body parts.
 
-	public static final String TAG_ENTER = " * ENTER * ";
+	public static final String TAG_ENTER = " ** ENTER ** ";
+	public static final String TAG_EXIT = " -- EXIT  -- ";
+	public static final String TAG_TIME = " ## TIME ## ";
 
 
 	// Public Static Methods
