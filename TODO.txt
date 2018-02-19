@@ -46,6 +46,7 @@ TODO
   + Should we just pass Routine.name and have Routines be a Hashtable?
 
 + Chime
+  - Playable audio
 - Notifications
 
 - UI
