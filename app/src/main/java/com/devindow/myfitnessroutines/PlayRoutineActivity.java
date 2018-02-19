@@ -169,7 +169,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 				if (move2SecondsRemaining > 0) {
 					showMove(move, true);
-					runRestTimer();
+					runMove2Timer();
 				} else if (restSecondsRemaining > 0) {
 					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					runRestTimer();

@@ -1,7 +1,5 @@
 TODO
 ----
-* TwoSides is not working: switches pose when it should switch sides
-
 * Add L & R?  To Step.name?
 
 * Pose implements Drawable so we can have list of Drawable for Poses or Patterns
