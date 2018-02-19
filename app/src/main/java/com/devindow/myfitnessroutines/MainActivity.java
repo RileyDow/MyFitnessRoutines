@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 		// lstRoutines
 		lstRoutines = findViewById(R.id.lstRoutines);
-		ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, Samples.getSampleRoutines());
+		ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, SampleRoutines.getSampleRoutines());
 		lstRoutines.setAdapter(arrayAdapter);
 		lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
