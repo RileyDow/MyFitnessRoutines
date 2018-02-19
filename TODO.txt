@@ -1,9 +1,5 @@
 TODO
 ----
-* TwoSides is not working: switches pose when it should switch sides
-
-* Add L & R?  To Step.name?
-
 * Pose implements Drawable so we can have list of Drawable for Poses or Patterns
   - multiple Poses requires an offset for each
 
@@ -50,6 +46,7 @@ TODO
   + Should we just pass Routine.name and have Routines be a Hashtable?
 
 + Chime
+  - Playable audio
 - Notifications
 
 - UI
@@ -72,6 +69,3 @@ TODO
 
 - Log Activity
   - Saving to Google Doc or persistent storage
-
-- java.util.logging
-  - https://github.com/stephanenicolas/loglifecycle
