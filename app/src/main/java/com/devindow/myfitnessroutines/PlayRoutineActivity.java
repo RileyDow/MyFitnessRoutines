@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.devindow.myfitnessroutines.routine.*;
+
 public class PlayRoutineActivity extends AppCompatActivity {
 
 	// Private Fields
@@ -96,7 +98,15 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			txtPoseName.setText("NULL");
 			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
-			txtPoseName.setText(move.name);
+			if (move.twoSides) {
+				if (secondSide) {
+					txtPoseName.setText(move.name + " ->");
+				} else {
+					txtPoseName.setText(move.name + " <-");
+				}
+			} else {
+				txtPoseName.setText(move.name);
+			}
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 	}
@@ -167,7 +177,7 @@ public class PlayRoutineActivity extends AppCompatActivity {
 
 				if (move2SecondsRemaining > 0) {
 					showMove(move, true);
-					runRestTimer();
+					runMove2Timer();
 				} else if (restSecondsRemaining > 0) {
 					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					runRestTimer();

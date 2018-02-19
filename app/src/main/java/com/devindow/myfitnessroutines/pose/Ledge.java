@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -16,7 +16,7 @@ public class Ledge extends Prop {
 
 
 	// Constructor
-	Ledge(float x1, float x2, float height) {
+	public Ledge(float x1, float x2, float height) {
 		this.x1 = x1;
 		this.x2 = x2;
 		this.height = height;

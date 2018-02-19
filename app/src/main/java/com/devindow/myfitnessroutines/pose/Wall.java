@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -14,7 +14,7 @@ public class Wall extends Prop {
 
 
 	// Constructor
-	Wall(float x) {
+	public Wall(float x) {
 		this.x = x;
 	}
 

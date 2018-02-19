@@ -1,9 +1,6 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.pose;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 import java.io.Serializable;
 

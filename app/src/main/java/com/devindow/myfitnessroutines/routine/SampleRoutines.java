@@ -1,4 +1,8 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.routine;
+
+import android.util.Log;
+
+import com.devindow.myfitnessroutines.Debug;
 
 import java.util.ArrayList;
 
@@ -6,10 +10,12 @@ import java.util.ArrayList;
  * Created by Devin on 1/27/2018.
  */
 
-public class Samples {
+public class SampleRoutines {
 
 	// Default Routines
 	public static ArrayList<Routine> getSampleRoutines() {
+		Log.d(Debug.TAG_ENTER, "getSampleRoutines()");
+
 		ArrayList<Routine> defaultRoutines = new ArrayList<>();
 
 		defaultRoutines.add(get7MinuteWorkout());
@@ -17,6 +23,8 @@ public class Samples {
 		defaultRoutines.add(getWarmupRoutine());
 
 		defaultRoutines.add(getPreActivationRoutine());
+
+		defaultRoutines.add(getMorningYogaRoutine());
 
 		defaultRoutines.add(get5MinMeditation());
 		defaultRoutines.add(get10MinMeditation());
@@ -30,8 +38,6 @@ public class Samples {
 			defaultRoutines.add(getSunSalutation());
 
 			defaultRoutines.add(getStretchRoutine());
-
-			defaultRoutines.add(getYogaRoutine());
 
 			defaultRoutines.add(getLiftRoutine());
 
@@ -102,7 +108,7 @@ public class Samples {
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.INCH_WORMS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGE), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_LYING_ABDUCTION_W_BAND), 30));
@@ -111,6 +117,15 @@ public class Samples {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_HURDLES_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_180), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_90_TO_1_FOOT_LANDING), 30));
+
+		return routine;
+	}
+
+	private static Routine getMorningYogaRoutine() {
+		Routine routine = new Routine("Morning Yoga");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 30));
 
 		return routine;
 	}
@@ -127,15 +142,6 @@ public class Samples {
 		Routine routine = new Routine("Stretch Routine");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
-
-		return routine;
-	}
-
-	private static Routine getYogaRoutine() {
-		Routine routine = new Routine("Yoga Routine");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 
 		return routine;
 	}
