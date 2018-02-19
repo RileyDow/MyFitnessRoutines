@@ -49,6 +49,8 @@ TODO
   * MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
     - Derive a class from Application that overrides onCreate() calling super.onCreate().
 
+- Text-to-Speech
+  - Bluetooth Headset button pauses?
 * Paid app for adding new Routine
 
 - Log Activity

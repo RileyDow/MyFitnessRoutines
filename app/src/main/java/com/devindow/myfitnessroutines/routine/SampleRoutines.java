@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Devin on 1/27/2018.
  */
 
-public class Samples {
+public class SampleRoutines {
 
 	// Default Routines
 	public static ArrayList<Routine> getSampleRoutines() {
@@ -19,6 +19,8 @@ public class Samples {
 		defaultRoutines.add(getWarmupRoutine());
 
 		defaultRoutines.add(getPreActivationRoutine());
+
+		defaultRoutines.add(getMorningYogaRoutine());
 
 		defaultRoutines.add(get5MinMeditation());
 		defaultRoutines.add(get10MinMeditation());
@@ -32,8 +34,6 @@ public class Samples {
 			defaultRoutines.add(getSunSalutation());
 
 			defaultRoutines.add(getStretchRoutine());
-
-			defaultRoutines.add(getYogaRoutine());
 
 			defaultRoutines.add(getLiftRoutine());
 
@@ -117,6 +117,15 @@ public class Samples {
 		return routine;
 	}
 
+	private static Routine getMorningYogaRoutine() {
+		Routine routine = new Routine("Morning Yoga");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 30));
+
+		return routine;
+	}
+
 	private static Routine getSunSalutation() {
 		Routine routine = new Routine("Sun Salutation");
 
@@ -129,15 +138,6 @@ public class Samples {
 		Routine routine = new Routine("Stretch Routine");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
-
-		return routine;
-	}
-
-	private static Routine getYogaRoutine() {
-		Routine routine = new Routine("Yoga Routine");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 
 		return routine;
 	}
