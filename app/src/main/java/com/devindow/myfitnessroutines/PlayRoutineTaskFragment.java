@@ -27,7 +27,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		void onPostExecute();
 	}
 
-	private TaskCallbacks callbacks;
+	private TaskCallbacks activityImplementingCallbacks;
 	private DummyTask task;
 
 	/**
@@ -39,7 +39,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		callbacks = (TaskCallbacks)activity;
+		activityImplementingCallbacks = (TaskCallbacks)activity;
 	}
 
 	/**
@@ -65,23 +65,23 @@ public class PlayRoutineTaskFragment extends Fragment {
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		callbacks = null;
+		activityImplementingCallbacks = null;
 	}
 
 	/**
 	 * A dummy task that performs some (dumb) background work and
 	 * proxies progress updates and results back to the Activity.
 	 *
-	 * Note that we need to check if the callbacks are null in each
-	 * method in case they are invoked after the Activity's and
-	 * Fragment's onDestroy() method have been called.
+	 * Note that we need to check if the activityImplementingCallbacks is null in each
+	 * method in case one is invoked after the Activity's and
+	 * Fragment's onDestroy() methods have been called.
 	 */
 	private class DummyTask extends AsyncTask<Void, Integer, Void> {
 
 		@Override
 		protected void onPreExecute() {
-			if (callbacks != null) {
-				callbacks.onPreExecute();
+			if (activityImplementingCallbacks != null) {
+				activityImplementingCallbacks.onPreExecute();
 			}
 		}
 
@@ -101,22 +101,22 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		@Override
 		protected void onProgressUpdate(Integer... percent) {
-			if (callbacks != null) {
-				callbacks.onProgressUpdate(percent[0]);
+			if (activityImplementingCallbacks != null) {
+				activityImplementingCallbacks.onProgressUpdate(percent[0]);
 			}
 		}
 
 		@Override
 		protected void onCancelled() {
-			if (callbacks != null) {
-				callbacks.onCancelled();
+			if (activityImplementingCallbacks != null) {
+				activityImplementingCallbacks.onCancelled();
 			}
 		}
 
 		@Override
 		protected void onPostExecute(Void ignore) {
-			if (callbacks != null) {
-				callbacks.onPostExecute();
+			if (activityImplementingCallbacks != null) {
+				activityImplementingCallbacks.onPostExecute();
 			}
 		}
 	}
