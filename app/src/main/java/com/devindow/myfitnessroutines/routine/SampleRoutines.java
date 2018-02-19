@@ -1,5 +1,7 @@
 package com.devindow.myfitnessroutines.routine;
 
+import android.util.Log;
+
 import com.devindow.myfitnessroutines.Debug;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ public class SampleRoutines {
 
 	// Default Routines
 	public static ArrayList<Routine> getSampleRoutines() {
+		Log.d(Debug.TAG_ENTER, "getSampleRoutines()");
+
 		ArrayList<Routine> defaultRoutines = new ArrayList<>();
 
 		defaultRoutines.add(get7MinuteWorkout());
