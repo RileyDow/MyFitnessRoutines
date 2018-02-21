@@ -24,14 +24,13 @@ public class SampleRoutines {
 
 		defaultRoutines.add(getPreActivationRoutine());
 
-		defaultRoutines.add(getMorningYogaRoutine());
-
 		defaultRoutines.add(get5MinMeditation());
 		defaultRoutines.add(get10MinMeditation());
 		defaultRoutines.add(get15MinMeditation());
 
 		if (Debug.on) {
 			defaultRoutines.add(getRileyRoutine());
+			defaultRoutines.add(getMorningYogaRoutine());
 			defaultRoutines.add(getSoccerTouchesRoutine());
 			defaultRoutines.add(getTestPoses());
 			defaultRoutines.add(getTestShortRoutine());
@@ -61,7 +60,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getTestShortRoutine() {
-		Routine routine = new Routine("Short Routine", "Short Routine for testing.");
+		Routine routine = new Routine("Short Routine with long, long, long, long name", "Short Routine for testing. Long, long, long, long, long, long, long, long, long, long, long, long description.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 10));
@@ -80,7 +79,7 @@ public class SampleRoutines {
 		return routine;
 	}
 	private static Routine get7MinuteWorkout() {
-		Routine routine = new Routine("7 Minute Workout", "7 minute workout");
+		Routine routine = new Routine("7 Minute Workout", "High-intensity circuit training that alternates muscle groups");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALL_SIT), 30, 5));
@@ -99,7 +98,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getWarmupRoutine() {
-		Routine routine = new Routine("Warmup", "A warmup to do when starting out cold.");
+		Routine routine = new Routine("Warmup", "A warmup to do when starting out cold");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
@@ -115,7 +114,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getPreActivationRoutine() {
-		Routine routine = new Routine("Pre-Activation", "From England National Soccer Team.");
+		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
