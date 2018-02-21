@@ -83,6 +83,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void displayMove(Move move, boolean secondSide) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
+		final TextView txtPoseDescription = findViewById(R.id.txtPoseDescription);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
 		if (move == null) {
@@ -98,6 +99,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtPoseName.setText(move.name);
 			}
+			txtPoseDescription.setText(move.description);
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");

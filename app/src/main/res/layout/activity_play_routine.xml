@@ -30,6 +30,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRoutineName"
+        app:layout_constraintBottom_toTopOf="@+id/txtPoseDescription" />
+
+    <TextView
+        android:id="@+id/txtPoseDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Description"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPoseName"
         app:layout_constraintBottom_toTopOf="@+id/imgPose" />
 
     <ImageView
@@ -43,7 +55,7 @@
         android:background="@android:drawable/alert_light_frame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPoseName"
+        app:layout_constraintTop_toBottomOf="@+id/txtPoseDescription"
         app:layout_constraintBottom_toTopOf="@+id/txtTimer" />
 
     <TextView

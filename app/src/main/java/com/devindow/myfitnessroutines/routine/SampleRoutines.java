@@ -105,6 +105,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWIST_PIVOT), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROMAN_LUNGES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAFETY_JACKS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_HAMSTRING), 60));

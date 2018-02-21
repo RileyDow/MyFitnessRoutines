@@ -1,8 +1,5 @@
 TODO
 ----
-- UI
-  * Landscape Layout
-
 * Prevent Sleep
 
 * Does RELEASE remove Log.DEBUG?

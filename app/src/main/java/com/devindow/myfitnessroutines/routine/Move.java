@@ -19,6 +19,7 @@ public class Move implements Serializable {
 
 	// Public Fields
 	public String name;
+	public String description;
 	public Category category;
 	public boolean twoSides;
 	public Pose pose1;
@@ -31,14 +32,37 @@ public class Move implements Serializable {
 
 
 	// Constructors
+	public Move(String name) {
+		this(name, false);
+	}
+
+	public Move(String name, boolean twoSides) {
+		this(name, Category.NONE, twoSides);
+	}
+
 	public Move(String name, Category category) {
-		this.name = name;
-		this.category = category;
-		this.twoSides = false;
+		this(name, category, false);
+	}
+
+	public Move(String name, String description) {
+		this(name, description, false);
+	}
+
+	public Move(String name, String description, Category category) {
+		this(name, description, category, false);
 	}
 
 	public Move(String name, Category category, boolean twoSides) {
+		this(name, "", category, twoSides);
+	}
+
+	public Move(String name, String description, boolean twoSides) {
+		this(name, description, Category.NONE, twoSides);
+	}
+
+	public Move(String name, String description, Category category, boolean twoSides) {
 		this.name = name;
+		this.description = description;
 		this.category = category;
 		this.twoSides = twoSides;
 	}
