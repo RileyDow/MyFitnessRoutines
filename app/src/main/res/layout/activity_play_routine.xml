@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.devindow.myfitnessroutines.PlayRoutineActivity">
 
     <TextView
@@ -13,13 +15,12 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Routine"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/txtPoseName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Routine" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPoseName"
@@ -99,6 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="?attr/colorPrimary"
+            android:elevation="10dp"
             android:onClick="onPrevClick"
             app:srcCompat="@android:drawable/ic_media_previous" />
 
@@ -108,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="?attr/colorPrimary"
-            android:elevation="0dp"
+            android:elevation="10dp"
             android:onClick="onPlayClick"
             app:srcCompat="@android:drawable/ic_media_play" />
 
@@ -118,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="?attr/colorPrimary"
+            android:elevation="10dp"
             android:onClick="onNextClick"
             app:srcCompat="@android:drawable/ic_media_next" />
 
