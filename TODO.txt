@@ -1,9 +1,5 @@
 TODO
 ----
-* Prevent Sleep
-
-* Does RELEASE remove Log.DEBUG?
-
 - Routines
   - Soccer Touches
   - Sun Salutation
