@@ -26,8 +26,8 @@ TODO
     - Ball
   - ProfilePose use Z to show depth in 3D?
 
-+ Chime
-  - Playable audio
+* Chime
+  * Playable audio
 - Notifications
 
 - Startup
