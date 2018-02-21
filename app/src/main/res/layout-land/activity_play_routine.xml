@@ -18,8 +18,8 @@
         android:layout_marginBottom="32dp">
 
         <ImageView
-            android:id="@+id/imgPose"
-            android:contentDescription="Pose"
+            android:id="@+id/imgMove"
+            android:contentDescription="Move"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -40,22 +40,22 @@
                 android:textSize="36sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/txtPoseName" />
+                app:layout_constraintBottom_toTopOf="@+id/txtMoveName" />
 
             <TextView
-                android:id="@+id/txtPoseName"
+                android:id="@+id/txtMoveName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Pose"
+                android:text="Move"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRoutineName"
-                app:layout_constraintBottom_toTopOf="@+id/txtPoseDescription" />
+                app:layout_constraintBottom_toTopOf="@+id/txtMoveDescription" />
 
             <TextView
-                android:id="@+id/txtPoseDescription"
+                android:id="@+id/txtMoveDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -63,7 +63,7 @@
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtPoseName"
+                app:layout_constraintTop_toBottomOf="@+id/txtMoveName"
                 app:layout_constraintBottom_toTopOf="@+id/txtTimer" />
 
             <TextView
@@ -75,7 +75,7 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtPoseDescription"
+                app:layout_constraintTop_toBottomOf="@+id/txtMoveDescription"
                 app:layout_constraintBottom_toTopOf="@+id/txtNextStep" />
 
             <TextView

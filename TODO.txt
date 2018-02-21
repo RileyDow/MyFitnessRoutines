@@ -21,6 +21,7 @@ TODO
 
 - Poses
   * Calf Stretches from Down Dog
+  * Safety Jacks use 2 Poses
   - Drawing improvements
     - "High Knee": add arms
   + Props

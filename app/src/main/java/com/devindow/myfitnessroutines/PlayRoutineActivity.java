@@ -82,24 +82,24 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	@Override
 	public void displayMove(Move move, boolean secondSide) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
-		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		final TextView txtPoseDescription = findViewById(R.id.txtPoseDescription);
-		final ImageView imgPose = findViewById(R.id.imgPose);
+		final TextView txtMoveName = findViewById(R.id.txtMoveName);
+		final TextView txtMoveDescription = findViewById(R.id.txtMoveDescription);
+		final ImageView imgPose = findViewById(R.id.imgMove);
 
 		if (move == null) {
-			txtPoseName.setText("NULL");
+			txtMoveName.setText("NULL");
 			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
-					txtPoseName.setText(move.name + " ->");
+					txtMoveName.setText(move.name + " ->");
 				} else {
-					txtPoseName.setText(move.name + " <-");
+					txtMoveName.setText(move.name + " <-");
 				}
 			} else {
-				txtPoseName.setText(move.name);
+				txtMoveName.setText(move.name);
 			}
-			txtPoseDescription.setText(move.description);
+			txtMoveDescription.setText(move.description);
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
