@@ -373,7 +373,7 @@ public class MoveLibrary {
 
 		moves.put(ROTATE_ON_ALL_FOURS, new Move(ROTATE_ON_ALL_FOURS, Category.STRETCH, true));
 		moves.put(TWIST_PIVOT, new Move(TWIST_PIVOT, Category.STRETCH));
-		moves.put(SAFETY_JACKS, new Move(SAFETY_JACKS, Category.CARDIO));
+		moves.put(SAFETY_JACKS, new Move(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO));
 		moves.put(ROMAN_LUNGES, new Move(ROMAN_LUNGES, Category.CARDIO));
 		moves.put(HIP_STRETCH, new Move(HIP_STRETCH, Category.STRETCH, true));
 		moves.put(HAMSTRING_STRETCH, new Move(HAMSTRING_STRETCH, Category.STRETCH, true));

@@ -11,6 +11,7 @@ public class Routine implements Serializable {
 
 	// Public Fields
 	public String name;
+	public String description;
 	public ArrayList<Step> steps = new ArrayList<Step>();
 
 
@@ -23,18 +24,27 @@ public class Routine implements Serializable {
 		return duration;
 	}
 
+	public String getMinutesString() {
+		int minutes = (int)Math.round(1.0 * getDuration() / 60);
+		return minutes + " min";
+	}
+
 
 	// Constructors
 	public Routine(String name) {
+		this(name, "");
+	}
+
+	public Routine(String name, String description) {
 		this.name = name;
+		this.description = description;
 	}
 
 
 	// Overrides
 	@Override
 	public String toString() {
-		int minutes = (int)Math.round(1.0 * getDuration() / 60);
-		return name + " - " + minutes + " min";
+		return name + " - " + getMinutesString();
 	}
 
 }

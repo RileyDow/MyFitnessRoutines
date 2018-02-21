@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
+
+		// Keep Screen On
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		// If the Fragment is non-null, then it is currently being retained across a configuration change.
 		FragmentManager fragmentManager = getFragmentManager();
@@ -63,6 +67,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
 			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			taskFragment.countDownTimer = null;
+			updatePlayButton();
 		} else {
 			Step currentStep = taskFragment.getCurrentStep();
 			taskFragment.move = currentStep.move;
@@ -82,22 +87,24 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	@Override
 	public void displayMove(Move move, boolean secondSide) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
-		final TextView txtPoseName = findViewById(R.id.txtPoseName);
-		final ImageView imgPose = findViewById(R.id.imgPose);
+		final TextView txtMoveName = findViewById(R.id.txtMoveName);
+		final TextView txtMoveDescription = findViewById(R.id.txtMoveDescription);
+		final ImageView imgPose = findViewById(R.id.imgMove);
 
 		if (move == null) {
-			txtPoseName.setText("NULL");
+			txtMoveName.setText("NULL");
 			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
-					txtPoseName.setText(move.name + " ->");
+					txtMoveName.setText(move.name + " ->");
 				} else {
-					txtPoseName.setText(move.name + " <-");
+					txtMoveName.setText(move.name + " <-");
 				}
 			} else {
-				txtPoseName.setText(move.name);
+				txtMoveName.setText(move.name);
 			}
+			txtMoveDescription.setText(move.description);
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");

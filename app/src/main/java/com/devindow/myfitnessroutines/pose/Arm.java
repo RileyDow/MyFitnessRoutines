@@ -62,18 +62,18 @@ public class Arm implements Serializable {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		Paint p = new Paint();
-		p.setStrokeCap(Paint.Cap.ROUND);
-		p.setStrokeJoin(Paint.Join.ROUND);
-		p.setStrokeWidth(thickness);
-		Debug.setPenColor(p);
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setStrokeWidth(thickness);
+		Debug.setPenColor(paint);
 
 		if (elbowX != null && elbowY != null) {
-			canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, p);
-			canvas.drawLine(elbowX, elbowY, handX, handY, p);
+			canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, paint);
+			canvas.drawLine(elbowX, elbowY, handX, handY, paint);
 		}
 		else {
-			canvas.drawLine(shoulderX, shoulderY, handX, handY, p);
+			canvas.drawLine(shoulderX, shoulderY, handX, handY, paint);
 		}
 	}
 

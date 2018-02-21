@@ -24,14 +24,13 @@ public class SampleRoutines {
 
 		defaultRoutines.add(getPreActivationRoutine());
 
-		defaultRoutines.add(getMorningYogaRoutine());
-
 		defaultRoutines.add(get5MinMeditation());
 		defaultRoutines.add(get10MinMeditation());
 		defaultRoutines.add(get15MinMeditation());
 
 		if (Debug.on) {
 			defaultRoutines.add(getRileyRoutine());
+			defaultRoutines.add(getMorningYogaRoutine());
 			defaultRoutines.add(getSoccerTouchesRoutine());
 			defaultRoutines.add(getTestPoses());
 			defaultRoutines.add(getTestShortRoutine());
@@ -61,7 +60,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getTestShortRoutine() {
-		Routine routine = new Routine("Short Routine");
+		Routine routine = new Routine("Short Routine with long, long, long, long, long, long, long name", "Short Routine for testing. Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 10));
@@ -80,7 +79,7 @@ public class SampleRoutines {
 		return routine;
 	}
 	private static Routine get7MinuteWorkout() {
-		Routine routine = new Routine("7 Minute Workout");
+		Routine routine = new Routine("7 Minute Workout", "High-intensity circuit training that alternates muscle groups");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALL_SIT), 30, 5));
@@ -99,12 +98,13 @@ public class SampleRoutines {
 	}
 
 	private static Routine getWarmupRoutine() {
-		Routine routine = new Routine("Warmup");
+		Routine routine = new Routine("Warmup", "A warmup to do when starting out cold");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWIST_PIVOT), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROMAN_LUNGES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAFETY_JACKS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_HAMSTRING), 60));
@@ -114,7 +114,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getPreActivationRoutine() {
-		Routine routine = new Routine("Pre-Activation");
+		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
@@ -132,7 +132,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getMorningYogaRoutine() {
-		Routine routine = new Routine("Morning Yoga");
+		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 30));
@@ -174,7 +174,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine get5MinMeditation() {
-		Routine routine = new Routine("Meditation");
+		Routine routine = new Routine("5 min Meditation");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60));
 
@@ -182,7 +182,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine get10MinMeditation() {
-		Routine routine = new Routine("Meditation");
+		Routine routine = new Routine("10 min Meditation");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 10*60));
 
@@ -190,7 +190,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine get15MinMeditation() {
-		Routine routine = new Routine("Meditation");
+		Routine routine = new Routine("15 min Meditation");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 15*60));
 
