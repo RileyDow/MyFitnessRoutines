@@ -67,6 +67,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
 			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			taskFragment.countDownTimer = null;
+			updatePlayButton();
 		} else {
 			Step currentStep = taskFragment.getCurrentStep();
 			taskFragment.move = currentStep.move;

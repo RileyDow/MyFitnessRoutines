@@ -1,7 +1,5 @@
 TODO
 ----
-** Done should change btnPlay to Play image
-
 - Routines
   - Soccer Touches
   - Sun Salutation
