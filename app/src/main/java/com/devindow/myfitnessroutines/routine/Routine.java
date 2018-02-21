@@ -24,6 +24,11 @@ public class Routine implements Serializable {
 		return duration;
 	}
 
+	public String getMinutesString() {
+		int minutes = (int)Math.round(1.0 * getDuration() / 60);
+		return minutes + " min";
+	}
+
 
 	// Constructors
 	public Routine(String name) {
@@ -39,8 +44,7 @@ public class Routine implements Serializable {
 	// Overrides
 	@Override
 	public String toString() {
-		int minutes = (int)Math.round(1.0 * getDuration() / 60);
-		return name + " - " + minutes + " min";
+		return name + " - " + getMinutesString();
 	}
 
 }

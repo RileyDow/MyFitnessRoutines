@@ -15,6 +15,8 @@ import android.widget.ListView;
 
 import com.devindow.myfitnessroutines.routine.*;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 	// Fields
@@ -48,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// lstRoutines
+		ArrayList<Routine> sampleRoutines = SampleRoutines.getSampleRoutines();
 		lstRoutines = findViewById(R.id.lstRoutines);
-		ArrayAdapter<Routine> arrayAdapter = new ArrayAdapter<Routine>(this, R.layout.routine_row, SampleRoutines.getSampleRoutines());
-		lstRoutines.setAdapter(arrayAdapter);
+		RoutineAdapter adapter = new RoutineAdapter(this, R.layout.routine_row, sampleRoutines);
+		lstRoutines.setAdapter(adapter);
 		lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
