@@ -46,6 +46,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(taskFragment.routine.name);
 
+		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
+		displayStep(false);
+
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 

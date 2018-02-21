@@ -79,9 +79,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 		// set playRoutineActivity to Activity
 		playRoutineActivity = (PlayRoutineCallbacks)activity;
 
-		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
-		playRoutineActivity.displayStep(false);
-
 		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
 	}
 
