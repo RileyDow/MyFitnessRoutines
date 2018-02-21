@@ -2,8 +2,9 @@ package com.devindow.myfitnessroutines.routine;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.pose.Floor;
 import com.devindow.myfitnessroutines.pose.Pose;
 
 import java.io.Serializable;
@@ -81,15 +82,12 @@ public class Move implements Serializable {
 		bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
 
 		canvas = new Canvas(bitmap);
+		drawFrame(canvas);
 		canvas.translate(bitmapSize/2, bitmapSize-1); // Origin at floor center
 		canvas.scale(bitmapScale, bitmapScale); // 10x bitmapScale
 		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X
-		}
-
-		if (hasFloor) {
-			Floor.draw(canvas);
 		}
 
 		pose1.draw(canvas);
@@ -99,6 +97,16 @@ public class Move implements Serializable {
 		}
 
 		return bitmap;
+	}
+
+
+	// Private Methods
+	private void drawFrame(Canvas canvas) {
+		Paint p = new Paint();
+		p.setColor(Color.GRAY);
+		p.setStyle(Paint.Style.STROKE);
+		p.setStrokeWidth(20);
+		canvas.drawRect(0, 0, bitmapSize, bitmapSize, p);
 	}
 
 
