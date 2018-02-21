@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
+
+		// Keep Screen On
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		// If the Fragment is non-null, then it is currently being retained across a configuration change.
 		FragmentManager fragmentManager = getFragmentManager();
