@@ -8,109 +8,118 @@
     android:orientation="horizontal"
     tools:context="com.devindow.myfitnessroutines.PlayRoutineActivity">
 
-    <ImageView
-        android:id="@+id/imgPose"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:background="@android:drawable/alert_light_frame" />
-
-    <TextView
-        android:id="@+id/txtRoutineName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Routine"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/txtPoseName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Pose"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/txtTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="0:00"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPose" />
-
-    <TextView
-        android:id="@+id/txtNextStep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Next up: "
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNextStep">
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp">
 
-        <ImageButton
-            android:id="@+id/btnPrev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/imgPose"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="?attr/colorPrimary"
-            android:elevation="10dp"
-            android:onClick="onPrevClick"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+            android:adjustViewBounds="false"
+            android:background="@android:drawable/alert_light_frame"
+            android:cropToPadding="false" />
 
-        <ImageButton
-            android:id="@+id/btnPlay"
-            android:layout_width="128dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="?attr/colorPrimary"
-            android:elevation="10dp"
-            android:onClick="onPlayClick"
-            app:srcCompat="@android:drawable/ic_media_play" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="?attr/colorPrimary"
-            android:elevation="10dp"
-            android:onClick="onNextClick"
-            app:srcCompat="@android:drawable/ic_media_next" />
+            <TextView
+                android:id="@+id/txtRoutineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Routine"
+                android:textSize="36sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/txtPoseName" />
 
+            <TextView
+                android:id="@+id/txtPoseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Pose"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRoutineName"
+                app:layout_constraintBottom_toTopOf="@+id/txtTimer" />
+
+            <TextView
+                android:id="@+id/txtTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="0:00"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPoseName"
+                app:layout_constraintBottom_toTopOf="@+id/txtNextStep" />
+
+            <TextView
+                android:id="@+id/txtNextStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Next up: "
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTimer"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNextStep"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btnPrev"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:elevation="2dp"
+                    android:onClick="onPrevClick"
+                    app:srcCompat="@android:drawable/ic_media_previous" />
+
+                <ImageButton
+                    android:id="@+id/btnPlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:elevation="2dp"
+                    android:onClick="onPlayClick"
+                    app:srcCompat="@android:drawable/ic_media_play" />
+
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:elevation="2dp"
+                    android:onClick="onNextClick"
+                    app:srcCompat="@android:drawable/ic_media_next" />
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
