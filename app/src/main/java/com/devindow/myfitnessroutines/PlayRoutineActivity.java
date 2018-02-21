@@ -1,12 +1,11 @@
 package com.devindow.myfitnessroutines;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.AudioManager;
-import android.media.ToneGenerator;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,83 +13,75 @@ import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.routine.*;
 
-public class PlayRoutineActivity extends AppCompatActivity {
+public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
+
+	// Constants
+	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";
+
 
 	// Private Fields
-	private Routine routine;
-	private int stepNum = 1;
-	private Move move;
-	private int move1SecondsRemaining;
-	private int move2SecondsRemaining;
-	private int restSecondsRemaining;
-
-	private CountDownTimer countDownTimer;
-	private TextView txtTimer;
-
-
-	// Private Properties
-	private Step getCurrentStep() {
-		return routine.steps.get(stepNum - 1);
-	}
-
-	private Step getNextStep() {
-		if (stepNum >= routine.steps.size()) {
-			return null;
-		}
-		return routine.steps.get(stepNum);
-	}
+	private PlayRoutineTaskFragment taskFragment;
 
 
 	// Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_play_routine);
 
+		// If the Fragment is non-null, then it is currently being retained across a configuration change.
+		FragmentManager fragmentManager = getFragmentManager();
+		taskFragment = (PlayRoutineTaskFragment) fragmentManager.findFragmentByTag(PLAY_ROUTINE_TASK_FRAGMENT);
+		if (taskFragment == null) {
+			taskFragment = new PlayRoutineTaskFragment();
+			fragmentManager.beginTransaction().add(taskFragment, PLAY_ROUTINE_TASK_FRAGMENT).commit();
+		}
+
+		// Get Routine passed in by Intent
 		Intent intent = getIntent();
-		routine = (Routine)intent.getSerializableExtra("routine");
+		taskFragment.routine = (Routine)intent.getSerializableExtra("routine");
 
 		// txtRoutineName
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
-		txtRoutineName.setText(routine.name);
+		txtRoutineName.setText(taskFragment.routine.name);
 
-		// txtTimer
-		txtTimer = findViewById(R.id.txtTimer);
+		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
+		displayStep(false);
 
-		showStep();
+		// Update btnPlay in case it is running.
+		updatePlayButton();
+
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 
-	private void showStep() {
-		clearNextStep();
+	@Override
+	public void displayStep(boolean resetSecondsRemaining) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayStep()");
+		clearNextMoveName();
 
-		if (stepNum > routine.steps.size()) { // Finished
-			move = MoveLibrary.moves.get(MoveLibrary.DONE);
-			countDownTimer = null;
+		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
+			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
+			taskFragment.countDownTimer = null;
 		} else {
-			Step currentStep = getCurrentStep();
-			move = currentStep.move;
-			if (currentStep.move.twoSides) {
-				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
-			} else {
-				move1SecondsRemaining = currentStep.moveDuration;
-				move2SecondsRemaining = 0;
+			Step currentStep = taskFragment.getCurrentStep();
+			taskFragment.move = currentStep.move;
+			if (resetSecondsRemaining) {
+				taskFragment.resetSecondsRemaining();
 			}
-			restSecondsRemaining = currentStep.restDuration;
-			updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+			updateTimer();
 		}
 
-		showMove(move, false);
+		displayMove(taskFragment.move, false);
 
-		showNextMoveName();
+		displayNextMoveName();
 
-		// If timer was running then run.
-		if (countDownTimer != null) {
-			runMove1Timer();
-		}
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayStep()");
 	}
 
-	private void showMove(Move move, boolean secondSide) {
+	@Override
+	public void displayMove(Move move, boolean secondSide) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 		final TextView txtPoseName = findViewById(R.id.txtPoseName);
 		final ImageView imgPose = findViewById(R.id.imgPose);
 
@@ -109,148 +100,119 @@ public class PlayRoutineActivity extends AppCompatActivity {
 			}
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
+		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
 
-	private void clearNextStep() {
+	private void clearNextMoveName() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		txtNextStep.setText("");
-	}
-
-	private void showNextMoveName() {
-		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		Step nextStep = getNextStep();
-		if (nextStep == null) {
+		if (txtNextStep != null) {
 			txtNextStep.setText("");
-		} else {
-			txtNextStep.setText("Next up: " + nextStep.move.name);
 		}
 	}
 
-	private void updateTimerView(long secondsRemaining) {
-		txtTimer.setText(String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60));
+	private void displayNextMoveName() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayNextMoveName()");
+
+		final TextView txtNextStep = findViewById(R.id.txtNextStep);
+		if (txtNextStep != null) {
+			Step nextStep = taskFragment.getNextStep();
+			if (nextStep == null) {
+				txtNextStep.setText("");
+			} else {
+				txtNextStep.setText("Next up: " + nextStep.move.name);
+			}
+		}
+	}
+
+	@Override
+	public void updateTimer() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
+
+		TextView txtTimer = findViewById(R.id.txtTimer);
+		if (txtTimer != null) {
+			long secondsRemaining = taskFragment.move1SecondsRemaining + taskFragment.move2SecondsRemaining;
+			if (secondsRemaining == 0) {
+				secondsRemaining = taskFragment.restSecondsRemaining;
+			}
+			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
+			Log.d(Debug.TAG_TIME, timeRemaining);
+			txtTimer.setText(timeRemaining);
+		}
+	}
+
+	private void updatePlayButton() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updatePlayButton()");
+
+		ImageButton btnPlay = findViewById(R.id.btnPlay);
+
+		if (taskFragment.countDownTimer == null) {
+			// No timer, so it is paused, so set btnPlay image to Play
+			btnPlay.setImageResource(android.R.drawable.ic_media_play);
+		} else {
+			// Timer is running, so it is playing, so set btnPlay image to Pause
+			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+		}
 	}
 
 	public void onPlayClick(View v) {
-		ImageButton btnPlay = findViewById(R.id.btnPlay);
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
 
-		// Pause Routine
-		if (countDownTimer != null) {
-			countDownTimer.cancel();
-			countDownTimer = null;
-
-			// Set btnPlay image to Play
-			btnPlay.setImageResource(android.R.drawable.ic_media_play);
-		}
-
-		// Play Routine
-		else {
-			if (stepNum > routine.steps.size()) {
-				stepNum = 1; // Restart ended Routine
-				showStep();
+		if (taskFragment.countDownTimer != null) {
+			// Pause Routine
+			taskFragment.countDownTimer.cancel();
+			taskFragment.countDownTimer = null;
+		} else {
+			// Play Routine
+			if (taskFragment.stepNum > taskFragment.routine.steps.size()) {
+				taskFragment.stepNum = 1; // Restart ended Routine
+				displayStep(true);
 			}
 
-			// Set btnPlay image to Pause
-			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
-
-			if (move1SecondsRemaining > 0) {
-				runMove1Timer();
-			} else if (move2SecondsRemaining > 0) {
-				runMove2Timer();
+			if (taskFragment.move1SecondsRemaining > 0) {
+				taskFragment.runMove1Timer();
+			} else if (taskFragment.move2SecondsRemaining > 0) {
+				taskFragment.runMove2Timer();
 			} else {
-				runRestTimer();
+				taskFragment.runRestTimer();
 			}
 		}
 
-	}
-
-	private void runMove1Timer() {
-		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				move1SecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-
-				if (move2SecondsRemaining > 0) {
-					showMove(move, true);
-					runMove2Timer();
-				} else if (restSecondsRemaining > 0) {
-					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
-					runRestTimer();
-				} else {
-					stepNum++;
-					showStep();
-				}
-			}
-		}.start();
-	}
-
-	private void runMove2Timer() {
-		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				move2SecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(move2SecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-
-				if (restSecondsRemaining > 0) {
-					showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
-					runRestTimer();
-				} else {
-					stepNum++;
-					showStep();
-				}
-			}
-		}.start();
-	}
-
-	private void runRestTimer() {
-		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
-			@Override
-			public void onTick(long millisRemaining) {
-				restSecondsRemaining = (int)(millisRemaining / 1000);
-				updateTimerView(restSecondsRemaining);
-			}
-
-			@Override
-			public void onFinish() {
-				playChime();
-				stepNum++;
-				showStep();
-			}
-		}.start();
-	}
-
-	private void playChime() {
-		ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
-		toneGenerator.startTone(AudioManager.STREAM_NOTIFICATION,100);
+		updatePlayButton();
 	}
 
 	public void onNextClick(View v) {
-		if (stepNum < routine.steps.size()) {
-			if (countDownTimer != null) {
-				countDownTimer.cancel();
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
+
+		if (taskFragment.stepNum < taskFragment.routine.steps.size()) {
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.countDownTimer.cancel();
 			}
-			stepNum++;
-			showStep();
+			taskFragment.stepNum++;
+			displayStep(true);
+
+			// If timer was running then run.
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.runMove1Timer();
+			}
 		}
 	}
 
 	public void onPrevClick(View v) {
-		if (stepNum > 1) {
-			if (countDownTimer != null) {
-				countDownTimer.cancel();
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
+
+		if (taskFragment.stepNum > 1) {
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.countDownTimer.cancel();
 			}
-			stepNum--;
-			showStep();
+			taskFragment.stepNum--;
+			displayStep(true);
+
+			// If timer was running then run.
+			if (taskFragment.countDownTimer != null) {
+				taskFragment.runMove1Timer();
+			}
 		}
 	}
+
 }

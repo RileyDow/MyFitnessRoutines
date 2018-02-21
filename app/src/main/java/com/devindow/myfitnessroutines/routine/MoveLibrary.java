@@ -37,6 +37,7 @@ public class MoveLibrary {
 	public static final String ROMAN_LUNGES = "Roman Lunges";
 	public static final String HIP_STRETCH = "Hip Stretch";
 	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
+	public static final String HIP_HAMSTRING = "Hip/Hamstring Stretch";
 	public static final String LEG_SWINGS = "Leg Swings";
 	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
 	public static final String FOAM_ROLLER = "Foam Roller";
@@ -374,9 +375,10 @@ public class MoveLibrary {
 		moves.put(TWIST_PIVOT, new Move(TWIST_PIVOT, Category.STRETCH));
 		moves.put(SAFETY_JACKS, new Move(SAFETY_JACKS, Category.CARDIO));
 		moves.put(ROMAN_LUNGES, new Move(ROMAN_LUNGES, Category.CARDIO));
-		moves.put(HIP_STRETCH, new Move(HIP_STRETCH, Category.STRETCH));
-		moves.put(HAMSTRING_STRETCH, new Move(HAMSTRING_STRETCH, Category.STRETCH));
-		moves.put(LEG_SWINGS, new Move(LEG_SWINGS, Category.STRETCH));
+		moves.put(HIP_STRETCH, new Move(HIP_STRETCH, Category.STRETCH, true));
+		moves.put(HAMSTRING_STRETCH, new Move(HAMSTRING_STRETCH, Category.STRETCH, true));
+		moves.put(HIP_HAMSTRING, new Move(HIP_HAMSTRING, Category.STRETCH, true));
+		moves.put(LEG_SWINGS, new Move(LEG_SWINGS, Category.STRETCH, true));
 
 		moves.put(WALKING_BACKWARD_LUNGES, new Move(WALKING_BACKWARD_LUNGES, Category.CARDIO));
 		moves.put(FOAM_ROLLER, new Move(FOAM_ROLLER, Category.STRETCH));

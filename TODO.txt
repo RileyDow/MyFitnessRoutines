@@ -1,32 +1,24 @@
 TODO
 ----
-* Pose implements Drawable so we can have list of Drawable for Poses or Patterns
-  - multiple Poses requires an offset for each
+- UI
+  * Landscape Layout
+
+* Prevent Sleep
 
 - Routines
-  - Warmup/Thermoregulation
-    - Rotate on All Fours 5 * 2
-    - Push-Ups 20
-    - Twist & Pivot 20
-    - Safety Jacks 20
-    - Roman Lunges (Frontal) 20
-    - Down Dog 20
-    - Hip * 2
-    - Hammy * 2
-    - Leg Swings * 2
-  - Soccer Pre-Activation
-    - Walking-Backwards Lunges
-    - Foam Roller 30 * 2
-    - Thoracic Roll-outs (top view Frontal) 10 * 2
-    - Inch Worms 20
-    - Single-Leg Bridge 15 * 2
-    - Side-Lying Abduction
-    - Squats w/ Band 30
-    - Lateral Walk w/ Band
-    - Standing Hurdles w/ Band
-    - 180° Jumps
-    - 90° Jumps to 1 Foot Landing
+  - Soccer Touches
   - Sun Salutation
+
+- Play Routine activity
+  + Disable/Hide Next/Prev button
+  + Show Duration of full Routine
+  + Should we just pass Routine.name and have Routines be a Hashtable?
+
+* Pose implements Drawable so we can have list of Drawable for Poses or Patterns
+  - multiple Poses requires an offset for each
+  - Extents
+    - use Rectangle2D.Float?
+    - body parts calculate Extents in constructor, Pose does a Union.
 
 - Poses
   * Calf Stretches from Down Dog
@@ -35,33 +27,16 @@ TODO
   + Props
     - Strap/Band
     - Block
+    - Ball
   - ProfilePose use Z to show depth in 3D?
-
-- Pattern implements Drawable
-  -
-
-- Play Routine activity
-  + Disable/Hide Next/Prev button
-  + Show Duration of full Routine
-  + Should we just pass Routine.name and have Routines be a Hashtable?
 
 + Chime
   - Playable audio
 - Notifications
 
-- UI
-  * Landscape Layout
-  * App Icon
-
-* Prevent Sleep
-
 - Startup
   + MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
     - Derive a class from Application that overrides onCreate() calling super.onCreate().
-
-- Extents
-  - use Rectangle2D.Float?
-  - body parts calculate Extents in constructor, Pose does a Union.
 
 - Text-to-Speech
   - Bluetooth Headset button pauses?

@@ -31,10 +31,11 @@ public class SampleRoutines {
 		defaultRoutines.add(get15MinMeditation());
 
 		if (Debug.on) {
-			defaultRoutines.add(getTestSample());
+			defaultRoutines.add(getRileyRoutine());
+			defaultRoutines.add(getSoccerTouchesRoutine());
+			defaultRoutines.add(getTestPoses());
+			defaultRoutines.add(getTestShortRoutine());
 /*
-			defaultRoutines.add(getRileySample());
-
 			defaultRoutines.add(getSunSalutation());
 
 			defaultRoutines.add(getStretchRoutine());
@@ -50,20 +51,29 @@ public class SampleRoutines {
 
 
 	// Private Methods
-	private static Routine getTestSample() {
-		Routine routine = new Routine("Test Routine");
+	private static Routine getTestPoses() {
+		Routine routine = new Routine("Test Poses");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 6, 2));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 3, 2));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DONE), 3, 0));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DONE), 3));
 
 		return routine;
 	}
 
-	private static Routine getRileySample() {
+	private static Routine getTestShortRoutine() {
+		Routine routine = new Routine("Short Routine");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 10));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5));
+
+		return routine;
+	}
+
+	private static Routine getRileyRoutine() {
 		Routine routine = new Routine("Riley Routine");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 20, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30, 0));
 
@@ -91,13 +101,13 @@ public class SampleRoutines {
 	private static Routine getWarmupRoutine() {
 		Routine routine = new Routine("Warmup");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWIST_PIVOT), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROMAN_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HAMSTRING_STRETCH), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_HAMSTRING), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_SWINGS), 30));
 
 		return routine;
@@ -183,6 +193,16 @@ public class SampleRoutines {
 		Routine routine = new Routine("Meditation");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 15*60));
+
+		return routine;
+	}
+
+	private static Routine getSoccerTouchesRoutine() {
+		Routine routine = new Routine("Soccer Touches");
+
+		routine.steps.add(new Step(new Move("Triangle", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new Move("Ziko Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new Move("Cruyff Turn", Category.SOCCER, true), 15));
 
 		return routine;
 	}
