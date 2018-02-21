@@ -1,6 +1,7 @@
 TODO
 ----
 ** Exit Activity still has timers going
+** Done should change btnPlay to Play image
 
 - Routines
   - Soccer Touches
