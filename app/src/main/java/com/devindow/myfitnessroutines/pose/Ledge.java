@@ -26,11 +26,11 @@ public class Ledge extends Prop {
 	// Overrides
 	@Override
 	public void draw(Canvas canvas) {
-		Paint p = new Paint();
-		p.setStrokeWidth(1);
+		Paint paint = new Paint();
+		paint.setStrokeWidth(1);
 
-		canvas.drawLine(x1, 0, x1, height, p);
-		canvas.drawLine(x1, height, x2, height, p);
+		canvas.drawLine(x1, 0, x1, height, paint);
+		canvas.drawLine(x1, height, x2, height, paint);
 	}
 
 }

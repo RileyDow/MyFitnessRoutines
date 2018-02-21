@@ -102,11 +102,11 @@ public class Move implements Serializable {
 
 	// Private Methods
 	private void drawFrame(Canvas canvas) {
-		Paint p = new Paint();
-		p.setColor(Color.GRAY);
-		p.setStyle(Paint.Style.STROKE);
-		p.setStrokeWidth(20);
-		canvas.drawRect(0, 0, bitmapSize, bitmapSize, p);
+		Paint paint = new Paint();
+		paint.setColor(Color.GRAY);
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeWidth(20);
+		canvas.drawRect(0, 0, bitmapSize, bitmapSize, paint);
 	}
 
 

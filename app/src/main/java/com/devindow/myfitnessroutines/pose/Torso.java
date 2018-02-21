@@ -116,19 +116,19 @@ public class Torso implements Serializable {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		Paint p = new Paint();
-		p.setStrokeCap(Paint.Cap.ROUND);
-		p.setStrokeJoin(Paint.Join.ROUND);
-		Debug.setPenColor(p);
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		Debug.setPenColor(paint);
 
 		// Draw Head
-		p.setStrokeWidth(headSize);
-		canvas.drawPoint(headX, headY, p);
+		paint.setStrokeWidth(headSize);
+		canvas.drawPoint(headX, headY, paint);
 
 		// Draw Torso
-		Debug.setPenColor(p);
-		p.setStrokeWidth(thickness);
-		canvas.drawLine(collarX, collarY, waistX, waistY, p);
+		Debug.setPenColor(paint);
+		paint.setStrokeWidth(thickness);
+		canvas.drawLine(collarX, collarY, waistX, waistY, paint);
 	}
 
 

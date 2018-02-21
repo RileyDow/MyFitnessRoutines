@@ -66,18 +66,18 @@ public class Leg implements Serializable {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		Paint p = new Paint();
-		p.setStrokeCap(Paint.Cap.ROUND);
-		p.setStrokeJoin(Paint.Join.ROUND);
-		p.setStrokeWidth(thickness);
-		Debug.setPenColor(p);
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setStrokeWidth(thickness);
+		Debug.setPenColor(paint);
 
 		if (kneeX != null && kneeY != null) {
-			canvas.drawLine(hipX, hipY, kneeX, kneeY, p);
-			canvas.drawLine(kneeX, kneeY, footX, footY, p);
+			canvas.drawLine(hipX, hipY, kneeX, kneeY, paint);
+			canvas.drawLine(kneeX, kneeY, footX, footY, paint);
 		}
 		else {
-			canvas.drawLine(hipX, hipY, footX, footY, p);
+			canvas.drawLine(hipX, hipY, footX, footY, paint);
 		}
 	}
 

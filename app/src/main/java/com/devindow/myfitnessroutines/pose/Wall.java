@@ -24,10 +24,10 @@ public class Wall extends Prop {
 	// Overrides
 	@Override
 	public void draw(Canvas canvas) {
-		Paint p = new Paint();
-		p.setStrokeWidth(1);
+		Paint paint = new Paint();
+		paint.setStrokeWidth(1);
 
-		canvas.drawLine(x, 0, x, Move.bitmapInches, p);
+		canvas.drawLine(x, 0, x, Move.bitmapInches, paint);
 	}
 
 }
