@@ -49,6 +49,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
 		displayStep(false);
 
+		// Update btnPlay in case it is running.
+		updatePlayButton();
+
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 
@@ -138,29 +141,33 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
-	public void onPlayClick(View v) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
+	private void updatePlayButton() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updatePlayButton()");
 
 		ImageButton btnPlay = findViewById(R.id.btnPlay);
 
-		// Pause Routine
+		if (taskFragment.countDownTimer == null) {
+			// No timer, so it is paused, so set btnPlay image to Play
+			btnPlay.setImageResource(android.R.drawable.ic_media_play);
+		} else {
+			// Timer is running, so it is playing, so set btnPlay image to Pause
+			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+		}
+	}
+
+	public void onPlayClick(View v) {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
+
 		if (taskFragment.countDownTimer != null) {
+			// Pause Routine
 			taskFragment.countDownTimer.cancel();
 			taskFragment.countDownTimer = null;
-
-			// Set btnPlay image to Play
-			btnPlay.setImageResource(android.R.drawable.ic_media_play);
-		}
-
-		// Play Routine
-		else {
+		} else {
+			// Play Routine
 			if (taskFragment.stepNum > taskFragment.routine.steps.size()) {
 				taskFragment.stepNum = 1; // Restart ended Routine
 				displayStep(true);
 			}
-
-			// Set btnPlay image to Pause
-			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
 
 			if (taskFragment.move1SecondsRemaining > 0) {
 				taskFragment.runMove1Timer();
@@ -171,6 +178,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			}
 		}
 
+		updatePlayButton();
 	}
 
 	public void onNextClick(View v) {
