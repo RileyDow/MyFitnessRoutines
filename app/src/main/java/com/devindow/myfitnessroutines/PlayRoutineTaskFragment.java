@@ -22,9 +22,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
 	interface PlayRoutineCallbacks {
-		void showStep(boolean startTimer);
-		void showMove(Move move, boolean secondSide);
-		void updateTimerView(long secondsRemaining);
+		void displayStep(boolean startTimer);
+		void displayMove(Move move, boolean secondSide);
+		void updateTimer();
 	}
 
 
@@ -50,6 +50,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		return routine.steps.get(stepNum);
 	}
 
+
 	// Private Fields
 	private PlayRoutineCallbacks playRoutineActivity;
 
@@ -62,6 +63,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// Retain this fragment across configuration changes.
 		setRetainInstance(true);
+
+		// Need to set SecondsRemaining when showing first Step.
+		resetSecondsRemaining();
+		playRoutineActivity.updateTimer();
+
 		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
 
@@ -72,7 +78,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// set playRoutineActivity to Activity
 		playRoutineActivity = (PlayRoutineCallbacks)activity;
-		setSecondsRemaining();
+
+		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
+		playRoutineActivity.displayStep(false);
+
 		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
 	}
 
@@ -83,22 +92,29 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// set playRoutineActivity to NULL
 		playRoutineActivity = null;
+
 		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
 	}
 
 
 	// Public Methods
-	public void setSecondsRemaining() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.setSecondsRemaining()");
+	public void resetSecondsRemaining() {
+		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resetSecondsRemaining()");
+
 		Step currentStep = getCurrentStep();
-		if (move.twoSides) {
-			move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+		if (currentStep == null) {
+			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
-			move1SecondsRemaining = currentStep.moveDuration;
-			move2SecondsRemaining = 0;
+			if (move.twoSides) {
+				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+			} else {
+				move1SecondsRemaining = currentStep.moveDuration;
+				move2SecondsRemaining = 0;
+			}
+			restSecondsRemaining = currentStep.restDuration;
 		}
-		restSecondsRemaining = currentStep.restDuration;
-		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.setSecondsRemaining()");
+
+		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");
 	}
 
 	public void runMove1Timer() {
@@ -108,7 +124,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				move1SecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimerView(move1SecondsRemaining + move2SecondsRemaining);
+					playRoutineActivity.updateTimer();
 				}
 			}
 
@@ -118,18 +134,18 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 				if (move2SecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
-						playRoutineActivity.showMove(move, true);
+						playRoutineActivity.displayMove(move, true);
 					}
 					runMove2Timer();
 				} else if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
-						playRoutineActivity.showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();
 				} else {
 					stepNum++;
 					if (playRoutineActivity != null) {
-						playRoutineActivity.showStep(true);
+						playRoutineActivity.displayStep(true);
 
 						// If timer was running then run.
 						if (countDownTimer != null) {
@@ -148,7 +164,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				move2SecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimerView(move2SecondsRemaining);
+					playRoutineActivity.updateTimer();
 				}
 			}
 
@@ -158,13 +174,13 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 				if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
-						playRoutineActivity.showMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();
 				} else {
 					stepNum++;
 					if (playRoutineActivity != null) {
-						playRoutineActivity.showStep(true);
+						playRoutineActivity.displayStep(true);
 
 						// If timer was running then run.
 						if (countDownTimer != null) {
@@ -183,7 +199,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				restSecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimerView(restSecondsRemaining);
+					playRoutineActivity.updateTimer();
 				}
 			}
 
@@ -192,7 +208,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 				playChime();
 				stepNum++;
 				if (playRoutineActivity != null) {
-					playRoutineActivity.showStep(true);
+					playRoutineActivity.displayStep(true);
 
 					// If timer was running then run.
 					if (countDownTimer != null) {
