@@ -1,5 +1,7 @@
 TODO
 ----
+** Exit Activity still has timers going
+
 - Routines
   - Soccer Touches
   - Sun Salutation
