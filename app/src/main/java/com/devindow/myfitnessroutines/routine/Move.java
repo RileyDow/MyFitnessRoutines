@@ -3,6 +3,7 @@ package com.devindow.myfitnessroutines.routine;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.devindow.myfitnessroutines.pose.Floor;
 import com.devindow.myfitnessroutines.pose.Pose;
 
 import java.io.Serializable;
@@ -15,6 +16,8 @@ public class Move implements Serializable {
 
 	// Constants
 	public static final int bitmapSize = 900;
+	public static final int bitmapScale = 10;
+	public static final int bitmapInches = bitmapSize / bitmapScale;
 
 
 	// Public Fields
@@ -24,6 +27,7 @@ public class Move implements Serializable {
 	public boolean twoSides;
 	public Pose pose1;
 	public Pose pose2;
+	public boolean hasFloor = true;
 
 
 	// Protected Fields
@@ -77,10 +81,15 @@ public class Move implements Serializable {
 		bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
 
 		canvas = new Canvas(bitmap);
-		canvas.translate(bitmapSize/2, bitmapSize-1); // Origin a floor center
-		canvas.scale(10, -10); // up is positive Y, 10x scale
+		canvas.translate(bitmapSize/2, bitmapSize-1); // Origin at floor center
+		canvas.scale(bitmapScale, bitmapScale); // 10x bitmapScale
+		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X
+		}
+
+		if (hasFloor) {
+			Floor.draw(canvas);
 		}
 
 		pose1.draw(canvas);
