@@ -60,7 +60,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getTestShortRoutine() {
-		Routine routine = new Routine("Short Routine with long, long, long, long name", "Short Routine for testing. Long, long, long, long, long, long, long, long, long, long, long, long description.");
+		Routine routine = new Routine("Short Routine with long, long, long, long, long, long, long name", "Short Routine for testing. Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 10));
