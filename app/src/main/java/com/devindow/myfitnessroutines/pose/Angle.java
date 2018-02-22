@@ -1,10 +1,12 @@
 package com.devindow.myfitnessroutines.pose;
 
+import java.io.Serializable;
+
 /**
  * Created by Devin on 2/16/2018.
  */
 
-public class Angle {
+public class Angle implements Serializable {
 
 	// Constants
 	public static final Angle N = new Angle(90);
@@ -18,9 +20,15 @@ public class Angle {
 
 
 	// Public Properties
-	public int getDegrees() { return (int)Math.round(Math.toDegrees(radians)); }
-	public float getSin() { return (float)Math.sin(radians); }
-	public float getCos() { return (float)Math.cos(radians); }
+	public int getDegrees() {
+		return (int)Math.round(Math.toDegrees(radians));
+	}
+	public float getSin() {
+		return (float)Math.sin(radians);
+	}
+	public float getCos() {
+		return (float)Math.cos(radians);
+	}
 
 
 	// Constructors

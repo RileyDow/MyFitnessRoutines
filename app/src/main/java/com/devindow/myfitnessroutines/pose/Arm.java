@@ -19,62 +19,76 @@ public class Arm implements Serializable {
 
 
 	// Public Fields
-	public float shoulderX;
-	public float shoulderY;
+	public Angle proximalAngle;
+	public float proximalLength;
 
-	public float handX;
-	public float handY;
+	public Angle distalAngle;
+	public float distalLength;
 
-	public Float elbowX;
-	public Float elbowY;
+
+	// Public Properties
+	public float getElbowX(float shoulderX) {
+		return shoulderX + Math.round(proximalLength * proximalAngle.getCos());
+	}
+
+	public float getElbowY(float shoulderY) {
+		return shoulderY + Math.round(proximalLength * proximalAngle.getSin());
+	}
+
+	public float getHandX(float shoulderX) {
+		return getElbowX(shoulderX) + Math.round(distalLength * distalAngle.getCos());
+	}
+
+	public float getHandY(float shoulderY) {
+		return getElbowY(shoulderY) + Math.round(distalLength * distalAngle.getSin());
+	}
 
 
 	// Constructors
-	public Arm(float shoulderX, float shoulderY) { this(shoulderX, shoulderY, Angle.S); }
-
-	public Arm(float shoulderX, float shoulderY, Angle angle) { this(shoulderX, shoulderY, angle, segmentLength*2); }
-
-	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
-		this.shoulderX = shoulderX;
-		this.shoulderY = shoulderY;
-
-		handX = shoulderX + Math.round(length * angle.getCos());
-		handY = shoulderY + Math.round(length * angle.getSin());
+	public Arm(Angle angle) {
+		this(angle, segmentLength, angle, segmentLength);
 	}
 
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle) { this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, segmentLength); }
+	public Arm(Angle angle, float length) {
+		this(angle, length/2, angle, length/2);
+	}
 
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle) { this(shoulderX, shoulderY, proximalAngle, proximalLength, distalAngle, segmentLength); }
+	public Arm(Angle proximalAngle, Angle distalAngle) {
+		this(proximalAngle, segmentLength, distalAngle, segmentLength);
+	}
 
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle, float distalLength) { this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, distalLength); }
+	public Arm(Angle proximalAngle, float proximalLength, Angle distalAngle) {
+		this(proximalAngle, proximalLength, distalAngle, segmentLength);
+	}
 
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
-		this.shoulderX = shoulderX;
-		this.shoulderY = shoulderY;
+	public Arm(Angle proximalAngle, Angle distalAngle, float distalLength) {
+		this(proximalAngle, segmentLength, distalAngle, distalLength);
+	}
 
-		elbowX = shoulderX + Math.round(proximalLength * proximalAngle.getCos());
-		elbowY = shoulderY + Math.round(proximalLength * proximalAngle.getSin());
+	public Arm(Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
+		this.proximalAngle = proximalAngle;
+		this.proximalLength = proximalLength;
 
-		handX = elbowX + Math.round(distalLength * distalAngle.getCos());
-		handY = elbowY + Math.round(distalLength * distalAngle.getSin());
+		this.distalAngle = distalAngle;
+		this.distalLength = distalLength;
 	}
 
 
 	// Public Methods
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas, float shoulderX, float shoulderY) {
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeWidth(thickness);
 		Debug.setPenColor(paint);
 
-		if (elbowX != null && elbowY != null) {
-			canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, paint);
-			canvas.drawLine(elbowX, elbowY, handX, handY, paint);
-		}
-		else {
-			canvas.drawLine(shoulderX, shoulderY, handX, handY, paint);
-		}
+		float elbowX = getElbowX(shoulderX);
+		float elbowY = getElbowY(shoulderY);
+		canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, paint);
+
+		float handX = getHandX(shoulderX);
+		float handY = getHandY(shoulderY);
+		canvas.drawLine(elbowX, elbowY, handX, handY, paint);
 	}
 
 

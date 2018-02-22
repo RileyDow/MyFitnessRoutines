@@ -73,8 +73,8 @@ public class MoveLibrary {
 
 			Angle armProximalAngle = new Angle(30);
 			Angle armDistalAngle = new Angle(80);
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, armDistalAngle);
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), armDistalAngle.mirror());
+			pose.lArm = new Arm(armProximalAngle, armDistalAngle);
+			pose.rArm = new Arm(armProximalAngle.mirror(), armDistalAngle.mirror());
 
 			moves.put(move.name, move);
 		}
@@ -93,8 +93,8 @@ public class MoveLibrary {
 
 			Angle armProximalAngle = new Angle(30);
 			Angle armDistalAngle = new Angle(60);
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, armProximalAngle, armDistalAngle);
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armProximalAngle.mirror(), armDistalAngle.mirror());
+			pose.lArm = new Arm(armProximalAngle, armDistalAngle);
+			pose.rArm = new Arm(armProximalAngle.mirror(), armDistalAngle.mirror());
 
 			moves.put(move.name, move);
 		}
@@ -111,8 +111,8 @@ public class MoveLibrary {
 
 			int proximalAngle = 34;
 			int distalAngle = 14;
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
+			pose.rArm = new Arm(Angle.N.add(proximalAngle), Angle.S.add(-distalAngle));
+			pose.lArm = new Arm(Angle.S.add(-proximalAngle), Angle.N.add(distalAngle));
 
 			moves.put(move.name, move);
 		}
@@ -127,7 +127,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S);
+			pose.rArm = new Arm(Angle.S);
 
 			moves.put(move.name, move);
 		}
@@ -144,7 +144,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, legAngle);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, armAngle);
+			pose.rArm = new Arm(armAngle);
 
 			moves.put(move.name, move);
 		}
@@ -173,7 +173,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.E);
+			pose.rArm = new Arm(Angle.E);
 
 			moves.put(move.name, move);
 		}
@@ -187,10 +187,10 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.E, Angle.S);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, new Angle(-140), Angle.S);
+			pose.rArm = new Arm(new Angle(-140), Angle.S);
 
 			final float chairX = pose.torso.waistX - Torso.thickness/2 - 2;
-			final float chairSize = pose.rArm.handY - Arm.thickness/2;
+			final float chairSize = pose.rArm.getHandY(pose.torso.rShoulderY) - Arm.thickness/2;
 			pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
 
 			moves.put(move.name, move);
@@ -260,7 +260,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite());
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(15));
+			pose.rArm = new Arm(Angle.S.add(15));
 
 			moves.put(move.name, move);
 		}
@@ -279,7 +279,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite());
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(15), Angle.E);
+			pose.rArm = new Arm(Angle.S.add(15), Angle.E);
 
 			moves.put(move.name, move);
 		}
@@ -298,8 +298,8 @@ public class MoveLibrary {
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, angle.opposite());
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite().add(5));
 
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(15));
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(15));
+			pose.lArm = new Arm(Angle.S.add(15));
+			pose.rArm = new Arm(Angle.N.add(15));
 
 			moves.put(move.name, move);
 		}
@@ -318,8 +318,8 @@ public class MoveLibrary {
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY, angle.opposite());
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, angle.opposite().add(5));
 
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(15), Angle.W,Arm.segmentLength/3);
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, angle.opposite().add(-1));
+			pose.lArm = new Arm(Angle.S.add(15), Angle.W,Arm.segmentLength/3);
+			pose.rArm = new Arm(angle.opposite().add(-1));
 
 			moves.put(move.name, move);
 		}
@@ -334,7 +334,7 @@ public class MoveLibrary {
 
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY, Angle.N, Angle.E);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.N.add(-30));
+			pose.rArm = new Arm(Angle.N.add(-30));
 
 			moves.put(move.name, move);
 		}
@@ -349,8 +349,8 @@ public class MoveLibrary {
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY - Torso.thickness / 2, Angle.W.add(-20), Angle.E);
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY - Torso.thickness / 2, Angle.E.add(20), Angle.W);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength * .9f);
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength * .9f);
+			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength * .9f);
+			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength * .9f);
 
 			moves.put(move.name, move);
 		}
@@ -365,8 +365,8 @@ public class MoveLibrary {
 			pose.rLeg = new Leg(pose.torso.rHipX, pose.torso.rHipY - Torso.thickness/2, Angle.W.add(-20), Angle.E);
 			pose.lLeg = new Leg(pose.torso.lHipX, pose.torso.lHipY - Torso.thickness/2, Angle.E.add(20), Angle.W);
 
-			pose.rArm = new Arm(pose.torso.rShoulderX, pose.torso.rShoulderY, Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength*.9f);
-			pose.lArm = new Arm(pose.torso.lShoulderX, pose.torso.lShoulderY, Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength*.9f);
+			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength*.9f);
+			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength*.9f);
 
 			moves.put(move.name, move);
 		}
