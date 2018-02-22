@@ -2,9 +2,6 @@ TODO
 ----
 
 * Pose.Offset
-  - Extents
-    - use Rectangle2D.Float?
-    - body parts calculate Extents in constructor, Pose does a Union.
 
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 * Draw Nose in Profile?
