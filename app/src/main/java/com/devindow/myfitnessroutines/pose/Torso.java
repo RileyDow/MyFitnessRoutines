@@ -42,6 +42,16 @@ public class Torso implements Serializable {
 	public float lHipY;
 
 
+	// Public Properties
+	public Extents getExtents() {
+		return new Extents(
+				Math.min(0 - thickness/2, headX - headSize/2),
+				Math.max(waistY + thickness/2, headY + headSize/2),
+				Math.max(0 + thickness/2, headX + headSize/2),
+				Math.min(waistY - thickness/2, headY - headSize/2));
+	}
+
+
 	// Constructors
 	public Torso() {
 		this(false);
