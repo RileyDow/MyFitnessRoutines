@@ -62,6 +62,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	@Override
 	public void displayStep(boolean resetSecondsRemaining) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayStep()");
+
 		clearNextMoveName();
 
 		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
@@ -71,6 +72,14 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		} else {
 			Step currentStep = taskFragment.getCurrentStep();
 			taskFragment.move = currentStep.move;
+
+			final TextView txtStepInstuctions = findViewById(R.id.txtStepInstuctions);
+			if (!currentStep.instructions.isEmpty()) {
+				txtStepInstuctions.setText(currentStep.instructions);
+			} else {
+				txtStepInstuctions.setText(currentStep.move.description);
+			}
+
 			if (resetSecondsRemaining) {
 				taskFragment.resetSecondsRemaining();
 			}
@@ -88,12 +97,11 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void displayMove(Move move, boolean secondSide) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 		final TextView txtMoveName = findViewById(R.id.txtMoveName);
-		final TextView txtMoveDescription = findViewById(R.id.txtMoveDescription);
 		final ImageView imgPose = findViewById(R.id.imgMove);
 
 		if (move == null) {
 			txtMoveName.setText("NULL");
-			imgPose.setImageBitmap(Bitmap.createBitmap(move.bitmapSize, move.bitmapSize, Bitmap.Config.ARGB_8888));
+			imgPose.setImageBitmap(Bitmap.createBitmap(move.BITMAP_PIXELS, move.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
@@ -104,7 +112,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtMoveName.setText(move.name);
 			}
-			txtMoveDescription.setText(move.description);
 			imgPose.setImageBitmap(move.getBitmap(secondSide));
 		}
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");

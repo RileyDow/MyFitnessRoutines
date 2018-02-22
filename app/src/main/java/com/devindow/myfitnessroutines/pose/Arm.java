@@ -11,90 +11,45 @@ import java.io.Serializable;
  * Created by Devin on 2/16/2018.
  */
 
-public class Arm implements Serializable {
+public class Arm extends Appendage implements Serializable {
 
 	// Constants
 	public static final float thickness = 4;
 	public static final float segmentLength = 12;
 
 
-	// Public Fields
-	public float shoulderX;
-	public float shoulderY;
-
-	public float handX;
-	public float handY;
-
-	public Float elbowX;
-	public Float elbowY;
+	// Public Properties
+	public float getThickness() {
+		return thickness;
+	}
+	public float getSegmentLength() {
+		return segmentLength;
+	}
 
 
 	// Constructors
-	public Arm(float shoulderX, float shoulderY) { this(shoulderX, shoulderY, Angle.S); }
-
-	public Arm(float shoulderX, float shoulderY, Angle angle) { this(shoulderX, shoulderY, angle, segmentLength*2); }
-
-	public Arm(float shoulderX, float shoulderY, Angle angle, float length) {
-		this.shoulderX = shoulderX;
-		this.shoulderY = shoulderY;
-
-		handX = shoulderX + Math.round(length * angle.getCos());
-		handY = shoulderY + Math.round(length * angle.getSin());
+	public Arm(Angle angle) {
+		super(angle);
 	}
 
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle) { this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, segmentLength); }
-
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle) { this(shoulderX, shoulderY, proximalAngle, proximalLength, distalAngle, segmentLength); }
-
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, Angle distalAngle, float distalLength) { this(shoulderX, shoulderY, proximalAngle, segmentLength, distalAngle, distalLength); }
-
-	public Arm(float shoulderX, float shoulderY, Angle proximalAngle, float proximalLength, Angle distalAngle, float distalLength) {
-		this.shoulderX = shoulderX;
-		this.shoulderY = shoulderY;
-
-		elbowX = shoulderX + Math.round(proximalLength * proximalAngle.getCos());
-		elbowY = shoulderY + Math.round(proximalLength * proximalAngle.getSin());
-
-		handX = elbowX + Math.round(distalLength * distalAngle.getCos());
-		handY = elbowY + Math.round(distalLength * distalAngle.getSin());
+	public Arm(Angle angle, float lengthRatio) {
+		super(angle, lengthRatio);
 	}
 
-
-	// Public Methods
-	public void draw(Canvas canvas) {
-		Paint paint = new Paint();
-		paint.setStrokeCap(Paint.Cap.ROUND);
-		paint.setStrokeJoin(Paint.Join.ROUND);
-		paint.setStrokeWidth(thickness);
-		Debug.setPenColor(paint);
-
-		if (elbowX != null && elbowY != null) {
-			canvas.drawLine(shoulderX, shoulderY, elbowX, elbowY, paint);
-			canvas.drawLine(elbowX, elbowY, handX, handY, paint);
-		}
-		else {
-			canvas.drawLine(shoulderX, shoulderY, handX, handY, paint);
-		}
+	public Arm(Angle proximalAngle, Angle distalAngle) {
+		super(proximalAngle, distalAngle);
 	}
 
-
-	// Public Static Methods
-	public static float getHeight() { return getHeight(Angle.S); }
-
-	public static float getHeight(Angle armAngle) {
-		return getHeight(armAngle, armAngle);
+	public Arm(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle) {
+		super(proximalAngle, proximalLengthRatio, distalAngle);
 	}
 
-	public static float getHeight(Angle proximalAngle, Angle distalAngle) {
-		return  Math.abs(segmentLength * proximalAngle.getSin() + segmentLength * distalAngle.getSin());
+	public Arm(Angle proximalAngle, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, distalAngle, distalLengthRatio);
 	}
 
-	public static float getWidth(Angle armAngle) {
-		return getWidth(armAngle, armAngle);
-	}
-
-	public static float getWidth(Angle proximalAngle, Angle distalAngle) {
-		return  Math.abs(segmentLength * proximalAngle.getCos() + segmentLength * distalAngle.getCos());
+	public Arm(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, proximalLengthRatio, distalAngle, distalLengthRatio);
 	}
 
 }

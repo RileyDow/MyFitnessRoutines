@@ -1,5 +1,28 @@
 TODO
 ----
+
+* Sound for next move based on Category.  (Beep is good for switch sides.)
+* Draw Nose in Profile?
+
+* Change WaistX to always be 0, calculate offset based on Extents & pose2?
+
+* Ladder Runs
+  - Grapevine
+    - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
+  - Shuffle
+    - 1-R-in, 2-L-in, 3-R-out :: 4-L-in, 5-R-in, 6-L-out
+* Soccer Touches (with arrows & mirror)
+  - Triangle
+    - 1R, 2R, 3L
+  - Outside Star
+
+* Layout
+  - Next Step bigger
+  - Sizes based on percent of screen?
+
+* App Store
+  - Rename APK?
+
 - Routines
   - Soccer Touches
   - Sun Salutation
