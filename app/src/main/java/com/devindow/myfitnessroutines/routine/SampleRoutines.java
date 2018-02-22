@@ -153,6 +153,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(new Move("Standing Side Bends", true), 20, "Breathe."));
 		routine.steps.add(new Step(new Move("Warrior 2", true), 30, "Breathe."));
 		routine.steps.add(new Step(new Move("Wide Leg Bend", true), 40, ". Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
 		routine.steps.add(new Step(new Move("Sage Pose"), 10, "Sit Tall. Legs together. Breathe."));
 		routine.steps.add(new Step(new Move("Twisted Sage", true), 30, "Pretzel. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
