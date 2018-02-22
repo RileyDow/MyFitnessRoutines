@@ -32,24 +32,24 @@ public class Arm extends Appendage implements Serializable {
 		super(angle);
 	}
 
-	public Arm(Angle angle, Float length) {
-		super(angle, length);
+	public Arm(Angle angle, float lengthRatio) {
+		super(angle, lengthRatio);
 	}
 
 	public Arm(Angle proximalAngle, Angle distalAngle) {
 		super(proximalAngle, distalAngle);
 	}
 
-	public Arm(Angle proximalAngle, Float proximalLength, Angle distalAngle) {
-		super(proximalAngle, proximalLength, distalAngle);
+	public Arm(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle) {
+		super(proximalAngle, proximalLengthRatio, distalAngle);
 	}
 
-	public Arm(Angle proximalAngle, Angle distalAngle, Float distalLength) {
-		super(proximalAngle, distalAngle, distalLength);
+	public Arm(Angle proximalAngle, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, distalAngle, distalLengthRatio);
 	}
 
-	public Arm(Angle proximalAngle, Float proximalLength, Angle distalAngle, Float distalLength) {
-		super(proximalAngle, proximalLength, distalAngle, distalLength);
+	public Arm(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, proximalLengthRatio, distalAngle, distalLengthRatio);
 	}
 
 }

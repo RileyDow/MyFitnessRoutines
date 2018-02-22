@@ -319,7 +319,7 @@ public class MoveLibrary {
 					Leg.thickness/2 + pose.lLeg.getHeight() + Torso.getHipHeight(angle),
 					angle);
 
-			pose.lArm = new Arm(Angle.S.add(15), Angle.W,Arm.segmentLength/3);
+			pose.lArm = new Arm(Angle.S.add(15), Angle.W,.3f);
 			pose.rArm = new Arm(angle.opposite().add(-1));
 
 			moves.put(move.name, move);
@@ -347,11 +347,11 @@ public class MoveLibrary {
 
 			pose.torso = new Torso(0, Torso.thickness / 2);
 
-			pose.rLeg = new Leg(Angle.W.add(-10), Angle.E.add(-20));
-			pose.lLeg = new Leg(Angle.E.add(10), Angle.W.add(20));
+			pose.rLeg = new Leg(Angle.W.add(-10), .8f, Angle.E.add(-20), .8f);
+			pose.lLeg = new Leg(Angle.E.add(10), .8f, Angle.W.add(20), .8f);
 
-			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength * .9f);
-			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength * .9f);
+			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), .8f);
+			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), .8f);
 
 			moves.put(move.name, move);
 		}
@@ -361,13 +361,13 @@ public class MoveLibrary {
 			Move move = new Move(REST, Category.NONE);
 			Pose pose = move.pose1 = new Pose();
 
-			pose.torso = new Torso(0, Torso.thickness/2);
+			pose.torso = new Torso(0, Torso.thickness / 2);
 
-			pose.rLeg = new Leg(Angle.W.add(-20), Angle.E);
-			pose.lLeg = new Leg(Angle.E.add(20), Angle.W);
+			pose.rLeg = new Leg(Angle.W.add(-10), .8f, Angle.E.add(-20), .8f);
+			pose.lLeg = new Leg(Angle.E.add(10), .8f, Angle.W.add(20), .8f);
 
-			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), Arm.segmentLength*.9f);
-			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), Arm.segmentLength*.9f);
+			pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), .8f);
+			pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), .8f);
 
 			moves.put(move.name, move);
 		}

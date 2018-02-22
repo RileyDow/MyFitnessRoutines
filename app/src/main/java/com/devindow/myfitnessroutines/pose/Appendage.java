@@ -15,82 +15,68 @@ public abstract class Appendage implements Serializable {
 
 	// Public Fields
 	public Angle proximalAngle;
-	public Float proximalLength;
+	public float proximalLengthRatio = 1f;
 
 	public Angle distalAngle;
-	public Float distalLength;
+	public float distalLengthRatio = 1f;
 
 
 	// Public Properties
 	public abstract float getThickness();
 	public abstract float getSegmentLength();
 
-	public float getProximalLength() {
-		if (proximalLength != null) {
-			return proximalLength;
-		}
-		return getSegmentLength();
-	}
-
-	public float getDistalLength() {
-		if (distalLength != null) {
-			return distalLength;
-		}
-		return getSegmentLength();
-	}
-
 	public float getHeight() {
-		return  Math.abs(getProximalLength() * proximalAngle.getSin() + getDistalLength() * distalAngle.getSin());
+		return  Math.abs(proximalLengthRatio * getSegmentLength() * proximalAngle.getSin() + distalLengthRatio * getSegmentLength() * distalAngle.getSin());
 	}
 
 	public float getWidth() {
-		return  Math.abs(getProximalLength() * proximalAngle.getCos() + getDistalLength() * distalAngle.getCos());
+		return  Math.abs(proximalLengthRatio * getSegmentLength() * proximalAngle.getCos() + distalLengthRatio * getSegmentLength() * distalAngle.getCos());
 	}
 
 	public float getProximalPointX(float attachmentX) {
-		return attachmentX + Math.round(getProximalLength() * proximalAngle.getCos());
+		return attachmentX + Math.round(proximalLengthRatio * getSegmentLength() * proximalAngle.getCos());
 	}
 
 	public float getProximalPointY(float attachmentY) {
-		return attachmentY + Math.round(getProximalLength() * proximalAngle.getSin());
+		return attachmentY + Math.round(proximalLengthRatio * getSegmentLength() * proximalAngle.getSin());
 	}
 
 	public float getDistalPointX(float attachmentX) {
-		return getProximalPointX(attachmentX) + Math.round(getDistalLength() * distalAngle.getCos());
+		return getProximalPointX(attachmentX) + Math.round(distalLengthRatio * getSegmentLength() * distalAngle.getCos());
 	}
 
 	public float getDistalPointY(float attachmentY) {
-		return getProximalPointY(attachmentY) + Math.round(getDistalLength() * distalAngle.getSin());
+		return getProximalPointY(attachmentY) + Math.round(distalLengthRatio * getSegmentLength() * distalAngle.getSin());
 	}
 
 
 	// Constructors
 	public Appendage(Angle angle) {
-		this(angle, null, angle, null);
+		this(angle, 1f, angle, 1f);
 	}
 
-	public Appendage(Angle angle, Float length) {
-		this(angle, length/2, angle, length/2);
+	public Appendage(Angle angle, float lengthRatio) {
+		this(angle, lengthRatio/2, angle, lengthRatio/2);
 	}
 
 	public Appendage(Angle proximalAngle, Angle distalAngle) {
-		this(proximalAngle, null, distalAngle, null);
+		this(proximalAngle, 1f, distalAngle, 1f);
 	}
 
-	public Appendage(Angle proximalAngle, Float proximalLength, Angle distalAngle) {
-		this(proximalAngle, proximalLength, distalAngle, null);
+	public Appendage(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle) {
+		this(proximalAngle, proximalLengthRatio, distalAngle, 1f);
 	}
 
-	public Appendage(Angle proximalAngle, Angle distalAngle, Float distalLength) {
-		this(proximalAngle, null, distalAngle, distalLength);
+	public Appendage(Angle proximalAngle, Angle distalAngle, float distalLengthRatio) {
+		this(proximalAngle, 1f, distalAngle, distalLengthRatio);
 	}
 
-	public Appendage(Angle proximalAngle, Float proximalLength, Angle distalAngle, Float distalLength) {
+	public Appendage(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle, float distalLengthRatio) {
 		this.proximalAngle = proximalAngle;
-		this.proximalLength = proximalLength;
+		this.proximalLengthRatio = proximalLengthRatio;
 
 		this.distalAngle = distalAngle;
-		this.distalLength = distalLength;
+		this.distalLengthRatio = distalLengthRatio;
 	}
 
 

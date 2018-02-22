@@ -32,24 +32,24 @@ public class Leg extends Appendage implements Serializable {
 		super(angle);
 	}
 
-	public Leg(Angle angle, Float length) {
-		super(angle, length);
+	public Leg(Angle angle, Float lengthRatio) {
+		super(angle, lengthRatio);
 	}
 
 	public Leg(Angle proximalAngle, Angle distalAngle) {
 		super(proximalAngle, distalAngle);
 	}
 
-	public Leg(Angle proximalAngle, Float proximalLength, Angle distalAngle) {
-		super(proximalAngle, proximalLength, distalAngle);
+	public Leg(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle) {
+		super(proximalAngle, proximalLengthRatio, distalAngle);
 	}
 
-	public Leg(Angle proximalAngle, Angle distalAngle, Float distalLength) {
-		super(proximalAngle, distalAngle, distalLength);
+	public Leg(Angle proximalAngle, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, distalAngle, distalLengthRatio);
 	}
 
-	public Leg(Angle proximalAngle, Float proximalLength, Angle distalAngle, Float distalLength) {
-		super(proximalAngle, proximalLength, distalAngle, distalLength);
+	public Leg(Angle proximalAngle, float proximalLengthRatio, Angle distalAngle, float distalLengthRatio) {
+		super(proximalAngle, proximalLengthRatio, distalAngle, distalLengthRatio);
 	}
 
 }
