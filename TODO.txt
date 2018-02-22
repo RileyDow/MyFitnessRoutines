@@ -1,5 +1,11 @@
 TODO
 ----
+* Layout
+  - Sizes based on percent of screen?
+
+* App Store
+  - Rename APK?
+
 - Routines
   - Soccer Touches
   - Sun Salutation

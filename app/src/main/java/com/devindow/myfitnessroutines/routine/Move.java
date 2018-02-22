@@ -75,9 +75,6 @@ public class Move implements Serializable {
 
 	// Public Methods
 	public Bitmap getBitmap(boolean secondSide) {
-		if (pose1 == null) {
-			return null;
-		}
 
 		bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
 
@@ -90,7 +87,9 @@ public class Move implements Serializable {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		pose1.draw(canvas);
+		if (pose1 != null) {
+			pose1.draw(canvas);
+		}
 
 		if (pose2 != null) {
 			pose2.draw(canvas);
