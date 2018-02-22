@@ -1,5 +1,32 @@
 TODO
 ----
+
+* Step Instructions surpass Move Description
+
+* Should I change WaistX to be calculated based on Extents?
+
+* Morning Yoga
+  - Corpse Pose - Lie on back, breathe - 2m
+  - Cross-over & Open - 30s/2
+  - Reclined Cobbler Pose - 10s
+  - Reclined Head to Knees - 5s
+  - Knees Crossover - 10s/2
+  - Reclined Hamstring w/ Strap - 60s/2
+  - Rotate on all fours - 10s/2
+  - Down Dog - 20s
+  - Standing Side Bends
+  - Pretzel Twist - 30s/2
+  - Lotus - 5min
+* Ladder Runs
+  - Grapevine
+    - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
+  - Shuffle
+    - 1-R-in, 2-L-in, 3-R-out :: 4-L-in, 5-R-in, 6-L-out
+* Soccer Touches (with arrows & mirror)
+  - Triangle
+    - 1R, 2R, 3L
+  - Outside Star
+
 * Layout
   - Sizes based on percent of screen?
 

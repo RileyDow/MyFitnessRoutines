@@ -16,9 +16,9 @@ import java.io.Serializable;
 public class Move implements Serializable {
 
 	// Constants
-	public static final int bitmapSize = 900;
-	public static final int bitmapScale = 10;
-	public static final int bitmapInches = bitmapSize / bitmapScale;
+	public static final int BITMAP_PIXELS = 900;
+	public static final int BITMAP_SCALE = 10;
+	public static final int BITMAP_INCHES = BITMAP_PIXELS / BITMAP_SCALE;
 
 
 	// Public Fields
@@ -28,7 +28,6 @@ public class Move implements Serializable {
 	public boolean twoSides;
 	public Pose pose1;
 	public Pose pose2;
-	public boolean hasFloor = true;
 
 
 	// Protected Fields
@@ -76,12 +75,12 @@ public class Move implements Serializable {
 	// Public Methods
 	public Bitmap getBitmap(boolean secondSide) {
 
-		bitmap = Bitmap.createBitmap(bitmapSize, bitmapSize, Bitmap.Config.ARGB_8888);
+		bitmap = Bitmap.createBitmap(BITMAP_PIXELS, BITMAP_PIXELS, Bitmap.Config.ARGB_8888);
 
 		canvas = new Canvas(bitmap);
 		drawFrame(canvas);
-		canvas.translate(bitmapSize/2, bitmapSize-1); // Origin at floor center
-		canvas.scale(bitmapScale, bitmapScale); // 10x bitmapScale
+		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
+		canvas.scale(BITMAP_SCALE, BITMAP_SCALE); // 10x BITMAP_SCALE
 		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X
@@ -105,7 +104,7 @@ public class Move implements Serializable {
 		paint.setColor(Color.GRAY);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeWidth(20);
-		canvas.drawRect(0, 0, bitmapSize, bitmapSize, paint);
+		canvas.drawRect(0, 0, BITMAP_PIXELS, BITMAP_PIXELS, paint);
 	}
 
 

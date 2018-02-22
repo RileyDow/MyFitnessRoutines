@@ -27,7 +27,7 @@ public class Wall extends Prop {
 		Paint paint = new Paint();
 		paint.setStrokeWidth(1);
 
-		canvas.drawLine(x, 0, x, Move.bitmapInches, paint);
+		canvas.drawLine(x, 0, x, Move.BITMAP_INCHES, paint);
 	}
 
 }

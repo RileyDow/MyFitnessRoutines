@@ -10,6 +10,7 @@ public class Step implements Serializable {
 
 	// Public Fields
 	public Move move;
+	public String instructions;
 	public int moveDuration;
 	public int restDuration;
 
@@ -19,17 +20,25 @@ public class Step implements Serializable {
 		return moveDuration + restDuration;
 	}
 
+
 	// Constructors
 	public Step(Move move, int moveDuration) {
-		this.move = move;
-		this.moveDuration = moveDuration;
-		this.restDuration = 0;
+		this(move, moveDuration, 0);
 	}
 
 	public Step(Move move, int moveDuration, int restDuration) {
+		this(move, moveDuration, restDuration, "");
+	}
+
+	public Step(Move move, int moveDuration, String instructions) {
+		this(move, moveDuration, 0, instructions);
+	}
+
+	public Step(Move move, int moveDuration, int restDuration, String instructions) {
 		this.move = move;
 		this.moveDuration = moveDuration;
 		this.restDuration = restDuration;
+		this.instructions = instructions;
 	}
 
 }
