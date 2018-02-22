@@ -2,6 +2,7 @@ package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 
 import com.devindow.myfitnessroutines.Debug;
 
@@ -24,6 +25,24 @@ public abstract class Appendage implements Serializable {
 	// Public Properties
 	public abstract float getThickness();
 	public abstract float getSegmentLength();
+
+	// Public Properties
+	public Extents getExtents(float attachmentPointX, float attachmentPointY) {
+		float proximalPointX = getProximalPointX(attachmentPointX);
+		float proximalPointY = getProximalPointY(attachmentPointY);
+
+		float distalPointX = getDistalPointX(attachmentPointX);
+		float distalPointY = getDistalPointY(attachmentPointY);
+
+		float radius = getThickness()/2;
+
+		return new Extents(
+				Math.min(attachmentPointX, Math.min(proximalPointX, distalPointX )) - radius,
+				Math.max(attachmentPointY, Math.max(proximalPointY, distalPointY)) + radius,
+				Math.max(attachmentPointX, Math.max(proximalPointX, distalPointX )) + radius,
+				Math.min(attachmentPointY, Math.min(proximalPointY, distalPointY)) - radius);
+	}
+
 
 	public float getHeight() {
 		return  Math.abs(proximalLengthRatio * getSegmentLength() * proximalAngle.getSin() + distalLengthRatio * getSegmentLength() * distalAngle.getSin());

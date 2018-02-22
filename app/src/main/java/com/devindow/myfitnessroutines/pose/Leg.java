@@ -1,10 +1,5 @@
 package com.devindow.myfitnessroutines.pose;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
-import com.devindow.myfitnessroutines.Debug;
-
 import java.io.Serializable;
 
 /**

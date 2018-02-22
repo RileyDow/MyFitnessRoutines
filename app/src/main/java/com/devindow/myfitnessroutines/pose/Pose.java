@@ -2,6 +2,8 @@ package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 
+import junit.framework.Assert;
+
 import java.io.Serializable;
 
 /**
@@ -19,11 +21,39 @@ public class Pose implements Serializable {
 	public Prop prop;
 
 
+	// Public Properties
+	public Extents getExtents() {
+		Assert.assertNotNull(torso);
+
+		Extents extents = torso.getExtents();
+
+		if (lArm != null) {
+			extents.union(lArm.getExtents(torso.lShoulderX, torso.lShoulderY));
+		}
+
+		if (rArm != null) {
+			extents.union(rArm.getExtents(torso.rShoulderX, torso.rShoulderY));
+		}
+
+		if (lLeg != null) {
+			extents.union(lLeg.getExtents(torso.lHipX, torso.lHipY));
+		}
+
+		if (rLeg != null) {
+			extents.union(rLeg.getExtents(torso.rHipX, torso.rHipY));
+		}
+
+		return extents;
+	}
+
+
 	// Public Methods
 	public void draw(Canvas canvas) {
-		if (torso != null) {
-			torso.draw(canvas);
-		}
+		Extents extents = getExtents();
+		canvas.translate(-extents.getCenterX(), 0);
+
+		Assert.assertNotNull(torso);
+		torso.draw(canvas);
 
 		if (lArm != null) {
 			lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
@@ -42,6 +72,8 @@ public class Pose implements Serializable {
 		if (prop != null) {
 			prop.draw(canvas);
 		}
+
+		canvas.translate(extents.getCenterX(), 0);
 	}
 
 }
