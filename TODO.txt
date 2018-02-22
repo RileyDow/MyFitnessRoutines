@@ -1,6 +1,11 @@
 TODO
 ----
 
+* Pose.Offset
+  - Extents
+    - use Rectangle2D.Float?
+    - body parts calculate Extents in constructor, Pose does a Union.
+
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 * Draw Nose in Profile?
 
@@ -34,9 +39,6 @@ TODO
 
 * Pose implements Drawable so we can have list of Drawable for Poses or Patterns
   - multiple Poses requires an offset for each
-  - Extents
-    - use Rectangle2D.Float?
-    - body parts calculate Extents in constructor, Pose does a Union.
 
 - Poses
   * Calf Stretches from Down Dog
