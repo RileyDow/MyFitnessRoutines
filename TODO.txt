@@ -1,21 +1,32 @@
 TODO
 ----
 
-* Step Instructions surpass Move Description
+* Sound for next move based on Category.  (Beep is good for switch sides.)
+* Draw Nose in Profile?
 
-* Should I change WaistX to be calculated based on Extents?
+* Change WaistX to always be 0, calculate offset based on Extents & pose2?
 
 * Morning Yoga
   - Corpse Pose - Lie on back, breathe - 2m
   - Cross-over & Open - 30s/2
   - Reclined Cobbler Pose - 10s
   - Reclined Head to Knees - 5s
-  - Knees Crossover - 10s/2
+  - Reclined Twist - 10s/2
   - Reclined Hamstring w/ Strap - 60s/2
+  - Bridge Pose - 7s
+  - Cobbler's Pose - 10s
+  - Boat Pose - 10s
+  - Locust Pose - 7s
   - Rotate on all fours - 10s/2
+  - Cat Pose - 10s
   - Down Dog - 20s
-  - Standing Side Bends
-  - Pretzel Twist - 30s/2
+  - Child's Pose - 10s
+  - Mountain Pose - 5s
+  - Standing Side Bends 10s/2
+  - Warrior2 - 20s/2
+  - Wide Leg Bend - 10s
+  - Sage Pose - 5s
+  - Twisted Sage - 30s/2
   - Lotus - 5min
 * Ladder Runs
   - Grapevine
@@ -28,6 +39,7 @@ TODO
   - Outside Star
 
 * Layout
+  - Next Step bigger
   - Sizes based on percent of screen?
 
 * App Store
