@@ -284,10 +284,10 @@ public class MoveLibrary {
 			Move move = new Move(PUSH_UP_ROTATE, Category.LIFTING);
 			Pose pose = move.pose1 = new Pose();
 
-			Angle angle = new Angle(25);
+			Angle angle = new Angle(31);
 
 			pose.lLeg = new Leg(angle.opposite());
-			pose.rLeg = new Leg(angle.opposite().add(5));
+			pose.rLeg = new Leg(angle.opposite().add(6));
 
 			pose.torso = new Torso(Leg.thickness/2 + pose.lLeg.getHeight() + Torso.getHipHeight(angle), angle);
 
@@ -302,10 +302,10 @@ public class MoveLibrary {
 			Move move = new Move(SIDE_PLANK, Category.LIFTING, true);
 			Pose pose = move.pose1 = new Pose();
 
-			Angle angle = new Angle(15);
+			Angle angle = new Angle(17);
 
 			pose.lLeg = new Leg(angle.opposite());
-			pose.rLeg = new Leg(angle.opposite().add(5));
+			pose.rLeg = new Leg(angle.opposite().add(6));
 
 			pose.torso = new Torso(Leg.thickness/2 + pose.lLeg.getHeight() + Torso.getHipHeight(angle), angle);
 
