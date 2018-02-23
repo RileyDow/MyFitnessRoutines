@@ -321,6 +321,26 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Standing Hurdles w/ Band
+		{
+			MoveWithPose move = new MoveWithPose(STANDING_HURDLES_W_BAND, "Drive knee up with band around feet", Category.WARMUP);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
+
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S);
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.prop = new Band(
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX),
+					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
+					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
+
+			moves.put(move.name, move);
+		}
+
 		// Leg Swings
 		{
 			MoveWithPose move = new MoveWithPose(LEG_SWINGS, Category.CARDIO, true);
@@ -510,7 +530,6 @@ public class MoveLibrary {
 		moves.put(SIDE_LYING_ABDUCTION_W_BAND, new MoveWithPose(SIDE_LYING_ABDUCTION_W_BAND, Category.STRETCH, true));
 		moves.put(SQUATS_W_BAND, new MoveWithPose(SQUATS_W_BAND, Category.STRETCH));
 		moves.put(LATERAL_WALK_W_BAND, new MoveWithPose(LATERAL_WALK_W_BAND, Category.STRETCH));
-		moves.put(STANDING_HURDLES_W_BAND, new MoveWithPose(STANDING_HURDLES_W_BAND, Category.STRETCH));
 		moves.put(JUMPS_180, new MoveWithPose(JUMPS_180, Category.STRETCH));
 		moves.put(JUMPS_90_TO_1_FOOT_LANDING, new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
 
