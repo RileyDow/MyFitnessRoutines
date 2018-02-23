@@ -1,8 +1,7 @@
 TODO
 ----
 
-** Use & Test Angle Constructor using Heights
-** Test Angle by drawing lines
+** Use Angle Constructor using Heights
 
 ** SampleRoutines & MoveLibrary show what Poses are needed.
   - Pre-Activation

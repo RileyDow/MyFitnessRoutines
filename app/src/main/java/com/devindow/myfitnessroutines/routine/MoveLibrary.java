@@ -269,7 +269,7 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
 
@@ -524,7 +524,6 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness/2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
-					/*Angle.E.add(8),*/
 					true);
 
 			moves.put(move.name, move);
@@ -541,7 +540,11 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(15));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					//new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					angle,
+					true);
 
 			moves.put(move.name, move);
 		}
@@ -611,7 +614,6 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Leg.thickness / 2 + move.pose.lLeg.getHeight() + Torso.getHipHeight(angle), angle);
 
 			move.pose.lArm = new Arm(Angle.S.add(15), Angle.W, .3f);
-			move.pose.rArm = new Arm(Angle.S.add(-5), 1.1f);
 
 			move.pose.prop = new Roller(-6, Roller.diameter / 2);
 
