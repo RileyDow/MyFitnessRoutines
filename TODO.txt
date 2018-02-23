@@ -1,12 +1,12 @@
 TODO
 ----
 
+** Test Angle by drawing lines
+
 * Pose.Offset
 
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 * Draw Nose in Profile?
-
-* Change WaistX to always be 0, calculate offset based on Extents & pose2?
 
 * Ladder Runs
   - Grapevine

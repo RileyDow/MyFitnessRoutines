@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.devindow.myfitnessroutines.pose.MoveWithPose;
 import com.devindow.myfitnessroutines.routine.*;
 
 public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
@@ -101,7 +102,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		if (move == null) {
 			txtMoveName.setText("NULL");
-			imgPose.setImageBitmap(Bitmap.createBitmap(move.BITMAP_PIXELS, move.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
+			imgPose.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {

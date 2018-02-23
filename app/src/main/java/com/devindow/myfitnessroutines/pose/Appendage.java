@@ -70,12 +70,16 @@ public abstract class Appendage implements Serializable {
 
 
 	// Constructors
+	public Appendage() {
+		this(Angle.S);
+	}
+
 	public Appendage(Angle angle) {
 		this(angle, 1f, angle, 1f);
 	}
 
 	public Appendage(Angle angle, float lengthRatio) {
-		this(angle, lengthRatio/2, angle, lengthRatio/2);
+		this(angle, lengthRatio, angle, lengthRatio);
 	}
 
 	public Appendage(Angle proximalAngle, Angle distalAngle) {
@@ -111,6 +115,7 @@ public abstract class Appendage implements Serializable {
 		float proximalPointY = getProximalPointY(attachmentPointY);
 		canvas.drawLine(attachmentPointX, attachmentPointY, proximalPointX, proximalPointY, paint);
 
+		Debug.setPenColor(paint);
 		float distalPointX = getDistalPointX(attachmentPointX);
 		float distalPointY = getDistalPointY(attachmentPointY);
 		canvas.drawLine(proximalPointX, proximalPointY, distalPointX, distalPointY, paint);

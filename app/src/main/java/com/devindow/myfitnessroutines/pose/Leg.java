@@ -23,6 +23,10 @@ public class Leg extends Appendage implements Serializable {
 
 
 	// Constructors
+	public Leg() {
+		super();
+	}
+
 	public Leg(Angle angle) {
 		super(angle);
 	}
