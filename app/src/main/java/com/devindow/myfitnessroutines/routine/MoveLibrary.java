@@ -246,6 +246,20 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Walking Backward Lunges
+		{
+			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+
+			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
+
+			moves.put(move.name, move);
+		}
+
 		// Hip Stretch
 		{
 			MoveWithPose move = new MoveWithPose(HIP_STRETCH, Category.STRETCH, true);
@@ -489,7 +503,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(WALKING_BACKWARD_LUNGES, new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.CARDIO));
 		moves.put(FOAM_ROLLER, new MoveWithPose(FOAM_ROLLER, Category.STRETCH));
 		moves.put(THORACIC_ROLL_OUTS, new MoveWithPose(THORACIC_ROLL_OUTS, Category.STRETCH, true));
 		moves.put(INCH_WORMS, new MoveWithPose(INCH_WORMS, Category.CARDIO));
