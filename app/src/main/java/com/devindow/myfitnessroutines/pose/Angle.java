@@ -48,6 +48,11 @@ public class Angle implements Serializable {
 		radians = Math.atan2(dy, dx);
 	}
 
+	public Angle(float height1, float height2, float length) {
+		float dy = height2 - height1;
+		radians = Math.sin(dy / length);
+	}
+
 
 	// Public Methods
 	public Angle mirror() {
