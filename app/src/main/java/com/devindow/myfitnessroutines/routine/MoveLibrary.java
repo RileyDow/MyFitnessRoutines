@@ -328,15 +328,14 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
-
 			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S);
 
 			move.pose.torso = new Torso(true);
 
 			move.pose.prop = new Band(
-					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX),
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX - Band.thickness/2),
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
-					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX + Band.thickness/2),
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
 
 			moves.put(move.name, move);
@@ -348,15 +347,14 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-10), Angle.S.add(-20));
-
 			move.pose.lLeg = new Leg(Angle.S.add(30));
 
 			move.pose.torso = new Torso(Angle.N.add(-10), true);
 
 			move.pose.prop = new Band(
-					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX),
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX + Band.thickness/2),
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
-					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX - Band.thickness/2),
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
 
 			moves.put(move.name, move);
@@ -483,6 +481,26 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Foam Roller
+		{
+			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, Category.WARMUP, true);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(17);
+
+			move.pose.lLeg = new Leg(angle.opposite());
+			move.pose.rLeg = new Leg(Angle.W.add(-10), Angle.S.add(-10));
+
+			move.pose.torso = new Torso(Leg.thickness/2 + move.pose.lLeg.getHeight() + Torso.getHipHeight(angle), angle);
+
+			move.pose.lArm = new Arm(Angle.S.add(15), Angle.W,.3f);
+			move.pose.rArm = new Arm(Angle.S.add(-5), 1.1f);
+
+			move.pose.prop = new Roller(-6, Roller.diameter/2);
+
+			moves.put(move.name, move);
+		}
+
 
 		// Crunches
 		{
@@ -544,7 +562,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(FOAM_ROLLER, new MoveWithPose(FOAM_ROLLER, Category.STRETCH));
 		moves.put(THORACIC_ROLL_OUTS, new MoveWithPose(THORACIC_ROLL_OUTS, Category.STRETCH, true));
 		moves.put(INCH_WORMS, new MoveWithPose(INCH_WORMS, Category.CARDIO));
 		moves.put(SINGLE_LEG_BRIDGE, new MoveWithPose(SINGLE_LEG_BRIDGE, Category.CARDIO));
