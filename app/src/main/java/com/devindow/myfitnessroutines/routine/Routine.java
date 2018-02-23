@@ -12,6 +12,7 @@ public class Routine implements Serializable {
 	// Public Fields
 	public String name;
 	public String description;
+	public Category category;
 	public ArrayList<Step> steps = new ArrayList<Step>();
 
 
