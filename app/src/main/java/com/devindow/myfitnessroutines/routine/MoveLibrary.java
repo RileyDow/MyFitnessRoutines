@@ -263,7 +263,7 @@ public class MoveLibrary {
 
 		// Twist & Pivot
 		{
-			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
@@ -274,6 +274,23 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
 			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
+
+			moves.put(move.name, move);
+		}
+
+		// Roman Lunges
+		{
+			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, "Opposite Arm & Leg go back", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
+
+			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness/2);
+
+			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
 
 			moves.put(move.name, move);
 		}
@@ -408,7 +425,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(ROMAN_LUNGES, new MoveWithPose(ROMAN_LUNGES, Category.CARDIO));
 		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
 		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
 		moves.put(HIP_HAMSTRING, new MoveWithPose(HIP_HAMSTRING, Category.STRETCH, true));
