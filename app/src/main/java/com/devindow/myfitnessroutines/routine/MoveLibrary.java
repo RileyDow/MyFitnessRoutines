@@ -238,24 +238,25 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
+			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
-
-			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
 
 			moves.put(move.name, move);
 		}
 
 		// Walking Backward Lunges
 		{
-			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, "Step back, reach back with opposite arm", Category.WARMUP);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
+			move.pose.rLeg = new Leg(Angle.W, Angle.S);
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.E);
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, Angle.N.add(-10), true);
 
-			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
+			move.pose.lArm = new Arm(Angle.S.add(30), 1.2f);
+			move.pose.rArm = new Arm(Angle.N.add(10));
 
 			moves.put(move.name, move);
 		}
