@@ -22,10 +22,6 @@ public abstract class Move implements Serializable {
 	public boolean twoSides;
 
 
-	// Protected Fields
-	protected Bitmap bitmap;
-
-
 	// Constructors
 	public Move(String name) {
 		this(name, false);

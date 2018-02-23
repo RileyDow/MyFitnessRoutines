@@ -222,9 +222,9 @@ public class SampleRoutines {
 	private static Routine getSoccerTouchesRoutine() {
 		Routine routine = new Routine("Soccer Touches");
 
-		routine.steps.add(new Step(new MoveWithPose("Triangle", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new MoveWithPose("Ziko Turn", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new MoveWithPose("Cruyff Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Triangle", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Ziko Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Cruyff Turn", Category.SOCCER, true), 15));
 
 		return routine;
 	}
