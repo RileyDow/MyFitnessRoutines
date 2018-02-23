@@ -3,8 +3,6 @@ package com.devindow.myfitnessroutines.pose;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.routine.MoveWithPose;
-
 /**
  * Created by Devin on 2/13/2018.
  */

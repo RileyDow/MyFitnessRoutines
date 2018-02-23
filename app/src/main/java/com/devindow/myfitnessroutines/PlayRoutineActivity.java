@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.devindow.myfitnessroutines.pose.MoveWithPose;
 import com.devindow.myfitnessroutines.routine.*;
 
 public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {

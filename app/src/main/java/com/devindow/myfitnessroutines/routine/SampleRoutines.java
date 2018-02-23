@@ -3,6 +3,7 @@ package com.devindow.myfitnessroutines.routine;
 import android.util.Log;
 
 import com.devindow.myfitnessroutines.Debug;
+import com.devindow.myfitnessroutines.pose.MoveWithPose;
 
 import java.util.ArrayList;
 

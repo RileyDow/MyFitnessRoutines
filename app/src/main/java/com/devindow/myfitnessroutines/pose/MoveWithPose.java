@@ -1,9 +1,10 @@
-package com.devindow.myfitnessroutines.routine;
+package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import com.devindow.myfitnessroutines.pose.Pose;
+import com.devindow.myfitnessroutines.routine.Move;
+import com.devindow.myfitnessroutines.routine.Category;
 
 /**
  * Created by Devin on 2/22/2018.
