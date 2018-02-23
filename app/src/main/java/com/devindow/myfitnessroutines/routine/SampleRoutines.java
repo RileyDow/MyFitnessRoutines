@@ -32,8 +32,8 @@ public class SampleRoutines {
 		defaultRoutines.add(get15MinMeditation());
 
 		if (Debug.on) {
-			defaultRoutines.add(getRileyRoutine());
-			defaultRoutines.add(getSoccerTouchesRoutine());
+			defaultRoutines.add(getSoccerTouches());
+			defaultRoutines.add(getLadderDrills());
 			defaultRoutines.add(getTestPoses());
 			defaultRoutines.add(getTestShortRoutine());
 /*
@@ -44,6 +44,8 @@ public class SampleRoutines {
 			defaultRoutines.add(getLiftRoutine());
 
 			defaultRoutines.add(getCardioRoutine());
+
+			defaultRoutines.add(getRileyRoutine());
 */
 		}
 
@@ -219,12 +221,21 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getSoccerTouchesRoutine() {
+	private static Routine getSoccerTouches() {
 		Routine routine = new Routine("Soccer Touches");
 
 		routine.steps.add(new Step(new SoccerMove("Triangle", Category.SOCCER, true), 15));
 		routine.steps.add(new Step(new SoccerMove("Ziko Turn", Category.SOCCER, true), 15));
 		routine.steps.add(new Step(new SoccerMove("Cruyff Turn", Category.SOCCER, true), 15));
+
+		return routine;
+	}
+
+	private static Routine getLadderDrills() {
+		Routine routine = new Routine("Ladder Drills");
+
+		routine.steps.add(new Step(new SoccerMove("Grapevine", Category.LADDER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Shuffle", Category.LADDER, true), 15));
 
 		return routine;
 	}
