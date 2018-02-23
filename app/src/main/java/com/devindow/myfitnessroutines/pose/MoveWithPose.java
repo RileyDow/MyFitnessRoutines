@@ -70,7 +70,9 @@ public class MoveWithPose extends Move {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		pose.draw(canvas);
+		if (pose != null) {
+			pose.draw(canvas);
+		}
 
 		return bitmap;
 	}

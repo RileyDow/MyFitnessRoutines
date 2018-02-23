@@ -89,7 +89,7 @@ public class MoveLibrary {
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness/2);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2);
 
 			Angle armProximalAngle = new Angle(30);
 			Angle armDistalAngle = new Angle(60);
@@ -99,6 +99,24 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Safety Jacks
+		{
+			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(15);
+
+			move.pose.rLeg = new Leg(legAngle);
+			move.pose.lLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2);
+
+			int armDegreesOffset = 10;
+			move.pose.lArm = new Arm(Angle.E.add(armDegreesOffset));
+			move.pose.rArm = new Arm(Angle.W.add(armDegreesOffset));
+
+			moves.put(move.name, move);
+		}
 
 		// Behind the Back Grab
 		{
@@ -364,7 +382,6 @@ public class MoveLibrary {
 
 		moves.put(ROTATE_ON_ALL_FOURS, new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH, true));
 		moves.put(TWIST_PIVOT, new MoveWithPose(TWIST_PIVOT, Category.STRETCH));
-		moves.put(SAFETY_JACKS, new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO));
 		moves.put(ROMAN_LUNGES, new MoveWithPose(ROMAN_LUNGES, Category.CARDIO));
 		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
 		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));

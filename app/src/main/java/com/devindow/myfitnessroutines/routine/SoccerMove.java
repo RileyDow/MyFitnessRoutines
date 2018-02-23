@@ -11,7 +11,7 @@ public class SoccerMove extends Move {
 
 	// Constants
 	public static final int BITMAP_INCHES = 60;
-	public static final int BITMAP_SCALE = 10;
+	public static final int BITMAP_SCALE = 15;
 	public static final int BITMAP_PIXELS = BITMAP_INCHES * BITMAP_SCALE;
 
 
