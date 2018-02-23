@@ -226,6 +226,36 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Hip Stretch
+		{
+			MoveWithPose move = new MoveWithPose(HIP_STRETCH, Category.STRETCH, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+
+			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		// Hip/Hamstring Stretch
+		{
+			MoveWithPose move = new MoveWithPose(HIP_HAMSTRING, "Stretch Hip then straighten for Hamstring", Category.STRETCH, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+
+			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
+
 		// Step-Ups
 		{
 			MoveWithPose move = new MoveWithPose(STEP_UPS, Category.LIFTING);
@@ -438,10 +468,6 @@ public class MoveLibrary {
 
 			moves.put(move.name, move);
 		}
-
-		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
-		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
-		moves.put(HIP_HAMSTRING, new MoveWithPose(HIP_HAMSTRING, Category.STRETCH, true));
 
 		moves.put(WALKING_BACKWARD_LUNGES, new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.CARDIO));
 		moves.put(FOAM_ROLLER, new MoveWithPose(FOAM_ROLLER, Category.STRETCH));
