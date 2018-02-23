@@ -135,27 +135,27 @@ public class SampleRoutines {
 	private static Routine getMorningYogaRoutine() {
 		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
 
-		routine.steps.add(new Step(new Move("Corpse Pose"), 60, "Lie on your back. Relax. Breathe."));
-		routine.steps.add(new Step(new Move("Cross-Over & Open", true), 40, "Knee across body, then knee opened up. Breathe."));
-		routine.steps.add(new Step(new Move("Reclined Cobbler Pose"), 10, "Open legs. Push legs to extend spine. Breathe."));
-		routine.steps.add(new Step(new Move("Head to Knees"), 15, "Breathe."));
-		routine.steps.add(new Step(new Move("Reclined Twist", true), 30, "Knees across body. Breathe."));
-		routine.steps.add(new Step(new Move("Reclined Hamstring w/ Strap", true), 60, "Breathe."));
-		routine.steps.add(new Step(new Move("Bridge Pose"), 15, "Breathe."));
-		routine.steps.add(new Step(new Move("Cobbler's Pose"), 20, "Sit. Butterfly. Breathe."));
-		routine.steps.add(new Step(new Move("Boat Pose"), 15, "Body & legs in a V. Breathe."));
-		routine.steps.add(new Step(new Move("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
-		routine.steps.add(new Step(new Move("Rotate on all fours", true), 20, "Breathe."));
-		routine.steps.add(new Step(new Move("Cat Pose"), 20, "Arch then bow your back. Breathe."));
-		routine.steps.add(new Step(new Move("Down Dog"), 40, "Alternate calves. Breathe."));
-		routine.steps.add(new Step(new Move("Child's Pose"), 20, "Walk your fingers out. Breathe."));
-		routine.steps.add(new Step(new Move("Mountain Pose"), 15, "Stand. Breathe."));
-		routine.steps.add(new Step(new Move("Standing Side Bends", true), 20, "Breathe."));
-		routine.steps.add(new Step(new Move("Warrior 2", true), 30, "Breathe."));
-		routine.steps.add(new Step(new Move("Wide Leg Bend", true), 40, ". Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Corpse Pose"), 60, "Lie on your back. Relax. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Cross-Over & Open", true), 40, "Knee across body, then knee opened up. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Reclined Cobbler Pose"), 10, "Open legs. Push legs to extend spine. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Head to Knees"), 15, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Reclined Twist", true), 30, "Knees across body. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Reclined Hamstring w/ Strap", true), 60, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Bridge Pose"), 15, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Cobbler's Pose"), 20, "Sit. Butterfly. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Boat Pose"), 15, "Body & legs in a V. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Rotate on all fours", true), 20, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Cat Pose"), 20, "Arch then bow your back. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Down Dog"), 40, "Alternate calves. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Child's Pose"), 20, "Walk your fingers out. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Mountain Pose"), 15, "Stand. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Standing Side Bends", true), 20, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Warrior 2", true), 30, "Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Wide Leg Bend", true), 40, ". Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
-		routine.steps.add(new Step(new Move("Sage Pose"), 10, "Sit Tall. Legs together. Breathe."));
-		routine.steps.add(new Step(new Move("Twisted Sage", true), 30, "Pretzel. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Sage Pose"), 10, "Sit Tall. Legs together. Breathe."));
+		routine.steps.add(new Step(new MoveWithPose("Twisted Sage", true), 30, "Pretzel. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
 
 		return routine;
@@ -221,9 +221,9 @@ public class SampleRoutines {
 	private static Routine getSoccerTouchesRoutine() {
 		Routine routine = new Routine("Soccer Touches");
 
-		routine.steps.add(new Step(new Move("Triangle", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new Move("Ziko Turn", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new Move("Cruyff Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new MoveWithPose("Triangle", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new MoveWithPose("Ziko Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new MoveWithPose("Cruyff Turn", Category.SOCCER, true), 15));
 
 		return routine;
 	}
