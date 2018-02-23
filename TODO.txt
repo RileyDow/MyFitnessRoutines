@@ -1,12 +1,13 @@
 TODO
 ----
-Track hours on spreadsheet using commits
 
-** Test Angle by drawing lines
 ** Use & Test Angle Constructor using Heights
+** Test Angle by drawing lines
 
 ** SampleRoutines & MoveLibrary show what Poses are needed.
   - Pre-Activation
+    - Single Leg Bridge
+    - Jump 180 & 90
   - Morning Yoga
 
 * Pose.Offset
