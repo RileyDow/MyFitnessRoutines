@@ -50,6 +50,7 @@ public class MoveLibrary {
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String JUMPS_180 = "180° Jumps";
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
+	public static final String CORPSE_POSE = "Corpse Pose";
 
 
 	// Public Static Fields
@@ -71,10 +72,29 @@ public class MoveLibrary {
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness/2);
 
-			Angle armProximalAngle = new Angle(30);
-			Angle armDistalAngle = new Angle(80);
-			move.pose.lArm = new Arm(armProximalAngle, armDistalAngle);
-			move.pose.rArm = new Arm(armProximalAngle.mirror(), armDistalAngle.mirror());
+			Angle armProximalAngle = Angle.W.add(-30);
+			Angle armDistalAngle = Angle.N.add(10);
+			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
+			move.pose.lArm = new Arm(armProximalAngle.mirror(), armDistalAngle.mirror());
+
+			moves.put(move.name, move);
+		}
+
+		// Corpse Pose
+		{
+			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(6);
+
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 12);
+
+			Angle armProximalAngle = Angle.S.add(-10);
+			move.pose.rArm = new Arm(armProximalAngle, Angle.S);
+			move.pose.lArm = new Arm(armProximalAngle.mirror(), Angle.S);
 
 			moves.put(move.name, move);
 		}
