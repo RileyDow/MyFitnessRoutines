@@ -232,14 +232,20 @@ public class MoveLibrary {
 
 		// Single-Leg Bridges
 		{
-			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, Category.WARMUP);
+			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, "Drive leg up, hold, repeat.", Category.WARMUP, true);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.N, Angle.E);
+			Angle angle = new Angle(-20);
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.lLeg = new Leg(angle.opposite(), Angle.S);
+			move.pose.rLeg = new Leg(angle.add(90), angle.opposite());
 
-			move.pose.rArm = new Arm(Angle.N.add(-30));
+			move.pose.torso = new Torso(
+					move.pose.lLeg.getHeight() + Leg.thickness/2,
+					angle,
+					true);
+
+			move.pose.rArm = new Arm(Angle.W.add(15));
 
 			moves.put(move.name, move);
 		}
@@ -603,7 +609,7 @@ public class MoveLibrary {
 
 		// Foam Roller
 		{
-			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, "Iron out the tightness.", Category.WARMUP, true);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(17);
