@@ -305,11 +305,10 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(52));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.S.add(45), true);
-			/*move.pose.torso = new Torso(
+			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness / 2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
-					true);*/
+					true);
 
 			moves.put(move.name, move);
 		}
