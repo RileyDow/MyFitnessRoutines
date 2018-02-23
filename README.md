@@ -1,33 +1,41 @@
 # MyFitnessRoutines
 Android app to guide you through fitness routines.
 
+## Tasks
+1. TODO up to date
+1. Gererate Signed APK
+1. Commit to *master*
+1. Publish Release
+   - Attach APK(s)
+   - v0.1.2-alpha-feature
+
 ## OOD
-* Routine
-  * Name
-  * Duration {get return Steps.Duration+Rest}
-  * Steps
-  * Notification chime
-* Step
-  * Move
-  * Duration
-  * Rest Duration
-* Move
-  * Name
-  * Category
-  * Singular or L&R
-  * Image
-  * Description
-  * Pose1
-  * Pose2
-* Pose
-  * Torso
-  * rLeg
-  * lLeg
-  * rArm
-  * lArm
-  * Prop
-* Log
-  * Session
-    * Date
-    * Routine Name
-    * Duration
+- Routine
+  - name
+  - description
+  - category
+  - steps
+  - getDuration()
+- Step
+  - move
+  - moveDuration
+  - restDuration
+- Move (MoveWithPose, LadderMove, SoccerMove)
+  - name
+  - description
+  - category
+  - twoSides
+  - Poses or other drawables
+  - getBitmap()
+- Pose
+  - torso
+  - rLeg
+  - lLeg
+  - rArm
+  - lArm
+  - prop
+- Log
+  - Session
+    - Date
+    - Routine Name
+    - Duration
