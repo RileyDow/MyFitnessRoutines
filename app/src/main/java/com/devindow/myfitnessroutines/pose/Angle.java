@@ -48,6 +48,11 @@ public class Angle implements Serializable {
 		radians = Math.atan2(dy, dx);
 	}
 
+	public Angle(float height1, float height2, float length) {
+		float dy = height2 - height1;
+		radians = Math.sin(dy / length);
+	}
+
 
 	// Public Methods
 	public Angle mirror() {
@@ -67,12 +72,5 @@ public class Angle implements Serializable {
 	@Override
 	public String toString() {
 		return getDegrees() + "º";
-	}
-
-
-	// Static Methods
-	public static Angle getAngle(float height1, float height2, float length) {
-		float dy = height2 - height1;
-		return new Angle(Math.sin(dy / length));
 	}
 }
