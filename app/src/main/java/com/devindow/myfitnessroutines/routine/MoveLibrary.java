@@ -43,7 +43,6 @@ public class MoveLibrary {
 	public static final String STEP_UPS = "Step-Ups";
 	public static final String TWIST_PIVOT = "Twist & Pivot";
 	public static final String ROMAN_LUNGES = "Roman Lunges";
-	// Jumping Poses
 	public static final String JUMPS_180 = "180° Jumps";
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Prone Poses
@@ -71,9 +70,6 @@ public class MoveLibrary {
 		getSquattingPoses();
 		getPronePoses();
 		getSittingPoses();
-
-		moves.put(JUMPS_180, new MoveWithPose(JUMPS_180, Category.STRETCH));
-		moves.put(JUMPS_90_TO_1_FOOT_LANDING, new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
 	}
 
 	private static void getStandingPoses() {
@@ -487,7 +483,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-
 		// Twist & Pivot
 		{
 			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
@@ -511,13 +506,41 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
-
 			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
 
 			move.pose.lArm = new Arm(Angle.E);
 			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		// 180° Jumps
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_180, "Jump & Turn.", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
+
+			moves.put(move.name, move);
+		}
+
+		// 90° Jumps to 1 Foot
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, "Jump & Turn.", Category.CARDIO, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+			move.pose.rLeg = new Leg(Angle.S.add(30), Angle.W.add(25));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
 
 			moves.put(move.name, move);
 		}

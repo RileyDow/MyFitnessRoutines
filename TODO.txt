@@ -1,9 +1,7 @@
 TODO
 ----
 
-** SampleRoutines & MoveLibrary show what Poses are needed.
-  - Pre-Activation
-    - Jump 180 & 90
+** SampleRoutines shows what Poses are needed.
   - Morning Yoga
 
 * Pose.Offset
