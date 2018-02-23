@@ -23,6 +23,10 @@ public class Arm extends Appendage implements Serializable {
 
 
 	// Constructors
+	public Arm() {
+		super();
+	}
+
 	public Arm(Angle angle) {
 		super(angle);
 	}

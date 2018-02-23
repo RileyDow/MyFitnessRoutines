@@ -248,15 +248,29 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(HIGH_KNEES, Category.LIFTING);
 			move.pose = new Pose();
 
-			Angle lLegProximalAngle = Angle.S.add(+10);
-			Angle lLegDistalAngle = Angle.S.add(-10);
-			Angle rLegAngle = Angle.E.add(10);
+			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
 
-			move.pose.lLeg = new Leg(lLegProximalAngle, lLegDistalAngle);
-
-			move.pose.rLeg = new Leg(rLegAngle, Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S);
 
 			move.pose.torso = new Torso(true);
+
+			moves.put(move.name, move);
+		}
+
+		// Leg Swings
+		{
+			MoveWithPose move = new MoveWithPose(LEG_SWINGS, Category.CARDIO, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg();
+
+			move.pose.torso = new Torso();
+
+			move.pose.rLeg = new Leg(Angle.E.add(-10), Angle.E.add(-20));
+
+			move.pose.rArm = new Arm(Angle.W.add(5));
+
+			move.pose.lArm = new Arm(Angle.E.add(-15), Angle.E.add(-35));
 
 			moves.put(move.name, move);
 		}
@@ -428,7 +442,6 @@ public class MoveLibrary {
 		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
 		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
 		moves.put(HIP_HAMSTRING, new MoveWithPose(HIP_HAMSTRING, Category.STRETCH, true));
-		moves.put(LEG_SWINGS, new MoveWithPose(LEG_SWINGS, Category.STRETCH, true));
 
 		moves.put(WALKING_BACKWARD_LUNGES, new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.CARDIO));
 		moves.put(FOAM_ROLLER, new MoveWithPose(FOAM_ROLLER, Category.STRETCH));

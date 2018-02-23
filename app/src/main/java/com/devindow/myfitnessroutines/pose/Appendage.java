@@ -70,6 +70,10 @@ public abstract class Appendage implements Serializable {
 
 
 	// Constructors
+	public Appendage() {
+		this(Angle.S);
+	}
+
 	public Appendage(Angle angle) {
 		this(angle, 1f, angle, 1f);
 	}
