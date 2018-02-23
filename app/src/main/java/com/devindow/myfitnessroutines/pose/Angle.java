@@ -68,4 +68,11 @@ public class Angle implements Serializable {
 	public String toString() {
 		return getDegrees() + "º";
 	}
+
+
+	// Static Methods
+	public static Angle getAngle(float height1, float height2, float length) {
+		float dy = height2 - height1;
+		return new Angle(Math.sin(dy / length));
+	}
 }

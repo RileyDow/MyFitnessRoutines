@@ -301,33 +301,29 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(DOWN_DOG, Category.YOGA);
 			move.pose = new Pose();
 
-			Angle legAngle = Angle.S.add(-35);
-			Angle torsoAngle = Angle.S.add(45);
-			Angle armAngle = Angle.S.add(52);
+			move.pose.rLeg = new Leg(Angle.S.add(-35));
 
-			move.pose.rLeg = new Leg(legAngle);
+			move.pose.rArm = new Arm(Angle.S.add(52));
 
-			move.pose.rArm = new Arm(armAngle);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, torsoAngle, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.S.add(45), true);
 
 			moves.put(move.name, move);
 		}
 
 		// Inch Worms
 		{
-			MoveWithPose move = new MoveWithPose(INCH_WORMS, Category.YOGA);
+			MoveWithPose move = new MoveWithPose(INCH_WORMS, "Walk hands to push-up, then walk feet to hands", Category.YOGA);
 			move.pose = new Pose();
 
-			Angle legAngle = Angle.S.add(-35);
-			Angle torsoAngle = Angle.S.add(45);
-			Angle armAngle = Angle.S.add(52);
+			move.pose.rLeg = new Leg(Angle.S.add(-35));
 
-			move.pose.rLeg = new Leg(legAngle);
+			move.pose.lArm = new Arm(Angle.S.add(-10));
+			move.pose.rArm = new Arm(Angle.S.add(30));
 
-			move.pose.rArm = new Arm(armAngle);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, torsoAngle, true);
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					Angle.getAngle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.lArm.getHeight() + Arm.thickness/2, Torso.length),
+					true);
 
 			moves.put(move.name, move);
 		}
