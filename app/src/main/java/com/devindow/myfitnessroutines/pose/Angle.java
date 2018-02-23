@@ -50,7 +50,7 @@ public class Angle implements Serializable {
 
 	public Angle(float height1, float height2, float length) {
 		float dy = height2 - height1;
-		radians = Math.sin(dy / length);
+		radians = Math.asin(dy / length);
 	}
 
 

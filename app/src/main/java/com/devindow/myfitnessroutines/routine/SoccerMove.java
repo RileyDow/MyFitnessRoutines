@@ -2,6 +2,11 @@ package com.devindow.myfitnessroutines.routine;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
+
+import com.devindow.myfitnessroutines.pose.Angle;
 
 /**
  * Created by Devin on 2/22/2018.
@@ -10,8 +15,8 @@ import android.graphics.Canvas;
 public class SoccerMove extends Move {
 
 	// Constants
-	public static final int BITMAP_INCHES = 60;
-	public static final int BITMAP_SCALE = 15;
+	public static final int BITMAP_INCHES = 90;
+	public static final int BITMAP_SCALE = 10;
 	public static final int BITMAP_PIXELS = BITMAP_INCHES * BITMAP_SCALE;
 
 
@@ -63,7 +68,22 @@ public class SoccerMove extends Move {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		//pose.draw(canvas);
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeWidth(2);
+
+		for (int i=0; i<=90; i+=1) {
+			Angle angle = new Angle(180-i);
+			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
+			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*i, (float)Math.sin(angle.radians)*i, paint);
+		}
+
+		for (int i=0; i<=100; i+=5) {
+			Angle angle = new Angle(0f, i, 100);
+			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
+			Log.d("Constructor", angle.toString());
+			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*100, (float)Math.sin(angle.radians)*100, paint);
+		}
 
 		return bitmap;
 	}

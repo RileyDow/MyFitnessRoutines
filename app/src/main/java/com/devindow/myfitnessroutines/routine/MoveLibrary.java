@@ -11,46 +11,51 @@ import java.util.Hashtable;
 
 public class MoveLibrary {
 
-
 	// Constants
+	// Standing Poses
 	public static final String DONE = "Done!";
-	public static final String REST = "Rest";
-	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
-	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
-	public static final String WALL_SIT = "Wall Sit";
-	public static final String CRUNCHES = "Crunches";
-	public static final String STEP_UPS = "Step-Ups";
-	public static final String SQUATS = "Squats";
-	public static final String CHAIR_DIPS = "Chair Dips";
-	public static final String PUSH_UPS = "Push-Ups";
-	public static final String PLANK = "Plank";
-	public static final String HIGH_KNEES = "High Knees";
-	public static final String LUNGES = "Lunges";
-	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
-	public static final String SIDE_PLANK = "Side Plank";
-	public static final String DOWN_DOG = "Down Dog";
-	public static final String LOTUS = "Lotus";
-	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
-	public static final String TWIST_PIVOT = "Twist & Pivot";
 	public static final String SAFETY_JACKS = "Safety Jacks";
-	public static final String ROMAN_LUNGES = "Roman Lunges";
+	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String HIGH_KNEES = "High Knees";
+	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
+	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
+	public static final String LEG_SWINGS = "Leg Swings";
+
+	public static final String CRUNCHES = "Crunches";
+	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
+	public static final String CORPSE_POSE = "Corpse Pose";
+	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
+	// Bending Poses
+	public static final String TOUCH_TOES = "Touch Toes";
+	public static final String DOWN_DOG = "Down Dog";
+	public static final String INCH_WORMS = "Inch Worms";
+	// Squatting Poses
+	public static final String WALL_SIT = "Wall Sit";
+	public static final String SQUATS = "Squats";
+	public static final String SQUATS_W_BAND = "Squats w/ Band";
+	public static final String CHAIR_DIPS = "Chair Dips";
+	public static final String LUNGES = "Lunges";
+	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
 	public static final String HIP_STRETCH = "Hip Stretch";
 	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
 	public static final String HIP_HAMSTRING = "Hip/Hamstring Stretch";
-	public static final String LEG_SWINGS = "Leg Swings";
-	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
-	public static final String FOAM_ROLLER = "Foam Roller";
-	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
-	public static final String INCH_WORMS = "Inch Worms";
-	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
-	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
-	public static final String SQUATS_W_BAND = "Squats w/ Band";
-	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
-	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
+	public static final String STEP_UPS = "Step-Ups";
+	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String ROMAN_LUNGES = "Roman Lunges";
 	public static final String JUMPS_180 = "180° Jumps";
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
-	public static final String CORPSE_POSE = "Corpse Pose";
+	// Prone Poses
+	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
+	public static final String PUSH_UPS = "Push-Ups";
+	public static final String PLANK = "Plank";
+	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
+	public static final String SIDE_PLANK = "Side Plank";
+	public static final String FOAM_ROLLER = "Foam Roller";
+	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
+	// Sitting Poses
+	public static final String REST = "Rest";
+	public static final String LOTUS = "Lotus";
 
 
 	// Public Static Fields
@@ -65,9 +70,6 @@ public class MoveLibrary {
 		getSquattingPoses();
 		getPronePoses();
 		getSittingPoses();
-
-		moves.put(JUMPS_180, new MoveWithPose(JUMPS_180, Category.STRETCH));
-		moves.put(JUMPS_90_TO_1_FOOT_LANDING, new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
 	}
 
 	private static void getStandingPoses() {
@@ -232,14 +234,20 @@ public class MoveLibrary {
 
 		// Single-Leg Bridges
 		{
-			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, Category.WARMUP);
+			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, "Drive leg up, hold, repeat.", Category.WARMUP, true);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.N, Angle.E);
+			Angle angle = new Angle(-20);
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.lLeg = new Leg(angle.opposite(), Angle.S);
+			move.pose.rLeg = new Leg(angle.add(90), angle.opposite());
 
-			move.pose.rArm = new Arm(Angle.N.add(-30));
+			move.pose.torso = new Torso(
+					move.pose.lLeg.getHeight() + Leg.thickness/2,
+					angle,
+					true);
+
+			move.pose.rArm = new Arm(Angle.W.add(15));
 
 			moves.put(move.name, move);
 		}
@@ -269,7 +277,7 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
 
@@ -305,11 +313,10 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(52));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.S.add(45), true);
-			/*move.pose.torso = new Torso(
+			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness / 2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
-					true);*/
+					true);
 
 			moves.put(move.name, move);
 		}
@@ -476,7 +483,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-
 		// Twist & Pivot
 		{
 			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
@@ -500,13 +506,41 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
-
 			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
 
 			move.pose.lArm = new Arm(Angle.E);
 			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		// 180° Jumps
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_180, "Jump & Turn.", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
+
+			moves.put(move.name, move);
+		}
+
+		// 90° Jumps to 1 Foot
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, "Jump & Turn.", Category.CARDIO, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+			move.pose.rLeg = new Leg(Angle.S.add(30), Angle.W.add(25));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
 
 			moves.put(move.name, move);
 		}
@@ -525,7 +559,6 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness/2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
-					/*Angle.E.add(8),*/
 					true);
 
 			moves.put(move.name, move);
@@ -542,7 +575,11 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(15));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					//new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					angle,
+					true);
 
 			moves.put(move.name, move);
 		}
@@ -601,7 +638,7 @@ public class MoveLibrary {
 
 		// Foam Roller
 		{
-			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, "Iron out the tightness.", Category.WARMUP, true);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(17);
@@ -612,7 +649,6 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Leg.thickness / 2 + move.pose.lLeg.getHeight() + Torso.getHipHeight(angle), angle);
 
 			move.pose.lArm = new Arm(Angle.S.add(15), Angle.W, .3f);
-			move.pose.rArm = new Arm(Angle.S.add(-5), 1.1f);
 
 			move.pose.prop = new Roller(-6, Roller.diameter / 2);
 
