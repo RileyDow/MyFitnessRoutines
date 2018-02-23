@@ -519,6 +519,27 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Side-lying Abduction w/ Band
+		{
+			MoveWithPose move = new MoveWithPose(SIDE_LYING_ABDUCTION_W_BAND, Category.WARMUP, true);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(17);
+
+			move.pose.lLeg = new Leg(Angle.W);
+			move.pose.rLeg = new Leg(Angle.W.add(-20));
+
+			move.pose.torso = new Torso(Torso.thickness/2, Angle.E);
+
+			move.pose.prop = new Band(
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX),
+					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY - Band.thickness/2),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
+					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY + Band.thickness/2));
+
+			moves.put(move.name, move);
+		}
+
 
 		// Crunches
 		{
@@ -582,7 +603,6 @@ public class MoveLibrary {
 
 		moves.put(INCH_WORMS, new MoveWithPose(INCH_WORMS, Category.CARDIO));
 		moves.put(SINGLE_LEG_BRIDGE, new MoveWithPose(SINGLE_LEG_BRIDGE, Category.CARDIO));
-		moves.put(SIDE_LYING_ABDUCTION_W_BAND, new MoveWithPose(SIDE_LYING_ABDUCTION_W_BAND, Category.STRETCH, true));
 		moves.put(SQUATS_W_BAND, new MoveWithPose(SQUATS_W_BAND, Category.STRETCH));
 		moves.put(JUMPS_180, new MoveWithPose(JUMPS_180, Category.STRETCH));
 		moves.put(JUMPS_90_TO_1_FOOT_LANDING, new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
