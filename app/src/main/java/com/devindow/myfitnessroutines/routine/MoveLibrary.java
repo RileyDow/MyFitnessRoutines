@@ -345,6 +345,20 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Rotate on all fours
+		{
+			MoveWithPose move = new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.S, Angle.W);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, Angle.E.add(8), true);
+
+			move.pose.rArm = new Arm(Angle.S.add(8), .9f);
+
+			moves.put(move.name, move);
+		}
+
 		// Lotus
 		{
 			MoveWithPose move = new MoveWithPose(LOTUS, "Breathe.", Category.YOGA);
@@ -377,7 +391,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(ROTATE_ON_ALL_FOURS, new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH, true));
 		moves.put(TWIST_PIVOT, new MoveWithPose(TWIST_PIVOT, Category.STRETCH));
 		moves.put(ROMAN_LUNGES, new MoveWithPose(ROMAN_LUNGES, Category.CARDIO));
 		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
