@@ -1,7 +1,7 @@
-# MyFitnessRoutines
+# My Fitness Routines
 Android app to guide you through fitness routines.
 
-## Tasks
+## Steps to release
 1. TODO up to date
 1. Gererate Signed APK
 1. Commit to *master*
