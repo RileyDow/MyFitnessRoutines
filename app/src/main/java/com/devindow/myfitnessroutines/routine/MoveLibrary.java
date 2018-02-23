@@ -261,6 +261,23 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Twist & Pivot
+		{
+			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+
+			move.pose.lLeg = new Leg(Angle.S.add(25), Angle.S.add(35), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+
+			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
+			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
+
+			moves.put(move.name, move);
+		}
+
 
 		// Push-ups
 		{
@@ -391,7 +408,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(TWIST_PIVOT, new MoveWithPose(TWIST_PIVOT, Category.STRETCH));
 		moves.put(ROMAN_LUNGES, new MoveWithPose(ROMAN_LUNGES, Category.CARDIO));
 		moves.put(HIP_STRETCH, new MoveWithPose(HIP_STRETCH, Category.STRETCH, true));
 		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));

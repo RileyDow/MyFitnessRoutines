@@ -111,6 +111,7 @@ public abstract class Appendage implements Serializable {
 		float proximalPointY = getProximalPointY(attachmentPointY);
 		canvas.drawLine(attachmentPointX, attachmentPointY, proximalPointX, proximalPointY, paint);
 
+		Debug.setPenColor(paint);
 		float distalPointX = getDistalPointX(attachmentPointX);
 		float distalPointY = getDistalPointY(attachmentPointY);
 		canvas.drawLine(proximalPointX, proximalPointY, distalPointX, distalPointY, paint);
