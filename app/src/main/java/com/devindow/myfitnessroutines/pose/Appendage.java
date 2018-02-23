@@ -75,7 +75,7 @@ public abstract class Appendage implements Serializable {
 	}
 
 	public Appendage(Angle angle, float lengthRatio) {
-		this(angle, lengthRatio/2, angle, lengthRatio/2);
+		this(angle, lengthRatio, angle, lengthRatio);
 	}
 
 	public Appendage(Angle proximalAngle, Angle distalAngle) {

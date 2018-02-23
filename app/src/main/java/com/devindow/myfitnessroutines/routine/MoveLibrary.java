@@ -104,16 +104,13 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO);
 			move.pose = new Pose();
 
-			Angle legAngle = Angle.S.add(15);
+			move.pose.rLeg = new Leg(Angle.S, .97f);
+			move.pose.lLeg = new Leg(Angle.S.add(23), Angle.S);
 
-			move.pose.rLeg = new Leg(legAngle);
-			move.pose.lLeg = new Leg(legAngle.mirror());
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness/2, true);
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2);
-
-			int armDegreesOffset = 10;
-			move.pose.lArm = new Arm(Angle.E.add(armDegreesOffset));
-			move.pose.rArm = new Arm(Angle.W.add(armDegreesOffset));
+			move.pose.lArm = new Arm(Angle.E.add(7));
+			move.pose.rArm = new Arm(Angle.E.add(-8));
 
 			moves.put(move.name, move);
 		}
