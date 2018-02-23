@@ -1,11 +1,8 @@
 TODO
 ----
 
-** Use Angle Constructor using Heights
-
 ** SampleRoutines & MoveLibrary show what Poses are needed.
   - Pre-Activation
-    - Single Leg Bridge
     - Jump 180 & 90
   - Morning Yoga
 

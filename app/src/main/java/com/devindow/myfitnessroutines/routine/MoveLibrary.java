@@ -11,46 +11,52 @@ import java.util.Hashtable;
 
 public class MoveLibrary {
 
-
 	// Constants
+	// Standing Poses
 	public static final String DONE = "Done!";
-	public static final String REST = "Rest";
-	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
-	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
-	public static final String WALL_SIT = "Wall Sit";
-	public static final String CRUNCHES = "Crunches";
-	public static final String STEP_UPS = "Step-Ups";
-	public static final String SQUATS = "Squats";
-	public static final String CHAIR_DIPS = "Chair Dips";
-	public static final String PUSH_UPS = "Push-Ups";
-	public static final String PLANK = "Plank";
-	public static final String HIGH_KNEES = "High Knees";
-	public static final String LUNGES = "Lunges";
-	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
-	public static final String SIDE_PLANK = "Side Plank";
-	public static final String DOWN_DOG = "Down Dog";
-	public static final String LOTUS = "Lotus";
-	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
-	public static final String TWIST_PIVOT = "Twist & Pivot";
 	public static final String SAFETY_JACKS = "Safety Jacks";
-	public static final String ROMAN_LUNGES = "Roman Lunges";
+	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String HIGH_KNEES = "High Knees";
+	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
+	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
+	public static final String LEG_SWINGS = "Leg Swings";
+
+	public static final String CRUNCHES = "Crunches";
+	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
+	public static final String CORPSE_POSE = "Corpse Pose";
+	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
+	// Bending Poses
+	public static final String TOUCH_TOES = "Touch Toes";
+	public static final String DOWN_DOG = "Down Dog";
+	public static final String INCH_WORMS = "Inch Worms";
+	// Squatting Poses
+	public static final String WALL_SIT = "Wall Sit";
+	public static final String SQUATS = "Squats";
+	public static final String SQUATS_W_BAND = "Squats w/ Band";
+	public static final String CHAIR_DIPS = "Chair Dips";
+	public static final String LUNGES = "Lunges";
+	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
 	public static final String HIP_STRETCH = "Hip Stretch";
 	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
 	public static final String HIP_HAMSTRING = "Hip/Hamstring Stretch";
-	public static final String LEG_SWINGS = "Leg Swings";
-	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
-	public static final String FOAM_ROLLER = "Foam Roller";
-	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
-	public static final String INCH_WORMS = "Inch Worms";
-	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
-	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
-	public static final String SQUATS_W_BAND = "Squats w/ Band";
-	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
-	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
+	public static final String STEP_UPS = "Step-Ups";
+	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String ROMAN_LUNGES = "Roman Lunges";
+	// Jumping Poses
 	public static final String JUMPS_180 = "180° Jumps";
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
-	public static final String CORPSE_POSE = "Corpse Pose";
+	// Prone Poses
+	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
+	public static final String PUSH_UPS = "Push-Ups";
+	public static final String PLANK = "Plank";
+	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
+	public static final String SIDE_PLANK = "Side Plank";
+	public static final String FOAM_ROLLER = "Foam Roller";
+	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
+	// Sitting Poses
+	public static final String REST = "Rest";
+	public static final String LOTUS = "Lotus";
 
 
 	// Public Static Fields
