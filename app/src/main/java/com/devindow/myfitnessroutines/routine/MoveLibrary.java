@@ -80,25 +80,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Corpse Pose
-		{
-			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);
-			move.pose = new Pose();
-
-			Angle legAngle = Angle.S.add(6);
-
-			move.pose.lLeg = new Leg(legAngle);
-			move.pose.rLeg = new Leg(legAngle.mirror());
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 12);
-
-			Angle armProximalAngle = Angle.S.add(-10);
-			move.pose.rArm = new Arm(armProximalAngle, Angle.S);
-			move.pose.lArm = new Arm(armProximalAngle.mirror(), Angle.S);
-
-			moves.put(move.name, move);
-		}
-
 		// Jumping Jacks
 		{
 			MoveWithPose move = new MoveWithPose(JUMPING_JACKS, Category.CARDIO);
@@ -152,9 +133,46 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+
+		// Corpse Pose
+		{
+			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(6);
+
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 12);
+
+			Angle armProximalAngle = Angle.S.add(-10);
+			move.pose.rArm = new Arm(armProximalAngle, Angle.S);
+			move.pose.lArm = new Arm(armProximalAngle.mirror(), Angle.S);
+
+			moves.put(move.name, move);
+		}
+
+		// Thoracic Roll-outs
+		{
+			MoveWithPose move = new MoveWithPose(THORACIC_ROLL_OUTS, "Lie on side, roll arms out then back", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
+
+			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+
 		// Touch Toes
 		{
-			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.YOGA);
+			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.STRETCH);
 			move.pose = new Pose();
 
 			Angle torsoAngle = Angle.S.add(45);
@@ -562,7 +580,6 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		moves.put(THORACIC_ROLL_OUTS, new MoveWithPose(THORACIC_ROLL_OUTS, Category.STRETCH, true));
 		moves.put(INCH_WORMS, new MoveWithPose(INCH_WORMS, Category.CARDIO));
 		moves.put(SINGLE_LEG_BRIDGE, new MoveWithPose(SINGLE_LEG_BRIDGE, Category.CARDIO));
 		moves.put(SIDE_LYING_ABDUCTION_W_BAND, new MoveWithPose(SIDE_LYING_ABDUCTION_W_BAND, Category.STRETCH, true));
