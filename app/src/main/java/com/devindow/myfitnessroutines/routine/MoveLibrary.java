@@ -232,6 +232,26 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Squats w/ Band
+		{
+			MoveWithPose move = new MoveWithPose(SQUATS_W_BAND, Category.WARMUP);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, true);
+
+			move.pose.rArm = new Arm(Angle.E);
+
+			move.pose.prop = new Band(
+					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) - Leg.thickness/2,
+					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness,
+					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) + Leg.thickness/2,
+					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness);
+
+			moves.put(move.name, move);
+		}
+
 		// Chair Dips
 		{
 			MoveWithPose move = new MoveWithPose(CHAIR_DIPS, Category.LIFTING);
@@ -351,9 +371,9 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(true);
 
 			move.pose.prop = new Band(
-					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX - Band.thickness/2),
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX) - Band.thickness/2,
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
-					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX + Band.thickness/2),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) + Band.thickness/2,
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
 
 			moves.put(move.name, move);
@@ -370,9 +390,9 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Angle.N.add(-10), true);
 
 			move.pose.prop = new Band(
-					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX + Band.thickness/2),
+					move.pose.lLeg.getDistalPointX(move.pose.torso.lHipX) + Band.thickness/2,
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
-					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX - Band.thickness/2),
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) - Band.thickness/2,
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
 
 			moves.put(move.name, move);
@@ -603,7 +623,6 @@ public class MoveLibrary {
 
 		moves.put(INCH_WORMS, new MoveWithPose(INCH_WORMS, Category.CARDIO));
 		moves.put(SINGLE_LEG_BRIDGE, new MoveWithPose(SINGLE_LEG_BRIDGE, Category.CARDIO));
-		moves.put(SQUATS_W_BAND, new MoveWithPose(SQUATS_W_BAND, Category.STRETCH));
 		moves.put(JUMPS_180, new MoveWithPose(JUMPS_180, Category.STRETCH));
 		moves.put(JUMPS_90_TO_1_FOOT_LANDING, new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.STRETCH));
 
