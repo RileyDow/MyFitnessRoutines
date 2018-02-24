@@ -53,19 +53,19 @@ public abstract class Appendage implements Serializable {
 	}
 
 	public float getProximalPointX(float attachmentX) {
-		return attachmentX + Math.round(proximalLengthRatio * getSegmentLength() * proximalAngle.getCos());
+		return attachmentX + proximalLengthRatio * getSegmentLength() * proximalAngle.getCos();
 	}
 
 	public float getProximalPointY(float attachmentY) {
-		return attachmentY + Math.round(proximalLengthRatio * getSegmentLength() * proximalAngle.getSin());
+		return attachmentY + proximalLengthRatio * getSegmentLength() * proximalAngle.getSin();
 	}
 
 	public float getDistalPointX(float attachmentX) {
-		return getProximalPointX(attachmentX) + Math.round(distalLengthRatio * getSegmentLength() * distalAngle.getCos());
+		return getProximalPointX(attachmentX) + distalLengthRatio * getSegmentLength() * distalAngle.getCos();
 	}
 
 	public float getDistalPointY(float attachmentY) {
-		return getProximalPointY(attachmentY) + Math.round(distalLengthRatio * getSegmentLength() * distalAngle.getSin());
+		return getProximalPointY(attachmentY) + distalLengthRatio * getSegmentLength() * distalAngle.getSin();
 	}
 
 

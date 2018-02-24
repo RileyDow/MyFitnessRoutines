@@ -94,20 +94,14 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, Category.NONE);
 			move.pose = new Pose();
 
-			Angle legAngle = Angle.S.add(1);
-			Log.d("legAngle", legAngle.toString());
-
+			Angle legAngle = Angle.S.add(3);
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
-			Log.d("lLeg", move.pose.lLeg.toString());
-			Log.d("rLeg", move.pose.rLeg.toString());
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
 
-			move.pose.rArm = new Arm(Angle.S.add(-3));
+			move.pose.rArm = new Arm(Angle.S.add(-2));
 			move.pose.lArm = new Arm(Angle.S.add(2));
-			Log.d("rArm", move.pose.rArm.toString());
-			Log.d("lArm", move.pose.lArm.toString());
 
 			moves.put(move.name, move);
 		}

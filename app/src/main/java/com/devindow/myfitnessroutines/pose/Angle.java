@@ -20,8 +20,8 @@ public class Angle implements Serializable {
 
 
 	// Public Properties
-	public int getDegrees() {
-		return (int)Math.round(Math.toDegrees(radians));
+	public float getDegrees() {
+		return (float)Math.toDegrees(radians);
 	}
 	public float getSin() {
 		return (float)Math.sin(radians);
@@ -63,8 +63,8 @@ public class Angle implements Serializable {
 		return new Angle(radians + Math.PI);
 	}
 
-	public Angle add(int degrees) {
-		return new Angle(getDegrees() + degrees);
+	public Angle add(float degrees) {
+		return new Angle(radians + Math.toRadians(degrees));
 	}
 
 
