@@ -12,16 +12,19 @@ import java.util.Hashtable;
 public class MoveLibrary {
 
 	// Constants
-	// Standing Poses
+	// Standing Frontal Poses
 	public static final String MOUNTAIN_POSE = "Mountain Pose";
 	public static final String DONE = "Done!";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
+	public static final String STANDING_SIDE_BEND = "Standing Side Bend";
+	public static final String LEG_SWINGS = "Leg Swings";
+
+	// Standing Frontal Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String HIGH_KNEES = "High Knees";
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
-	public static final String LEG_SWINGS = "Leg Swings";
 	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
@@ -81,7 +84,8 @@ public class MoveLibrary {
 
 	// Public Static Methods
 	public static void generateMoves() {
-		getStandingPoses();
+		getStandingFrontalPoses();
+		getStandingProfilePoses();
 		getBackLyingPoses();
 		getBackLyingTopViewPoses();
 		getForwardBendingPoses();
@@ -90,7 +94,7 @@ public class MoveLibrary {
 		getSittingPoses();
 	}
 
-	private static void getStandingPoses() {
+	private static void getStandingFrontalPoses() {
 		// Mountain Pose
 		{
 			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, Category.NONE);
@@ -114,7 +118,6 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			Angle legAngle = Angle.S.add(6);
-
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
 
@@ -148,6 +151,44 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Standing Side Bend
+		{
+			MoveWithPose move = new MoveWithPose(STANDING_SIDE_BEND, Category.STRETCH, true);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(6);
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			int torsoAngle = 15;
+			move.pose.torso = new Torso(Angle.N.add(torsoAngle));
+
+			move.pose.lArm = new Arm(Angle.N.add(torsoAngle-5), Angle.N.add(torsoAngle+25));
+			move.pose.rArm = new Arm(Angle.S.add(torsoAngle-45), Angle.S.add(torsoAngle+45));
+
+			moves.put(move.name, move);
+		}
+
+		// Leg Swings
+		{
+			MoveWithPose move = new MoveWithPose(LEG_SWINGS, Category.CARDIO, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg();
+
+			move.pose.torso = new Torso();
+
+			move.pose.rLeg = new Leg(Angle.E.add(-10), Angle.E.add(-20));
+
+			move.pose.rArm = new Arm(Angle.W.add(5));
+
+			move.pose.lArm = new Arm(Angle.E.add(-15), Angle.E.add(-35));
+
+			moves.put(move.name, move);
+		}
+	}
+
+	private static void getStandingProfilePoses() {
 		// Safety Jacks
 		{
 			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO);
@@ -229,24 +270,6 @@ public class MoveLibrary {
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
 					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) - Band.thickness/2,
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
-
-			moves.put(move.name, move);
-		}
-
-		// Leg Swings
-		{
-			MoveWithPose move = new MoveWithPose(LEG_SWINGS, Category.CARDIO, true);
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg();
-
-			move.pose.torso = new Torso();
-
-			move.pose.rLeg = new Leg(Angle.E.add(-10), Angle.E.add(-20));
-
-			move.pose.rArm = new Arm(Angle.W.add(5));
-
-			move.pose.lArm = new Arm(Angle.E.add(-15), Angle.E.add(-35));
 
 			moves.put(move.name, move);
 		}
