@@ -21,11 +21,13 @@ public class MoveLibrary {
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
 	public static final String LEG_SWINGS = "Leg Swings";
-
+	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
 	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
+	public static final String KNEE_CROSS_OVER = "Knee Cross-Over";
+	public static final String HIP_OPEN = "Hip Open";
 	// Bending Poses
 	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String DOWN_DOG = "Down Dog";
@@ -283,6 +285,38 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Knee Cross-Over
+		{
+			MoveWithPose move = new MoveWithPose(KNEE_CROSS_OVER, "Knee across body", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+
+			move.pose.rArm = new Arm(Angle.W.add(55));
+			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Hip Open
+		{
+			MoveWithPose move = new MoveWithPose(HIP_OPEN, "Hip opened up", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E.add(10), Angle.S.add(0));
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+
+			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E.add(-40));
 
 			moves.put(move.name, move);
 		}

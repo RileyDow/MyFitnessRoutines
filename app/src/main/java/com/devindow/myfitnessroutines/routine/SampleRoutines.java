@@ -138,8 +138,8 @@ public class SampleRoutines {
 		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CORPSE_POSE), 60, "Lie on your back. Relax. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Hip Cross-Over", true), 20, "Knee across body. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Hip Open", true), 20, "Knee opened up. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_CROSS_OVER), 20, "Knee across body. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_OPEN), 20, "Hip opened up. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Reclined Cobbler Pose"), 10, "Legs open, feet together. Press legs to extend spine. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Head to Knees"), 15, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Reclined Twist", true), 30, "Knees across body. Breathe."));
