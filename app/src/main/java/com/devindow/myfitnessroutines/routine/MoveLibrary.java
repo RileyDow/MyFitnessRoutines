@@ -25,6 +25,7 @@ public class MoveLibrary {
 	public static final String CRUNCHES = "Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
+	public static final String BOAT_POSE = "Boat Pose";
 	public static final String BRIDGE_POSE = "Bridge Pose";
 	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
 	public static final String CORPSE_POSE = "Corpse Pose";
@@ -248,6 +249,8 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.N.add(50), Angle.E);
 
 			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.torso.headX += 3;
+			move.pose.torso.headY += 7;
 
 			move.pose.rArm = new Arm(Angle.N.add(-30), .6f);
 
@@ -275,12 +278,28 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Boat Pose
+		{
+			MoveWithPose move = new MoveWithPose(BOAT_POSE, "Body & legs in a V", Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E.add(25));
+
+			move.pose.torso = new Torso(Torso.thickness/2, Angle.W.add(-35), true);
+			move.pose.torso.headX += 6;
+			move.pose.torso.headY += 4;
+
+			move.pose.rArm = new Arm(Angle.E.add(5));
+
+			moves.put(move.name, move);
+		}
+
 		// Bridge Pose
 		{
 			MoveWithPose move = new MoveWithPose(BRIDGE_POSE, Category.YOGA);
 			move.pose = new Pose();
 
-			Angle angle = new Angle(-20);
+			Angle angle = Angle.E.add(-24);
 
 			move.pose.lLeg = new Leg(angle.opposite(), Angle.S);
 
@@ -288,8 +307,10 @@ public class MoveLibrary {
 					move.pose.lLeg.getHeight() + Leg.thickness/2,
 					angle,
 					true);
+			move.pose.torso.headX += 1;
+			move.pose.torso.headY += 4;
 
-			move.pose.rArm = new Arm(Angle.W.add(15));
+			move.pose.rArm = new Arm(Angle.W.add(5));
 
 			moves.put(move.name, move);
 		}
@@ -299,7 +320,7 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, "Drive leg up, hold, repeat.", Category.WARMUP, true);
 			move.pose = new Pose();
 
-			Angle angle = new Angle(-20);
+			Angle angle = Angle.E.add(-24);
 
 			move.pose.lLeg = new Leg(angle.opposite(), Angle.S);
 			move.pose.rLeg = new Leg(angle.add(90), angle.opposite());
@@ -308,8 +329,10 @@ public class MoveLibrary {
 					move.pose.lLeg.getHeight() + Leg.thickness/2,
 					angle,
 					true);
+			move.pose.torso.headX += 1;
+			move.pose.torso.headY += 4;
 
-			move.pose.rArm = new Arm(Angle.W.add(15));
+			move.pose.rArm = new Arm(Angle.W.add(5));
 
 			moves.put(move.name, move);
 		}

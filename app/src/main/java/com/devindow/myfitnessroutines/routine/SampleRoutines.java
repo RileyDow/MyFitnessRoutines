@@ -146,7 +146,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_HAMSTRING_W_STRAP), 60, "Bend knee then straighten. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BRIDGE_POSE), 15, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.COBBLERS_POSE), 20, "Sit. Butterfly. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Boat Pose"), 15, "Body & legs in a V. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BOAT_POSE), 15, "Body & legs in a V. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Shoulder Press"), 15, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Rotate on all fours", true), 20, "Breathe."));
