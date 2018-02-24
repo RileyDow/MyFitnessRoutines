@@ -18,13 +18,28 @@ public class MoveLibrary {
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String STANDING_SIDE_BEND = "Standing Side Bend";
 	public static final String LEG_SWINGS = "Leg Swings";
-
-	// Standing Frontal Poses
+	public static final String WARRIOR_2 = "Warrior 2";
+	public static final String ROMAN_LUNGES = "Roman Lunges";
+	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String HIGH_KNEES = "High Knees";
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
+	public static final String TWIST_PIVOT = "Twist & Pivot";
+	// Squatting Poses
+	public static final String WALL_SIT = "Wall Sit";
+	public static final String SQUATS = "Squats";
+	public static final String SQUATS_W_BAND = "Squats w/ Band";
+	public static final String CHAIR_DIPS = "Chair Dips";
+	public static final String LUNGES = "Lunges";
+	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
+	public static final String HIP_STRETCH = "Hip Stretch";
+	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
+	public static final String HIP_HAMSTRING = "Hip/Hamstring Stretch";
+	public static final String STEP_UPS = "Step-Ups";
+	public static final String JUMPS_180 = "180° Jumps";
+	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
@@ -47,21 +62,6 @@ public class MoveLibrary {
 	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
 	public static final String WIDE_LEG_BEND = "Wide Leg Bend";
-	// Squatting Poses
-	public static final String WALL_SIT = "Wall Sit";
-	public static final String SQUATS = "Squats";
-	public static final String SQUATS_W_BAND = "Squats w/ Band";
-	public static final String CHAIR_DIPS = "Chair Dips";
-	public static final String LUNGES = "Lunges";
-	public static final String WALKING_BACKWARD_LUNGES = "Walking Backward Lunges";
-	public static final String HIP_STRETCH = "Hip Stretch";
-	public static final String HAMSTRING_STRETCH = "Hamstring Stretch";
-	public static final String HIP_HAMSTRING = "Hip/Hamstring Stretch";
-	public static final String STEP_UPS = "Step-Ups";
-	public static final String TWIST_PIVOT = "Twist & Pivot";
-	public static final String ROMAN_LUNGES = "Roman Lunges";
-	public static final String JUMPS_180 = "180° Jumps";
-	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Prone Poses
 	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
 	public static final String CAT_POSE = "Cat Pose";
@@ -189,6 +189,21 @@ public class MoveLibrary {
 
 			moves.put(move.name, move);
 		}
+
+		// Warrior 2
+		{
+			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S.add(5));
+			move.pose.lLeg = new Leg(Angle.S.add(45), Angle.S.add(55));
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2);
+
+			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
 	}
 
 	private static void getStandingProfilePoses() {
@@ -273,6 +288,212 @@ public class MoveLibrary {
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY),
 					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) - Band.thickness/2,
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY));
+
+			moves.put(move.name, move);
+		}
+
+		// Twist & Pivot
+		{
+			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+
+			move.pose.lLeg = new Leg(Angle.S.add(25), Angle.S.add(35), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
+			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
+
+			moves.put(move.name, move);
+		}
+	}
+
+	private static void getSquattingPoses() {
+		// Wall Sit
+		{
+			MoveWithPose move = new MoveWithPose(WALL_SIT, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.prop = new Wall(-Torso.thickness / 2);
+
+			moves.put(move.name, move);
+		}
+
+		// Squats
+		{
+			MoveWithPose move = new MoveWithPose(SQUATS, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.rArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Squats w/ Band
+		{
+			MoveWithPose move = new MoveWithPose(SQUATS_W_BAND, Category.WARMUP);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.rArm = new Arm(Angle.E);
+
+			move.pose.prop = new Band(
+					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) - Leg.thickness / 2,
+					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness,
+					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) + Leg.thickness / 2,
+					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness);
+
+			moves.put(move.name, move);
+		}
+
+		// Chair Dips
+		{
+			MoveWithPose move = new MoveWithPose(CHAIR_DIPS, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.rArm = new Arm(new Angle(-140), Angle.S);
+
+			final float chairX = -Torso.thickness / 2 - 2;
+			final float chairSize = move.pose.rArm.getDistalPointY(move.pose.torso.rShoulderY) - Arm.thickness / 2;
+			move.pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
+
+			moves.put(move.name, move);
+		}
+
+		// Lunges
+		{
+			MoveWithPose move = new MoveWithPose(LUNGES, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
+			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			moves.put(move.name, move);
+		}
+
+		// Walking Backward Lunges
+		{
+			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, "Step back, reach back with opposite arm", Category.WARMUP);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.W, Angle.S);
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.E);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-10), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(30), 1.2f);
+			move.pose.rArm = new Arm(Angle.N.add(10));
+
+			moves.put(move.name, move);
+		}
+
+		// Hip Stretch
+		{
+			MoveWithPose move = new MoveWithPose(HIP_STRETCH, Category.STRETCH, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		// Hip/Hamstring Stretch
+		{
+			MoveWithPose move = new MoveWithPose(HIP_HAMSTRING, "Stretch Hip then straighten for Hamstring", Category.STRETCH, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+
+			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
+
+		// Step-Ups
+		{
+			MoveWithPose move = new MoveWithPose(STEP_UPS, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S);
+
+			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.S);
+
+			move.pose.torso = new Torso(true);
+
+			float stepSize = move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY) - Leg.thickness / 2;
+			move.pose.prop = new Ledge(move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) - Leg.thickness / 2, move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) + stepSize, stepSize);
+
+			moves.put(move.name, move);
+		}
+
+		// Roman Lunges
+		{
+			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, "Opposite Arm & Leg go back", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
+
+		// 180° Jumps
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_180, "Jump & Turn.", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
+
+			moves.put(move.name, move);
+		}
+
+		// 90° Jumps to 1 Foot
+		{
+			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, "Jump & Turn.", Category.CARDIO, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
+			move.pose.rLeg = new Leg(Angle.S.add(30), Angle.W.add(25));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
+
+			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
 
 			moves.put(move.name, move);
 		}
@@ -632,212 +853,6 @@ public class MoveLibrary {
 
 			//move.pose.lArm = new Arm(Angle.S.add(-5));
 			//move.pose.rArm = new Arm(Angle.S.add(5));
-
-			moves.put(move.name, move);
-		}
-	}
-
-	private static void getSquattingPoses() {
-		// Wall Sit
-		{
-			MoveWithPose move = new MoveWithPose(WALL_SIT, Category.LIFTING);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.prop = new Wall(-Torso.thickness / 2);
-
-			moves.put(move.name, move);
-		}
-
-		// Squats
-		{
-			MoveWithPose move = new MoveWithPose(SQUATS, Category.LIFTING);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.rArm = new Arm(Angle.E);
-
-			moves.put(move.name, move);
-		}
-
-		// Squats w/ Band
-		{
-			MoveWithPose move = new MoveWithPose(SQUATS_W_BAND, Category.WARMUP);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.rArm = new Arm(Angle.E);
-
-			move.pose.prop = new Band(
-					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) - Leg.thickness / 2,
-					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness,
-					move.pose.rLeg.getProximalPointX(move.pose.torso.rHipX) + Leg.thickness / 2,
-					move.pose.rLeg.getProximalPointY(move.pose.torso.rHipY) - Leg.thickness);
-
-			moves.put(move.name, move);
-		}
-
-		// Chair Dips
-		{
-			MoveWithPose move = new MoveWithPose(CHAIR_DIPS, Category.LIFTING);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.rArm = new Arm(new Angle(-140), Angle.S);
-
-			final float chairX = -Torso.thickness / 2 - 2;
-			final float chairSize = move.pose.rArm.getDistalPointY(move.pose.torso.rShoulderY) - Arm.thickness / 2;
-			move.pose.prop = new Ledge(chairX, chairX - chairSize, chairSize);
-
-			moves.put(move.name, move);
-		}
-
-		// Lunges
-		{
-			MoveWithPose move = new MoveWithPose(LUNGES, Category.LIFTING);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
-			move.pose.lLeg = new Leg(Angle.S.add(-10), Angle.W);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			moves.put(move.name, move);
-		}
-
-		// Walking Backward Lunges
-		{
-			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, "Step back, reach back with opposite arm", Category.WARMUP);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.W, Angle.S);
-			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.E);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-10), true);
-
-			move.pose.lArm = new Arm(Angle.S.add(30), 1.2f);
-			move.pose.rArm = new Arm(Angle.N.add(10));
-
-			moves.put(move.name, move);
-		}
-
-		// Hip Stretch
-		{
-			MoveWithPose move = new MoveWithPose(HIP_STRETCH, Category.STRETCH, true);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
-
-			moves.put(move.name, move);
-		}
-
-		// Hip/Hamstring Stretch
-		{
-			MoveWithPose move = new MoveWithPose(HIP_HAMSTRING, "Stretch Hip then straighten for Hamstring", Category.STRETCH, true);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.lLeg = new Leg(Angle.S.add(-45), 1.1f, Angle.W);
-
-			moves.put(move.name, move);
-		}
-
-		moves.put(HAMSTRING_STRETCH, new MoveWithPose(HAMSTRING_STRETCH, Category.STRETCH, true));
-
-		// Step-Ups
-		{
-			MoveWithPose move = new MoveWithPose(STEP_UPS, Category.LIFTING);
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S);
-
-			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.S);
-
-			move.pose.torso = new Torso(true);
-
-			float stepSize = move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY) - Leg.thickness / 2;
-			move.pose.prop = new Ledge(move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) - Leg.thickness / 2, move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX) + stepSize, stepSize);
-
-			moves.put(move.name, move);
-		}
-
-		// Twist & Pivot
-		{
-			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
-			move.pose = new Pose();
-
-			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
-
-			move.pose.lLeg = new Leg(Angle.S.add(25), Angle.S.add(35), 1.2f);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
-
-			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
-			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
-
-			moves.put(move.name, move);
-		}
-
-		// Roman Lunges
-		{
-			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, "Opposite Arm & Leg go back", Category.CARDIO);
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
-			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
-
-			move.pose.lArm = new Arm(Angle.E);
-			move.pose.rArm = new Arm(Angle.W);
-
-			moves.put(move.name, move);
-		}
-
-		// 180° Jumps
-		{
-			MoveWithPose move = new MoveWithPose(JUMPS_180, "Jump & Turn.", Category.CARDIO);
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
-
-			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
-
-			moves.put(move.name, move);
-		}
-
-		// 90° Jumps to 1 Foot
-		{
-			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, "Jump & Turn.", Category.CARDIO, true);
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
-			move.pose.rLeg = new Leg(Angle.S.add(30), Angle.W.add(25));
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.N.add(-30), true);
-
-			move.pose.lArm = new Arm(Angle.S.add(10), Angle.S.add(25));
 
 			moves.put(move.name, move);
 		}
