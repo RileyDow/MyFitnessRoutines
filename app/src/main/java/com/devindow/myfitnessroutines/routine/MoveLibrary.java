@@ -27,6 +27,7 @@ public class MoveLibrary {
 	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
+	public static final String RECLINED_TWIST = "Reclined Twist";
 	public static final String KNEE_CROSS_OVER = "Knee Cross-Over";
 	public static final String HIP_OPEN = "Hip Open";
 	public static final String RECLINED_COBBLER_POSE = "Reclined Cobbler Pose";
@@ -292,6 +293,22 @@ public class MoveLibrary {
 		// Thoracic Roll-outs
 		{
 			MoveWithPose move = new MoveWithPose(THORACIC_ROLL_OUTS, "Lie on side, roll arms out then back", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
+			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
+
+			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Reclined Twist
+		{
+			MoveWithPose move = new MoveWithPose(RECLINED_TWIST, "Knees across body a few inches off the ground", Category.YOGA, true);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
