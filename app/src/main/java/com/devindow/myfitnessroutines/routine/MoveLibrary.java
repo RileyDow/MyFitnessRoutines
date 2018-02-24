@@ -63,6 +63,7 @@ public class MoveLibrary {
 	public static final String SIDE_PLANK = "Side Plank";
 	public static final String FOAM_ROLLER = "Foam Roller";
 	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
+	public static final String LOCUST_POSE = "Locust Pose";
 	// Sitting Poses
 	public static final String LOTUS = "Lotus";
 	public static final String COBBLERS_POSE = "Cobbler's Pose";
@@ -842,6 +843,22 @@ public class MoveLibrary {
 					move.pose.lLeg.getDistalPointY(move.pose.torso.lHipY - Band.thickness / 2),
 					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
 					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY + Band.thickness / 2));
+
+			moves.put(move.name, move);
+		}
+
+		// Locust Pose
+		{
+			MoveWithPose move = new MoveWithPose(LOCUST_POSE,"On Belly. Lift legs & chest.", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.E.add(8), true);
+			move.pose.torso.headX -= 2;
+			move.pose.torso.headY += 4;
+
+			move.pose.rLeg = new Leg(Angle.W.add(-10), Angle.W.add(-20));
+
+			move.pose.rArm = new Arm(Angle.W.add(-15), Angle.W.add(-5));
 
 			moves.put(move.name, move);
 		}

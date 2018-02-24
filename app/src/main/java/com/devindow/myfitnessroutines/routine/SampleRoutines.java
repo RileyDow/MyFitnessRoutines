@@ -148,8 +148,8 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.COBBLERS_POSE), 20, "Sit. Butterfly. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BOAT_POSE), 15, "Body & legs in a V. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SHOULDER_PRESS), 15, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Rotate on all fours", true), 20, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOCUST_POSE), 15, "On Belly. Lift legs & chest. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Cat Pose"), 20, "Arch then bow your back. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 40, "Alternate calves. Breathe."));
 		//routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_Alternate), 40, "Alternate calves. Breathe."));
