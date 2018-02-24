@@ -150,10 +150,10 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SHOULDER_PRESS), 15, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOCUST_POSE), 15, "On Belly. Lift legs & chest. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Cat Pose"), 20, "Arch then bow your back. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CAT_POSE), 20, "Arch back, then bow back. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 40, "Alternate calves. Breathe."));
 		//routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_Alternate), 40, "Alternate calves. Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHILDS_POSE), 20, "Walk your fingers out. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHILD_POSE), 20, "Walk your fingers out. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Mountain Pose"), 15, "Stand. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Standing Side Bends", true), 20, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Wide Leg Bend"), 30, "Breathe."));
