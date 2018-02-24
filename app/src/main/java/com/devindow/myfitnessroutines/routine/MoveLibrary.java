@@ -24,6 +24,7 @@ public class MoveLibrary {
 	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
+	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
@@ -247,6 +248,27 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
 
 			move.pose.rArm = new Arm(Angle.N.add(-30), .6f);
+
+			moves.put(move.name, move);
+		}
+
+		// Reclined Hamstring w/ Strap
+		{
+			MoveWithPose move = new MoveWithPose(RECLINED_HAMSTRING_W_STRAP, "Bend knee then straighten", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(10));
+			move.pose.lLeg = new Leg(Angle.E.add(-3));
+
+			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.E.add(30), Angle.N.add(-10));
+
+			move.pose.prop = new Band(
+					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
+					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY) + Leg.thickness/2,
+					move.pose.rArm.getDistalPointX(move.pose.torso.rShoulderX),
+					move.pose.rArm.getDistalPointY(move.pose.torso.rShoulderY));
 
 			moves.put(move.name, move);
 		}
