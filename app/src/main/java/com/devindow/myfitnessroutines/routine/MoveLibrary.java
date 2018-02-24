@@ -32,6 +32,7 @@ public class MoveLibrary {
 	public static final String SHOULDER_PRESS = "Shoulder Press";
 	// Back-Lying Top View Poses
 	public static final String CORPSE_POSE = "Corpse Pose";
+	public static final String HEAD_TO_KNEES_TOPVIEW = "Head to Knees";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
 	public static final String RECLINED_TWIST = "Reclined Twist";
 	public static final String KNEE_CROSS_OVER = "Knee Cross-Over";
@@ -267,7 +268,7 @@ public class MoveLibrary {
 
 		// Head to Knees
 		{
-			MoveWithPose move = new MoveWithPose(HEAD_TO_KNEES, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(HEAD_TO_KNEES, Category.YOGA);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(50), Angle.E);
@@ -394,6 +395,28 @@ public class MoveLibrary {
 			Angle armProximalAngle = Angle.S.add(-10);
 			move.pose.rArm = new Arm(armProximalAngle, Angle.S);
 			move.pose.lArm = new Arm(armProximalAngle.mirror(), Angle.S);
+
+			moves.put(move.name, move);
+		}
+
+		// Head to Knees Top View
+		{
+			MoveWithPose move = new MoveWithPose(HEAD_TO_KNEES_TOPVIEW, Category.YOGA);
+			move.pose = new Pose();
+
+			Angle legProximalAngle = Angle.N.add(20);
+			float legProximalRatio = .8f;
+			Angle legDistalAngle = Angle.S.add(10);
+			move.pose.rLeg = new Leg(legProximalAngle, legProximalRatio, legDistalAngle);
+			move.pose.lLeg = new Leg(legProximalAngle.mirror(), legProximalRatio, legDistalAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 35);
+			move.pose.torso.headY -= 3;
+
+			Angle armProximalAngle = Angle.S.add(-20);
+			float armProximalRatio = .5f;
+			move.pose.rArm = new Arm(armProximalAngle, armProximalRatio);
+			move.pose.lArm = new Arm(armProximalAngle.mirror(), armProximalRatio);
 
 			moves.put(move.name, move);
 		}

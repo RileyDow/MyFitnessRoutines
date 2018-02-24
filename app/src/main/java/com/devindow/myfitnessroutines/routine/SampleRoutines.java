@@ -141,7 +141,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_CROSS_OVER), 20, "Knee across body. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_OPEN), 20, "Hip opened up. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_COBBLER_POSE), 10, "Legs open, feet together. Press legs to extend spine."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HEAD_TO_KNEES), 15, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HEAD_TO_KNEES_TOPVIEW), 15, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_TWIST), 30, "Knees across body a few inches off the ground. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_HAMSTRING_W_STRAP), 60, "Bend knee then straighten. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BRIDGE_POSE), 15, "Breathe."));
