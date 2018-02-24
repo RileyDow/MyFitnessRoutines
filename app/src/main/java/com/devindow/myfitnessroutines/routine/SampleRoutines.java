@@ -34,12 +34,12 @@ public class SampleRoutines {
 		if (Debug.on) {
 			defaultRoutines.add(getSoccerTouches());
 			defaultRoutines.add(getLadderDrills());
+			defaultRoutines.add(getStretchRoutine());
 			defaultRoutines.add(getTestPoses());
 			defaultRoutines.add(getTestShortRoutine());
 /*
 			defaultRoutines.add(getSunSalutation());
 
-			defaultRoutines.add(getStretchRoutine());
 
 			defaultRoutines.add(getLiftRoutine());
 

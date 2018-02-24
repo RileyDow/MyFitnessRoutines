@@ -550,12 +550,17 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.STRETCH);
 			move.pose = new Pose();
 
-			Angle torsoAngle = Angle.S.add(45);
-			move.pose.torso = new Torso(-Torso.getWidth(torsoAngle) / 2, torsoAngle, true);
-
 			move.pose.rLeg = new Leg(Angle.S);
 
-			move.pose.rArm = new Arm(Angle.S);
+			Angle torsoAngle = Angle.S.add(45);
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness/2,
+					torsoAngle,
+					true);
+			move.pose.torso.headX -= 6;
+			move.pose.torso.headY -= 3;
+
+			move.pose.rArm = new Arm(Angle.S.add(-20), .92f);
 
 			moves.put(move.name, move);
 		}
