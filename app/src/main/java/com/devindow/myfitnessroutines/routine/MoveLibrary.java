@@ -380,17 +380,21 @@ public class MoveLibrary {
 	}
 
 	private static void getBackLyingTopViewPoses() {
+		final float waistY = 46;
+
 		// Corpse Pose
 		{
 			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			Angle legAngle = Angle.S.add(6);
 
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 12);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			Angle armProximalAngle = Angle.S.add(-10);
 			move.pose.rArm = new Arm(armProximalAngle, Angle.S);
@@ -403,6 +407,7 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(HEAD_TO_KNEES_TOPVIEW, Category.YOGA);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			Angle legProximalAngle = Angle.N.add(20);
 			float legProximalRatio = .8f;
@@ -410,8 +415,9 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(legProximalAngle, legProximalRatio, legDistalAngle);
 			move.pose.lLeg = new Leg(legProximalAngle.mirror(), legProximalRatio, legDistalAngle.mirror());
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 35);
+			move.pose.torso = new Torso(waistY);
 			move.pose.torso.headY -= 3;
+			move.pose.torso.mat = true;
 
 			Angle armProximalAngle = Angle.S.add(-20);
 			float armProximalRatio = .5f;
@@ -425,11 +431,13 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(THORACIC_ROLL_OUTS, "Lie on side, roll arms out then back", Category.YOGA, true);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
 			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E);
@@ -441,11 +449,13 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(RECLINED_TWIST, "Knees across body a few inches off the ground", Category.YOGA, true);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
 			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + 20);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E);
@@ -457,11 +467,13 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(KNEE_CROSS_OVER, "Knee across body", Category.YOGA, true);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			move.pose.rLeg = new Leg(Angle.S);
 			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W.add(55));
 			move.pose.lArm = new Arm(Angle.E);
@@ -473,11 +485,13 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(HIP_OPEN, "Hip opened up", Category.YOGA, true);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			move.pose.rLeg = new Leg(Angle.S);
 			move.pose.lLeg = new Leg(Angle.E.add(10), Angle.S.add(0));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E.add(-40));
@@ -489,11 +503,13 @@ public class MoveLibrary {
 		{
 			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, "Legs open, feet together. Press legs to extend spine.", Category.YOGA, true);
 			move.pose = new Pose();
+			move.pose.centerExtents = false;
 
 			move.pose.rLeg = new Leg(Angle.S.add(-40), Angle.S.add((40)));
 			move.pose.lLeg = new Leg(Angle.S.add(40), Angle.S.add(-40));
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+			move.pose.torso = new Torso(waistY);
+			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.S.add(-4));
 			move.pose.lArm = new Arm(Angle.S.add(4));
