@@ -76,7 +76,7 @@ public class MoveLibrary {
 	// Sitting Poses
 	public static final String LOTUS = "Lotus";
 	public static final String REST = "Rest";
-	public static final String COBBLERS_POSE = "Cobbler's Pose";
+	public static final String COBBLER_POSE = "Cobbler Pose";
 	public static final String SAGE_POSE = "Sage Pose";
 	public static final String TWISTED_SAGE_POSE = "Twisted Sage Pose";
 
@@ -256,7 +256,7 @@ public class MoveLibrary {
 
 		// Standing Hurdles w/ Band
 		{
-			MoveWithPose move = new MoveWithPose(STANDING_HURDLES_W_BAND, "Drive knee up with band around feet", Category.WARMUP);
+			MoveWithPose move = new MoveWithPose(STANDING_HURDLES_W_BAND, "Drive knee up with band around feet", Category.WARMUP, true);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
@@ -275,7 +275,7 @@ public class MoveLibrary {
 
 		// Lateral Walk w/ Band
 		{
-			MoveWithPose move = new MoveWithPose(LATERAL_WALK_W_BAND, "Walk forwards & backwards in explosive cutting motion", Category.WARMUP);
+			MoveWithPose move = new MoveWithPose(LATERAL_WALK_W_BAND, "Walk forwards & backwards in explosive cutting motion", Category.WARMUP, true);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-10), Angle.S.add(-20));
@@ -612,7 +612,7 @@ public class MoveLibrary {
 
 		// Shoulder Press
 		{
-			MoveWithPose move = new MoveWithPose(SHOULDER_PRESS, Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(SHOULDER_PRESS, Category.YOGA);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N);
@@ -749,7 +749,7 @@ public class MoveLibrary {
 
 		// Reclined Cobbler Pose
 		{
-			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, "Legs open, feet together. Press legs to extend spine.", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, "Legs open, feet together. Press legs to extend spine.", Category.YOGA);
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -861,7 +861,7 @@ public class MoveLibrary {
 	private static void getPronePoses() {
 		// Rotate on all fours
 		{
-			MoveWithPose move = new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH);
+			MoveWithPose move = new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH, true);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S, Angle.W);
@@ -1027,7 +1027,7 @@ public class MoveLibrary {
 
 		// Locust Pose
 		{
-			MoveWithPose move = new MoveWithPose(LOCUST_POSE,"On Belly. Lift legs & chest.", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(LOCUST_POSE,"On Belly. Lift legs & chest.", Category.YOGA);
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.E.add(8), true);
@@ -1075,9 +1075,9 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Cobbler's Pose
+		// Cobbler Pose
 		{
-			MoveWithPose move = new MoveWithPose(COBBLERS_POSE, "Sit. Butterfly.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(COBBLER_POSE, "Sit. Butterfly.", Category.YOGA);
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2);
