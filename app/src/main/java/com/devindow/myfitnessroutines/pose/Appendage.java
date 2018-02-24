@@ -121,4 +121,11 @@ public abstract class Appendage implements Serializable {
 		canvas.drawLine(proximalPointX, proximalPointY, distalPointX, distalPointY, paint);
 	}
 
+
+	// Overrides
+	@Override
+	public String toString() {
+		return "prox=" + proximalAngle + " proxRatio=" + proximalLengthRatio + " dist=" + distalAngle + " distRatio=" + distalLengthRatio;
+	}
+
 }
