@@ -28,6 +28,7 @@ public class MoveLibrary {
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
 	public static final String KNEE_CROSS_OVER = "Knee Cross-Over";
 	public static final String HIP_OPEN = "Hip Open";
+	public static final String RECLINED_COBBLER_POSE = "Reclined Cobbler Pose";
 	// Bending Poses
 	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String DOWN_DOG = "Down Dog";
@@ -294,8 +295,8 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(KNEE_CROSS_OVER, "Knee across body", Category.YOGA, true);
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
 			move.pose.rLeg = new Leg(Angle.S);
+			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
 
@@ -310,13 +311,29 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(HIP_OPEN, "Hip opened up", Category.YOGA, true);
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.E.add(10), Angle.S.add(0));
 			move.pose.rLeg = new Leg(Angle.S);
+			move.pose.lLeg = new Leg(Angle.E.add(10), Angle.S.add(0));
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E.add(-40));
+
+			moves.put(move.name, move);
+		}
+
+		// Reclined Cobbler Pose
+		{
+			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, "Legs open, feet together. Press legs to extend spine.", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-40), Angle.S.add((40)));
+			move.pose.lLeg = new Leg(Angle.S.add(40), Angle.S.add(-40));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + 12);
+
+			move.pose.rArm = new Arm(Angle.S.add(-4));
+			move.pose.lArm = new Arm(Angle.S.add(4));
 
 			moves.put(move.name, move);
 		}
