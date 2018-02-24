@@ -57,6 +57,7 @@ public class MoveLibrary {
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Prone Poses
 	public static final String ROTATE_ON_ALL_FOURS = "Rotate on all fours";
+	public static final String CHILDS_POSE = "Child's Pose";
 	public static final String PUSH_UPS = "Push-Ups";
 	public static final String PLANK = "Plank";
 	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
@@ -731,6 +732,26 @@ public class MoveLibrary {
 					move.pose.rLeg.getHeight() + Leg.thickness/2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
 					true);
+
+			moves.put(move.name, move);
+		}
+
+		// Child's Pose
+		{
+			MoveWithPose move = new MoveWithPose(CHILDS_POSE, Category.STRETCH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.E.add(-30), Angle.W);
+
+			move.pose.rArm = new Arm(Angle.E.add(-15), Angle.E);
+
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness/2,
+					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					true);
+			//move.pose.torso.headX += 1;
+			move.pose.torso.headY += 4;
+
 
 			moves.put(move.name, move);
 		}
