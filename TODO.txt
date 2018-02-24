@@ -1,34 +1,30 @@
 TODO
 ----
 
-** SampleRoutines shows what Poses are needed.
-  - Morning Yoga
-
-* Pose.Offset
-
 * Sound for next move based on Category.  (Beep is good for switch sides.)
-* Draw Nose in Profile?
-
-* Ladder Runs
-  - Grapevine
-    - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
-  - Shuffle
-    - 1-R-in, 2-L-in, 3-R-out :: 4-L-in, 5-R-in, 6-L-out
-* Soccer Touches (with arrows & mirror)
-  - Triangle
-    - 1R, 2R, 3L
-  - Outside Star
 
 * Layout
   - Next Step bigger
   - Sizes based on percent of screen?
 
-* App Store
-  - Rename APK?
+* Pose.Offset
+
+* Draw Nose in Profile?
 
 - Routines
-  - Soccer Touches
+  * Ladder Runs
+    - Grapevine
+      - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
+    - Shuffle
+      - 1-R-in, 2-L-in, 3-R-out :: 4-L-in, 5-R-in, 6-L-out
+  * Soccer Touches (with arrows & mirror)
+    - Triangle
+      - 1R, 2R, 3L
+    - Outside Star
   - Sun Salutation
+
+* App Store
+  - Rename APK?
 
 - Play Routine activity
   + Disable/Hide Next/Prev button

@@ -34,12 +34,12 @@ public class SampleRoutines {
 		if (Debug.on) {
 			defaultRoutines.add(getSoccerTouches());
 			defaultRoutines.add(getLadderDrills());
+			defaultRoutines.add(getStretchRoutine());
 			defaultRoutines.add(getTestPoses());
 			defaultRoutines.add(getTestShortRoutine());
 /*
 			defaultRoutines.add(getSunSalutation());
 
-			defaultRoutines.add(getStretchRoutine());
 
 			defaultRoutines.add(getLiftRoutine());
 
@@ -73,15 +73,6 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getRileyRoutine() {
-		Routine routine = new Routine("Riley Routine");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30, 5));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30, 0));
-
-		return routine;
-	}
 	private static Routine get7MinuteWorkout() {
 		Routine routine = new Routine("7 Minute Workout", "High-intensity circuit training that alternates muscle groups");
 
@@ -101,67 +92,67 @@ public class SampleRoutines {
 		return routine;
 	}
 
+	private static Routine getMorningYogaRoutine() {
+		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CORPSE_POSE), 60, "Lie on your back. Relax. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_CROSS_OVER), 20, "Knee across body. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_OPEN), 20, "Hip opened up. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_COBBLER_POSE), 10, "Legs open, feet together. Press legs to extend spine."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HEAD_TO_KNEES_TOPVIEW), 15, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_TWIST), 30, "Knees across body a few inches off the ground. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.RECLINED_HAMSTRING_W_STRAP), 60, "Bend knee then straighten. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BRIDGE_POSE), 15, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.COBBLERS_POSE), 20, "Sit. Butterfly. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BOAT_POSE), 15, "Body & legs in a V. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SHOULDER_PRESS), 15, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOCUST_POSE), 15, "On Belly. Lift legs & chest. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CAT_POSE), 20, "Arch back, then bow back. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES), 40, "Alternate calves. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHILD_POSE), 20, "Walk your fingers out. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.MOUNTAIN_POSE), 15, "Stand tall. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_SIDE_BEND), 20, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WARRIOR_2), 30, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAGE_POSE), 10, "Sit Tall. Legs together. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWISTED_SAGE_POSE), 30, "Sit Tall. Pretzel. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
+
+		return routine;
+	}
+
 	private static Routine getWarmupRoutine() {
-		Routine routine = new Routine("Warmup", "A warmup to do when starting out cold");
+		Routine routine = new Routine("Warmup/Thermoregulation", "A warmup to do when starting out cold");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWIST_PIVOT), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROMAN_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAFETY_JACKS), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_HAMSTRING), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_SWINGS), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIGH_KNEES), 30));
 
 		return routine;
 	}
 
 	private static Routine getPreActivationRoutine() {
-		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team");
+		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team.  Do a warmup first.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.INCH_WORMS), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGE), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_LYING_ABDUCTION_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SQUATS_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LATERAL_WALK_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_HURDLES_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_180), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_90_TO_1_FOOT_LANDING), 30));
-
-		return routine;
-	}
-
-	private static Routine getMorningYogaRoutine() {
-		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CORPSE_POSE), 60, "Lie on your back. Relax. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Hip Cross-Over", true), 20, "Knee across body. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Hip Open", true), 20, "Knee opened up. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Reclined Cobbler Pose"), 10, "Legs open, feet together. Press legs to extend spine. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Head to Knees"), 15, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Reclined Twist", true), 30, "Knees across body. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Reclined Hamstring w/ Strap", true), 60, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Bridge Pose"), 15, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Cobbler's Pose"), 20, "Sit. Butterfly. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Boat Pose"), 15, "Body & legs in a V. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Shoulder Press"), 15, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Rotate on all fours", true), 20, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Cat Pose"), 20, "Arch then bow your back. Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 40, "Alternate calves. Breathe."));
-		//routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_Alternate), 40, "Alternate calves. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Child's Pose"), 20, "Walk your fingers out. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Mountain Pose"), 15, "Stand. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Standing Side Bends", true), 20, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Wide Leg Bend"), 30, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Warrior 2", true), 30, "Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Sage Pose"), 10, "Sit Tall. Legs together. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Twisted Sage", true), 30, "Pretzel. Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
 
 		return routine;
 	}
@@ -178,6 +169,7 @@ public class SampleRoutines {
 		Routine routine = new Routine("Stretch Routine");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
 
 		return routine;
 	}
@@ -242,4 +234,13 @@ public class SampleRoutines {
 		return routine;
 	}
 
+	private static Routine getRileyRoutine() {
+		Routine routine = new Routine("Riley Routine");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30, 0));
+
+		return routine;
+	}
 }

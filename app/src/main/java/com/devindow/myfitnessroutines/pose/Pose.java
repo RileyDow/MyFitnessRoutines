@@ -20,6 +20,8 @@ public class Pose implements Serializable {
 	public Leg lLeg;
 	public Prop prop;
 
+	public boolean centerExtents = true;
+
 
 	// Public Properties
 	public Extents getExtents() {
@@ -49,11 +51,15 @@ public class Pose implements Serializable {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		Extents extents = getExtents();
-		canvas.translate(-extents.getCenterX(), 0);
+		canvas.save();
+		if (centerExtents) {
+			Extents extents = getExtents();
+			canvas.translate(-extents.getCenterX(), 0);
+		}
 
-		Assert.assertNotNull(torso);
-		torso.draw(canvas);
+		if (torso != null) {
+			torso.draw(canvas);
+		}
 
 		if (lArm != null) {
 			lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
@@ -73,7 +79,7 @@ public class Pose implements Serializable {
 			prop.draw(canvas);
 		}
 
-		canvas.translate(extents.getCenterX(), 0);
+		canvas.restore();
 	}
 
 }

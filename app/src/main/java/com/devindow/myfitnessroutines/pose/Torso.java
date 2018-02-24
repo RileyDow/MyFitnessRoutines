@@ -1,7 +1,9 @@
 package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 
 import com.devindow.myfitnessroutines.Debug;
 
@@ -40,6 +42,8 @@ public class Torso implements Serializable {
 	public float rHipY;
 	public float lHipX;
 	public float lHipY;
+
+	public boolean mat = false;
 
 
 	// Public Properties
@@ -118,6 +122,10 @@ public class Torso implements Serializable {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
+		if (mat) {
+			drawMat(canvas);
+		}
+
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
@@ -131,6 +139,18 @@ public class Torso implements Serializable {
 		Debug.setPenColor(paint);
 		paint.setStrokeWidth(thickness);
 		canvas.drawLine(collarX, collarY, 0, waistY, paint);
+	}
+
+
+	// Private Methods
+	private void drawMat(Canvas canvas) {
+		Paint paint = new Paint();
+		paint.setColor(Color.CYAN);
+
+		float width = 36;
+		float height = 80;
+		RectF mat = new RectF(-width/2, waistY + height/2, width/2, waistY - height/2);
+		canvas.drawRect(mat, paint);
 	}
 
 
