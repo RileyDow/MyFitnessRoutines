@@ -155,7 +155,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHILD_POSE), 20, "Walk your fingers out. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.MOUNTAIN_POSE), 15, "Stand tall. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_SIDE_BEND), 20, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Wide Leg Bend"), 30, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Warrior 2", true), 30, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAGE_POSE), 10, "Sit Tall. Legs together. Breathe."));
@@ -177,6 +177,7 @@ public class SampleRoutines {
 		Routine routine = new Routine("Stretch Routine");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
 
 		return routine;
 	}

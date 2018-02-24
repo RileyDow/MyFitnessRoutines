@@ -46,6 +46,7 @@ public class MoveLibrary {
 	public static final String DOWN_DOG = "Down Dog";
 	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
+	public static final String WIDE_LEG_BEND = "Wide Leg Bend";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String SQUATS = "Squats";
@@ -614,6 +615,23 @@ public class MoveLibrary {
 					move.pose.rLeg.getHeight() + Leg.thickness / 2,
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.lArm.getHeight() + Arm.thickness/2, Torso.length),
 					true);
+
+			moves.put(move.name, move);
+		}
+
+		// Wide Leg Bend
+		{
+			MoveWithPose move = new MoveWithPose(WIDE_LEG_BEND, Category.STRETCH);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(20);
+			move.pose.rLeg = new Leg(legAngle);
+			move.pose.lLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, Angle.S);
+
+			//move.pose.lArm = new Arm(Angle.S.add(-5));
+			//move.pose.rArm = new Arm(Angle.S.add(5));
 
 			moves.put(move.name, move);
 		}
