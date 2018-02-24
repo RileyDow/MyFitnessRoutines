@@ -41,6 +41,7 @@ public class MoveLibrary {
 	// Bending Poses
 	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String DOWN_DOG = "Down Dog";
+	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
@@ -83,7 +84,7 @@ public class MoveLibrary {
 		getStandingPoses();
 		getBackLyingPoses();
 		getBackLyingTopViewPoses();
-		getBendingPoses();
+		getForwardBendingPoses();
 		getSquattingPoses();
 		getPronePoses();
 		getSittingPoses();
@@ -518,7 +519,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getBendingPoses() {
+	private static void getForwardBendingPoses() {
 		// Touch Toes
 		{
 			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.STRETCH);
@@ -540,6 +541,24 @@ public class MoveLibrary {
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-35));
+
+			move.pose.rArm = new Arm(Angle.S.add(52));
+
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					true);
+
+			moves.put(move.name, move);
+		}
+
+		// Down Dog Alternating Calves
+		{
+			MoveWithPose move = new MoveWithPose(DOWN_DOG_ALTERNATING_CALVES, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-35));
+			move.pose.lLeg = new Leg(Angle.S.add(5), Angle.S.add(-60));
 
 			move.pose.rArm = new Arm(Angle.S.add(52));
 
@@ -811,7 +830,7 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Child's Pose
+		// Child Pose
 		{
 			MoveWithPose move = new MoveWithPose(CHILD_POSE, Category.STRETCH);
 			move.pose = new Pose();
