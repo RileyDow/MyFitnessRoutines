@@ -27,7 +27,9 @@ public class MoveLibrary {
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String BOAT_POSE = "Boat Pose";
 	public static final String BRIDGE_POSE = "Bridge Pose";
-	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
+	public static final String SINGLE_LEG_BRIDGES = "Single-Leg Bridges";
+	public static final String SHOULDER_PRESS = "Shoulder Press";
+	// Back-Lying Top View Poses
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
 	public static final String RECLINED_TWIST = "Reclined Twist";
@@ -75,6 +77,7 @@ public class MoveLibrary {
 	public static void generateMoves() {
 		getStandingPoses();
 		getBackLyingPoses();
+		getBackLyingTopViewPoses();
 		getBendingPoses();
 		getSquattingPoses();
 		getPronePoses();
@@ -234,7 +237,7 @@ public class MoveLibrary {
 
 			move.pose.rLeg = new Leg(Angle.N, Angle.E);
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
 
 			move.pose.rArm = new Arm(Angle.N.add(-30));
 
@@ -248,7 +251,7 @@ public class MoveLibrary {
 
 			move.pose.rLeg = new Leg(Angle.N.add(50), Angle.E);
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
 			move.pose.torso.headX += 3;
 			move.pose.torso.headY += 7;
 
@@ -265,13 +268,13 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.N.add(10));
 			move.pose.lLeg = new Leg(Angle.E.add(-3));
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
 
 			move.pose.rArm = new Arm(Angle.E.add(30), Angle.N.add(-10));
 
 			move.pose.prop = new Band(
 					move.pose.rLeg.getDistalPointX(move.pose.torso.rHipX),
-					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY) + Leg.thickness/2,
+					move.pose.rLeg.getDistalPointY(move.pose.torso.rHipY) + Leg.thickness / 2,
 					move.pose.rArm.getDistalPointX(move.pose.torso.rShoulderX),
 					move.pose.rArm.getDistalPointY(move.pose.torso.rShoulderY));
 
@@ -285,7 +288,7 @@ public class MoveLibrary {
 
 			move.pose.lLeg = new Leg(Angle.E.add(25));
 
-			move.pose.torso = new Torso(Torso.thickness/2, Angle.W.add(-35), true);
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-35), true);
 			move.pose.torso.headX += 6;
 			move.pose.torso.headY += 4;
 
@@ -304,7 +307,7 @@ public class MoveLibrary {
 			move.pose.lLeg = new Leg(angle.opposite(), Angle.S);
 
 			move.pose.torso = new Torso(
-					move.pose.lLeg.getHeight() + Leg.thickness/2,
+					move.pose.lLeg.getHeight() + Leg.thickness / 2,
 					angle,
 					true);
 			move.pose.torso.headX += 1;
@@ -317,7 +320,7 @@ public class MoveLibrary {
 
 		// Single-Leg Bridges
 		{
-			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGE, "Drive leg up, hold, repeat.", Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGES, "Drive leg up, hold, repeat.", Category.WARMUP, true);
 			move.pose = new Pose();
 
 			Angle angle = Angle.E.add(-24);
@@ -326,7 +329,7 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(angle.add(90), angle.opposite());
 
 			move.pose.torso = new Torso(
-					move.pose.lLeg.getHeight() + Leg.thickness/2,
+					move.pose.lLeg.getHeight() + Leg.thickness / 2,
 					angle,
 					true);
 			move.pose.torso.headX += 1;
@@ -337,6 +340,24 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Shoulder Press
+		{
+			MoveWithPose move = new MoveWithPose(SHOULDER_PRESS, Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N);
+
+			move.pose.torso = new Torso(Torso.length + Torso.thickness/2 + 2, Angle.S.add(-5),true);
+			move.pose.torso.headX -= Torso.thickness/2 + Torso.headSize/2 - 2;
+			move.pose.torso.headY += Torso.headSize - 2;
+
+			move.pose.rArm = new Arm(Angle.E.add(-25), Angle.N.add(25));
+
+			moves.put(move.name, move);
+		}
+	}
+
+	private static void getBackLyingTopViewPoses() {
 		// Corpse Pose
 		{
 			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);

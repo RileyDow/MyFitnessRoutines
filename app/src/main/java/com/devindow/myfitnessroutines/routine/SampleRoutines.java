@@ -123,7 +123,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.INCH_WORMS), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGE), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_LYING_ABDUCTION_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SQUATS_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LATERAL_WALK_W_BAND), 30));
@@ -147,7 +147,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BRIDGE_POSE), 15, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.COBBLERS_POSE), 20, "Sit. Butterfly. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BOAT_POSE), 15, "Body & legs in a V. Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Shoulder Press"), 15, "Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SHOULDER_PRESS), 15, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Locust Pose"), 15, "On Belly. Lift legs & chest. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Rotate on all fours", true), 20, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Cat Pose"), 20, "Arch then bow your back. Breathe."));
