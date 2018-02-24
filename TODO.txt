@@ -3,9 +3,6 @@ TODO
 
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 
-** SampleRoutines shows what Poses are needed.
-  - Morning Yoga
-
 * Layout
   - Next Step bigger
   - Sizes based on percent of screen?
