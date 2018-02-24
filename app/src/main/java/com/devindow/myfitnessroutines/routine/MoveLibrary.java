@@ -77,6 +77,7 @@ public class MoveLibrary {
 	public static final String REST = "Rest";
 	public static final String COBBLERS_POSE = "Cobbler's Pose";
 	public static final String SAGE_POSE = "Sage Pose";
+	public static final String TWISTED_SAGE_POSE = "Twisted Sage Pose";
 
 
 	// Public Static Fields
@@ -1054,12 +1055,28 @@ public class MoveLibrary {
 
 		// Sage Pose
 		{
-			MoveWithPose move = new MoveWithPose(SAGE_POSE, "Sit Tall. Legs together.", Category.NONE);
+			MoveWithPose move = new MoveWithPose(SAGE_POSE, "Sit Tall. Legs together.", Category.YOGA);
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2 - 2, true);
 
 			move.pose.lLeg = new Leg(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Twisted Sage Pose
+		{
+			MoveWithPose move = new MoveWithPose(TWISTED_SAGE_POSE, "Sit Tall. Pretzel.", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Torso.thickness / 2 - 2);
+
+			move.pose.lLeg = new Leg(Angle.E);
+			move.pose.rLeg = new Leg(Angle.N.add(-40), Angle.S.add(10));
+
+			move.pose.rArm = new Arm(Angle.S.add(-25));
+			move.pose.lArm = new Arm(Angle.S.add(20), Angle.N.add(-10));
 
 			moves.put(move.name, move);
 		}
