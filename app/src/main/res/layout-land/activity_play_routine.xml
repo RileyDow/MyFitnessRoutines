@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next up: "
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:singleLine="true"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
