@@ -4,12 +4,13 @@ TODO
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 
 * Layout
-  - Next Step bigger
+  * Needed to make imgMove smaller (6*90 instead of 10*90) for tablet in portrait
   - Sizes based on percent of screen?
 
-* Pose.Offset
-
-* Draw Nose in Profile?
+- Play Routine activity
+  + Disable/Hide Next/Prev button
+  + Show Duration of full Routine
+  + Should we just pass Routine.name and have Routines be a Hashtable?
 
 - Routines
   * Ladder Runs
@@ -23,32 +24,21 @@ TODO
     - Outside Star
   - Sun Salutation
 
+- Pose.Offset
+
+- Draw Nose in Profile?
+
 * App Store
   - Rename APK?
 
-- Play Routine activity
-  + Disable/Hide Next/Prev button
-  + Show Duration of full Routine
-  + Should we just pass Routine.name and have Routines be a Hashtable?
-
-* Pose implements Drawable so we can have list of Drawable for Poses or Patterns
-  - multiple Poses requires an offset for each
-
-- Poses
-  * Calf Stretches from Down Dog
+- 2 Poses
   * Safety Jacks use 2 Poses
+ - Poses
   - Drawing improvements
     - "High Knee": add arms
-  + Props
-    - Strap/Band
-    - Block
-    - Ball
   - ProfilePose use Z to show depth in 3D?
 
-* Chime
-  * Playable audio
-  * per Routine Category
-- Notifications
+- Notifications?
 
 - Startup
   + MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.

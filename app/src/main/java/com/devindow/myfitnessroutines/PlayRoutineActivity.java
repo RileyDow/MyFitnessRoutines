@@ -98,11 +98,11 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void displayMove(Move move, boolean secondSide) {
 		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 		final TextView txtMoveName = findViewById(R.id.txtMoveName);
-		final ImageView imgPose = findViewById(R.id.imgMove);
+		final ImageView imgMove = findViewById(R.id.imgMove);
 
 		if (move == null) {
 			txtMoveName.setText("NULL");
-			imgPose.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
+			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
@@ -113,7 +113,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtMoveName.setText(move.name);
 			}
-			imgPose.setImageBitmap(move.getBitmap(secondSide));
+			imgMove.setImageBitmap(move.getBitmap(secondSide));
 		}
 		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
