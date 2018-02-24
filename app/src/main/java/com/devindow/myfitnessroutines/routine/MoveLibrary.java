@@ -23,6 +23,7 @@ public class MoveLibrary {
 	public static final String LEG_SWINGS = "Leg Swings";
 	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
+	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String SINGLE_LEG_BRIDGE = "Single-Leg Bridge";
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String THORACIC_ROLL_OUTS = "Thoracic Roll-outs";
@@ -231,6 +232,20 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
 
 			move.pose.rArm = new Arm(Angle.N.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Head to Knees
+		{
+			MoveWithPose move = new MoveWithPose(HEAD_TO_KNEES, Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(50), Angle.E);
+
+			move.pose.torso = new Torso(Torso.thickness/2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(-30), .6f);
 
 			moves.put(move.name, move);
 		}
