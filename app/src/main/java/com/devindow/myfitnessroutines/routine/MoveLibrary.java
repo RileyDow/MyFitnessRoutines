@@ -74,8 +74,9 @@ public class MoveLibrary {
 	public static final String LOCUST_POSE = "Locust Pose";
 	// Sitting Poses
 	public static final String LOTUS = "Lotus";
-	public static final String COBBLERS_POSE = "Cobbler's Pose";
 	public static final String REST = "Rest";
+	public static final String COBBLERS_POSE = "Cobbler's Pose";
+	public static final String SAGE_POSE = "Sage Pose";
 
 
 	// Public Static Fields
@@ -97,7 +98,7 @@ public class MoveLibrary {
 	private static void getStandingFrontalPoses() {
 		// Mountain Pose
 		{
-			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, Category.NONE);
+			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, "Stand tall", Category.NONE);
 			move.pose = new Pose();
 
 			Angle legAngle = Angle.S.add(3);
@@ -1019,6 +1020,22 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Rest
+		{
+			MoveWithPose move = new MoveWithPose(REST, "Breathe.", Category.NONE);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Torso.thickness / 2);
+
+			move.pose.rLeg = new Leg(Angle.W.add(-10), .8f, Angle.E.add(-20), .8f);
+			move.pose.lLeg = new Leg(Angle.E.add(10), .8f, Angle.W.add(20), .8f);
+
+			move.pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), .8f);
+			move.pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), .8f);
+
+			moves.put(move.name, move);
+		}
+
 		// Cobbler's Pose
 		{
 			MoveWithPose move = new MoveWithPose(COBBLERS_POSE, "Sit. Butterfly.", Category.YOGA);
@@ -1035,18 +1052,14 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Rest
+		// Sage Pose
 		{
-			MoveWithPose move = new MoveWithPose(REST, "Breathe.", Category.NONE);
+			MoveWithPose move = new MoveWithPose(SAGE_POSE, "Sit Tall. Legs together.", Category.NONE);
 			move.pose = new Pose();
 
-			move.pose.torso = new Torso(Torso.thickness / 2);
+			move.pose.torso = new Torso(Torso.thickness / 2 - 2, true);
 
-			move.pose.rLeg = new Leg(Angle.W.add(-10), .8f, Angle.E.add(-20), .8f);
-			move.pose.lLeg = new Leg(Angle.E.add(10), .8f, Angle.W.add(20), .8f);
-
-			move.pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), .8f);
-			move.pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), .8f);
+			move.pose.lLeg = new Leg(Angle.E);
 
 			moves.put(move.name, move);
 		}

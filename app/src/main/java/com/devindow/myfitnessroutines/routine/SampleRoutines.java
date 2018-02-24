@@ -153,12 +153,12 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CAT_POSE), 20, "Arch back, then bow back. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES), 40, "Alternate calves. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHILD_POSE), 20, "Walk your fingers out. Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.MOUNTAIN_POSE), 15, "Stand. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.MOUNTAIN_POSE), 15, "Stand tall. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_SIDE_BEND), 20, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Wide Leg Bend"), 30, "Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Warrior 2", true), 30, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
-		routine.steps.add(new Step(new MoveWithPose("Sage Pose"), 10, "Sit Tall. Legs together. Breathe."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAGE_POSE), 10, "Sit Tall. Legs together. Breathe."));
 		routine.steps.add(new Step(new MoveWithPose("Twisted Sage", true), 30, "Pretzel. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
 
