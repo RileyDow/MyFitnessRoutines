@@ -61,8 +61,9 @@ public class MoveLibrary {
 	public static final String FOAM_ROLLER = "Foam Roller";
 	public static final String SIDE_LYING_ABDUCTION_W_BAND = "Side-Lying Abduction w/ Band";
 	// Sitting Poses
-	public static final String REST = "Rest";
 	public static final String LOTUS = "Lotus";
+	public static final String COBBLERS_POSE = "Cobbler's Pose";
+	public static final String REST = "Rest";
 
 
 	// Public Static Fields
@@ -815,6 +816,22 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(-5), Angle.W.add(15), .8f);
 			move.pose.lArm = new Arm(Angle.S.add(5), Angle.E.add(-15), .8f);
+
+			moves.put(move.name, move);
+		}
+
+		// Cobbler's Pose
+		{
+			MoveWithPose move = new MoveWithPose(COBBLERS_POSE, "Sit. Butterfly.", Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Torso.thickness / 2);
+
+			move.pose.rLeg = new Leg(Angle.W.add(-10), .8f, Angle.E.add(-20), .8f);
+			move.pose.lLeg = new Leg(Angle.E.add(10), .8f, Angle.W.add(20), .8f);
+
+			move.pose.rArm = new Arm(Angle.S.add(5));
+			move.pose.lArm = new Arm(Angle.S.add(-5));
 
 			moves.put(move.name, move);
 		}
