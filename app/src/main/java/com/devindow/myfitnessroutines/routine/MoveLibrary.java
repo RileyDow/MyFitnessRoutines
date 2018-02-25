@@ -19,6 +19,7 @@ public class MoveLibrary {
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String STANDING_SIDE_BEND = "Standing Side Bend";
 	public static final String JOG_LATERALLY = "Jog Laterally";
+	public static final String SKIP = "Skip";
 	public static final String LEG_SWINGS = "Leg Swings";
 	public static final String WARRIOR_2 = "Warrior 2";
 	public static final String ROMAN_LUNGES = "Roman Lunges";
@@ -198,6 +199,24 @@ public class MoveLibrary {
 		// Jog Laterally
 		{
 			MoveWithPose move = new MoveWithPose(JOG_LATERALLY, "Jog while moving laterally", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg();
+
+			move.pose.torso = new Torso();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-45), 0.4f, Angle.S.add(0));
+
+			move.pose.rArm = new Arm(Angle.S.add(-10), Angle.W.add(-10), 0.5f);
+
+			move.pose.lArm = new Arm(Angle.S.add(30), Angle.W.add(30), 0.5f);
+
+			moves.put(move.name, move);
+		}
+
+		// Skip
+		{
+			MoveWithPose move = new MoveWithPose(SKIP, Category.CARDIO);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg();

@@ -136,6 +136,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_SWINGS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIGH_KNEES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FAST_FEET), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SKIP), 30));
 
 		return routine;
 	}
