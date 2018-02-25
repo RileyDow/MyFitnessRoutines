@@ -1,6 +1,9 @@
 TODO
 ----
 
+Version Number
+About
+
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 
 * Layout
