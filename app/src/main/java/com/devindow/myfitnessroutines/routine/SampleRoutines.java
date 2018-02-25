@@ -146,7 +146,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REACH_BACK), 20));
-		// Warrior 3
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WARRIOR_3), 40));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.INCH_WORMS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGES), 30));

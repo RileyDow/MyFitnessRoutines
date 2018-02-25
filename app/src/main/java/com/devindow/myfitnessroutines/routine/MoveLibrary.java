@@ -30,6 +30,7 @@ public class MoveLibrary {
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
 	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String WARRIOR_3 = "Warrior 3";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String SQUATS = "Squats";
@@ -359,6 +360,23 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
 			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
+
+			moves.put(move.name, move);
+		}
+
+		// Warrior 3
+		{
+			MoveWithPose move = new MoveWithPose(WARRIOR_3, "Leg straight back then knee up, repeat.", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+
+			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.E.add(5));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W, true);
+
+			move.pose.lArm = new Arm(Angle.W.add(20), Angle.W.add(-10));
+			move.pose.rArm = new Arm(Angle.E.add(20), Angle.E.add(-10));
 
 			moves.put(move.name, move);
 		}
