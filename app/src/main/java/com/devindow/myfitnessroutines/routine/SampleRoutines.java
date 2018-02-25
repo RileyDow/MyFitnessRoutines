@@ -222,9 +222,18 @@ public class SampleRoutines {
 	private static Routine getSoccerTouches() {
 		Routine routine = new Routine("Soccer Touches");
 
-		routine.steps.add(new Step(new SoccerMove("Triangle", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new SoccerMove("Ziko Turn", Category.SOCCER, true), 15));
-		routine.steps.add(new Step(new SoccerMove("Cruyff Turn", Category.SOCCER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Inside Rolls", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Bells", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Triangle", Category.SOCCER, true), 30));
+		routine.steps.add(new Step(new SoccerMove("Triangle, Outside, Advanced", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Ziko Turn", Category.SOCCER, true), 30));
+		routine.steps.add(new Step(new SoccerMove("Cruyff Turn", Category.SOCCER, true), 30));
+		routine.steps.add(new Step(new SoccerMove("Pull, Open", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Step-Over, Escape Out", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Step-Over 2x, Escape Out", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Hat Dance", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("Hat Dance Circle", Category.SOCCER), 30));
+		routine.steps.add(new Step(new SoccerMove("2 touches then across", Category.SOCCER), 30));
 
 		return routine;
 	}
