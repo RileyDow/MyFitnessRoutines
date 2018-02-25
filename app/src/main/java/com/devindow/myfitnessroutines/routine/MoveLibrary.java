@@ -24,6 +24,7 @@ public class MoveLibrary {
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String FAST_FEET = "Fast Feet";
 	public static final String HIGH_KNEES = "High Knees";
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
@@ -259,12 +260,26 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Fast Feet
+		{
+			MoveWithPose move = new MoveWithPose(FAST_FEET, "Simulate full speed sprinting", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
+
+			move.pose.rLeg = new Leg(Angle.S.add(35), Angle.S.add(-10));
+
+			move.pose.torso = new Torso(true);
+
+			moves.put(move.name, move);
+		}
+
 		// High Knees
 		{
 			MoveWithPose move = new MoveWithPose(HIGH_KNEES, Category.LIFTING);
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
 
 			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S);
 
