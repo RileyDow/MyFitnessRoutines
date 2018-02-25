@@ -15,18 +15,23 @@ public class MoveLibrary {
 	// Standing Frontal Poses
 	public static final String MOUNTAIN_POSE = "Mountain Pose";
 	public static final String DONE = "Done!";
+	public static final String REACH_BACK = "Reach Back";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String STANDING_SIDE_BEND = "Standing Side Bend";
+	public static final String JOG_LATERALLY = "Jog Laterally";
+	public static final String SKIP = "Skip";
 	public static final String LEG_SWINGS = "Leg Swings";
 	public static final String WARRIOR_2 = "Warrior 2";
 	public static final String ROMAN_LUNGES = "Roman Lunges";
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
+	public static final String FAST_FEET = "Fast Feet";
 	public static final String HIGH_KNEES = "High Knees";
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
 	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String WARRIOR_3 = "Warrior 3";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String SQUATS = "Squats";
@@ -134,6 +139,25 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Reach Back
+		{
+			MoveWithPose move = new MoveWithPose(REACH_BACK, Category.STRETCH, true);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(3);
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			Angle armProximalAngle = Angle.W.add(-30);
+			Angle armDistalAngle = Angle.N.add(10);
+			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
+			move.pose.lArm = new Arm(Angle.S.add(45), Angle.S.add(-45));
+
+			moves.put(move.name, move);
+		}
+
 		// Jumping Jacks
 		{
 			MoveWithPose move = new MoveWithPose(JUMPING_JACKS, Category.CARDIO);
@@ -168,6 +192,42 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.N.add(torsoAngle-5), Angle.N.add(torsoAngle+25));
 			move.pose.rArm = new Arm(Angle.S.add(torsoAngle-45), Angle.S.add(torsoAngle+45));
+
+			moves.put(move.name, move);
+		}
+
+		// Jog Laterally
+		{
+			MoveWithPose move = new MoveWithPose(JOG_LATERALLY, "Jog while moving laterally", Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg();
+
+			move.pose.torso = new Torso();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-45), 0.4f, Angle.S.add(0));
+
+			move.pose.rArm = new Arm(Angle.S.add(-10), Angle.W.add(-10), 0.5f);
+
+			move.pose.lArm = new Arm(Angle.S.add(30), Angle.W.add(30), 0.5f);
+
+			moves.put(move.name, move);
+		}
+
+		// Skip
+		{
+			MoveWithPose move = new MoveWithPose(SKIP, Category.CARDIO);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg();
+
+			move.pose.torso = new Torso();
+
+			move.pose.rLeg = new Leg(Angle.S.add(-45), 0.4f, Angle.S.add(0));
+
+			move.pose.rArm = new Arm(Angle.S.add(-10), Angle.W.add(-10), 0.5f);
+
+			move.pose.lArm = new Arm(Angle.S.add(30), Angle.W.add(30), 0.5f);
 
 			moves.put(move.name, move);
 		}
@@ -240,12 +300,26 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Fast Feet
+		{
+			MoveWithPose move = new MoveWithPose(FAST_FEET, "Simulate full speed sprinting", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
+
+			move.pose.rLeg = new Leg(Angle.S.add(35), Angle.S.add(-10));
+
+			move.pose.torso = new Torso(true);
+
+			moves.put(move.name, move);
+		}
+
 		// High Knees
 		{
 			MoveWithPose move = new MoveWithPose(HIGH_KNEES, Category.LIFTING);
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
+			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
 
 			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S);
 
@@ -305,6 +379,23 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
 			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
+
+			moves.put(move.name, move);
+		}
+
+		// Warrior 3
+		{
+			MoveWithPose move = new MoveWithPose(WARRIOR_3, "Leg straight back then knee up, repeat.", Category.YOGA, true);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+
+			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.E.add(5));
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W, true);
+
+			move.pose.lArm = new Arm(Angle.W.add(20), Angle.W.add(-10));
+			move.pose.rArm = new Arm(Angle.E.add(20), Angle.E.add(-10));
 
 			moves.put(move.name, move);
 		}

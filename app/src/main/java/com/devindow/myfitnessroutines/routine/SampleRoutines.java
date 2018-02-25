@@ -126,7 +126,7 @@ public class SampleRoutines {
 	private static Routine getWarmupRoutine() {
 		Routine routine = new Routine("Warmup/Thermoregulation", "A warmup to do when starting out cold");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.ROTATE_ON_ALL_FOURS), 20));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JOG_LATERALLY), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWIST_PIVOT), 30));
@@ -135,6 +135,8 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_HAMSTRING), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_SWINGS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIGH_KNEES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FAST_FEET), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SKIP), 30));
 
 		return routine;
 	}
@@ -142,10 +144,12 @@ public class SampleRoutines {
 	private static Routine getPreActivationRoutine() {
 		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team.  Do a warmup first.");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REACH_BACK), 20));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WARRIOR_3), 40));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.INCH_WORMS), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALKING_BACKWARD_LUNGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SINGLE_LEG_BRIDGES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_LYING_ABDUCTION_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SQUATS_W_BAND), 30));
