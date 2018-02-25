@@ -15,6 +15,7 @@ public class MoveLibrary {
 	// Standing Frontal Poses
 	public static final String MOUNTAIN_POSE = "Mountain Pose";
 	public static final String DONE = "Done!";
+	public static final String REACH_BACK = "Reach Back";
 	public static final String JUMPING_JACKS = "Jumping Jacks";
 	public static final String STANDING_SIDE_BEND = "Standing Side Bend";
 	public static final String JOG_LATERALLY = "Jog Laterally";
@@ -132,6 +133,25 @@ public class MoveLibrary {
 			Angle armDistalAngle = Angle.N.add(10);
 			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
 			move.pose.lArm = new Arm(armProximalAngle.mirror(), armDistalAngle.mirror());
+
+			moves.put(move.name, move);
+		}
+
+		// Reach Back
+		{
+			MoveWithPose move = new MoveWithPose(REACH_BACK, Category.STRETCH, true);
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(3);
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			Angle armProximalAngle = Angle.W.add(-30);
+			Angle armDistalAngle = Angle.N.add(10);
+			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
+			move.pose.lArm = new Arm(Angle.S.add(45), Angle.S.add(-45));
 
 			moves.put(move.name, move);
 		}
