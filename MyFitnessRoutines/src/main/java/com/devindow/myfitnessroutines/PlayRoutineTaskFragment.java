@@ -10,7 +10,6 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 
 import com.devindow.myfitnessroutines.routine.Move;
 import com.devindow.myfitnessroutines.routine.MoveLibrary;
@@ -58,7 +57,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	// Fragment Class Overrides
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
 		super.onCreate(savedInstanceState);
 
 		// Retain this fragment across configuration changes.
@@ -68,23 +67,23 @@ public class PlayRoutineTaskFragment extends Fragment {
 		resetSecondsRemaining();
 		playRoutineActivity.updateTimer();
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
 
 	@Override
 	public void onAttach(Activity activity) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
 		super.onAttach(activity);
 
 		// set playRoutineActivity to Activity
 		playRoutineActivity = (PlayRoutineCallbacks)activity;
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
 	}
 
 	@Override
 	public void onDetach() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
 		super.onDetach();
 
 		// kill running timer
@@ -95,13 +94,13 @@ public class PlayRoutineTaskFragment extends Fragment {
 		// set playRoutineActivity to NULL
 		playRoutineActivity = null;
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
 	}
 
 
 	// Public Methods
 	public void resetSecondsRemaining() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resetSecondsRemaining()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resetSecondsRemaining()");
 
 		Step currentStep = getCurrentStep();
 		if (currentStep == null) {
@@ -116,11 +115,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 			restSecondsRemaining = currentStep.restDuration;
 		}
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");
 	}
 
 	public void runMove1Timer() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
 		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
@@ -160,7 +159,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void runMove2Timer() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
 		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
@@ -195,7 +194,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void runRestTimer() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
 		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
