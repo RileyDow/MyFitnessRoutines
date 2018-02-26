@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 
+import com.devindow.myfitnessroutines.Debug;
 import com.devindow.myfitnessroutines.pose.Angle;
 
 /**
@@ -81,7 +81,7 @@ public class SoccerMove extends Move {
 		for (int i=0; i<=100; i+=5) {
 			Angle angle = new Angle(0f, i, 100);
 			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
-			Log.d("Constructor", angle.toString());
+			Debug.d("Angle=", angle.toString());
 			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*100, (float)Math.sin(angle.radians)*100, paint);
 		}
 

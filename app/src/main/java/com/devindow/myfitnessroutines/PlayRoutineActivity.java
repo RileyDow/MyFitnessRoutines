@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -28,7 +27,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	// Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
 
@@ -57,12 +56,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		// Update btnPlay in case it is running.
 		updatePlayButton();
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 
 	@Override
 	public void displayStep(boolean resetSecondsRemaining) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayStep()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayStep()");
 
 		clearNextMoveName();
 
@@ -91,12 +90,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		displayNextMoveName();
 
-		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayStep()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayStep()");
 	}
 
 	@Override
 	public void displayMove(Move move, boolean secondSide) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 		final TextView txtMoveName = findViewById(R.id.txtMoveName);
 		final ImageView imgMove = findViewById(R.id.imgMove);
 
@@ -115,11 +114,11 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			}
 			imgMove.setImageBitmap(move.getBitmap(secondSide));
 		}
-		Log.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
 
 	private void clearNextMoveName() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		if (txtNextStep != null) {
 			txtNextStep.setText("");
@@ -127,7 +126,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	private void displayNextMoveName() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayNextMoveName()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayNextMoveName()");
 
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
 		if (txtNextStep != null) {
@@ -142,7 +141,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	@Override
 	public void updateTimer() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
 
 		TextView txtTimer = findViewById(R.id.txtTimer);
 		if (txtTimer != null) {
@@ -151,13 +150,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 				secondsRemaining = taskFragment.restSecondsRemaining;
 			}
 			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
-			Log.d(Debug.TAG_TIME, timeRemaining);
+			Debug.d(Debug.TAG_TIME, timeRemaining);
 			txtTimer.setText(timeRemaining);
 		}
 	}
 
 	private void updatePlayButton() {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.updatePlayButton()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updatePlayButton()");
 
 		ImageButton btnPlay = findViewById(R.id.btnPlay);
 
@@ -171,7 +170,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	public void onPlayClick(View v) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
 
 		if (taskFragment.countDownTimer != null) {
 			// Pause Routine
@@ -197,7 +196,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	public void onNextClick(View v) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
 
 		if (taskFragment.stepNum < taskFragment.routine.steps.size()) {
 			if (taskFragment.countDownTimer != null) {
@@ -214,7 +213,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	public void onPrevClick(View v) {
-		Log.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
 
 		if (taskFragment.stepNum > 1) {
 			if (taskFragment.countDownTimer != null) {
