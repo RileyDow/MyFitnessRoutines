@@ -28,12 +28,15 @@ public class SampleRoutines {
 		defaultRoutines.add(get10MinMeditation());
 		defaultRoutines.add(get15MinMeditation());
 
+		defaultRoutines.add(getUpperAbs());
+		defaultRoutines.add(getObliqueAbs());
+		defaultRoutines.add(getLowerAbs());
+
+
 		if (Debug.on) {
 			defaultRoutines.add(getSoccerTouches());
 			defaultRoutines.add(getLadderDrills());
 			defaultRoutines.add(getStretchRoutine());
-			defaultRoutines.add(getTestPoses());
-			defaultRoutines.add(getTestShortRoutine());
 /*
 			defaultRoutines.add(getSunSalutation());
 
@@ -51,25 +54,6 @@ public class SampleRoutines {
 
 
 	// Private Methods
-	private static Routine getTestPoses() {
-		Routine routine = new Routine("Test Poses");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 3, 2));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DONE), 3));
-
-		return routine;
-	}
-
-	private static Routine getTestShortRoutine() {
-		Routine routine = new Routine("Short Routine with long, long, long, long, long, long, long name", "Short Routine for testing. Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description.");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5, 5));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 10));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PLANK), 5));
-
-		return routine;
-	}
-
 	private static Routine get7MinuteWorkout() {
 		Routine routine = new Routine("7 Minute Workout", "High-intensity circuit training that alternates muscle groups");
 
@@ -154,6 +138,30 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STANDING_HURDLES_W_BAND), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_180), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPS_90_TO_1_FOOT_LANDING), 30));
+
+		return routine;
+	}
+
+	private static Routine getUpperAbs() {
+		Routine routine = new Routine("Upper Abs");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+
+		return routine;
+	}
+
+	private static Routine getObliqueAbs() {
+		Routine routine = new Routine("Oblique Abs");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+
+		return routine;
+	}
+
+	private static Routine getLowerAbs() {
+		Routine routine = new Routine("Lower Abs");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
 
 		return routine;
 	}

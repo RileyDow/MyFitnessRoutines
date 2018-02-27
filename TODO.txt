@@ -1,7 +1,12 @@
 TODO
 ----
 
-About
+- Tips
+- Next advances to Done
+- Coaching Marks
+- Steps/Time remaining
+- Torso.lengthRatio, Arc
+- About
 
 * Sound for next move based on Category.  (Beep is good for switch sides.)
 
