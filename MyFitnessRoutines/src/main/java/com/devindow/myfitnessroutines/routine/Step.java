@@ -41,4 +41,10 @@ public class Step implements Serializable {
 		this.instructions = instructions;
 	}
 
+
+	// Overrides
+	@Override
+	public String toString() {
+		return move.name;
+	}
 }

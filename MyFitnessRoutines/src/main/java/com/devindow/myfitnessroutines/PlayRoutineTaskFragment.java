@@ -39,17 +39,15 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// Public Properties
 	public Step getCurrentStep() {
-		if (stepNum > routine.steps.size()) {
-			return null;
-		}
-		return routine.steps.get(stepNum - 1);
+		return routine.getStep(stepNum);
 	}
 
 	public Step getNextStep() {
-		if (stepNum >= routine.steps.size()) {
-			return null;
-		}
-		return routine.steps.get(stepNum);
+		return routine.getStep(stepNum+1);
+	}
+
+	public String getRemaining() {
+		return routine.getRemaining(stepNum);
 	}
 
 

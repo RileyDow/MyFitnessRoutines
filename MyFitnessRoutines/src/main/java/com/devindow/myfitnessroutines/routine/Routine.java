@@ -17,6 +17,13 @@ public class Routine implements Serializable {
 
 
 	// Public Properties
+	public Step getStep(int stepNum) { // starting with stepNum = 1
+		if (stepNum > steps.size() || stepNum < 1) {
+			return null;
+		}
+		return steps.get(stepNum-1);
+	}
+
 	public int getDuration() {
 		int duration = 0;
 		for (Step step : steps) {
@@ -28,6 +35,22 @@ public class Routine implements Serializable {
 	public String getMinutesString() {
 		int minutes = (int)Math.round(1.0 * getDuration() / 60);
 		return minutes + " min";
+	}
+
+	public String getRemaining(int stepNum) {
+		if (stepNum >= steps.size()) {
+			return "";
+		}
+
+		int stepsRemaining = 0;
+		int secondsRemaining = 0;
+		for (int i=stepNum+1; i<=steps.size(); i++) {
+			Step step = getStep(i);
+			stepsRemaining++;
+			secondsRemaining += step.getTotalDuration();
+		}
+		int minutesRemaining = (int) Math.round(1.0 * secondsRemaining / 60);
+		return stepsRemaining + " steps=" + minutesRemaining + "min";
 	}
 
 
