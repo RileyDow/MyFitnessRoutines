@@ -46,7 +46,7 @@ public class RoutineAdapter extends ArrayAdapter<Routine> {
 		txtName.setText(routine.name);
 
 		TextView txtDuration = convertView.findViewById(R.id.txtDuration);
-		txtDuration.setText(routine.getMinutesString());
+		txtDuration.setText(routine.getTotalMinutesString());
 
 		TextView txtDescription = convertView.findViewById(R.id.txtDescription);
 		txtDescription.setText(routine.description);

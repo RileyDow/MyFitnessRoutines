@@ -11,33 +11,33 @@ public class Step implements Serializable {
 	// Public Fields
 	public Move move;
 	public String instructions;
-	public int moveDuration;
-	public int restDuration;
+	public int moveSeconds;
+	public int restSeconds;
 
 
 	// Public Properties
-	public int getTotalDuration() {
-		return moveDuration + restDuration;
+	public int getTotalSeconds() {
+		return moveSeconds + restSeconds;
 	}
 
 
 	// Constructors
-	public Step(Move move, int moveDuration) {
-		this(move, moveDuration, 0);
+	public Step(Move move, int moveSeconds) {
+		this(move, moveSeconds, 0);
 	}
 
-	public Step(Move move, int moveDuration, int restDuration) {
-		this(move, moveDuration, restDuration, "");
+	public Step(Move move, int moveSeconds, int restSeconds) {
+		this(move, moveSeconds, restSeconds, "");
 	}
 
-	public Step(Move move, int moveDuration, String instructions) {
-		this(move, moveDuration, 0, instructions);
+	public Step(Move move, int moveSeconds, String instructions) {
+		this(move, moveSeconds, 0, instructions);
 	}
 
-	public Step(Move move, int moveDuration, int restDuration, String instructions) {
+	public Step(Move move, int moveSeconds, int restSeconds, String instructions) {
 		this.move = move;
-		this.moveDuration = moveDuration;
-		this.restDuration = restDuration;
+		this.moveSeconds = moveSeconds;
+		this.restSeconds = restSeconds;
 		this.instructions = instructions;
 	}
 

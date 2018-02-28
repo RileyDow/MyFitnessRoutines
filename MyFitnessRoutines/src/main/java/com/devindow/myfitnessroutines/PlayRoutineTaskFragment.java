@@ -47,7 +47,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public String getRemaining() {
-		return routine.getRemaining(stepNum);
+		return routine.getRemainingString(stepNum);
 	}
 
 
@@ -108,12 +108,12 @@ public class PlayRoutineTaskFragment extends Fragment {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
 			if (move.twoSides) {
-				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveDuration / 2;
+				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveSeconds / 2;
 			} else {
-				move1SecondsRemaining = currentStep.moveDuration;
+				move1SecondsRemaining = currentStep.moveSeconds;
 				move2SecondsRemaining = 0;
 			}
-			restSecondsRemaining = currentStep.restDuration;
+			restSecondsRemaining = currentStep.restSeconds;
 		}
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");

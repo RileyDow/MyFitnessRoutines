@@ -28,8 +28,8 @@ Android app to guide you through fitness routines.
     - getDuration()
 - Step
     - move
-    - moveDuration
-    - restDuration
+    - moveSeconds
+    - restSeconds
 - Move (MoveWithPose, LadderMove, SoccerMove)
     - name
     - description

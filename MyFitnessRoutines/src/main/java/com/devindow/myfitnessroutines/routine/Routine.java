@@ -24,20 +24,20 @@ public class Routine implements Serializable {
 		return steps.get(stepNum-1);
 	}
 
-	public int getDuration() {
+	public int getTotalSeconds() {
 		int duration = 0;
 		for (Step step : steps) {
-			duration += step.getTotalDuration();
+			duration += step.getTotalSeconds();
 		}
 		return duration;
 	}
 
-	public String getMinutesString() {
-		int minutes = (int)Math.round(1.0 * getDuration() / 60);
+	public String getTotalMinutesString() {
+		int minutes = (int)Math.round(1.0 * getTotalSeconds() / 60);
 		return minutes + " min";
 	}
 
-	public String getRemaining(int stepNum) {
+	public String getRemainingString(int stepNum) {
 		if (stepNum >= steps.size()) {
 			return "";
 		}
@@ -47,7 +47,7 @@ public class Routine implements Serializable {
 		for (int i=stepNum+1; i<=steps.size(); i++) {
 			Step step = getStep(i);
 			stepsRemaining++;
-			secondsRemaining += step.getTotalDuration();
+			secondsRemaining += step.getTotalSeconds();
 		}
 		int minutesRemaining = (int) Math.round(1.0 * secondsRemaining / 60);
 		return stepsRemaining + " steps=" + minutesRemaining + "min";
@@ -68,7 +68,7 @@ public class Routine implements Serializable {
 	// Overrides
 	@Override
 	public String toString() {
-		return name + " - " + getMinutesString();
+		return name + " - " + getTotalMinutesString();
 	}
 
 }
