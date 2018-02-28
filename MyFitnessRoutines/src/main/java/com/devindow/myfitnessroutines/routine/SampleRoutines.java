@@ -24,13 +24,13 @@ public class SampleRoutines {
 
 		defaultRoutines.add(getPreActivationRoutine());
 
-		defaultRoutines.add(get5MinMeditation());
-		defaultRoutines.add(get10MinMeditation());
-		defaultRoutines.add(get15MinMeditation());
-
 		defaultRoutines.add(getLowerAbs());
 		defaultRoutines.add(getObliqueAbs());
 		defaultRoutines.add(getUpperAbs());
+
+		defaultRoutines.add(get5MinMeditation());
+		defaultRoutines.add(get10MinMeditation());
+		defaultRoutines.add(get15MinMeditation());
 
 
 		if (Debug.on) {
@@ -160,7 +160,11 @@ public class SampleRoutines {
 	private static Routine getObliqueAbs() {
 		Routine routine = new Routine("Oblique Abs");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CROSSOVER_CRUNCHES), 60, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CATCH_CRUNCHES), 60, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TILT_CRUNCHES), 60, 10));
 
 		return routine;
 	}

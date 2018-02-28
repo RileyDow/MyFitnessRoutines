@@ -49,6 +49,9 @@ public class MoveLibrary {
 	public static final String CRUNCHES = "Crunches";
 	public static final String REVERSE_CRUNCHES = "Reverse Crunches";
 	public static final String HIP_RAISES = "Hip Raises";
+	public static final String CROSSOVER_CRUNCHES = "Cross-Over Crunches";
+	public static final String CATCH_CRUNCHES = "Catch Crunches";
+	public static final String TILT_CRUNCHES = "Tilt Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String BOAT_POSE = "Boat Pose";
@@ -631,6 +634,56 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Torso.thickness/2 + 3, Angle.W.add(5), true);
 
 			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Cross-Over Crunches
+		{
+			MoveWithPose move = new MoveWithPose(CROSSOVER_CRUNCHES, "Shoulder towards opposite Knee", Category.LIFTING, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.lLeg = new Leg(Angle.N, .7f, Angle.E, 0.5f);
+
+			int torsoAngle = 10;
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+
+			move.pose.lArm = new Arm(Angle.N.add(30-torsoAngle), Angle.S.add(-30-torsoAngle));
+			move.pose.rArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Catch Crunches
+		{
+			MoveWithPose move = new MoveWithPose(CATCH_CRUNCHES, "Reach both Hands outside a Knee", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.lLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+
+			move.pose.lArm = new Arm(Angle.E.add(10), 0.9f);
+			move.pose.rArm = new Arm(Angle.E.add(35));
+
+			moves.put(move.name, move);
+		}
+
+		// Tilt Crunches
+		{
+			MoveWithPose move = new MoveWithPose(TILT_CRUNCHES, "Bring side of Ribs towards Hip then Cross-Over", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.lLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+
+			int torsoAngle = 10;
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+
+			move.pose.lArm = new Arm(Angle.E.add(20), 0.5f, Angle.W.add(0));
+			move.pose.rArm = new Arm(Angle.E.add(0), 0.5f, Angle.W.add(-10));
 
 			moves.put(move.name, move);
 		}
