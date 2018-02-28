@@ -1,13 +1,16 @@
 TODO
 ----
 
+- Routine list should collapse Description?
 - Tips
-- Abs Routines
 - Torso.lengthRatio, Arc
+* Sound or recording for next move based on Category.  (Beep is good for switch sides.)
+  - "Switch"
+  - "Ching......"
+  - "Meh Meh Mehhhhhh"
 - Coaching Marks
 - About
 
-* Sound for next move based on Category.  (Beep is good for switch sides.)
 
 * Layout
   * Needed to make imgMove smaller (6*90 instead of 10*90) for tablet in portrait

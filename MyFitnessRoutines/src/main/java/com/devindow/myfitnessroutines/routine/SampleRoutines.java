@@ -40,7 +40,6 @@ public class SampleRoutines {
 /*
 			defaultRoutines.add(getSunSalutation());
 
-
 			defaultRoutines.add(getLiftRoutine());
 
 			defaultRoutines.add(getCardioRoutine());
@@ -99,7 +98,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_STRETCH), 40, "Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SAGE_POSE), 10, "Sit Tall. Legs together. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TWISTED_SAGE_POSE), 30, "Sit Tall. Pretzel. Breathe."));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60, "Meditate & Breathe. Namaste."));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 60, "Meditate & Breathe. Namaste."));
 
 		return routine;
 	}
@@ -192,15 +191,6 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getStretchRoutine() {
-		Routine routine = new Routine("Stretch Routine");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
-
-		return routine;
-	}
-
 	private static Routine getLiftRoutine() {
 		Routine routine = new Routine("Lift Routine");
 
@@ -214,30 +204,6 @@ public class SampleRoutines {
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
-
-		return routine;
-	}
-
-	private static Routine get5MinMeditation() {
-		Routine routine = new Routine("5 min Meditation");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60));
-
-		return routine;
-	}
-
-	private static Routine get10MinMeditation() {
-		Routine routine = new Routine("10 min Meditation");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 10*60));
-
-		return routine;
-	}
-
-	private static Routine get15MinMeditation() {
-		Routine routine = new Routine("15 min Meditation");
-
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 15*60));
 
 		return routine;
 	}
@@ -270,12 +236,43 @@ public class SampleRoutines {
 		return routine;
 	}
 
+	private static Routine getStretchRoutine() {
+		Routine routine = new Routine("Stretch Routine");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WIDE_LEG_BEND), 30, "Breathe."));
+
+		return routine;
+	}
+
+	private static Routine get5MinMeditation() {
+		Routine routine = new Routine("5 min Meditation");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60));
+
+		return routine;
+	}
+
+	private static Routine get10MinMeditation() {
+		Routine routine = new Routine("10 min Meditation");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 10*60));
+
+		return routine;
+	}
+
+	private static Routine get15MinMeditation() {
+		Routine routine = new Routine("15 min Meditation");
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LOTUS), 15*60));
+
+		return routine;
+	}
+
 	private static Routine getRileyRoutine() {
 		Routine routine = new Routine("Riley Routine");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_PLANK), 30));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30, 5));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.DOWN_DOG), 30, 0));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.BEHIND_THE_BACK_GRAB), 30));
 
 		return routine;
 	}
