@@ -60,7 +60,7 @@ public class SampleRoutines {
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALL_SIT), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30, 5));
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_UP_CRUNCHES), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.STEP_UPS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SQUATS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CHAIR_DIPS), 30, 5));
@@ -164,7 +164,7 @@ public class SampleRoutines {
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CATCH_CRUNCHES), 60, 10));
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TILT_CRUNCHES), 60, 10));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TILT_CRUNCHES), 60));
 
 		return routine;
 	}
@@ -172,7 +172,14 @@ public class SampleRoutines {
 	private static Routine getUpperAbs() {
 		Routine routine = new Routine("Upper Abs");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_UP_CRUNCHES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_UP_CRUNCHES), 30, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_BENT_CRUNCHES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FROG_LEG_CRUNCHES), 30, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HORSE_RIDING_CRUNCHES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_UP_CRUNCHES), 30));
 
 		return routine;
 	}
