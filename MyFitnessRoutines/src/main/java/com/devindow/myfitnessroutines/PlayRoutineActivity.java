@@ -79,12 +79,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtStepInstuctions.setText(currentStep.move.description);
 			}
-
-			if (resetSecondsRemaining) {
-				taskFragment.resetSecondsRemaining();
-			}
-			updateTimer();
 		}
+
+		if (resetSecondsRemaining) {
+			taskFragment.resetSecondsRemaining();
+		}
+		updateTimer();
 
 		displayMove(taskFragment.move, false);
 
@@ -198,7 +198,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void onNextClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
 
-		if (taskFragment.stepNum < taskFragment.routine.steps.size()) {
+		if (taskFragment.stepNum <= taskFragment.routine.steps.size()) {
 			if (taskFragment.countDownTimer != null) {
 				taskFragment.countDownTimer.cancel();
 			}
