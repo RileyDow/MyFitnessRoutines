@@ -1,8 +1,8 @@
 TODO
 ----
 
-- Steps/Time remaining
 - Tips
+- Abs Routines
 - Torso.lengthRatio, Arc
 - Coaching Marks
 - About

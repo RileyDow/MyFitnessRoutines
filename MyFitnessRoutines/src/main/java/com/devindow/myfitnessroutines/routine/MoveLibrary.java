@@ -47,6 +47,8 @@ public class MoveLibrary {
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Back-Lying Poses
 	public static final String CRUNCHES = "Crunches";
+	public static final String REVERSE_CRUNCHES = "Reverse Crunches";
+	public static final String HIP_RAISES = "Hip Raises";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String BOAT_POSE = "Boat Pose";
@@ -601,6 +603,34 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
 
 			move.pose.rArm = new Arm(Angle.N.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Reverse Crunches
+		{
+			MoveWithPose move = new MoveWithPose(REVERSE_CRUNCHES, "Curl Hips towards Ribs", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(15), Angle.E.add(15));
+
+			move.pose.torso = new Torso(Torso.thickness/2 + 3, Angle.W.add(5), true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Hip Raises
+		{
+			MoveWithPose move = new MoveWithPose(HIP_RAISES, "Lift Hips & Feet towards ceiling", Category.LIFTING);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N);
+
+			move.pose.torso = new Torso(Torso.thickness/2 + 3, Angle.W.add(5), true);
+
+			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E);
 
 			moves.put(move.name, move);
 		}

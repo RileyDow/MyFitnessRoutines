@@ -28,9 +28,9 @@ public class SampleRoutines {
 		defaultRoutines.add(get10MinMeditation());
 		defaultRoutines.add(get15MinMeditation());
 
-		defaultRoutines.add(getUpperAbs());
-		defaultRoutines.add(getObliqueAbs());
 		defaultRoutines.add(getLowerAbs());
+		defaultRoutines.add(getObliqueAbs());
+		defaultRoutines.add(getUpperAbs());
 
 
 		if (Debug.on) {
@@ -142,10 +142,17 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getUpperAbs() {
-		Routine routine = new Routine("Upper Abs");
+	private static Routine getLowerAbs() {
+		Routine routine = new Routine("Lower Abs");
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_RAISES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REVERSE_CRUNCHES), 30, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_RAISES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REVERSE_CRUNCHES), 30, 10));
+
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_RAISES), 30));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REVERSE_CRUNCHES), 30));
 
 		return routine;
 	}
@@ -158,8 +165,8 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getLowerAbs() {
-		Routine routine = new Routine("Lower Abs");
+	private static Routine getUpperAbs() {
+		Routine routine = new Routine("Upper Abs");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CRUNCHES), 30, 5));
 
