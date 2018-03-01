@@ -46,7 +46,16 @@ public class MoveLibrary {
 	public static final String JUMPS_180 = "180° Jumps";
 	public static final String JUMPS_90_TO_1_FOOT_LANDING = "90° Jumps to 1 Foot Landing";
 	// Back-Lying Poses
-	public static final String CRUNCHES = "Crunches";
+	public static final String KNEE_UP_CRUNCHES = "Knee-Up Crunches";
+	public static final String LEG_UP_CRUNCHES = "Leg-Up Crunches";
+	public static final String KNEE_BENT_CRUNCHES = "Knee-Bent Crunches";
+	public static final String FROG_LEG_CRUNCHES = "Frog-Leg Crunches";
+	public static final String HORSE_RIDING_CRUNCHES = "Horse-Riding Crunches";
+	public static final String REVERSE_CRUNCHES = "Reverse Crunches";
+	public static final String HIP_RAISES = "Hip Raises";
+	public static final String CROSSOVER_CRUNCHES = "Cross-Over Crunches";
+	public static final String CATCH_CRUNCHES = "Catch Crunches";
+	public static final String SIDE_CRUNCHES = "Side Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String BOAT_POSE = "Boat Pose";
@@ -302,7 +311,7 @@ public class MoveLibrary {
 
 		// Fast Feet
 		{
-			MoveWithPose move = new MoveWithPose(FAST_FEET, "Simulate full speed sprinting", Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(FAST_FEET, "Simulate full speed sprinting", Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
@@ -316,7 +325,7 @@ public class MoveLibrary {
 
 		// High Knees
 		{
-			MoveWithPose move = new MoveWithPose(HIGH_KNEES, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(HIGH_KNEES, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
@@ -404,7 +413,7 @@ public class MoveLibrary {
 	private static void getSquattingPoses() {
 		// Wall Sit
 		{
-			MoveWithPose move = new MoveWithPose(WALL_SIT, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(WALL_SIT, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S);
@@ -418,7 +427,7 @@ public class MoveLibrary {
 
 		// Squats
 		{
-			MoveWithPose move = new MoveWithPose(SQUATS, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(SQUATS, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S);
@@ -452,7 +461,7 @@ public class MoveLibrary {
 
 		// Chair Dips
 		{
-			MoveWithPose move = new MoveWithPose(CHAIR_DIPS, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(CHAIR_DIPS, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S);
@@ -470,7 +479,7 @@ public class MoveLibrary {
 
 		// Lunges
 		{
-			MoveWithPose move = new MoveWithPose(LUNGES, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(LUNGES, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-5));
@@ -529,7 +538,7 @@ public class MoveLibrary {
 
 		// Step-Ups
 		{
-			MoveWithPose move = new MoveWithPose(STEP_UPS, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(STEP_UPS, Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S);
@@ -591,16 +600,165 @@ public class MoveLibrary {
 	}
 
 	private static void getBackLyingPoses() {
-		// Crunches
+		// Knee-Up Crunches
 		{
-			MoveWithPose move = new MoveWithPose(CRUNCHES, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, "Crunches with ", Category.STRENGTH);
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N, Angle.E);
 
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
 
-			move.pose.rArm = new Arm(Angle.N.add(-30));
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Knee-Up Crunches
+		{
+			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, "Crunches with Knees up", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N, Angle.E);
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Leg-Up Crunches
+		{
+			MoveWithPose move = new MoveWithPose(LEG_UP_CRUNCHES, "Crunches with Legs up", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N);
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Knee-Bent Crunches
+		{
+			MoveWithPose move = new MoveWithPose(KNEE_BENT_CRUNCHES, "Crunches with Knees bent", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(35));
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Frog-Leg Crunches
+		{
+			MoveWithPose move = new MoveWithPose(FROG_LEG_CRUNCHES, "Crunches with Legs like a frog", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E.add(25), Angle.E.add(-25));
+			move.pose.rLeg = new Leg(Angle.E.add(-10), 0.9f, Angle.E.add(5), 0.9f);
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Horse-Riding Crunches
+		{
+			MoveWithPose move = new MoveWithPose(HORSE_RIDING_CRUNCHES, "Crunches with Legs apart", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E.add(20), Angle.E.add(-5));
+			move.pose.rLeg = new Leg(Angle.E.add(-20), Angle.E.add(5));
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W, true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Reverse Crunches
+		{
+			MoveWithPose move = new MoveWithPose(REVERSE_CRUNCHES, "Curl Hips towards Ribs", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(15), Angle.E.add(15));
+
+			move.pose.torso = new Torso(Torso.thickness/2 + 3, Angle.W.add(5), true);
+
+			move.pose.rArm = new Arm(Angle.N.add(30), Angle.S.add(-30));
+
+			moves.put(move.name, move);
+		}
+
+		// Hip Raises
+		{
+			MoveWithPose move = new MoveWithPose(HIP_RAISES, "Lift Hips & Feet towards ceiling", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N);
+
+			move.pose.torso = new Torso(Torso.thickness/2 + 3, Angle.W.add(5), true);
+
+			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Cross-Over Crunches
+		{
+			MoveWithPose move = new MoveWithPose(CROSSOVER_CRUNCHES, "Shoulder towards opposite Knee", Category.STRENGTH, true);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.lLeg = new Leg(Angle.N, .7f, Angle.E, 0.5f);
+
+			int torsoAngle = 10;
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+
+			move.pose.lArm = new Arm(Angle.N.add(30-torsoAngle), Angle.S.add(-30-torsoAngle));
+			move.pose.rArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Catch Crunches
+		{
+			MoveWithPose move = new MoveWithPose(CATCH_CRUNCHES, "Reach both Hands outside a Knee", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.lLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+
+			move.pose.lArm = new Arm(Angle.E.add(10), 0.9f);
+			move.pose.rArm = new Arm(Angle.E.add(35));
+
+			moves.put(move.name, move);
+		}
+
+		// Side Crunches
+		{
+			MoveWithPose move = new MoveWithPose(SIDE_CRUNCHES, "Lie on side, Ribs towards Hip", Category.STRENGTH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.N.add(-75), 0.7f, Angle.S.add(75), 0.7f);
+			move.pose.lLeg = new Leg(Angle.N.add(-75), 0.7f, Angle.S.add(75), 0.7f);
+
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-15));
+
+			move.pose.lArm = new Arm(Angle.E.add(20), 0.5f, Angle.W.add(0));
+			move.pose.rArm = new Arm(Angle.E.add(0), 0.5f, Angle.W.add(-10));
 
 			moves.put(move.name, move);
 		}
@@ -940,10 +1098,10 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(legAngle);
 			move.pose.lLeg = new Leg(legAngle.mirror());
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, Angle.S);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, 0.5f, Angle.S);
 
-			//move.pose.lArm = new Arm(Angle.S.add(-5));
-			//move.pose.rArm = new Arm(Angle.S.add(5));
+			move.pose.lArm = new Arm(Angle.S.add(-5));
+			move.pose.rArm = new Arm(Angle.S.add(5));
 
 			moves.put(move.name, move);
 		}
@@ -1006,7 +1164,7 @@ public class MoveLibrary {
 
 		// Push-ups
 		{
-			MoveWithPose move = new MoveWithPose(PUSH_UPS, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(PUSH_UPS, Category.STRENGTH);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(25);
@@ -1026,7 +1184,7 @@ public class MoveLibrary {
 
 		// Plank
 		{
-			MoveWithPose move = new MoveWithPose(PLANK, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(PLANK, Category.STRENGTH);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(12);
@@ -1042,7 +1200,7 @@ public class MoveLibrary {
 
 		// Push-Up & Rotate
 		{
-			MoveWithPose move = new MoveWithPose(PUSH_UP_ROTATE, Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(PUSH_UP_ROTATE, Category.STRENGTH);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(31);
@@ -1060,7 +1218,7 @@ public class MoveLibrary {
 
 		// Side Plank
 		{
-			MoveWithPose move = new MoveWithPose(SIDE_PLANK, Category.LIFTING, true);
+			MoveWithPose move = new MoveWithPose(SIDE_PLANK, Category.STRENGTH, true);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(17);

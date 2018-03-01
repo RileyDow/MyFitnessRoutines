@@ -37,6 +37,7 @@ public class Torso implements Serializable {
 	public float lShoulderY;
 
 	public float waistY;
+	public float lengthRatio;
 
 	public float rHipX;
 	public float rHipY;
@@ -69,8 +70,16 @@ public class Torso implements Serializable {
 		this(waistY,false);
 	}
 
+	public Torso(float waistY, float lengthRatio) {
+		this(waistY, lengthRatio,false);
+	}
+
 	public Torso(float waistY, Angle angle) {
 		this(waistY, angle, false);
+	}
+
+	public Torso(float waistY, float lengthRatio, Angle angle) {
+		this(waistY, lengthRatio, angle, false);
 	}
 
 	public Torso(boolean isProfile) {
@@ -85,17 +94,26 @@ public class Torso implements Serializable {
 		this(waistY, Angle.N, isProfile);
 	}
 
+	public Torso(float waistY, float lengthRatio, boolean isProfile) {
+		this(waistY, lengthRatio, Angle.N, isProfile);
+	}
+
 	public Torso(float waistY, Angle angle, boolean isProfile) {
+		this(waistY, 1.0f, angle, isProfile);
+	}
+
+	public Torso(float waistY, float lengthRatio, Angle angle, boolean isProfile) {
 
 		// Waist
 		this.waistY = waistY;
+		this.lengthRatio = lengthRatio;
 
 		// Collar
-		collarX = Math.round(length * angle.getCos());
-		collarY = waistY + Math.round(length * angle.getSin());
+		collarX = Math.round(length * lengthRatio * angle.getCos());
+		collarY = waistY + Math.round(length * lengthRatio * angle.getSin());
 
 		// Head
-		float waistToHead = length + thickness/2 + headSize/2;
+		float waistToHead = length * lengthRatio + thickness/2 + headSize/2;
 		headX = Math.round(waistToHead * angle.getCos());
 		headY = waistY + Math.round(waistToHead * angle.getSin());
 

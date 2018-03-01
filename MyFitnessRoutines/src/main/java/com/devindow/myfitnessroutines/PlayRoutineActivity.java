@@ -79,16 +79,18 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtStepInstuctions.setText(currentStep.move.description);
 			}
-
-			if (resetSecondsRemaining) {
-				taskFragment.resetSecondsRemaining();
-			}
-			updateTimer();
 		}
+
+		if (resetSecondsRemaining) {
+			taskFragment.resetSecondsRemaining();
+		}
+		updateTimer();
 
 		displayMove(taskFragment.move, false);
 
 		displayNextMoveName();
+
+		displayRemaining();
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayStep()");
 	}
@@ -117,6 +119,22 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
 
+	@Override
+	public void updateTimer() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
+
+		TextView txtTimer = findViewById(R.id.txtTimer);
+		if (txtTimer != null) {
+			long secondsRemaining = taskFragment.move1SecondsRemaining + taskFragment.move2SecondsRemaining;
+			if (secondsRemaining == 0) {
+				secondsRemaining = taskFragment.restSecondsRemaining;
+			}
+			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
+			Debug.d(Debug.TAG_TIME, timeRemaining);
+			txtTimer.setText(timeRemaining);
+		}
+	}
+
 	private void clearNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextStep = findViewById(R.id.txtNextStep);
@@ -134,24 +152,17 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			if (nextStep == null) {
 				txtNextStep.setText("");
 			} else {
-				txtNextStep.setText("Next up: " + nextStep.move.name);
+				txtNextStep.setText("Next: " + nextStep.move.name);
 			}
 		}
 	}
 
-	@Override
-	public void updateTimer() {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
+	private void displayRemaining() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayRemaining()");
 
-		TextView txtTimer = findViewById(R.id.txtTimer);
-		if (txtTimer != null) {
-			long secondsRemaining = taskFragment.move1SecondsRemaining + taskFragment.move2SecondsRemaining;
-			if (secondsRemaining == 0) {
-				secondsRemaining = taskFragment.restSecondsRemaining;
-			}
-			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
-			Debug.d(Debug.TAG_TIME, timeRemaining);
-			txtTimer.setText(timeRemaining);
+		final TextView txtRemaining = findViewById(R.id.txtRemaining);
+		if (txtRemaining != null) {
+			txtRemaining.setText(taskFragment.getRemaining());
 		}
 	}
 
@@ -198,7 +209,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void onNextClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
 
-		if (taskFragment.stepNum < taskFragment.routine.steps.size()) {
+		if (taskFragment.stepNum <= taskFragment.routine.steps.size()) {
 			if (taskFragment.countDownTimer != null) {
 				taskFragment.countDownTimer.cancel();
 			}
