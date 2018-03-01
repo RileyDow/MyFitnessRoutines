@@ -54,7 +54,7 @@ public class SampleRoutines {
 
 	// Private Methods
 	private static Routine get7MinuteWorkout() {
-		Routine routine = new Routine("7 Minute Workout", "High-intensity circuit training that alternates muscle groups");
+		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30, 5));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.WALL_SIT), 30, 5));
@@ -73,7 +73,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getMorningYogaRoutine() {
-		Routine routine = new Routine("Morning Yoga", "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
+		Routine routine = new Routine("Morning Yoga", Category.YOGA, "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CORPSE_POSE), 60, "Lie on your back. Relax. Breathe."));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_CROSS_OVER), 30, "Knee across body. Breathe."));
@@ -104,7 +104,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getWarmupRoutine() {
-		Routine routine = new Routine("Warmup/Thermoregulation", "A warmup to do when starting out cold");
+		Routine routine = new Routine("Warmup/Thermoregulation", Category.WARMUP, "A warmup to do when starting out cold");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JOG_LATERALLY), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
@@ -122,7 +122,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getPreActivationRoutine() {
-		Routine routine = new Routine("Pre-Activation", "From the England National Soccer Team.  Do a warmup first.");
+		Routine routine = new Routine("Pre-Activation", Category.WARMUP, "From the England National Soccer Team.  Do a warmup first.");
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 60));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.THORACIC_ROLL_OUTS), 60));
@@ -142,7 +142,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getLowerAbs() {
-		Routine routine = new Routine("Lower Abs");
+		Routine routine = new Routine("Lower Abs", Category.STRENGTH);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.HIP_RAISES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.REVERSE_CRUNCHES), 30, 10));
@@ -157,7 +157,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getObliqueAbs() {
-		Routine routine = new Routine("Oblique Abs");
+		Routine routine = new Routine("Oblique Abs", Category.STRENGTH);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CROSSOVER_CRUNCHES), 60, 10));
 
@@ -169,7 +169,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getUpperAbs() {
-		Routine routine = new Routine("Upper Abs");
+		Routine routine = new Routine("Upper Abs", Category.STRENGTH);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.LEG_UP_CRUNCHES), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.KNEE_UP_CRUNCHES), 30, 10));
@@ -184,7 +184,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getSunSalutation() {
-		Routine routine = new Routine("Sun Salutation");
+		Routine routine = new Routine("Sun Salutation", Category.YOGA);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
 
@@ -192,7 +192,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getLiftRoutine() {
-		Routine routine = new Routine("Lift Routine");
+		Routine routine = new Routine("Lift Routine", Category.STRENGTH);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
 
@@ -200,7 +200,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getCardioRoutine() {
-		Routine routine = new Routine("Cardio Routine");
+		Routine routine = new Routine("Cardio Routine", Category.CARDIO);
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30));
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
@@ -209,7 +209,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getSoccerTouches() {
-		Routine routine = new Routine("Soccer Touches", "Improve your Touches & Fitness");
+		Routine routine = new Routine("Soccer Touches", Category.SOCCER, "Improve your Touches & Fitness");
 
 		routine.steps.add(new Step(new SoccerMove("Inside Rolls", Category.SOCCER), 30));
 		routine.steps.add(new Step(new SoccerMove("Bells", Category.SOCCER), 30));
@@ -228,10 +228,10 @@ public class SampleRoutines {
 	}
 
 	private static Routine getLadderDrills() {
-		Routine routine = new Routine("Ladder Drills", "Improve your Agility, Speed, Coordination, & Fitness");
+		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
 
-		routine.steps.add(new Step(new SoccerMove("Grapevine", Category.LADDER, true), 15));
-		routine.steps.add(new Step(new SoccerMove("Shuffle", Category.LADDER, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Grapevine", Category.AGILITY, true), 15));
+		routine.steps.add(new Step(new SoccerMove("Shuffle", Category.AGILITY, true), 15));
 
 		return routine;
 	}

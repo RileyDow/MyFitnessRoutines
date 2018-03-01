@@ -11,8 +11,8 @@ public class Routine implements Serializable {
 
 	// Public Fields
 	public String name;
-	public String description;
 	public Category category;
+	public String description;
 	public ArrayList<Step> steps = new ArrayList<Step>();
 
 
@@ -59,8 +59,17 @@ public class Routine implements Serializable {
 		this(name, "");
 	}
 
+	public Routine(String name, Category category) {
+		this(name, category, "");
+	}
+
 	public Routine(String name, String description) {
+		this(name, Category.NONE, description);
+	}
+
+	public Routine(String name, Category category, String description) {
 		this.name = name;
+		this.category = category;
 		this.description = description;
 	}
 
