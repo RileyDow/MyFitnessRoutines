@@ -1,23 +1,13 @@
 TODO
 ----
 
-- Torso.Arc
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
   - "Ching......"
   - "Meh Meh Mehhhhhh"
-- Coaching Marks
-- About
 
-
-* Layout
-  * Needed to make imgMove smaller (6*90 instead of 10*90) for tablet in portrait
-  - Sizes based on percent of screen?
-
-- Play Routine activity
-  + Disable/Hide Next/Prev button
-  + Show Duration of full Routine
-  + Should we just pass Routine.name and have Routines be a Hashtable?
+* App Store
+  - Paid app for adding new Routine?
 
 - Routines
   * Ladder Runs - http://www.runnersblueprint.com/agility-ladder-drills/
@@ -31,29 +21,30 @@ TODO
     - Outside Star
   - Sun Salutation
 
-- Pose.Offset
+----------------------------------------------------------------------------------------------------
 
-- Draw Nose in Profile?
-
-* App Store
-  - Rename APK?
-
-- 2 Poses
-  * Safety Jacks use 2 Poses
- - Poses
-  - Drawing improvements
+- Poses
+  - Safety Jacks use 2 Poses
+  - Pose improvements
     - "High Knee": add arms
+  - Torso.Arc
+  - Draw Nose in Profile?
   - ProfilePose use Z to show depth in 3D?
 
-- Notifications?
+- Play Routine activity
+  + Disable/Hide Next/Prev button
+  + Should we just pass Routine.name and have Routines be a Hashtable?
 
 - Startup
   + MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
     - Derive a class from Application that overrides onCreate() calling super.onCreate().
 
-- Text-to-Speech
-  - Bluetooth Headset button pauses?
-- Paid app for adding new Routine
+- Headset
+  - Text-to-Speech
+    - Bluetooth Headset button pauses?
+  - Notifications?
 
 - Log Activity
   - Saving to Google Doc or persistent storage
+
+- Coaching Marks
