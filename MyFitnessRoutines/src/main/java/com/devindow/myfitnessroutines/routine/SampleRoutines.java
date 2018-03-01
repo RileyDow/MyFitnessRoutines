@@ -163,7 +163,7 @@ public class SampleRoutines {
 
 		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.CATCH_CRUNCHES), 60, 10));
 
-		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.TILT_CRUNCHES), 60));
+		routine.steps.add(new Step(MoveLibrary.moves.get(MoveLibrary.SIDE_CRUNCHES), 60));
 
 		return routine;
 	}

@@ -55,7 +55,7 @@ public class MoveLibrary {
 	public static final String HIP_RAISES = "Hip Raises";
 	public static final String CROSSOVER_CRUNCHES = "Cross-Over Crunches";
 	public static final String CATCH_CRUNCHES = "Catch Crunches";
-	public static final String TILT_CRUNCHES = "Tilt Crunches";
+	public static final String SIDE_CRUNCHES = "Side Crunches";
 	public static final String HEAD_TO_KNEES = "Head to Knees";
 	public static final String RECLINED_HAMSTRING_W_STRAP = "Reclined Hamstring w/ Strap";
 	public static final String BOAT_POSE = "Boat Pose";
@@ -747,15 +747,15 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Tilt Crunches
+		// Side Crunches
 		{
-			MoveWithPose move = new MoveWithPose(TILT_CRUNCHES, "Bring side of Ribs towards Hip then Cross-Over", Category.LIFTING);
+			MoveWithPose move = new MoveWithPose(SIDE_CRUNCHES, "Lie on side, Ribs towards Hip", Category.LIFTING);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
-			move.pose.lLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
+			move.pose.rLeg = new Leg(Angle.N.add(-75), 0.7f, Angle.S.add(75), 0.7f);
+			move.pose.lLeg = new Leg(Angle.N.add(-75), 0.7f, Angle.S.add(75), 0.7f);
 
-			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-7));
+			move.pose.torso = new Torso(Torso.thickness / 2, Angle.W.add(-15));
 
 			move.pose.lArm = new Arm(Angle.E.add(20), 0.5f, Angle.W.add(0));
 			move.pose.rArm = new Arm(Angle.E.add(0), 0.5f, Angle.W.add(-10));
