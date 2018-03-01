@@ -1,5 +1,7 @@
 package com.devindow.myfitnessroutines;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.routine.*;
 
@@ -114,9 +117,30 @@ public class MainActivity extends AppCompatActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
+		if (id == R.id.action_tips) {
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
+			final TextView textView = new TextView(this);
+			textView.setText("Some Poses have a Left and a Right component.  The app will signal you to switch half way through.\n" +
+					"\n" +
+					"I like to:\n" +
+					"- do \"Morning Yoga\" then \"Warmup\" then \"Pre-Activation\" before playing soccer\n" +
+					"- go for a 3 mile walk where I stop in the middle at the park and do \"7 Minute Workout\" 1 or 2 times\n" +
+					"\n" +
+					"Sometimes I hit Play and follow the timer, sometimes I just use the Next button at my own pace.\n" +
+					"(I recommend getting familiar with a Routine and its Poses before working with the timer.)");
+			int padding = 30;
+			textView.setPadding(padding, padding, padding, padding);
+			alertDialogBuilder.setView(textView);
+
+			alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+				}
+			});
+
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+
 			return true;
 		}
 
