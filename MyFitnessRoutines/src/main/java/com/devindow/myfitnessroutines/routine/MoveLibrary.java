@@ -1098,10 +1098,10 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(legAngle);
 			move.pose.lLeg = new Leg(legAngle.mirror());
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, Angle.S);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, 0.5f, Angle.S);
 
-			//move.pose.lArm = new Arm(Angle.S.add(-5));
-			//move.pose.rArm = new Arm(Angle.S.add(5));
+			move.pose.lArm = new Arm(Angle.S.add(-5));
+			move.pose.rArm = new Arm(Angle.S.add(5));
 
 			moves.put(move.name, move);
 		}

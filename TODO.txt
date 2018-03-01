@@ -3,7 +3,7 @@ TODO
 
 - Routine list should collapse Description?
 - Tips
-- Torso.lengthRatio, Arc
+- Torso.Arc
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
   - "Ching......"
