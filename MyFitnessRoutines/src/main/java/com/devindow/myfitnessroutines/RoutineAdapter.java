@@ -49,7 +49,11 @@ public class RoutineAdapter extends ArrayAdapter<Routine> {
 		txtDuration.setText(routine.getTotalMinutesString());
 
 		TextView txtDescription = convertView.findViewById(R.id.txtDescription);
-		txtDescription.setText(routine.description);
+		if (routine.description.length() == 0) {
+			txtDescription.setVisibility(View.GONE);
+		} else {
+			txtDescription.setText(routine.description);
+		}
 
 		return convertView;
 	}

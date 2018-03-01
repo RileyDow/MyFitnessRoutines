@@ -209,7 +209,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getSoccerTouches() {
-		Routine routine = new Routine("Soccer Touches");
+		Routine routine = new Routine("Soccer Touches", "Improve your Touches & Fitness");
 
 		routine.steps.add(new Step(new SoccerMove("Inside Rolls", Category.SOCCER), 30));
 		routine.steps.add(new Step(new SoccerMove("Bells", Category.SOCCER), 30));
@@ -228,7 +228,7 @@ public class SampleRoutines {
 	}
 
 	private static Routine getLadderDrills() {
-		Routine routine = new Routine("Ladder Drills");
+		Routine routine = new Routine("Ladder Drills", "Improve your Agility, Speed, Coordination, & Fitness");
 
 		routine.steps.add(new Step(new SoccerMove("Grapevine", Category.LADDER, true), 15));
 		routine.steps.add(new Step(new SoccerMove("Shuffle", Category.LADDER, true), 15));

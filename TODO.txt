@@ -22,7 +22,7 @@ TODO
   + Should we just pass Routine.name and have Routines be a Hashtable?
 
 - Routines
-  * Ladder Runs
+  * Ladder Runs - http://www.runnersblueprint.com/agility-ladder-drills/
     - Grapevine
       - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
     - Shuffle
