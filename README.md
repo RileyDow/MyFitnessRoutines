@@ -5,14 +5,14 @@ Android app to guide you through fitness routines.
 1. File Changes
     - **TODO.txt** up to date
     - Commit these on *master*:
+        - Debug in **Debug.java**
+            - *Debug.logLevel = LOG.INFO;*
+            - *Debug.on = false;*
         - Version in Module's **build.gradle**
             - *versionCode* incremented (every App Store submission must be higher)
             - *versionString* (what's displayed to users)
-       - Debug in **Debug.java**
-            - *Debug.logLevel = LOG.INFO;*
-            - *Debug.on = false;*
-       - Generate Signed APK
-       - comment = *versionCode #2 = "0.4-beta"*
+        - Generate Signed APK
+        - comment = *versionCode #2 = "0.4-beta"*
 1. Publish GitHub Release
     - Attach APK(s)
     - v0.4.1-beta-feature
