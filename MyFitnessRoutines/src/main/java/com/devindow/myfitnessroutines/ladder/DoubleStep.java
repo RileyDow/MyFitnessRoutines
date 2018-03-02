@@ -35,6 +35,12 @@ public class DoubleStep extends Step {
 
 	// Public Methods
 	public void draw(Canvas canvas, int stepNum) {
+		Paint bodyPaint = new Paint();
+		bodyPaint.setColor(Color.BLACK);
+		bodyPaint.setStrokeWidth(Step.radius*2);
+		bodyPaint.setStrokeCap(Paint.Cap.ROUND);
+		canvas.drawLine(left.x, left.y, right.x, right.y, bodyPaint);
+
 		Paint paint = new Paint();
 
 		String text = Integer.toString(stepNum);

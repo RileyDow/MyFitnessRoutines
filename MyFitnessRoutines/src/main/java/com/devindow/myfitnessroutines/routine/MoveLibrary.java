@@ -103,6 +103,7 @@ public class MoveLibrary {
 	public static final String LADDER_CROSS_BEHIND = "Cross-Behind";
 	public static final String LADDER_SHUFFLE = "Shuffle";
 	public static final String LADDER_HOPSCOTCH = "Hopscotch";
+	public static final String LADDER_SLALOM = "Slalom";
 
 
 	// Public Static Fields
@@ -1469,6 +1470,19 @@ public class MoveLibrary {
 			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
 
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true)));
+
+			moves.put(move.name, move);
+		}
+
+		// Slalom
+		{
+			LadderMove move = new LadderMove(LADDER_SLALOM, Category.AGILITY, "Slalom with alternate foot in");
+
+			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(1, true)));
+
+			move.steps.add(new DoubleStep(Ladder.getLocation(2, true), Ladder.getLocation(1.5f, false, false)));
+
+			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
