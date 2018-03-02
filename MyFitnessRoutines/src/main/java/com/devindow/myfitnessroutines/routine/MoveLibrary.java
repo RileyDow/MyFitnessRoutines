@@ -1388,8 +1388,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SPRINT, Category.AGILITY, "One foot in each square");
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
-
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0, true), -.2f, 0));
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 0));
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -.2f, 0));
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 0));
@@ -1402,7 +1401,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_LATERAL, Category.AGILITY, "Sideways, both feet in each square, high knees");
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0, true), -.2f, 0));
 
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 1));
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -.2f, -1));
@@ -1491,7 +1490,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY, "Shuffle across");
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0.5f, false, true), 1, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0.5f, false, true), 1, 0));
 
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), 1, 0));
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -1, 0));
@@ -1511,7 +1510,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_CROSS_BEHIND, Category.AGILITY);
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0, false, true), 1, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0, false, true), 1, 1));
 
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true)));
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, false, false), -1, -1));
@@ -1520,6 +1519,10 @@ public class MoveLibrary {
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true)));
 			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
 			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
+
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true)));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, false, false), 1, -1));
+			//move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, false, false), -1, 1));
 
 			moves.put(move.name, move);
 		}
