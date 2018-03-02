@@ -1390,7 +1390,7 @@ public class MoveLibrary {
 
 			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true)));
 			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false, true), -1, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
 
 			moves.put(move.name, move);
 		}
