@@ -22,7 +22,7 @@ public class Text {
 
 		TextPaint textPaint = new TextPaint();
 		textPaint.setTextSize(textHeight);
-		textPaint.setColor(Color.WHITE);
+		textPaint.setColor(Color.BLACK);
 		textPaint.setTextAlign(Paint.Align.CENTER);
 
 		canvas.drawText(text, point.x, -point.y + textHeight/2, textPaint);
