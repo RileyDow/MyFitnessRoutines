@@ -3,6 +3,7 @@ package com.devindow.myfitnessroutines.ladder;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 
 import java.io.Serializable;
 
@@ -13,16 +14,16 @@ import java.io.Serializable;
 public class Step implements Serializable {
 
 	// Public Fields
-	public float x;
-	public float y;
+	public PointF point;
 	public boolean leftFoot;
+	public boolean rightFoot;
 
 
 	// Constructors
-	public Step(float x, float y, boolean leftFoot) {
-		this.x = x;
-		this.y = y;
+	public Step(PointF point, boolean leftFoot, boolean rightFoot) {
+		this.point = point;
 		this.leftFoot = leftFoot;
+		this.rightFoot = rightFoot;
 	}
 
 	// Public Methods

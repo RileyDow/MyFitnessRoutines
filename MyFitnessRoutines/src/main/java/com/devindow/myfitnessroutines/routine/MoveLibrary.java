@@ -1382,7 +1382,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_GRAPEVINE, Category.AGILITY);
 
-			move.steps.add(new Step(0, 0, true));
+			move.steps.add(new Step(Ladder.getLocation(0, true, false), true, true));
 
 			moves.put(move.name, move);
 		}
