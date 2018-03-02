@@ -14,8 +14,8 @@ public class MoveWithPose extends Move {
 
 	// Constants
 	public static final int BITMAP_INCHES = 90;
-	public static final int BITMAP_SCALE = 10;
-	public static final int BITMAP_PIXELS = BITMAP_INCHES * BITMAP_SCALE;
+	public static final int PIXELS_PER_INCH = 10;
+	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
 
 
 	// Public Fields
@@ -64,7 +64,7 @@ public class MoveWithPose extends Move {
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
 		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
-		canvas.scale(BITMAP_SCALE, BITMAP_SCALE); // 10x BITMAP_SCALE
+		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X

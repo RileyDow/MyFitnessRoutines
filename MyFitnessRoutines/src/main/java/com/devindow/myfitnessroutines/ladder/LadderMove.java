@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class LadderMove extends Move implements Serializable {
 
 	// Constants
-	public static final int BITMAP_INCHES = 60;
-	public static final int BITMAP_SCALE = 15;
-	public static final int BITMAP_PIXELS = BITMAP_INCHES * BITMAP_SCALE;
+	public static final int BITMAP_INCHES = (int)Math.round(2.5*Ladder.rungGap + Step.radius + Step.radius);
+	public static final int PIXELS_PER_INCH = 10;
+	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
 
 
 	// Public Fields
@@ -70,12 +70,10 @@ public class LadderMove extends Move implements Serializable {
 
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
-		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
-		canvas.scale(BITMAP_SCALE, BITMAP_SCALE); // 10x BITMAP_SCALE
+		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at bottom center
+		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
-		if (secondSide) {
-			canvas.scale(-1, 1); // mirror X
-		}
+		canvas.translate(0, Ladder.rungGap/2 + Step.radius); // Origin moved up for starting point
 
 		Ladder.draw(canvas);
 
