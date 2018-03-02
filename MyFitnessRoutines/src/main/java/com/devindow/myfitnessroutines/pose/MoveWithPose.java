@@ -39,7 +39,7 @@ public class MoveWithPose extends Move {
 		super(name, description);
 	}
 
-	public MoveWithPose(String name, String description, Category category) {
+	public MoveWithPose(String name, Category category, String description) {
 		super(name, description, category);
 	}
 
@@ -47,11 +47,11 @@ public class MoveWithPose extends Move {
 		super(name, category, twoSides);
 	}
 
-	public MoveWithPose(String name, String description, boolean twoSides) {
+	public MoveWithPose(String name, boolean twoSides, String description) {
 		super(name, description, twoSides);
 	}
 
-	public MoveWithPose(String name, String description, Category category, boolean twoSides) {
+	public MoveWithPose(String name, Category category, boolean twoSides, String description) {
 		super(name, description, category, twoSides);
 	}
 

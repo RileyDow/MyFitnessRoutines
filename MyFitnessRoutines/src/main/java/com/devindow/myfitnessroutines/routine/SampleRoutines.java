@@ -230,6 +230,7 @@ public class SampleRoutines {
 	private static Routine generateLadderDrills() {
 		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
 
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SPRINT), 15));
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_GRAPEVINE), 15));
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SHUFFLE), 15));
 

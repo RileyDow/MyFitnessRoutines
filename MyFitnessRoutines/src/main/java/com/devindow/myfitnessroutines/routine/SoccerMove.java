@@ -37,7 +37,7 @@ public class SoccerMove extends Move {
 		super(name, description);
 	}
 
-	public SoccerMove(String name, String description, Category category) {
+	public SoccerMove(String name, Category category, String description) {
 		super(name, description, category);
 	}
 
@@ -45,11 +45,11 @@ public class SoccerMove extends Move {
 		super(name, category, twoSides);
 	}
 
-	public SoccerMove(String name, String description, boolean twoSides) {
+	public SoccerMove(String name, boolean twoSides, String description) {
 		super(name, description, twoSides);
 	}
 
-	public SoccerMove(String name, String description, Category category, boolean twoSides) {
+	public SoccerMove(String name, Category category, boolean twoSides, String description) {
 		super(name, description, category, twoSides);
 	}
 

@@ -98,6 +98,7 @@ public class MoveLibrary {
 	// Ladder Moves
 	public static final String LADDER_GRAPEVINE = "Grapevine";
 	public static final String LADDER_SHUFFLE = "Shuffle";
+	public static final String LADDER_SPRINT = "Sprint";
 
 
 	// Public Static Fields
@@ -121,7 +122,7 @@ public class MoveLibrary {
 	private static void generateStandingFrontalMoves() {
 		// Mountain Pose
 		{
-			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, "Stand tall", Category.NONE);
+			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, Category.NONE, "Stand tall");
 			move.pose = new Pose();
 
 			Angle legAngle = Angle.S.add(3);
@@ -214,7 +215,7 @@ public class MoveLibrary {
 
 		// Jog Laterally
 		{
-			MoveWithPose move = new MoveWithPose(JOG_LATERALLY, "Jog while moving laterally", Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(JOG_LATERALLY, Category.CARDIO, "Jog while moving laterally");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg();
@@ -285,7 +286,7 @@ public class MoveLibrary {
 	private static void generateStandingProfileMoves() {
 		// Safety Jacks
 		{
-			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, Category.CARDIO, "Jumping Jacks with cross-overs in front");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S, .97f);
@@ -318,7 +319,7 @@ public class MoveLibrary {
 
 		// Fast Feet
 		{
-			MoveWithPose move = new MoveWithPose(FAST_FEET, "Simulate full speed sprinting", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(FAST_FEET, Category.STRENGTH, "Simulate full speed sprinting");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(10), Angle.S.add(-10));
@@ -346,7 +347,7 @@ public class MoveLibrary {
 
 		// Standing Hurdles w/ Band
 		{
-			MoveWithPose move = new MoveWithPose(STANDING_HURDLES_W_BAND, "Drive knee up with band around feet", Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(STANDING_HURDLES_W_BAND, Category.WARMUP, true, "Drive knee up with band around feet");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(+10), Angle.S.add(-10));
@@ -365,7 +366,7 @@ public class MoveLibrary {
 
 		// Lateral Walk w/ Band
 		{
-			MoveWithPose move = new MoveWithPose(LATERAL_WALK_W_BAND, "Walk forwards & backwards in explosive cutting motion", Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(LATERAL_WALK_W_BAND, Category.WARMUP, true, "Walk forwards & backwards in explosive cutting motion");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-10), Angle.S.add(-20));
@@ -384,7 +385,7 @@ public class MoveLibrary {
 
 		// Twist & Pivot
 		{
-			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, "Twist while stepping out", Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(TWIST_PIVOT, Category.CARDIO, "Twist while stepping out");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
@@ -401,7 +402,7 @@ public class MoveLibrary {
 
 		// Warrior 3
 		{
-			MoveWithPose move = new MoveWithPose(WARRIOR_3, "Leg straight back then knee up, repeat.", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Leg straight back then knee up, repeat.");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
@@ -499,7 +500,7 @@ public class MoveLibrary {
 
 		// Walking Backward Lunges
 		{
-			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, "Step back, reach back with opposite arm", Category.WARMUP);
+			MoveWithPose move = new MoveWithPose(WALKING_BACKWARD_LUNGES, Category.WARMUP, "Step back, reach back with opposite arm");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.W, Angle.S);
@@ -529,7 +530,7 @@ public class MoveLibrary {
 
 		// Hip/Hamstring Stretch
 		{
-			MoveWithPose move = new MoveWithPose(HIP_HAMSTRING, "Stretch Hip then straighten for Hamstring", Category.STRETCH, true);
+			MoveWithPose move = new MoveWithPose(HIP_HAMSTRING, Category.STRETCH, true, "Stretch Hip then straighten for Hamstring");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.E, Angle.S.add(-25), .9f);
@@ -562,7 +563,7 @@ public class MoveLibrary {
 
 		// Roman Lunges
 		{
-			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, "Opposite Arm & Leg go back", Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, Category.CARDIO, "Opposite Arm & Leg go back");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
@@ -578,7 +579,7 @@ public class MoveLibrary {
 
 		// 180° Jumps
 		{
-			MoveWithPose move = new MoveWithPose(JUMPS_180, "Jump & Turn.", Category.CARDIO);
+			MoveWithPose move = new MoveWithPose(JUMPS_180, Category.CARDIO, "Jump & Turn.");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
@@ -592,7 +593,7 @@ public class MoveLibrary {
 
 		// 90° Jumps to 1 Foot
 		{
-			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, "Jump & Turn.", Category.CARDIO, true);
+			MoveWithPose move = new MoveWithPose(JUMPS_90_TO_1_FOOT_LANDING, Category.CARDIO, true, "Jump & Turn.");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.S.add(30), Angle.S.add(-15));
@@ -609,7 +610,7 @@ public class MoveLibrary {
 	private static void generateBackLyingMoves() {
 		// Knee-Up Crunches
 		{
-			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, "Crunches with ", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, Category.STRENGTH, "Crunches with ");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N, Angle.E);
@@ -623,7 +624,7 @@ public class MoveLibrary {
 
 		// Knee-Up Crunches
 		{
-			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, "Crunches with Knees up", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, Category.STRENGTH, "Crunches with Knees up");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N, Angle.E);
@@ -637,7 +638,7 @@ public class MoveLibrary {
 
 		// Leg-Up Crunches
 		{
-			MoveWithPose move = new MoveWithPose(LEG_UP_CRUNCHES, "Crunches with Legs up", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(LEG_UP_CRUNCHES, Category.STRENGTH, "Crunches with Legs up");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N);
@@ -651,7 +652,7 @@ public class MoveLibrary {
 
 		// Knee-Bent Crunches
 		{
-			MoveWithPose move = new MoveWithPose(KNEE_BENT_CRUNCHES, "Crunches with Knees bent", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(KNEE_BENT_CRUNCHES, Category.STRENGTH, "Crunches with Knees bent");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(35));
@@ -665,7 +666,7 @@ public class MoveLibrary {
 
 		// Frog-Leg Crunches
 		{
-			MoveWithPose move = new MoveWithPose(FROG_LEG_CRUNCHES, "Crunches with Legs like a frog", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(FROG_LEG_CRUNCHES, Category.STRENGTH, "Crunches with Legs like a frog");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.E.add(25), Angle.E.add(-25));
@@ -680,7 +681,7 @@ public class MoveLibrary {
 
 		// Horse-Riding Crunches
 		{
-			MoveWithPose move = new MoveWithPose(HORSE_RIDING_CRUNCHES, "Crunches with Legs apart", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(HORSE_RIDING_CRUNCHES, Category.STRENGTH, "Crunches with Legs apart");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.E.add(20), Angle.E.add(-5));
@@ -695,7 +696,7 @@ public class MoveLibrary {
 
 		// Reverse Crunches
 		{
-			MoveWithPose move = new MoveWithPose(REVERSE_CRUNCHES, "Curl Hips towards Ribs", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(REVERSE_CRUNCHES, Category.STRENGTH, "Curl Hips towards Ribs");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(15), Angle.E.add(15));
@@ -709,7 +710,7 @@ public class MoveLibrary {
 
 		// Hip Raises
 		{
-			MoveWithPose move = new MoveWithPose(HIP_RAISES, "Lift Hips & Feet towards ceiling", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(HIP_RAISES, Category.STRENGTH, "Lift Hips & Feet towards ceiling");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N);
@@ -723,7 +724,7 @@ public class MoveLibrary {
 
 		// Cross-Over Crunches
 		{
-			MoveWithPose move = new MoveWithPose(CROSSOVER_CRUNCHES, "Shoulder towards opposite Knee", Category.STRENGTH, true);
+			MoveWithPose move = new MoveWithPose(CROSSOVER_CRUNCHES, Category.STRENGTH, true, "Shoulder towards opposite Knee");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
@@ -740,7 +741,7 @@ public class MoveLibrary {
 
 		// Catch Crunches
 		{
-			MoveWithPose move = new MoveWithPose(CATCH_CRUNCHES, "Reach both Hands outside a Knee", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(CATCH_CRUNCHES, Category.STRENGTH, "Reach both Hands outside a Knee");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(-45), Angle.S.add(45));
@@ -756,7 +757,7 @@ public class MoveLibrary {
 
 		// Side Crunches
 		{
-			MoveWithPose move = new MoveWithPose(SIDE_CRUNCHES, "Lie on side, Ribs towards Hip", Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(SIDE_CRUNCHES, Category.STRENGTH, "Lie on side, Ribs towards Hip");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(-75), 0.7f, Angle.S.add(75), 0.7f);
@@ -788,7 +789,7 @@ public class MoveLibrary {
 
 		// Reclined Hamstring w/ Strap
 		{
-			MoveWithPose move = new MoveWithPose(RECLINED_HAMSTRING_W_STRAP, "Bend knee then straighten", Category.STRETCH, true);
+			MoveWithPose move = new MoveWithPose(RECLINED_HAMSTRING_W_STRAP, Category.STRETCH, true, "Bend knee then straighten");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.N.add(10));
@@ -809,7 +810,7 @@ public class MoveLibrary {
 
 		// Boat Pose
 		{
-			MoveWithPose move = new MoveWithPose(BOAT_POSE, "Body & legs in a V", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(BOAT_POSE, Category.YOGA, "Body & legs in a V");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.E.add(25));
@@ -846,7 +847,7 @@ public class MoveLibrary {
 
 		// Single-Leg Bridges
 		{
-			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGES, "Drive leg up, hold, repeat.", Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(SINGLE_LEG_BRIDGES, Category.WARMUP, true, "Drive leg up, hold, repeat.");
 			move.pose = new Pose();
 
 			Angle angle = Angle.E.add(-24);
@@ -888,7 +889,7 @@ public class MoveLibrary {
 
 		// Corpse Pose
 		{
-			MoveWithPose move = new MoveWithPose(CORPSE_POSE, "Lie on your back. Relax. Breathe.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(CORPSE_POSE, Category.YOGA, "Lie on your back. Relax. Breathe.");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -933,7 +934,7 @@ public class MoveLibrary {
 
 		// Thoracic Roll-outs
 		{
-			MoveWithPose move = new MoveWithPose(THORACIC_ROLL_OUTS, "Lie on side, roll arms out then back", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(THORACIC_ROLL_OUTS, Category.YOGA, true, "Lie on side, roll arms out then back");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -951,7 +952,7 @@ public class MoveLibrary {
 
 		// Reclined Twist
 		{
-			MoveWithPose move = new MoveWithPose(RECLINED_TWIST, "Knees across body a few inches off the ground", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(RECLINED_TWIST, Category.YOGA, true, "Knees across body a few inches off the ground");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -969,7 +970,7 @@ public class MoveLibrary {
 
 		// Knee Cross-Over
 		{
-			MoveWithPose move = new MoveWithPose(KNEE_CROSS_OVER, "Knee across body", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(KNEE_CROSS_OVER, Category.YOGA, true, "Knee across body");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -987,7 +988,7 @@ public class MoveLibrary {
 
 		// Hip Open
 		{
-			MoveWithPose move = new MoveWithPose(HIP_OPEN, "Hip opened up", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(HIP_OPEN, Category.YOGA, true, "Hip opened up");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -1005,7 +1006,7 @@ public class MoveLibrary {
 
 		// Reclined Cobbler Pose
 		{
-			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, "Legs open, feet together. Press legs to extend spine.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(RECLINED_COBBLER_POSE, Category.YOGA, "Legs open, feet together. Press legs to extend spine.");
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
@@ -1080,7 +1081,7 @@ public class MoveLibrary {
 
 		// Inch Worms
 		{
-			MoveWithPose move = new MoveWithPose(INCH_WORMS, "Walk hands to push-up, then walk feet to hands", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(INCH_WORMS, Category.YOGA, "Walk hands to push-up, then walk feet to hands");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(-35));
@@ -1243,7 +1244,7 @@ public class MoveLibrary {
 
 		// Foam Roller
 		{
-			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, "Iron out the tightness.", Category.WARMUP, true);
+			MoveWithPose move = new MoveWithPose(FOAM_ROLLER, Category.WARMUP, true, "Iron out the tightness.");
 			move.pose = new Pose();
 
 			Angle angle = new Angle(17);
@@ -1283,7 +1284,7 @@ public class MoveLibrary {
 
 		// Locust Pose
 		{
-			MoveWithPose move = new MoveWithPose(LOCUST_POSE,"On Belly. Lift legs & chest.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(LOCUST_POSE, Category.YOGA,"On Belly. Lift legs & chest.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.E.add(8), true);
@@ -1301,7 +1302,7 @@ public class MoveLibrary {
 	private static void generateSittingMoves() {
 		// Lotus
 		{
-			MoveWithPose move = new MoveWithPose(LOTUS, "Breathe.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(LOTUS, Category.YOGA, "Breathe.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2);
@@ -1317,7 +1318,7 @@ public class MoveLibrary {
 
 		// Rest
 		{
-			MoveWithPose move = new MoveWithPose(REST, "Breathe.", Category.NONE);
+			MoveWithPose move = new MoveWithPose(REST, Category.NONE, "Breathe.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2);
@@ -1333,7 +1334,7 @@ public class MoveLibrary {
 
 		// Cobbler Pose
 		{
-			MoveWithPose move = new MoveWithPose(COBBLER_POSE, "Sit. Butterfly.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(COBBLER_POSE, Category.YOGA, "Sit. Butterfly.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2);
@@ -1349,7 +1350,7 @@ public class MoveLibrary {
 
 		// Sage Pose
 		{
-			MoveWithPose move = new MoveWithPose(SAGE_POSE, "Sit Tall. Legs together.", Category.YOGA);
+			MoveWithPose move = new MoveWithPose(SAGE_POSE, Category.YOGA, "Sit Tall. Legs together.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2 - 2, true);
@@ -1361,7 +1362,7 @@ public class MoveLibrary {
 
 		// Twisted Sage Pose
 		{
-			MoveWithPose move = new MoveWithPose(TWISTED_SAGE_POSE, "Sit Tall. Pretzel.", Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(TWISTED_SAGE_POSE, Category.YOGA, true, "Sit Tall. Pretzel.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2 - 2);
@@ -1378,6 +1379,18 @@ public class MoveLibrary {
 
 
 	private static void generateLadderMoves() {
+		// Sprint
+		{
+			LadderMove move = new LadderMove(LADDER_SPRINT, Category.AGILITY, "One foot in each square");
+
+			move.steps.add(new Step(Ladder.getLocation(0, true)));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true)));
+
+			moves.put(move.name, move);
+		}
+
 		// Grapevine
 		{
 			LadderMove move = new LadderMove(LADDER_GRAPEVINE, Category.AGILITY);

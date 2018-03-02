@@ -45,7 +45,7 @@ public class LadderMove extends Move implements Serializable {
 		super(name, description);
 	}
 
-	public LadderMove(String name, String description, Category category) {
+	public LadderMove(String name, Category category, String description) {
 		super(name, description, category);
 	}
 
@@ -53,11 +53,11 @@ public class LadderMove extends Move implements Serializable {
 		super(name, category, twoSides);
 	}
 
-	public LadderMove(String name, String description, boolean twoSides) {
+	public LadderMove(String name, boolean twoSides, String description) {
 		super(name, description, twoSides);
 	}
 
-	public LadderMove(String name, String description, Category category, boolean twoSides) {
+	public LadderMove(String name, Category category, boolean twoSides, String description) {
 		super(name, description, category, twoSides);
 	}
 
