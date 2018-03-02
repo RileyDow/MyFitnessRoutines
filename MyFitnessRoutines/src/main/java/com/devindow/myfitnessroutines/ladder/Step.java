@@ -40,7 +40,23 @@ public class Step implements Serializable {
 
 		canvas.drawCircle(point.x, point.y, radius, paint);
 
-		Text.draw(canvas, Integer.toString(stepNum), point);
+		String text = Integer.toString(stepNum);
+		if (leftFoot ^ rightFoot) {
+			if (leftFoot) text += "L";
+			if (rightFoot) text += "R";
+		}
+
+		Text.draw(canvas, text, point);
+	}
+
+
+	// Overrides
+	@Override
+	public String toString() {
+		String string = point.toString();
+		if (leftFoot) string += "L";
+		if (rightFoot) string += "R";
+		return string;
 	}
 
 }
