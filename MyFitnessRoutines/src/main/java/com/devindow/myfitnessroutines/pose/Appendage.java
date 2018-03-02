@@ -2,9 +2,9 @@ package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.RectF;
 
 import com.devindow.myfitnessroutines.Debug;
+import com.devindow.myfitnessroutines.util.Extents;
 
 import java.io.Serializable;
 

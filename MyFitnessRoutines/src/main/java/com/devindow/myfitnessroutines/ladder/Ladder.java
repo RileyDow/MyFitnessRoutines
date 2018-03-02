@@ -3,7 +3,8 @@ package com.devindow.myfitnessroutines.ladder;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PointF;
+
+import com.devindow.myfitnessroutines.util.Point;
 
 /**
  * Created by Devin on 3/2/2018.
@@ -35,8 +36,10 @@ public class Ladder {
 		}
 	}
 
-	public static PointF getLocation(int rungNum, boolean inside, boolean onTheLeft) {
-		return new PointF();
+	public static Point getLocation(int rungNum, boolean inside, boolean onTheLeft) {
+		float y = rungGap/2 + rungNum*rungGap;
+
+		return new Point(0, y);
 	}
 
 }

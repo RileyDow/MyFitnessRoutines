@@ -2,6 +2,8 @@ package com.devindow.myfitnessroutines.pose;
 
 import android.graphics.Canvas;
 
+import com.devindow.myfitnessroutines.util.Extents;
+
 import junit.framework.Assert;
 
 import java.io.Serializable;

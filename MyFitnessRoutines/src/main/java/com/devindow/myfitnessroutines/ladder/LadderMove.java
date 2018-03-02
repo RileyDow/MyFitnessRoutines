@@ -9,13 +9,14 @@ import android.graphics.PointF;
 import com.devindow.myfitnessroutines.routine.Category;
 import com.devindow.myfitnessroutines.routine.Move;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Devin on 2/22/2018.
  */
 
-public class LadderMove extends Move {
+public class LadderMove extends Move implements Serializable {
 
 	// Constants
 	public static final int BITMAP_INCHES = 60;

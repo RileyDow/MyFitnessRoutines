@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines.pose;
+package com.devindow.myfitnessroutines.util;
 
 /**
  * Created by Devin on 2/22/2018.
