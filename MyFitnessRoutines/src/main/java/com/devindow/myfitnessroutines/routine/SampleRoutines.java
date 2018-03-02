@@ -230,13 +230,13 @@ public class SampleRoutines {
 	private static Routine generateLadderDrills() {
 		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
 
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SPRINT), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SHUFFLE), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL_IN_OUT), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_JUMPING_JACK), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_HOPSCOTCH), 15));
-		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SLALOM), 15));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SPRINT), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SHUFFLE), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL_IN_OUT), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_JUMPING_JACK), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_HOPSCOTCH), 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SLALOM), 15, 5));
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_CROSS_BEHIND), 15));
 
 		return routine;
