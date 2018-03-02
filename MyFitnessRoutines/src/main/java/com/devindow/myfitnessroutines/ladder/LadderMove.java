@@ -8,6 +8,7 @@ import android.graphics.PointF;
 
 import com.devindow.myfitnessroutines.routine.Category;
 import com.devindow.myfitnessroutines.routine.Move;
+import com.devindow.myfitnessroutines.util.Colors;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -86,6 +87,10 @@ public class LadderMove extends Move implements Serializable {
 
 	// Private Methods
 	private void drawSteps(Canvas canvas) {
+		if (steps.size() == 0) {
+			return;
+		}
+
 		Step start = steps.get(0);
 		start.draw(canvas, 0);
 
@@ -99,13 +104,13 @@ public class LadderMove extends Move implements Serializable {
 			Step step = steps.get(i);
 
 			if (step.feet.hasLeft()) {
-				arrowPaint.setColor(Color.GREEN);
+				arrowPaint.setColor(Colors.generate(.3f, 0,1, 0));
 				canvas.drawLine(lastLeft.point.x, lastLeft.point.y, step.point.x, step.point.y, arrowPaint);
 				lastLeft = step;
 			}
 
 			if (step.feet.hasRight()) {
-				arrowPaint.setColor(Color.RED);
+				arrowPaint.setColor(Colors.generate(.3f, 1,0, 0));
 				canvas.drawLine(lastRight.point.x, lastRight.point.y, step.point.x, step.point.y, arrowPaint);
 				lastRight = step;
 			}

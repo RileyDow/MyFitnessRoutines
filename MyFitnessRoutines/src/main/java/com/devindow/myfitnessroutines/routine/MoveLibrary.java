@@ -99,6 +99,7 @@ public class MoveLibrary {
 	public static final String LADDER_GRAPEVINE = "Grapevine";
 	public static final String LADDER_SHUFFLE = "Shuffle";
 	public static final String LADDER_SPRINT = "Sprint";
+	public static final String LADDER_LATERAL = "Lateral";
 
 
 	// Public Static Fields
@@ -1385,8 +1386,35 @@ public class MoveLibrary {
 
 			move.steps.add(new Step(Ladder.getLocation(0, true)));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true)));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 0));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), -.2f, 0));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 0));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(4, true), -.2f, 0));
+
+			moves.put(move.name, move);
+		}
+
+		// Lateral
+		{
+			LadderMove move = new LadderMove(LADDER_LATERAL, Category.AGILITY, "Sideways, both feet in each square, high knees");
+
+			move.steps.add(new Step(Ladder.getLocation(0, true)));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), -.2f, -1));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), .2f, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), -.2f, -1));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), -.2f, -1));
+
+			moves.put(move.name, move);
+		}
+
+		// Shuffle
+		{
+			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY);
 
 			moves.put(move.name, move);
 		}
@@ -1404,13 +1432,6 @@ public class MoveLibrary {
 			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true)));
 			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
 			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
-
-			moves.put(move.name, move);
-		}
-
-		// Shuffle
-		{
-			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY);
 
 			moves.put(move.name, move);
 		}
