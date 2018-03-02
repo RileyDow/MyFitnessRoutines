@@ -36,9 +36,9 @@ public class Ladder {
 		}
 	}
 
-	public static Point getLocation(int rungNum, boolean inside) { return getLocation(rungNum, inside, false); }
+	public static Point getLocation(float rungNum, boolean inside) { return getLocation(rungNum, inside, false); }
 
-	public static Point getLocation(int rungNum, boolean inside, boolean onTheLeft) {
+	public static Point getLocation(float rungNum, boolean inside, boolean onTheLeft) {
 		float x = 0;
 		if (!inside) {
 			if (onTheLeft) {

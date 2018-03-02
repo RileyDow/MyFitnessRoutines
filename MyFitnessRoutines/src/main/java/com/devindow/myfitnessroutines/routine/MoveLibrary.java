@@ -96,11 +96,12 @@ public class MoveLibrary {
 	public static final String TWISTED_SAGE_POSE = "Twisted Sage Pose";
 
 	// Ladder Moves
-	public static final String LADDER_GRAPEVINE = "Grapevine";
-	public static final String LADDER_SHUFFLE = "Shuffle";
 	public static final String LADDER_SPRINT = "Sprint";
 	public static final String LADDER_LATERAL = "Lateral";
 	public static final String LADDER_LATERAL_IN_OUT = "Lateral In/Out";
+	public static final String LADDER_JUMPING_JACK = "Jumping Jack";
+	public static final String LADDER_CROSS_BEHIND = "Cross-Behind";
+	public static final String LADDER_SHUFFLE = "Shuffle";
 
 
 	// Public Static Fields
@@ -1385,12 +1386,12 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SPRINT, Category.AGILITY, "One foot in each square");
 
-			move.steps.add(new Step(Ladder.getLocation(0, true)));
+			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 0));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), -.2f, 0));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 0));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(4, true), -.2f, 0));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -.2f, 0));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(4, true), -.2f, 0));
 
 			moves.put(move.name, move);
 		}
@@ -1399,16 +1400,16 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_LATERAL, Category.AGILITY, "Sideways, both feet in each square, high knees");
 
-			move.steps.add(new Step(Ladder.getLocation(0, true)));
+			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), -.2f, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .2f, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -.2f, -1));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), .2f, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), -.2f, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), .2f, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -.2f, -1));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), -.2f, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), -.2f, -1));
 
 			moves.put(move.name, move);
 		}
@@ -1417,20 +1418,38 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_LATERAL_IN_OUT, Category.AGILITY, "Sideways, both feet in, both feet out");
 
-			move.steps.add(new Step(Ladder.getLocation(1, false), 0, -2));
+			move.steps.add(new OnePointStep(Ladder.getLocation(1, false), 0, -2));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), 0, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), 0, -1));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, false), 0, 4));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, false), 0, 2));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), 0, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), 0, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, false), 0, 4));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, false), 0, 2));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), 0, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), 0, -1));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false), 0, 4));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false), 0, 2));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), 0, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), 0, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, false), 0, 4));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, false), 0, 2));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), 0, 1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), 0, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), 0, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), 0, -1));
+
+			moves.put(move.name, move);
+		}
+
+		// Jumping Jack
+		{
+			LadderMove move = new LadderMove(LADDER_JUMPING_JACK, Category.AGILITY, "Both feet in, both feet out");
+
+			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Ladder.getLocation(1, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Ladder.getLocation(2, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
@@ -1439,35 +1458,35 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY, "Shuffle across");
 
-			move.steps.add(new Step(Ladder.getLocation(0, false, true), 1, 1));
+			move.steps.add(new OnePointStep(Ladder.getLocation(0.5f, false, true), 1, 0));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), 1, 0));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), -1, 0));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, false, false), -1, 1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), 1, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -1, 0));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1.5f, false, false), -1, 0));
 
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), 1, 0));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), -1, 0));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false, true), 1, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -1, 0));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), 1, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2.5f, false, true), 1, 0));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), 1, 0));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), -1, 0));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), 1, 0));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), -1, 0));
 
 			moves.put(move.name, move);
 		}
 
-		// Grapevine
+		// Cross-Behind
 		{
-			LadderMove move = new LadderMove(LADDER_GRAPEVINE, Category.AGILITY);
+			LadderMove move = new LadderMove(LADDER_CROSS_BEHIND, Category.AGILITY);
 
-			move.steps.add(new Step(Ladder.getLocation(0, false, true), 1, 1));
+			move.steps.add(new OnePointStep(Ladder.getLocation(0, false, true), 1, 1));
 
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true)));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, false, false), -1, -1));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, false, false), 1, 1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, false, false), -1, -1));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, false, false), 1, 1));
 
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true)));
-			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
-			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
 
 			moves.put(move.name, move);
 		}

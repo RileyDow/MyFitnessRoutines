@@ -14,8 +14,6 @@ TODO
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
 
 - Routines
-  - Ladder Hops need 2 feet described in one step
-    - In/Out
   * Soccer Touches (with arrows & mirror)
     - Triangle
       - 1R, 2R, 3L
