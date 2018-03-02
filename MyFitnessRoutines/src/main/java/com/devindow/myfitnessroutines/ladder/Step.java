@@ -4,8 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.util.Point;
-import com.devindow.myfitnessroutines.util.Text;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
 
@@ -47,17 +46,19 @@ public class Step implements Serializable {
 	// Public Methods
 	public void draw(Canvas canvas, int stepNum) {
 		Paint paint = new Paint();
-		paint.setColor(Color.BLACK);
-
-		canvas.drawCircle(point.x, point.y, radius, paint);
 
 		String text = Integer.toString(stepNum);
 		if (feet.hasBoth()) {
+			paint.setColor(Color.BLACK);
 		} else if (feet.hasLeft()) {
-				text += "-L";
+			paint.setColor(Colors.generate(0, 1, 0));
+			text += "-L";
 		} else if (feet.hasRight()) {
+			paint.setColor(Colors.generate(1, 0, 0));
 			text += "-R";
 		}
+
+		canvas.drawCircle(point.x, point.y, radius, paint);
 
 		Text.draw(canvas, text, point);
 	}
