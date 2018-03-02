@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.devindow.myfitnessroutines.util.Point;
+import com.devindow.myfitnessroutines.util.Text;
 
 import java.io.Serializable;
 
@@ -31,13 +32,15 @@ public class Step implements Serializable {
 		this.rightFoot = rightFoot;
 	}
 
+
 	// Public Methods
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas, int stepNum) {
 		Paint paint = new Paint();
 		paint.setColor(Color.BLACK);
 
 		canvas.drawCircle(point.x, point.y, radius, paint);
 
+		Text.draw(canvas, Integer.toString(stepNum), point);
 	}
 
 }
