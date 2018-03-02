@@ -16,8 +16,8 @@ public class SoccerMove extends Move {
 
 	// Constants
 	public static final int BITMAP_INCHES = 90;
-	public static final int BITMAP_SCALE = 10;
-	public static final int BITMAP_PIXELS = BITMAP_INCHES * BITMAP_SCALE;
+	public static final int PIXELS_PER_INCH = 10;
+	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
 
 
 	// Constructors
@@ -37,7 +37,7 @@ public class SoccerMove extends Move {
 		super(name, description);
 	}
 
-	public SoccerMove(String name, String description, Category category) {
+	public SoccerMove(String name, Category category, String description) {
 		super(name, description, category);
 	}
 
@@ -45,11 +45,11 @@ public class SoccerMove extends Move {
 		super(name, category, twoSides);
 	}
 
-	public SoccerMove(String name, String description, boolean twoSides) {
+	public SoccerMove(String name, boolean twoSides, String description) {
 		super(name, description, twoSides);
 	}
 
-	public SoccerMove(String name, String description, Category category, boolean twoSides) {
+	public SoccerMove(String name, Category category, boolean twoSides, String description) {
 		super(name, description, category, twoSides);
 	}
 
@@ -62,13 +62,13 @@ public class SoccerMove extends Move {
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
 		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
-		canvas.scale(BITMAP_SCALE, BITMAP_SCALE); // 10x BITMAP_SCALE
+		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		Paint paint = new Paint();
+		/*Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeWidth(2);
 
@@ -83,7 +83,7 @@ public class SoccerMove extends Move {
 			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
 			Debug.d("Angle=", angle.toString());
 			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*100, (float)Math.sin(angle.radians)*100, paint);
-		}
+		}*/
 
 		return bitmap;
 	}

@@ -14,14 +14,14 @@ import android.os.CountDownTimer;
 import com.devindow.myfitnessroutines.routine.Move;
 import com.devindow.myfitnessroutines.routine.MoveLibrary;
 import com.devindow.myfitnessroutines.routine.Routine;
-import com.devindow.myfitnessroutines.routine.Step;
+import com.devindow.myfitnessroutines.routine.Task;
 
 // This Fragment manages a the timers and retains itself across configuration changes.
 public class PlayRoutineTaskFragment extends Fragment {
 
 	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
 	interface PlayRoutineCallbacks {
-		void displayStep(boolean startTimer);
+		void displayTask(boolean startTimer);
 		void displayMove(Move move, boolean secondSide);
 		void updateTimer();
 	}
@@ -29,7 +29,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// Public Fields
 	public CountDownTimer countDownTimer;
-	public int stepNum = 1;
+	public int taskNum = 1;
 	public Routine routine;
 	public Move move;
 	public int move1SecondsRemaining;
@@ -38,16 +38,16 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 
 	// Public Properties
-	public Step getCurrentStep() {
-		return routine.getStep(stepNum);
+	public Task getCurrentTask() {
+		return routine.getTask(taskNum);
 	}
 
-	public Step getNextStep() {
-		return routine.getStep(stepNum+1);
+	public Task getNextTask() {
+		return routine.getTask(taskNum +1);
 	}
 
 	public String getRemaining() {
-		return routine.getRemainingString(stepNum);
+		return routine.getRemainingString(taskNum);
 	}
 
 
@@ -64,7 +64,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		// Retain this fragment across configuration changes.
 		setRetainInstance(true);
 
-		// Need to set SecondsRemaining when showing first Step.
+		// Need to set SecondsRemaining when showing first Task.
 		resetSecondsRemaining();
 		playRoutineActivity.updateTimer();
 
@@ -103,17 +103,17 @@ public class PlayRoutineTaskFragment extends Fragment {
 	public void resetSecondsRemaining() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resetSecondsRemaining()");
 
-		Step currentStep = getCurrentStep();
-		if (currentStep == null) {
+		Task currentTask = getCurrentTask();
+		if (currentTask == null) {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
 			if (move.twoSides) {
-				move1SecondsRemaining = move2SecondsRemaining = currentStep.moveSeconds / 2;
+				move1SecondsRemaining = move2SecondsRemaining = currentTask.moveSeconds / 2;
 			} else {
-				move1SecondsRemaining = currentStep.moveSeconds;
+				move1SecondsRemaining = currentTask.moveSeconds;
 				move2SecondsRemaining = 0;
 			}
-			restSecondsRemaining = currentStep.restSeconds;
+			restSecondsRemaining = currentTask.restSeconds;
 		}
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");
@@ -145,9 +145,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 					}
 					runRestTimer();
 				} else {
-					stepNum++;
+					taskNum++;
 					if (playRoutineActivity != null) {
-						playRoutineActivity.displayStep(true);
+						playRoutineActivity.displayTask(true);
 
 						// If timer was running then run.
 						if (countDownTimer != null) {
@@ -180,9 +180,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 					}
 					runRestTimer();
 				} else {
-					stepNum++;
+					taskNum++;
 					if (playRoutineActivity != null) {
-						playRoutineActivity.displayStep(true);
+						playRoutineActivity.displayTask(true);
 
 						// If timer was running then run.
 						if (countDownTimer != null) {
@@ -208,9 +208,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 			@Override
 			public void onFinish() {
 				playChime();
-				stepNum++;
+				taskNum++;
 				if (playRoutineActivity != null) {
-					playRoutineActivity.displayStep(true);
+					playRoutineActivity.displayTask(true);
 
 					// If timer was running then run.
 					if (countDownTimer != null) {

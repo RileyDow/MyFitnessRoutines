@@ -24,9 +24,9 @@ Android app to guide you through fitness routines.
     - name
     - description
     - category
-    - steps
+    - tasks
     - getDuration()
-- Step
+- Task
     - move
     - moveSeconds
     - restSeconds

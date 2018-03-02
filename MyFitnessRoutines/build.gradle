@@ -1,16 +1,63 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    /**
+     * compileSdkVersion specifies the Android API level Gradle should use to
+     * compile your app. This means your app can use the API features included in
+     * this API level and lower.
+     */
     compileSdkVersion 26
+
+    /**
+     * The defaultConfig block encapsulates default settings and entries for all
+     * build variants, and can override some attributes in main/AndroidManifest.xml
+     * dynamically from the build system. You can configure product flavors to override
+     * these values for different versions of your app.
+     */
     defaultConfig {
+        /**
+         * applicationId uniquely identifies the package for publishing.
+         * However, your source code should still reference the package name
+         * defined by the package attribute in the main/AndroidManifest.xml file.
+         */
         applicationId "com.devindow.myfitnessroutines"
+
+        // Defines the minimum API level required to run the app.
         minSdkVersion 15
+
+        // Specifies the API level used to test the app.
         targetSdkVersion 26
+
+        // Defines the version number of your app.
         versionCode 3
+
+        // Defines a user-friendly version name for your app.
         versionName "v0.5-beta"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    /**
+     * Added this to prevent source control from changing idea.misc back and forth between 1.8 & 1.7.
+     */
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    /**
+     * The buildTypes block is where you can configure multiple build types.
+     * By default, the build system defines two build types: debug and release. The
+     * debug build type is not explicitly shown in the default build configuration,
+     * but it includes debugging tools and is signed with the debug key. The release
+     * build type applies Proguard settings and is not signed by default.
+     */
     buildTypes {
+        /**
+         * By default, Android Studio configures the release build type to enable code
+         * shrinking, using minifyEnabled, and specifies the Proguard settings file.
+         */
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
