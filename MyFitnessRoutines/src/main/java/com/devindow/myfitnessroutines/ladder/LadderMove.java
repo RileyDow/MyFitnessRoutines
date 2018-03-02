@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines.routine;
+package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -6,7 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 
-import com.devindow.myfitnessroutines.Debug;
+import com.devindow.myfitnessroutines.routine.Category;
+import com.devindow.myfitnessroutines.routine.Move;
 
 import java.util.ArrayList;
 
@@ -111,7 +112,7 @@ public class LadderMove extends Move {
 
 	// Static Methods
 	public static PointF getLocation(int rungNum, boolean inside, boolean left) {
-
+		return new PointF();
 	}
 
 }

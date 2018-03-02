@@ -1,5 +1,6 @@
 package com.devindow.myfitnessroutines.routine;
 
+import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
 
 import java.util.Dictionary;
@@ -1381,7 +1382,7 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_GRAPEVINE, Category.AGILITY);
 
-			move.steps.add(new Step());
+			move.steps.add(new Step(0, 0, true));
 
 			moves.put(move.name, move);
 		}
