@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Devin on 1/29/2018.
  */
 
-public class Step implements Serializable {
+public class Task implements Serializable {
 
 	// Public Fields
 	public Move move;
@@ -22,19 +22,19 @@ public class Step implements Serializable {
 
 
 	// Constructors
-	public Step(Move move, int moveSeconds) {
+	public Task(Move move, int moveSeconds) {
 		this(move, moveSeconds, 0);
 	}
 
-	public Step(Move move, int moveSeconds, int restSeconds) {
+	public Task(Move move, int moveSeconds, int restSeconds) {
 		this(move, moveSeconds, restSeconds, "");
 	}
 
-	public Step(Move move, int moveSeconds, String instructions) {
+	public Task(Move move, int moveSeconds, String instructions) {
 		this(move, moveSeconds, 0, instructions);
 	}
 
-	public Step(Move move, int moveSeconds, int restSeconds, String instructions) {
+	public Task(Move move, int moveSeconds, int restSeconds, String instructions) {
 		this.move = move;
 		this.moveSeconds = moveSeconds;
 		this.restSeconds = restSeconds;

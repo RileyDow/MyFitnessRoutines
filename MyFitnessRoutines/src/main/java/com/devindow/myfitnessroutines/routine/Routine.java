@@ -13,21 +13,21 @@ public class Routine implements Serializable {
 	public String name;
 	public Category category;
 	public String description;
-	public ArrayList<Step> steps = new ArrayList<Step>();
+	public ArrayList<Task> tasks = new ArrayList<Task>();
 
 
 	// Public Properties
-	public Step getStep(int stepNum) { // starting with stepNum = 1
-		if (stepNum > steps.size() || stepNum < 1) {
+	public Task getTask(int taskNum) { // starting with taskNum = 1
+		if (taskNum > tasks.size() || taskNum < 1) {
 			return null;
 		}
-		return steps.get(stepNum-1);
+		return tasks.get(taskNum-1);
 	}
 
 	public int getTotalSeconds() {
 		int duration = 0;
-		for (Step step : steps) {
-			duration += step.getTotalSeconds();
+		for (Task task : tasks) {
+			duration += task.getTotalSeconds();
 		}
 		return duration;
 	}
@@ -37,20 +37,20 @@ public class Routine implements Serializable {
 		return minutes + " min";
 	}
 
-	public String getRemainingString(int stepNum) {
-		if (stepNum >= steps.size()) {
+	public String getRemainingString(int taskNum) {
+		if (taskNum >= tasks.size()) {
 			return "";
 		}
 
-		int stepsRemaining = 0;
+		int tasksRemaining = 0;
 		int secondsRemaining = 0;
-		for (int i=stepNum+1; i<=steps.size(); i++) {
-			Step step = getStep(i);
-			stepsRemaining++;
-			secondsRemaining += step.getTotalSeconds();
+		for (int i = taskNum+1; i<= tasks.size(); i++) {
+			Task task = getTask(i);
+			tasksRemaining++;
+			secondsRemaining += task.getTotalSeconds();
 		}
 		int minutesRemaining = (int) Math.round(1.0 * secondsRemaining / 60);
-		return stepsRemaining + " steps=" + minutesRemaining + "min";
+		return tasksRemaining + " more = " + minutesRemaining + " min";
 	}
 
 

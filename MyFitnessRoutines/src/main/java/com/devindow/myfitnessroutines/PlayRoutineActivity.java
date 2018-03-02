@@ -50,8 +50,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(taskFragment.routine.name);
 
-		// Show the current Step w/o affecting PlayRoutineTaskFragment's countDownTimer.
-		displayStep(false);
+		// Show the current Task w/o affecting PlayRoutineTaskFragment's countDownTimer.
+		displayTask(false);
 
 		// Update btnPlay in case it is running.
 		updatePlayButton();
@@ -60,24 +60,24 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void displayStep(boolean resetSecondsRemaining) {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayStep()");
+	public void displayTask(boolean resetSecondsRemaining) {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTask()");
 
 		clearNextMoveName();
 
-		if (taskFragment.stepNum > taskFragment.routine.steps.size()) { // Finished, so show DONE & kill timer
+		if (taskFragment.taskNum > taskFragment.routine.tasks.size()) { // Finished, so show DONE & kill timer
 			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			taskFragment.countDownTimer = null;
 			updatePlayButton();
 		} else {
-			Step currentStep = taskFragment.getCurrentStep();
-			taskFragment.move = currentStep.move;
+			Task currentTask = taskFragment.getCurrentTask();
+			taskFragment.move = currentTask.move;
 
-			final TextView txtStepInstuctions = findViewById(R.id.txtStepInstuctions);
-			if (!currentStep.instructions.isEmpty()) {
-				txtStepInstuctions.setText(currentStep.instructions);
+			final TextView txtInstuctions = findViewById(R.id.txtInstuctions);
+			if (!currentTask.instructions.isEmpty()) {
+				txtInstuctions.setText(currentTask.instructions);
 			} else {
-				txtStepInstuctions.setText(currentStep.move.description);
+				txtInstuctions.setText(currentTask.move.description);
 			}
 		}
 
@@ -92,7 +92,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		displayRemaining();
 
-		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayStep()");
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayTask()");
 	}
 
 	@Override
@@ -137,22 +137,22 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	private void clearNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
-		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		if (txtNextStep != null) {
-			txtNextStep.setText("");
+		final TextView txtNextTask = findViewById(R.id.txtNextTask);
+		if (txtNextTask != null) {
+			txtNextTask.setText("");
 		}
 	}
 
 	private void displayNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayNextMoveName()");
 
-		final TextView txtNextStep = findViewById(R.id.txtNextStep);
-		if (txtNextStep != null) {
-			Step nextStep = taskFragment.getNextStep();
-			if (nextStep == null) {
-				txtNextStep.setText("");
+		final TextView txtNextTask = findViewById(R.id.txtNextTask);
+		if (txtNextTask != null) {
+			Task nextTask = taskFragment.getNextTask();
+			if (nextTask == null) {
+				txtNextTask.setText("");
 			} else {
-				txtNextStep.setText("Next: " + nextStep.move.name);
+				txtNextTask.setText("Next: " + nextTask.move.name);
 			}
 		}
 	}
@@ -189,9 +189,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			taskFragment.countDownTimer = null;
 		} else {
 			// Play Routine
-			if (taskFragment.stepNum > taskFragment.routine.steps.size()) {
-				taskFragment.stepNum = 1; // Restart ended Routine
-				displayStep(true);
+			if (taskFragment.taskNum > taskFragment.routine.tasks.size()) {
+				taskFragment.taskNum = 1; // Restart ended Routine
+				displayTask(true);
 			}
 
 			if (taskFragment.move1SecondsRemaining > 0) {
@@ -209,12 +209,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void onNextClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
 
-		if (taskFragment.stepNum <= taskFragment.routine.steps.size()) {
+		if (taskFragment.taskNum <= taskFragment.routine.tasks.size()) {
 			if (taskFragment.countDownTimer != null) {
 				taskFragment.countDownTimer.cancel();
 			}
-			taskFragment.stepNum++;
-			displayStep(true);
+			taskFragment.taskNum++;
+			displayTask(true);
 
 			// If timer was running then run.
 			if (taskFragment.countDownTimer != null) {
@@ -226,12 +226,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void onPrevClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
 
-		if (taskFragment.stepNum > 1) {
+		if (taskFragment.taskNum > 1) {
 			if (taskFragment.countDownTimer != null) {
 				taskFragment.countDownTimer.cancel();
 			}
-			taskFragment.stepNum--;
-			displayStep(true);
+			taskFragment.taskNum--;
+			displayTask(true);
 
 			// If timer was running then run.
 			if (taskFragment.countDownTimer != null) {
