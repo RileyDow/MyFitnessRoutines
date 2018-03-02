@@ -1414,7 +1414,20 @@ public class MoveLibrary {
 
 		// Shuffle
 		{
-			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY);
+			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY, "Shuffle across");
+
+			move.steps.add(new Step(Ladder.getLocation(0, false, true), 1, 1));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), 1, 0));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), -1, 0));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, false, false), -1, 1));
+
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), 1, 0));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), -1, 0));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false, true), 1, 1));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), 1, 0));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), -1, 0));
 
 			moves.put(move.name, move);
 		}
