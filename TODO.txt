@@ -14,11 +14,8 @@ TODO
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
 
 - Routines
-  * Ladder Runs - http://www.runnersblueprint.com/agility-ladder-drills/
-    - Grapevine
-      - 1-R-in, 2-L-out-behind, 3-R-out :: 4-L-in, 5-R-in-behind, 6-L-out
-    - Shuffle
-      - 1-R-in, 2-L-in, 3-R-out :: 4-L-in, 5-R-in, 6-L-out
+  - Ladder Hops need 2 feet described in one step
+    - In/Out
   * Soccer Touches (with arrows & mirror)
     - Triangle
       - 1R, 2R, 3L

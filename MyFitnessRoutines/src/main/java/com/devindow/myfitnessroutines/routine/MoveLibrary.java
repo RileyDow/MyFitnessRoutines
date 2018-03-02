@@ -100,6 +100,7 @@ public class MoveLibrary {
 	public static final String LADDER_SHUFFLE = "Shuffle";
 	public static final String LADDER_SPRINT = "Sprint";
 	public static final String LADDER_LATERAL = "Lateral";
+	public static final String LADDER_LATERAL_IN_OUT = "Lateral In/Out";
 
 
 	// Public Static Fields
@@ -1408,6 +1409,28 @@ public class MoveLibrary {
 
 			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), .2f, 1));
 			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), -.2f, -1));
+
+			moves.put(move.name, move);
+		}
+
+		// Lateral In/Out
+		{
+			LadderMove move = new LadderMove(LADDER_LATERAL_IN_OUT, Category.AGILITY, "Sideways, both feet in, both feet out");
+
+			move.steps.add(new Step(Ladder.getLocation(1, false), 0, -2));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, true), 0, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, true), 0, -1));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(1, false), 0, 4));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(1, false), 0, 2));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, true), 0, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, true), 0, -1));
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(2, false), 0, 4));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(2, false), 0, 2));
+
+			move.steps.add(new Step(Feet.RIGHT, Ladder.getLocation(3, true), 0, 1));
+			move.steps.add(new Step(Feet.LEFT, Ladder.getLocation(3, true), 0, -1));
 
 			moves.put(move.name, move);
 		}

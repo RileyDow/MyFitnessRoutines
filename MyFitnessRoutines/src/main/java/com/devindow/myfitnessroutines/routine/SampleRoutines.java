@@ -234,6 +234,7 @@ public class SampleRoutines {
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL), 15));
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SHUFFLE), 15));
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_GRAPEVINE), 15));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_LATERAL_IN_OUT), 15));
 
 		return routine;
 	}
