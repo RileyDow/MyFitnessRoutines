@@ -4,8 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 
 import com.devindow.myfitnessroutines.Debug;
+
+import java.util.ArrayList;
 
 /**
  * Created by Devin on 2/22/2018.
@@ -22,6 +25,8 @@ public class LadderMove extends Move {
 	public static final float rungGap = 19;
 
 
+	// Public Fields
+	public ArrayList<Step> steps = new ArrayList<>();
 
 
 	// Constructors
@@ -95,6 +100,18 @@ public class LadderMove extends Move {
 			if (y > BITMAP_INCHES) break;
 			canvas.drawLine(-ladderWidth/2, y, ladderWidth/2, y, paint);
 		}
+	}
+
+	private void drawSteps(Canvas canvas) {
+		for (Step step : steps) {
+			step.draw(canvas);
+		}
+	}
+
+
+	// Static Methods
+	public static PointF getLocation(int rungNum, boolean inside, boolean left) {
+
 	}
 
 }

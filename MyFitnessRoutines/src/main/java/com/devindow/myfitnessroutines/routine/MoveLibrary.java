@@ -94,6 +94,10 @@ public class MoveLibrary {
 	public static final String SAGE_POSE = "Sage Pose";
 	public static final String TWISTED_SAGE_POSE = "Twisted Sage Pose";
 
+	// Ladder Moves
+	public static final String LADDER_GRAPEVINE = "Grapevine";
+	public static final String LADDER_SHUFFLE = "Shuffle";
+
 
 	// Public Static Fields
 	public static Dictionary<String, Move> moves = new Hashtable<>();
@@ -101,17 +105,19 @@ public class MoveLibrary {
 
 	// Public Static Methods
 	public static void generateMoves() {
-		getStandingFrontalPoses();
-		getStandingProfilePoses();
-		getBackLyingPoses();
-		getBackLyingTopViewPoses();
-		getForwardBendingPoses();
-		getSquattingPoses();
-		getPronePoses();
-		getSittingPoses();
+		generateStandingFrontalMoves();
+		generateStandingProfileMoves();
+		generateSquattingMoves();
+		generateBackLyingMoves();
+		generateBackLyingTopViewMoves();
+		generateForwardBendingMoves();
+		generateProneMoves();
+		generateSittingMoves();
+
+		generateLadderMoves();
 	}
 
-	private static void getStandingFrontalPoses() {
+	private static void generateStandingFrontalMoves() {
 		// Mountain Pose
 		{
 			MoveWithPose move = new MoveWithPose(MOUNTAIN_POSE, "Stand tall", Category.NONE);
@@ -275,7 +281,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getStandingProfilePoses() {
+	private static void generateStandingProfileMoves() {
 		// Safety Jacks
 		{
 			MoveWithPose move = new MoveWithPose(SAFETY_JACKS, "Jumping Jacks with cross-overs in front", Category.CARDIO);
@@ -410,7 +416,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getSquattingPoses() {
+	private static void generateSquattingMoves() {
 		// Wall Sit
 		{
 			MoveWithPose move = new MoveWithPose(WALL_SIT, Category.STRENGTH);
@@ -599,7 +605,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getBackLyingPoses() {
+	private static void generateBackLyingMoves() {
 		// Knee-Up Crunches
 		{
 			MoveWithPose move = new MoveWithPose(KNEE_UP_CRUNCHES, "Crunches with ", Category.STRENGTH);
@@ -876,7 +882,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getBackLyingTopViewPoses() {
+	private static void generateBackLyingTopViewMoves() {
 		final float waistY = 46;
 
 		// Corpse Pose
@@ -1015,7 +1021,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getForwardBendingPoses() {
+	private static void generateForwardBendingMoves() {
 		// Touch Toes
 		{
 			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.STRETCH);
@@ -1107,7 +1113,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getPronePoses() {
+	private static void generateProneMoves() {
 		// Rotate on all fours
 		{
 			MoveWithPose move = new MoveWithPose(ROTATE_ON_ALL_FOURS, Category.STRETCH, true);
@@ -1291,7 +1297,7 @@ public class MoveLibrary {
 		}
 	}
 
-	private static void getSittingPoses() {
+	private static void generateSittingMoves() {
 		// Lotus
 		{
 			MoveWithPose move = new MoveWithPose(LOTUS, "Breathe.", Category.YOGA);
@@ -1364,6 +1370,25 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(-25));
 			move.pose.lArm = new Arm(Angle.S.add(20), Angle.N.add(-10));
+
+			moves.put(move.name, move);
+		}
+	}
+
+
+	private static void generateLadderMoves() {
+		// Grapevine
+		{
+			LadderMove move = new LadderMove(LADDER_GRAPEVINE, Category.AGILITY);
+
+			move.steps.add(new Step());
+
+			moves.put(move.name, move);
+		}
+
+		// Shuffle
+		{
+			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY);
 
 			moves.put(move.name, move);
 		}

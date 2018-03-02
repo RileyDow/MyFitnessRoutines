@@ -13,7 +13,7 @@ public class Routine implements Serializable {
 	public String name;
 	public Category category;
 	public String description;
-	public ArrayList<Task> tasks = new ArrayList<Task>();
+	public ArrayList<Task> tasks = new ArrayList<>();
 
 
 	// Public Properties

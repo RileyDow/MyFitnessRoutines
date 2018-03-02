@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// lstRoutines
-		ArrayList<Routine> sampleRoutines = SampleRoutines.getSampleRoutines();
+		ArrayList<Routine> sampleRoutines = SampleRoutines.generateSampleRoutines();
 		lstRoutines = findViewById(R.id.lstRoutines);
 		RoutineAdapter adapter = new RoutineAdapter(this, R.layout.routine_row, sampleRoutines);
 		lstRoutines.setAdapter(adapter);

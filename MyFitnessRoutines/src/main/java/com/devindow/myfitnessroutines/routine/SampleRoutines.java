@@ -11,40 +11,40 @@ import java.util.ArrayList;
 public class SampleRoutines {
 
 	// Default Routines
-	public static ArrayList<Routine> getSampleRoutines() {
-		Debug.d(Debug.TAG_ENTER, "getSampleRoutines()");
+	public static ArrayList<Routine> generateSampleRoutines() {
+		Debug.d(Debug.TAG_ENTER, "generateSampleRoutines()");
 
 		ArrayList<Routine> defaultRoutines = new ArrayList<>();
 
-		defaultRoutines.add(get7MinuteWorkout());
+		defaultRoutines.add(generate7MinuteWorkout());
 
-		defaultRoutines.add(getMorningYogaRoutine());
+		defaultRoutines.add(generateMorningYogaRoutine());
 
-		defaultRoutines.add(getWarmupRoutine());
+		defaultRoutines.add(generateWarmupRoutine());
 
-		defaultRoutines.add(getPreActivationRoutine());
+		defaultRoutines.add(generatePreActivationRoutine());
 
-		defaultRoutines.add(getLowerAbs());
-		defaultRoutines.add(getObliqueAbs());
-		defaultRoutines.add(getUpperAbs());
+		defaultRoutines.add(generateLowerAbs());
+		defaultRoutines.add(generateObliqueAbs());
+		defaultRoutines.add(generateUpperAbs());
 
-		defaultRoutines.add(get5MinMeditation());
-		defaultRoutines.add(get10MinMeditation());
-		defaultRoutines.add(get15MinMeditation());
+		defaultRoutines.add(generate5MinMeditation());
+		defaultRoutines.add(generate10MinMeditation());
+		defaultRoutines.add(generate15MinMeditation());
 
 
 		if (Debug.on) {
-			defaultRoutines.add(getSoccerTouches());
-			defaultRoutines.add(getLadderDrills());
-			defaultRoutines.add(getStretchRoutine());
+			defaultRoutines.add(generateSoccerTouches());
+			defaultRoutines.add(generateLadderDrills());
+			defaultRoutines.add(generateStretchRoutine());
 /*
-			defaultRoutines.add(getSunSalutation());
+			defaultRoutines.add(generateSunSalutation());
 
-			defaultRoutines.add(getLiftRoutine());
+			defaultRoutines.add(generateLiftRoutine());
 
-			defaultRoutines.add(getCardioRoutine());
+			defaultRoutines.add(generateCardioRoutine());
 
-			defaultRoutines.add(getRileyRoutine());
+			defaultRoutines.add(generateRileyRoutine());
 */
 		}
 
@@ -53,7 +53,7 @@ public class SampleRoutines {
 
 
 	// Private Methods
-	private static Routine get7MinuteWorkout() {
+	private static Routine generate7MinuteWorkout() {
 		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30, 5));
@@ -72,7 +72,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getMorningYogaRoutine() {
+	private static Routine generateMorningYogaRoutine() {
 		Routine routine = new Routine("Morning Yoga", Category.YOGA, "Yoga for getting going when stiff from inactivity.  Breathe with each movement.");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.CORPSE_POSE), 60, "Lie on your back. Relax. Breathe."));
@@ -103,7 +103,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getWarmupRoutine() {
+	private static Routine generateWarmupRoutine() {
 		Routine routine = new Routine("Warmup/Thermoregulation", Category.WARMUP, "A warmup to do when starting out cold");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.JOG_LATERALLY), 30));
@@ -121,7 +121,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getPreActivationRoutine() {
+	private static Routine generatePreActivationRoutine() {
 		Routine routine = new Routine("Pre-Activation", Category.WARMUP, "From the England National Soccer Team.  Do a warmup first.");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.FOAM_ROLLER), 60));
@@ -141,7 +141,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getLowerAbs() {
+	private static Routine generateLowerAbs() {
 		Routine routine = new Routine("Lower Abs", Category.STRENGTH);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.HIP_RAISES), 30));
@@ -156,7 +156,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getObliqueAbs() {
+	private static Routine generateObliqueAbs() {
 		Routine routine = new Routine("Oblique Abs", Category.STRENGTH);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.CROSSOVER_CRUNCHES), 60, 10));
@@ -168,7 +168,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getUpperAbs() {
+	private static Routine generateUpperAbs() {
 		Routine routine = new Routine("Upper Abs", Category.STRENGTH);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LEG_UP_CRUNCHES), 30));
@@ -183,7 +183,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getSunSalutation() {
+	private static Routine generateSunSalutation() {
 		Routine routine = new Routine("Sun Salutation", Category.YOGA);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
@@ -191,7 +191,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getLiftRoutine() {
+	private static Routine generateLiftRoutine() {
 		Routine routine = new Routine("Lift Routine", Category.STRENGTH);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.PUSH_UPS), 30));
@@ -199,7 +199,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getCardioRoutine() {
+	private static Routine generateCardioRoutine() {
 		Routine routine = new Routine("Cardio Routine", Category.CARDIO);
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.JUMPING_JACKS), 30));
@@ -208,7 +208,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getSoccerTouches() {
+	private static Routine generateSoccerTouches() {
 		Routine routine = new Routine("Soccer Touches", Category.SOCCER, "Improve your Touches & Fitness");
 
 		routine.tasks.add(new Task(new SoccerMove("Inside Rolls", Category.SOCCER), 30));
@@ -227,16 +227,16 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getLadderDrills() {
+	private static Routine generateLadderDrills() {
 		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
 
-		routine.tasks.add(new Task(new LadderMove("Grapevine", Category.AGILITY), 15));
-		routine.tasks.add(new Task(new LadderMove("Shuffle", Category.AGILITY), 15));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_GRAPEVINE), 15));
+		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LADDER_SHUFFLE), 15));
 
 		return routine;
 	}
 
-	private static Routine getStretchRoutine() {
+	private static Routine generateStretchRoutine() {
 		Routine routine = new Routine("Stretch Routine");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.TOUCH_TOES), 30, 5));
@@ -245,7 +245,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine get5MinMeditation() {
+	private static Routine generate5MinMeditation() {
 		Routine routine = new Routine("5 min Meditation");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LOTUS), 5*60));
@@ -253,7 +253,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine get10MinMeditation() {
+	private static Routine generate10MinMeditation() {
 		Routine routine = new Routine("10 min Meditation");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LOTUS), 10*60));
@@ -261,7 +261,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine get15MinMeditation() {
+	private static Routine generate15MinMeditation() {
 		Routine routine = new Routine("15 min Meditation");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.LOTUS), 15*60));
@@ -269,7 +269,7 @@ public class SampleRoutines {
 		return routine;
 	}
 
-	private static Routine getRileyRoutine() {
+	private static Routine generateRileyRoutine() {
 		Routine routine = new Routine("Riley Routine");
 
 		routine.tasks.add(new Task(MoveLibrary.moves.get(MoveLibrary.BEHIND_THE_BACK_GRAB), 30));
