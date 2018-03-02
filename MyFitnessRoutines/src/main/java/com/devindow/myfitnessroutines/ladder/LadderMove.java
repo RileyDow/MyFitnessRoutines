@@ -88,7 +88,7 @@ public class LadderMove extends Move implements Serializable {
 	private void drawSteps(Canvas canvas) {
 		for (int i=0; i<steps.size(); i++) {
 			Step step = steps.get(i);
-			step.draw(canvas, i+1);
+			step.draw(canvas, i);
 		}
 	}
 

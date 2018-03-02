@@ -20,6 +20,13 @@ public class Point implements Serializable {
 	}
 
 
+	// Public Methods
+	public void offset(float x, float y) {
+		this.x += x;
+		this.y += y;
+	}
+
+
 	// Overrides
 	@Override
 	public String toString() {

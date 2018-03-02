@@ -20,16 +20,27 @@ public class Step implements Serializable {
 
 
 	// Public Fields
+	public Feet feet;
 	public Point point;
-	public boolean leftFoot;
-	public boolean rightFoot;
 
 
 	// Constructors
-	public Step(Point point, boolean leftFoot, boolean rightFoot) {
+	public Step(Point point) {
+		this(Feet.BOTH, point);
+	}
+
+	public Step(Point point, float xRadiiOffset, float yRadiiOffset) {
+		this(Feet.BOTH, point, xRadiiOffset, yRadiiOffset);
+	}
+
+	public Step(Feet feet, Point point) {
+		this(feet, point, 0, 0);
+	}
+
+	public Step(Feet feet, Point point, float xRadiiOffset, float yRadiiOffset) {
+		this.feet = feet;
 		this.point = point;
-		this.leftFoot = leftFoot;
-		this.rightFoot = rightFoot;
+		point.offset(xRadiiOffset * radius, yRadiiOffset * radius);
 	}
 
 
@@ -41,9 +52,11 @@ public class Step implements Serializable {
 		canvas.drawCircle(point.x, point.y, radius, paint);
 
 		String text = Integer.toString(stepNum);
-		if (leftFoot ^ rightFoot) {
-			if (leftFoot) text += "L";
-			if (rightFoot) text += "R";
+		if (feet.hasBoth()) {
+		} else if (feet.hasLeft()) {
+				text += "-L";
+		} else if (feet.hasRight()) {
+			text += "-R";
 		}
 
 		Text.draw(canvas, text, point);
@@ -54,8 +67,12 @@ public class Step implements Serializable {
 	@Override
 	public String toString() {
 		String string = point.toString();
-		if (leftFoot) string += "L";
-		if (rightFoot) string += "R";
+		if (feet.hasLeft()) {
+			string += "L";
+		}
+		if (feet.hasRight()) {
+			string += "R";
+		}
 		return string;
 	}
 

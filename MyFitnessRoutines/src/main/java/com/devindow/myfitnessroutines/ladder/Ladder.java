@@ -36,10 +36,21 @@ public class Ladder {
 		}
 	}
 
+	public static Point getLocation(int rungNum, boolean inside) { return getLocation(rungNum, inside, false); }
+
 	public static Point getLocation(int rungNum, boolean inside, boolean onTheLeft) {
+		float x = 0;
+		if (!inside) {
+			if (onTheLeft) {
+				x = -Ladder.width;
+			} else {
+				x = Ladder.width;
+			}
+		}
+
 		float y = rungGap/2 + rungNum*rungGap;
 
-		return new Point(0, y);
+		return new Point(x, y);
 	}
 
 }
