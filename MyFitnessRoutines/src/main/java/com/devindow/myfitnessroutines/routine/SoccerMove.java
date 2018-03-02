@@ -68,7 +68,7 @@ public class SoccerMove extends Move {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		Paint paint = new Paint();
+		/*Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeWidth(2);
 
@@ -83,7 +83,7 @@ public class SoccerMove extends Move {
 			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
 			Debug.d("Angle=", angle.toString());
 			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*100, (float)Math.sin(angle.radians)*100, paint);
-		}
+		}*/
 
 		return bitmap;
 	}

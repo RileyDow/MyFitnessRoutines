@@ -230,8 +230,8 @@ public class SampleRoutines {
 	private static Routine getLadderDrills() {
 		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
 
-		routine.steps.add(new Step(new SoccerMove("Grapevine", Category.AGILITY, true), 15));
-		routine.steps.add(new Step(new SoccerMove("Shuffle", Category.AGILITY, true), 15));
+		routine.steps.add(new Step(new LadderMove("Grapevine", Category.AGILITY), 15));
+		routine.steps.add(new Step(new LadderMove("Shuffle", Category.AGILITY), 15));
 
 		return routine;
 	}
