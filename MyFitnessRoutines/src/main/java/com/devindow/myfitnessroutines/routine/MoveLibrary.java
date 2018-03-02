@@ -102,6 +102,7 @@ public class MoveLibrary {
 	public static final String LADDER_JUMPING_JACK = "Jumping Jack";
 	public static final String LADDER_CROSS_BEHIND = "Cross-Behind";
 	public static final String LADDER_SHUFFLE = "Shuffle";
+	public static final String LADDER_HOPSCOTCH = "Hopscotch";
 
 
 	// Public Static Fields
@@ -1438,7 +1439,7 @@ public class MoveLibrary {
 
 		// Jumping Jack
 		{
-			LadderMove move = new LadderMove(LADDER_JUMPING_JACK, Category.AGILITY, "Both feet in, both feet out");
+			LadderMove move = new LadderMove(LADDER_JUMPING_JACK, Category.AGILITY, "Both feet out, both feet in");
 
 			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
 			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
@@ -1450,6 +1451,24 @@ public class MoveLibrary {
 			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
 
 			move.steps.add(new OnePointStep(Ladder.getLocation(3, true)));
+
+			moves.put(move.name, move);
+		}
+
+		// Hop Scotch
+		{
+			LadderMove move = new LadderMove(LADDER_HOPSCOTCH, Category.AGILITY, "Both feet out, alternate foot in");
+
+			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
+
+			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
