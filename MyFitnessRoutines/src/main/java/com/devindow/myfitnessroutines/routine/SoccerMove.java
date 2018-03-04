@@ -21,7 +21,14 @@ public class SoccerMove extends Move {
 	public static final float shoulderWidth = 22;
 	public static final float footWidth = 6;
 	public static final float footLength = 7;
+	public static final float footTurnOut = 1;
 	public static final float footGap = 15;
+	public static final float ballSize = 8.65f;
+
+
+	// Public Fields
+	public float ballX;
+	public float ballY;
 
 
 	// Constructors
@@ -72,6 +79,8 @@ public class SoccerMove extends Move {
 			canvas.scale(-1, 1); // mirror X
 		}
 
+		drawBall(canvas);
+
 		drawBody(canvas);
 
 		return bitmap;
@@ -81,20 +90,33 @@ public class SoccerMove extends Move {
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
-		paint.setColor(Color.BLACK);
-
-		// Draw Head
-		paint.setStrokeWidth(headSize);
-		canvas.drawPoint(0, 0, paint);
-
-		// Draw Torso
-		paint.setStrokeWidth(torsoThickness);
-		canvas.drawLine(-shoulderWidth/2, 0, shoulderWidth/2, 0, paint);
 
 		// Draw Feet
 		paint.setStrokeWidth(footWidth);
-		canvas.drawLine(-footGap/2, 0, -footGap/2-1, footLength, paint);
-		canvas.drawLine(footGap/2, 0, footGap/2+1, footLength, paint);
+		paint.setColor(Color.GREEN);
+		canvas.drawLine(-footGap/2, 0, -footGap/2-footTurnOut, footLength, paint);
+		paint.setColor(Color.RED);
+		canvas.drawLine(footGap/2, 0, footGap/2+footTurnOut, footLength, paint);
+
+		// Draw Torso
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(torsoThickness);
+		canvas.drawLine(-shoulderWidth/2, 0, shoulderWidth/2, 0, paint);
+
+		// Draw Head
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(headSize);
+		canvas.drawPoint(0, 0, paint);
 	}
 
+	private void drawBall(Canvas canvas) {
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setColor(Color.GRAY);
+
+		// Draw Head
+		paint.setStrokeWidth(ballSize);
+		canvas.drawPoint(ballX, ballY, paint);
+	}
 }

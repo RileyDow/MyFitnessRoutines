@@ -184,6 +184,75 @@ public class SampleRoutines {
 		return routine;
 	}
 
+	private static Routine generate5MinMeditation() {
+		Routine routine = new Routine("5 min Meditation");
+
+		routine.tasks.add(new Task(MoveLibrary.LOTUS, 5*60));
+
+		return routine;
+	}
+
+	private static Routine generate10MinMeditation() {
+		Routine routine = new Routine("10 min Meditation");
+
+		routine.tasks.add(new Task(MoveLibrary.LOTUS, 10*60));
+
+		return routine;
+	}
+
+	private static Routine generate15MinMeditation() {
+		Routine routine = new Routine("15 min Meditation");
+
+		routine.tasks.add(new Task(MoveLibrary.LOTUS, 15*60));
+
+		return routine;
+	}
+
+	private static Routine generateLadderDrills() {
+		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
+
+		routine.tasks.add(new Task(MoveLibrary.LADDER_SPRINT, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_LATERAL, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_LATERAL_IN_OUT, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_SHUFFLE, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_CROSS_BEHIND, 15));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_JUMPING_JACK, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_HOPSCOTCH, 15, 5));
+		routine.tasks.add(new Task(MoveLibrary.LADDER_SLALOM, 15, 5));
+
+		return routine;
+	}
+
+	private static Routine generateSoccerTouches() {
+		Routine routine = new Routine("Soccer Touches", Category.SOCCER, "Improve your Touches & Fitness");
+
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_INSIDE_ROLLS, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_BELLS, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_PULL_OPEN_OUTWARD, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_OUTSIDE_TURN, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_TRIANGLE, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_ADVANCED_TURN, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_TRIANGLE_OUTSIDE_ADVANCED, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_ZIKO_TURN, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_CRUYFF_TURN, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_STEP_OVER_ESCAPE_OUT, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_2_STEP_OVERS_ESCAPE_OUT, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_HAT_DANCE, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_HAT_DANCE_CIRCLE, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.SOCCER_2_TOUCHES_THEN_ACROSS, 30, 5));
+
+		return routine;
+	}
+
+	private static Routine generateStretchRoutine() {
+		Routine routine = new Routine("Stretch Routine");
+
+		routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.WIDE_LEG_BEND, 30, "Breathe."));
+
+		return routine;
+	}
+
 	private static Routine generateSunSalutation() {
 		Routine routine = new Routine("Sun Salutation", Category.YOGA);
 
@@ -205,73 +274,6 @@ public class SampleRoutines {
 
 		routine.tasks.add(new Task(MoveLibrary.JUMPING_JACKS, 30));
 		routine.tasks.add(new Task(MoveLibrary.PUSH_UPS, 30));
-
-		return routine;
-	}
-
-	private static Routine generateSoccerTouches() {
-		Routine routine = new Routine("Soccer Touches", Category.SOCCER, "Improve your Touches & Fitness");
-
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_INSIDE_ROLLS, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_BELLS, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_TRIANGLE, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_TRIANGLE_OUTSIDE_ADVANCED, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_ZIKO_TURN, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_CRUYFF_TURN, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_PULL_OPEN_OUTWARD, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_STEP_OVER_ESCAPE_OUT, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_2_STEP_OVERS_ESCAPE_OUT, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_HAT_DANCE, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_HAT_DANCE_CIRCLE, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.SOCCER_2_TOUCHES_THEN_ACROSS, 30, 5));
-
-		return routine;
-	}
-
-	private static Routine generateLadderDrills() {
-		Routine routine = new Routine("Ladder Drills", Category.AGILITY, "Improve your Agility, Speed, Coordination, & Fitness");
-
-		routine.tasks.add(new Task(MoveLibrary.LADDER_SPRINT, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_LATERAL, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_SHUFFLE, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_LATERAL_IN_OUT, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_JUMPING_JACK, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_HOPSCOTCH, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_SLALOM, 15, 5));
-		routine.tasks.add(new Task(MoveLibrary.LADDER_CROSS_BEHIND, 15));
-
-		return routine;
-	}
-
-	private static Routine generateStretchRoutine() {
-		Routine routine = new Routine("Stretch Routine");
-
-		routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.WIDE_LEG_BEND, 30, "Breathe."));
-
-		return routine;
-	}
-
-	private static Routine generate5MinMeditation() {
-		Routine routine = new Routine("5 min Meditation");
-
-		routine.tasks.add(new Task(MoveLibrary.LOTUS, 5*60));
-
-		return routine;
-	}
-
-	private static Routine generate10MinMeditation() {
-		Routine routine = new Routine("10 min Meditation");
-
-		routine.tasks.add(new Task(MoveLibrary.LOTUS, 10*60));
-
-		return routine;
-	}
-
-	private static Routine generate15MinMeditation() {
-		Routine routine = new Routine("15 min Meditation");
-
-		routine.tasks.add(new Task(MoveLibrary.LOTUS, 15*60));
 
 		return routine;
 	}

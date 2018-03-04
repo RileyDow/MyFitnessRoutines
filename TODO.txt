@@ -1,7 +1,11 @@
 TODO
 ----
 
-* Ladder & Soccer drawings
+* Soccer drawings
+  - Colored Arrows
+    - Arc Arrow for Step-Over
+  - Mirroring
+    - Mirror -x, swap colors?
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
@@ -14,10 +18,6 @@ TODO
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
 
 - Routines
-  * Soccer Touches (with arrows & mirror)
-    - Triangle
-      - 1R, 2R, 3L
-    - Outside Star
   - Sun Salutation
 
 ----------------------------------------------------------------------------------------------------
