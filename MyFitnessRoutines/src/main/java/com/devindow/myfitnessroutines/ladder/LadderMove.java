@@ -70,7 +70,7 @@ public class LadderMove extends Move implements Serializable {
 
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
-		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at bottom center
+		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS-1); // Origin at bottom center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
 		canvas.translate(0, Ladder.rungGap/2 + Step.radius); // Origin moved up for starting point

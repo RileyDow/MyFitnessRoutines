@@ -5,9 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.Debug;
-import com.devindow.myfitnessroutines.pose.Angle;
-
 /**
  * Created by Devin on 2/22/2018.
  */
@@ -15,9 +12,16 @@ import com.devindow.myfitnessroutines.pose.Angle;
 public class SoccerMove extends Move {
 
 	// Constants
-	public static final int BITMAP_INCHES = 90;
+	public static final int BITMAP_INCHES = 60;
 	public static final int PIXELS_PER_INCH = 10;
 	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
+
+	public static final float headSize = 10;
+	public static final float torsoThickness = 8;
+	public static final float shoulderWidth = 22;
+	public static final float footWidth = 6;
+	public static final float footLength = 7;
+	public static final float footGap = 15;
 
 
 	// Constructors
@@ -61,30 +65,36 @@ public class SoccerMove extends Move {
 
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
-		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
+		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS/3*2); // Origin to lower center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
 		if (secondSide) {
 			canvas.scale(-1, 1); // mirror X
 		}
 
-		/*Paint paint = new Paint();
-		paint.setStrokeCap(Paint.Cap.ROUND);
-		paint.setStrokeWidth(2);
-
-		for (int i=0; i<=90; i+=1) {
-			Angle angle = new Angle(180-i);
-			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
-			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*i, (float)Math.sin(angle.radians)*i, paint);
-		}
-
-		for (int i=0; i<=100; i+=5) {
-			Angle angle = new Angle(0f, i, 100);
-			if (i%5 == 0) { paint.setColor(Color.RED); } else { paint.setColor(Color.BLACK);}
-			Debug.d("Angle=", angle.toString());
-			canvas.drawLine(0, 0, (float)Math.cos(angle.radians)*100, (float)Math.sin(angle.radians)*100, paint);
-		}*/
+		drawBody(canvas);
 
 		return bitmap;
 	}
+
+	private void drawBody(Canvas canvas) {
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setColor(Color.BLACK);
+
+		// Draw Head
+		paint.setStrokeWidth(headSize);
+		canvas.drawPoint(0, 0, paint);
+
+		// Draw Torso
+		paint.setStrokeWidth(torsoThickness);
+		canvas.drawLine(-shoulderWidth/2, 0, shoulderWidth/2, 0, paint);
+
+		// Draw Feet
+		paint.setStrokeWidth(footWidth);
+		canvas.drawLine(-footGap/2, 0, -footGap/2-1, footLength, paint);
+		canvas.drawLine(footGap/2, 0, footGap/2+1, footLength, paint);
+	}
+
 }
