@@ -108,11 +108,13 @@ public class MoveLibrary {
 	// Soccer Moves
 	public static final String SOCCER_INSIDE_ROLLS = "Inside Rolls";
 	public static final String SOCCER_BELLS = "Bells";
+	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
+	public static final String SOCCER_OUTSIDE_TURN = "Outside Turn";
 	public static final String SOCCER_TRIANGLE = "Triangle";
+	public static final String SOCCER_ADVANCED_TURN = "Advanced Turn";
 	public static final String SOCCER_TRIANGLE_OUTSIDE_ADVANCED = "Triangle, Outside, Advanced";
 	public static final String SOCCER_ZIKO_TURN = "Ziko Turn";
 	public static final String SOCCER_CRUYFF_TURN = "Cruyff Turn";
-	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
 	public static final String SOCCER_STEP_OVER_ESCAPE_OUT = "Step-Over, Escape Out";
 	public static final String SOCCER_2_STEP_OVERS_ESCAPE_OUT = "2 Step-Overs, Escape Out";
 	public static final String SOCCER_HAT_DANCE = "Hat Dance";
@@ -1547,84 +1549,98 @@ public class MoveLibrary {
 
 		// Inside Rolls
 		{
-			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "");
+			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "Sole, sole");
 
 			moves.put(move.name, move);
 		}
 
 		// Bells
 		{
-			SoccerMove move = new SoccerMove(SOCCER_BELLS, Category.SOCCER, "");
-
-			moves.put(move.name, move);
-		}
-
-		// Triangle
-		{
-			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "");
-
-			moves.put(move.name, move);
-		}
-
-		// Triangle, Outside, Advanced
-		{
-			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE_OUTSIDE_ADVANCED, Category.SOCCER, true, "");
-
-			moves.put(move.name, move);
-		}
-
-		// Ziko Turn
-		{
-			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "");
-
-			moves.put(move.name, move);
-		}
-
-		// Cruyff Turn
-		{
-			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "");
+			SoccerMove move = new SoccerMove(SOCCER_BELLS, Category.SOCCER, "Inside, inside");
 
 			moves.put(move.name, move);
 		}
 
 		// Pull & Open Outward
 		{
-			SoccerMove move = new SoccerMove(SOCCER_PULL_OPEN_OUTWARD, Category.SOCCER, true, "");
+			SoccerMove move = new SoccerMove(SOCCER_PULL_OPEN_OUTWARD, Category.SOCCER, true, "Pull, open hips, push");
+
+			moves.put(move.name, move);
+		}
+
+		// Outside Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_OUTSIDE_TURN, Category.SOCCER, true, "Pull back and turn outside");
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "Pull back, inside, inside");
+
+			moves.put(move.name, move);
+		}
+
+		// Advanced Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_ADVANCED_TURN, Category.SOCCER, true, "Pull back, inside between");
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle, Outside, Advanced
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE_OUTSIDE_ADVANCED, Category.SOCCER, true, "Triangle, Outside Turn, Advanced Turn");
+
+			moves.put(move.name, move);
+		}
+
+		// Ziko Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
+
+			moves.put(move.name, move);
+		}
+
+		// Cruyff Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
 
 			moves.put(move.name, move);
 		}
 
 		// Step-Over, Escape Out
 		{
-			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "");
+			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "Outward step-over, escape with other foot");
 
 			moves.put(move.name, move);
 		}
 
 		// 2 Step-Overs, Escape Out
 		{
-			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "");
+			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "Double outside step-over, escape");
 
 			moves.put(move.name, move);
 		}
 
 		// Hat Dance
 		{
-			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "");
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "Tap ball with alternating soles");
 
 			moves.put(move.name, move);
 		}
 
 		// Hat Dance Circle
 		{
-			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE_CIRCLE, Category.SOCCER, true, "");
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE_CIRCLE, Category.SOCCER, true, "Hat Dance moving the ball");
 
 			moves.put(move.name, move);
 		}
 
 		// 2 touches then across
 		{
-			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "");
+			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bell then push and move");
 
 			moves.put(move.name, move);
 		}
