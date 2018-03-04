@@ -73,11 +73,11 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			Task currentTask = taskFragment.getCurrentTask();
 			taskFragment.move = MoveLibrary.moves.get(currentTask.moveName);
 
-			final TextView txtInstuctions = findViewById(R.id.txtInstuctions);
+			final TextView txtInstructions = findViewById(R.id.txtInstructions);
 			if (!currentTask.instructions.isEmpty()) {
-				txtInstuctions.setText(currentTask.instructions);
+				txtInstructions.setText(currentTask.instructions);
 			} else if (taskFragment.move != null) {
-				txtInstuctions.setText(taskFragment.move.description);
+				txtInstructions.setText(taskFragment.move.description);
 			}
 		}
 
