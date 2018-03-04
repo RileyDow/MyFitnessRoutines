@@ -27,6 +27,7 @@ public class SampleRoutines {
 		defaultRoutines.add(generateLowerAbs());
 		defaultRoutines.add(generateObliqueAbs());
 		defaultRoutines.add(generateUpperAbs());
+		defaultRoutines.add(generateMixedAbs());
 
 		defaultRoutines.add(generate5MinMeditation());
 		defaultRoutines.add(generate10MinMeditation());
@@ -180,6 +181,20 @@ public class SampleRoutines {
 
 		routine.tasks.add(new Task(MoveLibrary.HORSE_RIDING_CRUNCHES, 30));
 		routine.tasks.add(new Task(MoveLibrary.LEG_UP_CRUNCHES, 30));
+
+		return routine;
+	}
+
+	private static Routine generateMixedAbs() {
+		Routine routine = new Routine("Mixed Abs", Category.STRENGTH);
+
+		routine.tasks.add(new Task(MoveLibrary.HIP_RAISES, 30));
+		routine.tasks.add(new Task(MoveLibrary.KNEE_UP_CRUNCHES, 30, 10));
+
+		routine.tasks.add(new Task(MoveLibrary.CROSSOVER_CRUNCHES, 60, 10));
+
+		routine.tasks.add(new Task(MoveLibrary.REVERSE_CRUNCHES, 30));
+		routine.tasks.add(new Task(MoveLibrary.CATCH_CRUNCHES, 30));
 
 		return routine;
 	}
