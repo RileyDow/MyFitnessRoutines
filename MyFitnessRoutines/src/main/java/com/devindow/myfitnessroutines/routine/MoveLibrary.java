@@ -105,6 +105,20 @@ public class MoveLibrary {
 	public static final String LADDER_HOPSCOTCH = "Hopscotch";
 	public static final String LADDER_SLALOM = "Slalom";
 
+	// Soccer Moves
+	public static final String SOCCER_INSIDE_ROLLS = "Inside Rolls";
+	public static final String SOCCER_BELLS = "Bells";
+	public static final String SOCCER_TRIANGLE = "Triangle";
+	public static final String SOCCER_TRIANGLE_OUTSIDE_ADVANCED = "Triangle, Outside, Advanced";
+	public static final String SOCCER_ZIKO_TURN = "Ziko Turn";
+	public static final String SOCCER_CRUYFF_TURN = "Cruyff Turn";
+	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
+	public static final String SOCCER_STEP_OVER_ESCAPE_OUT = "Step-Over, Escape Out";
+	public static final String SOCCER_2_STEP_OVERS_ESCAPE_OUT = "2 Step-Overs, Escape Out";
+	public static final String SOCCER_HAT_DANCE = "Hat Dance";
+	public static final String SOCCER_HAT_DANCE_CIRCLE = "Hat Dance Circle";
+	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
+
 
 	// Public Static Fields
 	public static Dictionary<String, Move> moves = new Hashtable<>();
@@ -122,6 +136,7 @@ public class MoveLibrary {
 		generateSittingMoves();
 
 		generateLadderMoves();
+		generateSoccerMoves();
 	}
 
 	private static void generateStandingFrontalMoves() {
@@ -1289,7 +1304,7 @@ public class MoveLibrary {
 
 		// Locust Pose
 		{
-			MoveWithPose move = new MoveWithPose(LOCUST_POSE, Category.YOGA,"On Belly. Lift legs & chest.");
+			MoveWithPose move = new MoveWithPose(LOCUST_POSE, Category.YOGA, "On Belly. Lift legs & chest.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.E.add(8), true);
@@ -1526,6 +1541,94 @@ public class MoveLibrary {
 
 			moves.put(move.name, move);
 		}
+	}
+
+	private static void generateSoccerMoves() {
+
+		// Inside Rolls
+		{
+			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Bells
+		{
+			SoccerMove move = new SoccerMove(SOCCER_BELLS, Category.SOCCER, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle, Outside, Advanced
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE_OUTSIDE_ADVANCED, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Ziko Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Cruyff Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Pull & Open Outward
+		{
+			SoccerMove move = new SoccerMove(SOCCER_PULL_OPEN_OUTWARD, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Step-Over, Escape Out
+		{
+			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// 2 Step-Overs, Escape Out
+		{
+			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Hat Dance
+		{
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "");
+
+			moves.put(move.name, move);
+		}
+
+		// Hat Dance Circle
+		{
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE_CIRCLE, Category.SOCCER, true, "");
+
+			moves.put(move.name, move);
+		}
+
+		// 2 touches then across
+		{
+			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "");
+
+			moves.put(move.name, move);
+		}
+
 	}
 
 }

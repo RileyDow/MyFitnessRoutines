@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Task implements Serializable {
 
 	// Public Fields
-	public Move move;
+	public String moveName;
 	public String instructions;
 	public int moveSeconds;
 	public int restSeconds;
@@ -22,20 +22,20 @@ public class Task implements Serializable {
 
 
 	// Constructors
-	public Task(Move move, int moveSeconds) {
-		this(move, moveSeconds, 0);
+	public Task(String moveName, int moveSeconds) {
+		this(moveName, moveSeconds, 0);
 	}
 
-	public Task(Move move, int moveSeconds, int restSeconds) {
-		this(move, moveSeconds, restSeconds, "");
+	public Task(String moveName, int moveSeconds, int restSeconds) {
+		this(moveName, moveSeconds, restSeconds, "");
 	}
 
-	public Task(Move move, int moveSeconds, String instructions) {
-		this(move, moveSeconds, 0, instructions);
+	public Task(String moveName, int moveSeconds, String instructions) {
+		this(moveName, moveSeconds, 0, instructions);
 	}
 
-	public Task(Move move, int moveSeconds, int restSeconds, String instructions) {
-		this.move = move;
+	public Task(String moveName, int moveSeconds, int restSeconds, String instructions) {
+		this.moveName = moveName;
 		this.moveSeconds = moveSeconds;
 		this.restSeconds = restSeconds;
 		this.instructions = instructions;
@@ -45,6 +45,6 @@ public class Task implements Serializable {
 	// Overrides
 	@Override
 	public String toString() {
-		return move.name;
+		return moveName + " " + moveSeconds + " sec";
 	}
 }

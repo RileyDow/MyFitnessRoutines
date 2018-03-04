@@ -71,13 +71,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			updatePlayButton();
 		} else {
 			Task currentTask = taskFragment.getCurrentTask();
-			taskFragment.move = currentTask.move;
+			taskFragment.move = MoveLibrary.moves.get(currentTask.moveName);
 
 			final TextView txtInstuctions = findViewById(R.id.txtInstuctions);
 			if (!currentTask.instructions.isEmpty()) {
 				txtInstuctions.setText(currentTask.instructions);
-			} else {
-				txtInstuctions.setText(currentTask.move.description);
+			} else if (taskFragment.move != null) {
+				txtInstuctions.setText(taskFragment.move.description);
 			}
 		}
 
@@ -152,7 +152,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			if (nextTask == null) {
 				txtNextTask.setText("");
 			} else {
-				txtNextTask.setText("Next: " + nextTask.move.name);
+				txtNextTask.setText("Next: " + nextTask.moveName);
 			}
 		}
 	}
