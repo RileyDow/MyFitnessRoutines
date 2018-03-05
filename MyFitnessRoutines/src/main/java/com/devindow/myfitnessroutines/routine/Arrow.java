@@ -3,6 +3,8 @@ package com.devindow.myfitnessroutines.routine;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import com.devindow.myfitnessroutines.pose.Angle;
+import com.devindow.myfitnessroutines.util.Colors;
 import com.devindow.myfitnessroutines.util.Point;
 
 /**
@@ -13,6 +15,9 @@ public class Arrow {
 
 	// Constants
 	public static final float width = 0.5f;
+	public static final float headSize = 3;
+	public static final int colorLeft = Colors.generate(.5f, 0,1, 0);
+	public static final int colorRight = Colors.generate(.5f, 1,0, 0);
 
 
 	// Public Fields
@@ -45,7 +50,13 @@ public class Arrow {
 
 		canvas.drawLine(start.x, start.y, end.x, end.y, paint);
 
-
+		Angle angle = new Angle(start.y - end.y, start.x - end.x);
+		Angle angle1 = angle.add(45);
+		Angle angle2 = angle.add(-45);
+		Point tip1 = angle1.polar(end, headSize);
+		Point tip2 = angle2.polar(end, headSize);
+		canvas.drawLine(end.x, end.y, tip1.x, tip1.y, paint);
+		canvas.drawLine(end.x, end.y, tip2.x, tip2.y, paint);
 	}
 
 }

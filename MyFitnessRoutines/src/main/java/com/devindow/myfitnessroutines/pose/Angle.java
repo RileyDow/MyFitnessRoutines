@@ -1,5 +1,7 @@
 package com.devindow.myfitnessroutines.pose;
 
+import com.devindow.myfitnessroutines.util.Point;
+
 import java.io.Serializable;
 
 /**
@@ -65,6 +67,10 @@ public class Angle implements Serializable {
 
 	public Angle add(float degrees) {
 		return new Angle(radians + Math.toRadians(degrees));
+	}
+
+	public Point polar(Point point, float radius) {
+		return new Point(point.x + radius * (float)Math.cos(radians), point.y + radius * (float)Math.sin(radians));
 	}
 
 

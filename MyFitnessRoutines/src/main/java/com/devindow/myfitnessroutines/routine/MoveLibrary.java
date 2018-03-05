@@ -1556,8 +1556,8 @@ public class MoveLibrary {
 
 			move.ballX = SoccerMove.footGap/2;
 			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
-			move.arrows.add(new Arrow(move.ballX, move.ballY, -move.ballX, move.ballY, Color.RED));
-			move.arrows.add(new Arrow(-move.ballX, move.ballY-2, move.ballX, move.ballY-2, Color.GREEN));
+			move.arrows.add(new Arrow(move.ballX, move.ballY, -move.ballX, move.ballY, Arrow.colorRight));
+			move.arrows.add(new Arrow(-move.ballX, move.ballY-2, move.ballX, move.ballY-2, Arrow.colorLeft));
 
 			moves.put(move.name, move);
 		}
