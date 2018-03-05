@@ -1673,8 +1673,12 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
 
-			//move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut - SoccerMove.ballSize/2;
-			//move.ballY = SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			Point toe = move.getToe();
+			move.ball = new Point(3, toe.y + 3);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(16, 0);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
 
 			moves.put(move.name, move);
 		}
@@ -1683,6 +1687,7 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
 
+			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
 			Point p1 = move.ball;
