@@ -1,13 +1,10 @@
 package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import com.devindow.myfitnessroutines.util.Colors;
-import com.devindow.myfitnessroutines.util.Point;
-import com.devindow.myfitnessroutines.util.Text;
+import com.devindow.myfitnessroutines.util.*;
 
 /**
  * Created by Devin on 3/2/2018.
@@ -35,8 +32,7 @@ public class OnePointStep extends Step {
 
 	public OnePointStep(Feet feet, Point point, float xRadiiOffset, float yRadiiOffset) {
 		this.feet = feet;
-		this.point = point;
-		point.offset(xRadiiOffset * radius, yRadiiOffset * radius);
+		this.point = point.offset(xRadiiOffset * radius, yRadiiOffset * radius);
 	}
 
 
@@ -46,16 +42,16 @@ public class OnePointStep extends Step {
 
 		String text = Integer.toString(stepNum);
 		if (feet.hasBoth()) {
-			paint.setColor(Color.GREEN);
+			Colors.setFootColor(paint, Feet.LEFT);
 			canvas.drawArc(new RectF(point.x-radius, point.y-radius, point.x+radius, point.y+radius), 90, 180, true, paint);
-			paint.setColor(Color.RED);
+			Colors.setFootColor(paint, Feet.RIGHT);
 			canvas.drawArc(new RectF(point.x-radius, point.y-radius, point.x+radius, point.y+radius), 270, 180, true, paint);
 		} else if (feet.hasLeft()) {
-			paint.setColor(Color.GREEN);
+			Colors.setFootColor(paint, Feet.LEFT);
 			canvas.drawCircle(point.x, point.y, radius, paint);
 			text += "-L";
 		} else if (feet.hasRight()) {
-			paint.setColor(Color.RED);
+			Colors.setFootColor(paint, Feet.RIGHT);
 			canvas.drawCircle(point.x, point.y, radius, paint);
 			text += "-R";
 		}

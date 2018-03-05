@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines.ladder;
+package com.devindow.myfitnessroutines.util;
 
 /**
  * Created by Devin on 3/2/2018.
@@ -33,4 +33,9 @@ public enum Feet {
 	public boolean hasBoth() {
 		return hasLeft() && hasRight();
 	}
+
+	public boolean hasNone() {
+		return flag == NONE.flag;
+	}
+
 }

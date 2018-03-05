@@ -2,6 +2,7 @@ package com.devindow.myfitnessroutines.routine;
 
 import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -105,6 +106,22 @@ public class MoveLibrary {
 	public static final String LADDER_HOPSCOTCH = "Hopscotch";
 	public static final String LADDER_SLALOM = "Slalom";
 
+	// Soccer Moves
+	public static final String SOCCER_INSIDE_ROLLS = "Inside Rolls";
+	public static final String SOCCER_BELLS = "Bells";
+	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
+	public static final String SOCCER_OUTSIDE_TURN = "Outside Turn";
+	public static final String SOCCER_TRIANGLE = "Triangle";
+	public static final String SOCCER_ADVANCED_TURN = "Advanced Turn";
+	public static final String SOCCER_TRIANGLE_OUTSIDE_ADVANCED = "Triangle, Outside, Advanced";
+	public static final String SOCCER_ZIKO_TURN = "Ziko Turn";
+	public static final String SOCCER_CRUYFF_TURN = "Cruyff Turn";
+	public static final String SOCCER_STEP_OVER_ESCAPE_OUT = "Step-Over, Escape Out";
+	public static final String SOCCER_2_STEP_OVERS_ESCAPE_OUT = "2 Step-Overs, Escape Out";
+	public static final String SOCCER_HAT_DANCE = "Hat Dance";
+	public static final String SOCCER_HAT_DANCE_CIRCLE = "Hat Dance Circle";
+	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
+
 
 	// Public Static Fields
 	public static Dictionary<String, Move> moves = new Hashtable<>();
@@ -122,6 +139,7 @@ public class MoveLibrary {
 		generateSittingMoves();
 
 		generateLadderMoves();
+		generateSoccerMoves();
 	}
 
 	private static void generateStandingFrontalMoves() {
@@ -1289,7 +1307,7 @@ public class MoveLibrary {
 
 		// Locust Pose
 		{
-			MoveWithPose move = new MoveWithPose(LOCUST_POSE, Category.YOGA,"On Belly. Lift legs & chest.");
+			MoveWithPose move = new MoveWithPose(LOCUST_POSE, Category.YOGA, "On Belly. Lift legs & chest.");
 			move.pose = new Pose();
 
 			move.pose.torso = new Torso(Torso.thickness / 2, Angle.E.add(8), true);
@@ -1526,6 +1544,194 @@ public class MoveLibrary {
 
 			moves.put(move.name, move);
 		}
+	}
+
+	private static void generateSoccerMoves() {
+		final float sh = 3;
+
+		// Inside Rolls
+		{
+			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "Sole, sole");
+
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(0, SoccerMove.ballSize/2);
+
+			Point arrowRight = move.ball;
+			Point arrowLeft = arrowRight.mirror();
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Bells
+		{
+			SoccerMove move = new SoccerMove(SOCCER_BELLS, Category.SOCCER, "Inside, inside");
+
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+
+			Point arrowRight = move.ball;
+			Point arrowLeft = arrowRight.mirror();
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Pull & Open Outward
+		{
+			SoccerMove move = new SoccerMove(SOCCER_PULL_OPEN_OUTWARD, Category.SOCCER, true, "Pull, open hips, push");
+
+			Point toe = move.getToe();
+			move.ball = new Point(0, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-5, 0);
+			Point p3 = p2.offset(20, 10);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Outside Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_OUTSIDE_TURN, Category.SOCCER, true, "Pull back and turn outside");
+
+			Point toe = move.getToe();
+			move.ball = new Point(0, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.ballSize/2, 1);
+			Point p3 = toe.offset(16, 0);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "Pull back, inside, inside");
+
+			Point toe = move.getToe();
+			move.ball = new Point(SoccerMove.ballSize/2, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+			Point p3 = p2.mirror();
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Advanced Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_ADVANCED_TURN, Category.SOCCER, true, "Pull back, inside between");
+
+			Point toe = move.getToe();
+			move.ball = new Point(0, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.ballSize/2, 0);
+			Point p3 = new Point(0, -20);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle, Outside, Advanced
+		{
+			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE_OUTSIDE_ADVANCED, Category.SOCCER, true, "Triangle, Outside Turn, Advanced Turn");
+
+			Point toe = move.getToe();
+			move.ball = new Point(SoccerMove.ballSize/2, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+			Point p3 = p2.mirror();
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+
+			Point p4 = toe.offset(-SoccerMove.ballSize/2, 1);
+			Point p5 = toe.offset(16, 0);
+			move.arrows.add(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false));
+
+			Point p6 = toe.offset(-SoccerMove.ballSize/2, 0);
+			Point p7 = new Point(0, -20);
+			move.arrows.add(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Ziko Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
+
+			Point toe = move.getToe();
+			move.ball = new Point(3, toe.y + 3);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(16, 0);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Cruyff Turn
+		{
+			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
+
+			Point toe = move.getToe();
+			move.ball = new Point(3, toe.y + 3);
+
+			Point p1 = move.ball;
+			Point p2 = new Point(-4, -20);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+
+			moves.put(move.name, move);
+		}
+
+		// Step-Over, Escape Out
+		{
+			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "Outward step-over, escape with other foot");
+
+			moves.put(move.name, move);
+		}
+
+		// 2 Step-Overs, Escape Out
+		{
+			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "Double outside step-over, escape");
+
+			moves.put(move.name, move);
+		}
+
+		// Hat Dance
+		{
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "Tap ball with alternating soles");
+
+			moves.put(move.name, move);
+		}
+
+		// Hat Dance Circle
+		{
+			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE_CIRCLE, Category.SOCCER, true, "Hat Dance moving the ball");
+
+			moves.put(move.name, move);
+		}
+
+		// 2 touches then across
+		{
+			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bell then push and move");
+
+			moves.put(move.name, move);
+		}
+
 	}
 
 }

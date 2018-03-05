@@ -15,6 +15,7 @@ import com.devindow.myfitnessroutines.routine.Move;
 import com.devindow.myfitnessroutines.routine.MoveLibrary;
 import com.devindow.myfitnessroutines.routine.Routine;
 import com.devindow.myfitnessroutines.routine.Task;
+import com.devindow.myfitnessroutines.util.Debug;
 
 // This Fragment manages a the timers and retains itself across configuration changes.
 public class PlayRoutineTaskFragment extends Fragment {
@@ -107,7 +108,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (currentTask == null) {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
-			if (move.twoSides) {
+			if (move != null && move.twoSides) {
 				move1SecondsRemaining = move2SecondsRemaining = currentTask.moveSeconds / 2;
 			} else {
 				move1SecondsRemaining = currentTask.moveSeconds;

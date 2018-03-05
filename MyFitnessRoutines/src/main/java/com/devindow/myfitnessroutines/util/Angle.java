@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines.pose;
+package com.devindow.myfitnessroutines.util;
 
 import java.io.Serializable;
 
@@ -40,6 +40,10 @@ public class Angle implements Serializable {
 		radians = Math.toRadians(degrees);
 	}
 
+	public Angle(Point p1, Point p2) {
+		this(p2.y - p1.y, p2.x - p1.x);
+	}
+
 	public Angle(float dy, float dx) {
 		if (dy == 0 && dx == 0) {
 			throw new IllegalArgumentException("Angle cannot be determined from (0,0).");
@@ -55,6 +59,18 @@ public class Angle implements Serializable {
 
 
 	// Public Methods
+	public double sin() {
+		return Math.sin(radians);
+	}
+
+	public double cos() {
+		return Math.cos(radians);
+	}
+
+	public double tan() {
+		return Math.tan(radians);
+	}
+
 	public Angle mirror() {
 		return new Angle(Math.PI - radians);
 	}
@@ -65,6 +81,10 @@ public class Angle implements Serializable {
 
 	public Angle add(float degrees) {
 		return new Angle(radians + Math.toRadians(degrees));
+	}
+
+	public Point polar(Point point, float radius) {
+		return new Point(point.x + radius * (float)Math.cos(radians), point.y + radius * (float)Math.sin(radians));
 	}
 
 

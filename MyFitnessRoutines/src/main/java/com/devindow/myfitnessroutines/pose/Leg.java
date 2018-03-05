@@ -1,5 +1,7 @@
 package com.devindow.myfitnessroutines.pose;
 
+import com.devindow.myfitnessroutines.util.Angle;
+
 import java.io.Serializable;
 
 /**

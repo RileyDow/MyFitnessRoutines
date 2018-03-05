@@ -51,10 +51,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRoutineName"
-                app:layout_constraintBottom_toTopOf="@+id/txtInstuctions" />
+                app:layout_constraintBottom_toTopOf="@+id/txtInstructions" />
 
             <TextView
-                android:id="@+id/txtInstuctions"
+                android:id="@+id/txtInstructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Instructions"
@@ -73,7 +73,7 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInstuctions"
+                app:layout_constraintTop_toBottomOf="@+id/txtInstructions"
                 app:layout_constraintBottom_toTopOf="@+id/linButtons" />
 
             <LinearLayout

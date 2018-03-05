@@ -25,18 +25,15 @@ public class DoubleStep extends Step {
 	}
 
 	public DoubleStep(Point left, float leftXRadiiOffset, float leftYRadiiOffset, Point right, float rightXRadiiOffset, float rightYRadiiOffset) {
-		this.left = left;
-		left.offset(leftXRadiiOffset * radius, leftYRadiiOffset * radius);
-
-		this.right = right;
-		right.offset(rightXRadiiOffset * radius, rightYRadiiOffset * radius);
+		this.left = left.offset(leftXRadiiOffset * radius, leftYRadiiOffset * radius);
+		this.right = right.offset(rightXRadiiOffset * radius, rightYRadiiOffset * radius);
 	}
 
 
 	// Public Methods
 	public void draw(Canvas canvas, int stepNum) {
 		Paint bodyPaint = new Paint();
-		bodyPaint.setColor(Colors.generate(.8f, 0, 0, 0));
+		bodyPaint.setColor(Colors.bodyTrans);
 		bodyPaint.setStrokeWidth(Step.radius*2);
 		bodyPaint.setStrokeCap(Paint.Cap.ROUND);
 		canvas.drawLine(left.x, left.y, right.x, right.y, bodyPaint);

@@ -3,8 +3,7 @@ package com.devindow.myfitnessroutines.pose;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.Debug;
-import com.devindow.myfitnessroutines.util.Extents;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
 
@@ -109,13 +108,13 @@ public abstract class Appendage implements Serializable {
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeWidth(getThickness());
-		Debug.setPenColor(paint);
+		Colors.setBodyColor(paint);
 
 		float proximalPointX = getProximalPointX(attachmentPointX);
 		float proximalPointY = getProximalPointY(attachmentPointY);
 		canvas.drawLine(attachmentPointX, attachmentPointY, proximalPointX, proximalPointY, paint);
 
-		Debug.setPenColor(paint);
+		Colors.setBodyColor(paint);
 		float distalPointX = getDistalPointX(attachmentPointX);
 		float distalPointY = getDistalPointY(attachmentPointY);
 		canvas.drawLine(proximalPointX, proximalPointY, distalPointX, distalPointY, paint);

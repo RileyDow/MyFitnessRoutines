@@ -2,13 +2,10 @@ package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PointF;
 
-import com.devindow.myfitnessroutines.routine.Category;
-import com.devindow.myfitnessroutines.routine.Move;
-import com.devindow.myfitnessroutines.util.Colors;
+import com.devindow.myfitnessroutines.routine.*;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -70,7 +67,7 @@ public class LadderMove extends Move implements Serializable {
 
 		Canvas canvas = new Canvas(bitmap);
 		drawFrame(canvas, BITMAP_PIXELS);
-		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at bottom center
+		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS-1); // Origin at bottom center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
 		canvas.translate(0, Ladder.rungGap/2 + Step.radius); // Origin moved up for starting point
@@ -89,30 +86,33 @@ public class LadderMove extends Move implements Serializable {
 			return;
 		}
 
+		// Draw start Step
 		Step start = steps.get(0);
 		start.draw(canvas, 0);
 
+		// Pre-set last Step to start Step
 		Step lastLeft = start;
 		Step lastRight = start;
-
-		Paint arrowPaint = new Paint();
-		arrowPaint.setStrokeWidth(0.5f);
 
 		for (int i=1; i<steps.size(); i++) {
 			Step step = steps.get(i);
 
+			// Draw line from last Step to the Step
 			if (step.hasLeft()) {
-				arrowPaint.setColor(Colors.generate(.5f, 0,1, 0));
-				canvas.drawLine(lastLeft.getLeft().x, lastLeft.getLeft().y, step.getLeft().x, step.getLeft().y, arrowPaint);
+				Arrow arrow = new Arrow(lastLeft.getLeft(), step.getLeft(), Feet.LEFT);
+				arrow.shorten(Step.radius + 1, false, true);
+				arrow.draw(canvas);
 				lastLeft = step;
 			}
 
 			if (step.hasRight()) {
-				arrowPaint.setColor(Colors.generate(.5f, 1,0, 0));
-				canvas.drawLine(lastRight.getRight().x, lastRight.getRight().y, step.getRight().x, step.getRight().y, arrowPaint);
+				Arrow arrow = new Arrow(lastRight.getRight(), step.getRight(), Feet.RIGHT);
+				arrow.shorten(Step.radius + 1, false, true);
+				arrow.draw(canvas);
 				lastRight = step;
 			}
 
+			// Draw Step
 			step.draw(canvas, i);
 		}
 	}
