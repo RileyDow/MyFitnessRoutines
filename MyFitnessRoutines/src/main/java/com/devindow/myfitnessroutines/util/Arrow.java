@@ -12,8 +12,6 @@ public class Arrow {
 	// Constants
 	public static final float width = 0.5f;
 	public static final float headSize = 3;
-	public static final int colorLeft = Colors.generate(.5f, 0,1, 0);
-	public static final int colorRight = Colors.generate(.5f, 1,0, 0);
 
 
 	// Public Fields

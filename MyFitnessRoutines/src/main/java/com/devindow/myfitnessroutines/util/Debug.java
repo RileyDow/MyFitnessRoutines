@@ -27,13 +27,9 @@ public final class Debug {
 	// Public Static Methods
 	public static void setPenColor(Paint paint) {
 		if (colors) {
-			Random random = new Random();
-			final float hue = random.nextInt(360); // 0..360
-			final float saturation = 1.0f; // 1.0 for brilliant, 0.0 for dull
-			final float luminance = 1.0f; // 1.0 for brighter, 0.0 for black
-			paint.setColor(Color.HSVToColor(new float[]{hue, saturation, luminance}));
+			paint.setColor(Colors.random());
 		} else {
-			paint.setColor(Color.BLACK);
+			paint.setColor(Colors.body);
 		}
 	}
 

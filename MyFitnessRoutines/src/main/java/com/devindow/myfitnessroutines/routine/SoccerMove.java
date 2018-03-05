@@ -122,18 +122,18 @@ public class SoccerMove extends Move {
 		// Draw Feet
 		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
-		paint.setColor(Color.GREEN);
+		paint.setColor(Colors.left);
 		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
-		paint.setColor(Color.RED);
+		paint.setColor(Colors.right);
 		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
-		paint.setColor(Color.BLACK);
+		paint.setColor(Colors.bodyTrans);
 		paint.setStrokeWidth(torsoThickness);
 		canvas.drawLine(-shoulderWidth/2, 0, shoulderWidth/2, 0, paint);
 
 		// Draw Head
-		paint.setColor(Color.BLACK);
+		paint.setColor(Colors.bodyTrans);
 		paint.setStrokeWidth(headSize);
 		canvas.drawPoint(0, 0, paint);
 	}

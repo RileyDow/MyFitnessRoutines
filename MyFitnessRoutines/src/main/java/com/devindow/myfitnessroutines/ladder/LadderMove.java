@@ -2,6 +2,7 @@ package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.devindow.myfitnessroutines.routine.Category;
@@ -100,13 +101,13 @@ public class LadderMove extends Move implements Serializable {
 			Step step = steps.get(i);
 
 			if (step.hasLeft()) {
-				arrowPaint.setColor(Colors.generate(.5f, 0,1, 0));
+				arrowPaint.setColor(Colors.leftTrans);
 				canvas.drawLine(lastLeft.getLeft().x, lastLeft.getLeft().y, step.getLeft().x, step.getLeft().y, arrowPaint);
 				lastLeft = step;
 			}
 
 			if (step.hasRight()) {
-				arrowPaint.setColor(Colors.generate(.5f, 1,0, 0));
+				arrowPaint.setColor(Colors.rightTrans);
 				canvas.drawLine(lastRight.getRight().x, lastRight.getRight().y, step.getRight().x, step.getRight().y, arrowPaint);
 				lastRight = step;
 			}

@@ -45,16 +45,16 @@ public class OnePointStep extends Step {
 
 		String text = Integer.toString(stepNum);
 		if (feet.hasBoth()) {
-			paint.setColor(Color.GREEN);
+			paint.setColor(Colors.left);
 			canvas.drawArc(new RectF(point.x-radius, point.y-radius, point.x+radius, point.y+radius), 90, 180, true, paint);
-			paint.setColor(Color.RED);
+			paint.setColor(Colors.right);
 			canvas.drawArc(new RectF(point.x-radius, point.y-radius, point.x+radius, point.y+radius), 270, 180, true, paint);
 		} else if (feet.hasLeft()) {
-			paint.setColor(Color.GREEN);
+			paint.setColor(Colors.left);
 			canvas.drawCircle(point.x, point.y, radius, paint);
 			text += "-L";
 		} else if (feet.hasRight()) {
-			paint.setColor(Color.RED);
+			paint.setColor(Colors.right);
 			canvas.drawCircle(point.x, point.y, radius, paint);
 			text += "-R";
 		}

@@ -6,6 +6,8 @@ TODO
     - Arc Arrow for Step-Over
   - Mirroring
     - Mirror -x, swap colors?
+* Ladder drawings
+  - Use Arrow.shorten()
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
