@@ -14,7 +14,7 @@ public class Colors {
 	// Constants
 	public static final boolean random = false; // Set to true to help debug Pose bitmap issues using unique colors for body parts.
 
-	public static final int body = Colors.generate(0,0, 0);
+	public static final int bodyOpaque = Colors.generate(0,0, 0);
 	public static final int bodyTrans = Colors.generate(.8f, 0,0, 0);
 
 	public static final int leftOpaque = Colors.generate(0,1, 0);
@@ -35,27 +35,33 @@ public class Colors {
 		} else if (translucent) {
 			paint.setColor(Colors.bodyTrans);
 		} else {
-			paint.setColor(Colors.body);
+			paint.setColor(Colors.bodyOpaque);
 		}
 	}
 
 
-	public static void setFootColor(Paint paint, boolean left) {
-		setFootColor(paint, left, false);
+	public static void setFootColor(Paint paint, Feet feet) {
+		setFootColor(paint, feet, false);
 	}
 
-	public static void setFootColor(Paint paint, boolean left, boolean translucent) {
-		setFootColor(paint, left, translucent, false);
+	public static void setFootColor(Paint paint, Feet feet, boolean translucent) {
+		setFootColor(paint, feet, translucent, false);
 	}
 
-	public static void setFootColor(Paint paint, boolean left, boolean translucent, boolean mirror) {
-		if (left ^ mirror) {
+	public static void setFootColor(Paint paint, Feet feet, boolean translucent, boolean mirror) {
+		if (feet.hasBoth()) { 						// Body color
+			if (translucent) {
+				paint.setColor(bodyTrans);
+			} else {
+				paint.setColor(bodyOpaque);
+			}
+		} else if (feet.hasLeft() ^ mirror) {		// Left color
 			if (translucent) {
 				paint.setColor(leftTrans);
 			} else {
 				paint.setColor(leftOpaque);
 			}
-		} else {
+		} else {									// Right color
 			if (translucent) {
 				paint.setColor(rightTrans);
 			} else {

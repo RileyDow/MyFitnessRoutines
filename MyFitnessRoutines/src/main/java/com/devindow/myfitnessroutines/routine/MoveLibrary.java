@@ -1557,8 +1557,8 @@ public class MoveLibrary {
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Colors.rightTrans));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Colors.leftTrans));
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT));
 
 			moves.put(move.name, move);
 		}
@@ -1572,8 +1572,8 @@ public class MoveLibrary {
 
 			Point arrowRight = toe.offset(-SoccerMove.footWidth/2, 0);
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Colors.rightTrans));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Colors.leftTrans));
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT));
 
 			moves.put(move.name, move);
 		}
@@ -1608,9 +1608,9 @@ public class MoveLibrary {
 			Point arrowRight1 = move.ball;
 			Point arrowRight2 = toe.offset(-SoccerMove.footWidth/2, 0);;
 			Point arrowLeft = arrowRight2.mirror();
-			move.arrows.add(new Arrow(arrowRight1, arrowRight2, Colors.rightTrans));
-			move.arrows.add(new Arrow(arrowRight2, arrowLeft, Colors.rightTrans));
-			move.arrows.add(new Arrow(arrowLeft, arrowRight1, Colors.leftTrans));
+			move.arrows.add(new Arrow(arrowRight1, arrowRight2, Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowRight2, arrowLeft, Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowLeft, arrowRight1, Feet.LEFT));
 
 			moves.put(move.name, move);
 		}

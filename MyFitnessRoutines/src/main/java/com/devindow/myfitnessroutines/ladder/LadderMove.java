@@ -2,12 +2,10 @@ package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.routine.Category;
-import com.devindow.myfitnessroutines.routine.Move;
-import com.devindow.myfitnessroutines.util.Colors;
+import com.devindow.myfitnessroutines.routine.*;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -88,9 +86,11 @@ public class LadderMove extends Move implements Serializable {
 			return;
 		}
 
+		// Draw start Step
 		Step start = steps.get(0);
 		start.draw(canvas, 0);
 
+		// Pre-set last Step to start Step
 		Step lastLeft = start;
 		Step lastRight = start;
 
@@ -100,19 +100,20 @@ public class LadderMove extends Move implements Serializable {
 		for (int i=1; i<steps.size(); i++) {
 			Step step = steps.get(i);
 
+			// Draw line from last Step to the Step
 			if (step.hasLeft()) {
-				Colors.setFootColor(arrowPaint, true, true);
-				arrowPaint.setColor(Colors.leftTrans);
+				Colors.setFootColor(arrowPaint, Feet.LEFT, true);
 				canvas.drawLine(lastLeft.getLeft().x, lastLeft.getLeft().y, step.getLeft().x, step.getLeft().y, arrowPaint);
 				lastLeft = step;
 			}
 
 			if (step.hasRight()) {
-				arrowPaint.setColor(Colors.rightTrans);
+				Colors.setFootColor(arrowPaint, Feet.RIGHT, true);
 				canvas.drawLine(lastRight.getRight().x, lastRight.getRight().y, step.getRight().x, step.getRight().y, arrowPaint);
 				lastRight = step;
 			}
 
+			// Draw Step
 			step.draw(canvas, i);
 		}
 	}

@@ -17,27 +17,27 @@ public class Arrow {
 	// Public Fields
 	public Point start;
 	public Point end;
-	public int color;
+	public Feet	feet;
 
 
 	// Constructors
-	public Arrow(float startX, float startY, float endX, float endY, int color) {
+	public Arrow(float startX, float startY, float endX, float endY, Feet feet) {
 		this.start = new Point(startX, startY);
 		this.end = new Point(endX, endY);
-		this.color = color;
+		this.feet = feet;
 	}
 
-	public Arrow(Point start, Point end, int color) {
+	public Arrow(Point start, Point end, Feet feet) {
 		this.start = start;
 		this.end = end;
-		this.color = color;
+		this.feet = feet;
 	}
 
 
 	// Public Methods
-	public void draw(Canvas canvas) {
+	public void draw(Canvas canvas, boolean mirror) {
 		Paint paint = new Paint();
-		paint.setColor(color);
+		Colors.setFootColor(paint, feet, true, mirror);
 		paint.setStrokeWidth(width);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);

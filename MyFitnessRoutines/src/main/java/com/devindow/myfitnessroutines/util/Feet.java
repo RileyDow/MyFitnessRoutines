@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines.ladder;
+package com.devindow.myfitnessroutines.util;
 
 /**
  * Created by Devin on 3/2/2018.

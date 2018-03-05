@@ -122,9 +122,9 @@ public class SoccerMove extends Move {
 		// Draw Feet
 		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
-		Colors.setFootColor(paint, true, false, mirror);
+		Colors.setFootColor(paint, Feet.LEFT, false, mirror);
 		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
-		Colors.setFootColor(paint, false, false, mirror);
+		Colors.setFootColor(paint, Feet.RIGHT, false, mirror);
 		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
@@ -139,7 +139,7 @@ public class SoccerMove extends Move {
 
 	private void drawArrows(Canvas canvas, boolean mirror) {
 		for (Arrow arrow : arrows) {
-			arrow.draw(canvas);
+			arrow.draw(canvas, mirror);
 		}
 	}
 
