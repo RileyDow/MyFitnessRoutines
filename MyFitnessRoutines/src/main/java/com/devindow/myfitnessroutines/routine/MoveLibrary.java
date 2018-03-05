@@ -1,7 +1,10 @@
 package com.devindow.myfitnessroutines.routine;
 
+import android.graphics.Color;
+
 import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -1553,6 +1556,8 @@ public class MoveLibrary {
 
 			move.ballX = SoccerMove.footGap/2;
 			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
+			move.arrows.add(new Arrow(move.ballX, move.ballY, -move.ballX, move.ballY, Color.RED));
+			move.arrows.add(new Arrow(-move.ballX, move.ballY-2, move.ballX, move.ballY-2, Color.GREEN));
 
 			moves.put(move.name, move);
 		}

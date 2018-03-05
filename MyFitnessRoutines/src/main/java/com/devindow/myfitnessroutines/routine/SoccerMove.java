@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+
 /**
  * Created by Devin on 2/22/2018.
  */
@@ -29,6 +31,7 @@ public class SoccerMove extends Move {
 	// Public Fields
 	public float ballX;
 	public float ballY;
+	public ArrayList<Arrow> arrows = new ArrayList<>();
 
 
 	// Constructors
@@ -83,7 +86,19 @@ public class SoccerMove extends Move {
 
 		drawBody(canvas);
 
+		drawArrows(canvas);
+
 		return bitmap;
+	}
+
+	private void drawBall(Canvas canvas) {
+		Paint paint = new Paint();
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setColor(Color.GRAY);
+
+		paint.setStrokeWidth(ballSize);
+		canvas.drawPoint(ballX, ballY, paint);
 	}
 
 	private void drawBody(Canvas canvas) {
@@ -109,14 +124,10 @@ public class SoccerMove extends Move {
 		canvas.drawPoint(0, 0, paint);
 	}
 
-	private void drawBall(Canvas canvas) {
-		Paint paint = new Paint();
-		paint.setStrokeCap(Paint.Cap.ROUND);
-		paint.setStrokeJoin(Paint.Join.ROUND);
-		paint.setColor(Color.GRAY);
-
-		// Draw Head
-		paint.setStrokeWidth(ballSize);
-		canvas.drawPoint(ballX, ballY, paint);
+	private void drawArrows(Canvas canvas) {
+		for (Arrow arrow : arrows) {
+			arrow.draw(canvas);
+		}
 	}
+
 }
