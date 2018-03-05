@@ -1606,10 +1606,10 @@ public class MoveLibrary {
 			move.ball = new Point(toe).offset(0, SoccerMove.footWidth/2 + SoccerMove.ballSize/2);
 
 			Point arrowRight1 = move.ball;
-			Point arrowRight2 = toe.offset(-SoccerMove.footWidth/2, 0);;
+			Point arrowRight2 = toe.offset(-SoccerMove.footWidth/2, 0);
 			Point arrowLeft = arrowRight2.mirror();
-			move.arrows.add(new Arrow(arrowRight1, arrowRight2, Feet.RIGHT));
-			move.arrows.add(new Arrow(arrowRight2, arrowLeft, Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowRight1, arrowRight2.offset(-2,1), Feet.RIGHT));
+			move.arrows.add(new Arrow(arrowRight2.offset(-2, 0), arrowLeft, Feet.RIGHT));
 			move.arrows.add(new Arrow(arrowLeft, arrowRight1, Feet.LEFT));
 
 			moves.put(move.name, move);

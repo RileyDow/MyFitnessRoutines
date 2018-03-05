@@ -2,8 +2,8 @@ TODO
 ----
 
 * Soccer drawings
-  - Colored Arrows
-    - Arc Arrow for Step-Over
+  - Draw Arrow Numbers
+  - Arc Arrow for Step-Over
   - Mirroring
     - Mirror -x, swap colors?
 * Ladder drawings
