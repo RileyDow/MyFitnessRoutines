@@ -1602,12 +1602,15 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "Pull back, inside, inside");
 
-			/*move.ballX = SoccerMove.footGap/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
-			float arrowX = move.ballX + SoccerMove.ballSize/2;
-			float arrowY = move.ballY;
-			move.arrows.add(new Arrow(arrowX, arrowY+1, -arrowX, arrowY+1, Arrow.colorRight));
-			move.arrows.add(new Arrow(-arrowX, arrowY-1, arrowX, arrowY-1, Arrow.colorLeft));*/
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(0, SoccerMove.footWidth/2 + SoccerMove.ballSize/2);
+
+			Point arrowRight1 = move.ball;
+			Point arrowRight2 = toe.offset(-SoccerMove.footWidth/2, 0);;
+			Point arrowLeft = arrowRight2.mirror();
+			move.arrows.add(new Arrow(arrowRight1, arrowRight2, Colors.rightTrans));
+			move.arrows.add(new Arrow(arrowRight2, arrowLeft, Colors.rightTrans));
+			move.arrows.add(new Arrow(arrowLeft, arrowRight1, Colors.leftTrans));
 
 			moves.put(move.name, move);
 		}
