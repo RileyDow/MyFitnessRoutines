@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.devindow.myfitnessroutines.util.Point;
+
 import java.util.ArrayList;
 
 /**
@@ -29,9 +31,14 @@ public class SoccerMove extends Move {
 
 
 	// Public Fields
-	public float ballX;
-	public float ballY;
+	public Point ball;
 	public ArrayList<Arrow> arrows = new ArrayList<>();
+
+
+	// Public Properties
+	public Point getToe() {
+		return new Point(footGap/2+footTurnOut, footLength);
+	}
 
 
 	// Constructors
@@ -91,14 +98,20 @@ public class SoccerMove extends Move {
 		return bitmap;
 	}
 
+
+	// Private Methods
 	private void drawBall(Canvas canvas) {
+		if (ball == null) {
+			return;
+		}
+
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setColor(Color.GRAY);
 
 		paint.setStrokeWidth(ballSize);
-		canvas.drawPoint(ballX, ballY, paint);
+		canvas.drawPoint(ball.x, ball.y, paint);
 	}
 
 	private void drawBody(Canvas canvas) {
@@ -107,11 +120,12 @@ public class SoccerMove extends Move {
 		paint.setStrokeJoin(Paint.Join.ROUND);
 
 		// Draw Feet
+		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
 		paint.setColor(Color.GREEN);
-		canvas.drawLine(-footGap/2, 0, -footGap/2-footTurnOut, footLength, paint);
+		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
 		paint.setColor(Color.RED);
-		canvas.drawLine(footGap/2, 0, footGap/2+footTurnOut, footLength, paint);
+		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
 		paint.setColor(Color.BLACK);

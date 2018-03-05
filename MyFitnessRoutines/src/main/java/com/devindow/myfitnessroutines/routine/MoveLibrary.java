@@ -1554,10 +1554,13 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "Sole, sole");
 
-			move.ballX = SoccerMove.footGap/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
-			move.arrows.add(new Arrow(move.ballX, move.ballY, -move.ballX, move.ballY, Arrow.colorRight));
-			move.arrows.add(new Arrow(-move.ballX, move.ballY-2, move.ballX, move.ballY-2, Arrow.colorLeft));
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(0, SoccerMove.ballSize/2);
+
+			Point arrowRight = move.ball;
+			Point arrowLeft = arrowRight.mirror();
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Arrow.colorRight));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Arrow.colorLeft));
 
 			moves.put(move.name, move);
 		}
@@ -1566,8 +1569,13 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_BELLS, Category.SOCCER, "Inside, inside");
 
-			move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut - SoccerMove.ballSize/2;
-			move.ballY = SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+
+			Point arrowRight = toe.offset(-SoccerMove.footWidth/2, 0);
+			Point arrowLeft = arrowRight.mirror();
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Arrow.colorRight));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Arrow.colorLeft));
 
 			moves.put(move.name, move);
 		}
@@ -1576,8 +1584,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_PULL_OPEN_OUTWARD, Category.SOCCER, true, "Pull, open hips, push");
 
-			move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut + SoccerMove.ballSize/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut + SoccerMove.ballSize/2;
+			//move.ballY = SoccerMove.footLength + SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}
@@ -1586,8 +1594,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_OUTSIDE_TURN, Category.SOCCER, true, "Pull back and turn outside");
 
-			move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut + SoccerMove.ballSize/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut + SoccerMove.ballSize/2;
+			//move.ballY = SoccerMove.footLength + SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}
@@ -1596,8 +1604,12 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "Pull back, inside, inside");
 
-			move.ballX = SoccerMove.footGap/2;
+			/*move.ballX = SoccerMove.footGap/2;
 			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
+			float arrowX = move.ballX + SoccerMove.ballSize/2;
+			float arrowY = move.ballY;
+			move.arrows.add(new Arrow(arrowX, arrowY+1, -arrowX, arrowY+1, Arrow.colorRight));
+			move.arrows.add(new Arrow(-arrowX, arrowY-1, arrowX, arrowY-1, Arrow.colorLeft));*/
 
 			moves.put(move.name, move);
 		}
@@ -1606,8 +1618,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_ADVANCED_TURN, Category.SOCCER, true, "Pull back, inside between");
 
-			move.ballX = SoccerMove.footGap/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2;
+			//move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}
@@ -1616,8 +1628,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE_OUTSIDE_ADVANCED, Category.SOCCER, true, "Triangle, Outside Turn, Advanced Turn");
 
-			move.ballX = SoccerMove.footGap/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2;
+			//move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}
@@ -1626,8 +1638,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
 
-			move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut - SoccerMove.ballSize/2;
-			move.ballY = SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut - SoccerMove.ballSize/2;
+			//move.ballY = SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}
@@ -1636,8 +1648,8 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
 
-			move.ballX = SoccerMove.footGap/2;
-			move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
+			//move.ballX = SoccerMove.footGap/2;
+			//move.ballY = SoccerMove.footLength + SoccerMove.footWidth/2 + SoccerMove.ballSize/2;
 
 			moves.put(move.name, move);
 		}

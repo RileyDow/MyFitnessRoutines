@@ -25,11 +25,8 @@ public class DoubleStep extends Step {
 	}
 
 	public DoubleStep(Point left, float leftXRadiiOffset, float leftYRadiiOffset, Point right, float rightXRadiiOffset, float rightYRadiiOffset) {
-		this.left = left;
-		left.offset(leftXRadiiOffset * radius, leftYRadiiOffset * radius);
-
-		this.right = right;
-		right.offset(rightXRadiiOffset * radius, rightYRadiiOffset * radius);
+		this.left = left.offset(leftXRadiiOffset * radius, leftYRadiiOffset * radius);
+		this.right = right.offset(rightXRadiiOffset * radius, rightYRadiiOffset * radius);
 	}
 
 
