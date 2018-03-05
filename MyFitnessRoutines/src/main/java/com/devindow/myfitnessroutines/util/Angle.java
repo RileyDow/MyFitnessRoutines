@@ -1,6 +1,4 @@
-package com.devindow.myfitnessroutines.pose;
-
-import com.devindow.myfitnessroutines.util.Point;
+package com.devindow.myfitnessroutines.util;
 
 import java.io.Serializable;
 

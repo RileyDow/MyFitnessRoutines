@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.pose.MoveWithPose;
 import com.devindow.myfitnessroutines.routine.*;
+import com.devindow.myfitnessroutines.util.Debug;
 
 public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 

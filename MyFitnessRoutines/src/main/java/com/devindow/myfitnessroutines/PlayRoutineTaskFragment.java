@@ -15,6 +15,7 @@ import com.devindow.myfitnessroutines.routine.Move;
 import com.devindow.myfitnessroutines.routine.MoveLibrary;
 import com.devindow.myfitnessroutines.routine.Routine;
 import com.devindow.myfitnessroutines.routine.Task;
+import com.devindow.myfitnessroutines.util.Debug;
 
 // This Fragment manages a the timers and retains itself across configuration changes.
 public class PlayRoutineTaskFragment extends Fragment {

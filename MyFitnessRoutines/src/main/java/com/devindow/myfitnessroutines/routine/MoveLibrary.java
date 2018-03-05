@@ -1,7 +1,5 @@
 package com.devindow.myfitnessroutines.routine;
 
-import android.graphics.Color;
-
 import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
 import com.devindow.myfitnessroutines.util.*;

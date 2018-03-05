@@ -5,8 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import com.devindow.myfitnessroutines.Debug;
-import com.devindow.myfitnessroutines.util.Extents;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
 

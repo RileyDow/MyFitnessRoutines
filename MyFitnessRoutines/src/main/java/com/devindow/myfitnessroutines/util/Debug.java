@@ -1,4 +1,4 @@
-package com.devindow.myfitnessroutines;
+package com.devindow.myfitnessroutines.util;
 
 import android.graphics.Color;
 import android.graphics.Paint;

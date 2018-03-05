@@ -1,11 +1,7 @@
-package com.devindow.myfitnessroutines.routine;
+package com.devindow.myfitnessroutines.util;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-
-import com.devindow.myfitnessroutines.pose.Angle;
-import com.devindow.myfitnessroutines.util.Colors;
-import com.devindow.myfitnessroutines.util.Point;
 
 /**
  * Created by Devin on 3/5/2018.

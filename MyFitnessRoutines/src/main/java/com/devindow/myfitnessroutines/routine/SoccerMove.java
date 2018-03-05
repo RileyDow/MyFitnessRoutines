@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.util.Point;
+import com.devindow.myfitnessroutines.util.*;
 
 import java.util.ArrayList;
 
