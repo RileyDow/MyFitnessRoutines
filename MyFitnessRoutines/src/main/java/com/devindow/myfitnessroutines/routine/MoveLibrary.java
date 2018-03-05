@@ -1593,8 +1593,14 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_OUTSIDE_TURN, Category.SOCCER, true, "Pull back and turn outside");
 
-			//move.ballX = SoccerMove.footGap/2 - SoccerMove.footWidth/2 + SoccerMove.footTurnOut + SoccerMove.ballSize/2;
-			//move.ballY = SoccerMove.footLength + SoccerMove.torsoThickness/2 + SoccerMove.ballSize/2;
+			Point toe = move.getToe();
+			move.ball = new Point(0, 20);
+
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.ballSize/2, SoccerMove.ballSize/2);
+			Point p3 = toe.offset(16, 0);
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
 
 			moves.put(move.name, move);
 		}
