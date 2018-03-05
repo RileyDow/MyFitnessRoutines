@@ -2,7 +2,9 @@ TODO
 ----
 
 * Soccer drawings
-  - Draw Arrow Numbers
+  - Draw Arrow Numbers?
+  - soccer package
+    - SoccerStep.draw
   - Arc Arrow for Step-Over
   - Mirroring
     - Mirror -x, swap colors?

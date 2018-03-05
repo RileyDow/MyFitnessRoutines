@@ -1,8 +1,6 @@
 package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 import com.devindow.myfitnessroutines.util.*;
 
