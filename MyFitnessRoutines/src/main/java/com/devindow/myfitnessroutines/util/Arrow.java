@@ -63,12 +63,30 @@ public class Arrow {
 
 	public void shorten(float distance, boolean head, boolean tail) {
 		if (head) {
-			start = start.offset(-distance, end);
+			end = end.offset(-distance, start);
 		}
 
 		if (tail) {
-			end = end.offset(-distance, start);
+			start = start.offset(-distance, end);
 		}
+	}
+
+	public Arrow shortened(float distance) {
+		return this.shortened(distance, true, true);
+	}
+
+	public Arrow shortened(float distance, boolean head, boolean tail) {
+		Point end = this.end;
+		if (head) {
+			end = this.end.offset(-distance, this.start);
+		}
+
+		Point start = this.start;
+		if (tail) {
+			start = this.start.offset(-distance, this.end);
+		}
+
+		return new Arrow(start, end, feet);
 	}
 
 }

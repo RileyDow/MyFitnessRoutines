@@ -1547,6 +1547,7 @@ public class MoveLibrary {
 	}
 
 	private static void generateSoccerMoves() {
+		final float sh = 3;
 
 		// Inside Rolls
 		{
@@ -1557,8 +1558,8 @@ public class MoveLibrary {
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT));
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
 
 			moves.put(move.name, move);
 		}
@@ -1572,8 +1573,8 @@ public class MoveLibrary {
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT));
+			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
 
 			moves.put(move.name, move);
 		}
@@ -1603,14 +1604,14 @@ public class MoveLibrary {
 			SoccerMove move = new SoccerMove(SOCCER_TRIANGLE, Category.SOCCER, true, "Pull back, inside, inside");
 
 			Point toe = move.getToe();
-			move.ball = new Point(toe).offset(0, SoccerMove.footWidth/2 + SoccerMove.ballSize/2);
+			move.ball = new Point(toe).offset(0, SoccerMove.footWidth/2 + SoccerMove.ballSize);
 
-			Point arrowRight1 = move.ball;
-			Point arrowRight2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
-			Point arrowLeft = arrowRight2.mirror();
-			move.arrows.add(new Arrow(arrowRight1, arrowRight2.offset(0,1), Feet.RIGHT));
-			move.arrows.add(new Arrow(arrowRight2.offset(0, 0), arrowLeft, Feet.RIGHT));
-			move.arrows.add(new Arrow(arrowLeft, arrowRight1, Feet.LEFT));
+			Point p1 = move.ball;
+			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+			Point p3 = p2.mirror();
+			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
 
 			moves.put(move.name, move);
 		}
