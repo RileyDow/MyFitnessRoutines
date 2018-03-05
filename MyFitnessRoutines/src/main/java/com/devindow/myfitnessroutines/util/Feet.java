@@ -33,4 +33,9 @@ public enum Feet {
 	public boolean hasBoth() {
 		return hasLeft() && hasRight();
 	}
+
+	public boolean hasNone() {
+		return flag == NONE.flag;
+	}
+
 }

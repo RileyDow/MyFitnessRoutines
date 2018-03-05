@@ -49,7 +49,7 @@ public class Colors {
 	}
 
 	public static void setFootColor(Paint paint, Feet feet, boolean translucent, boolean mirror) {
-		if (feet.hasBoth()) { 						// Body color
+		if (feet.hasBoth() || feet.hasNone()) {		// Body color
 			if (translucent) {
 				paint.setColor(bodyTrans);
 			} else {
