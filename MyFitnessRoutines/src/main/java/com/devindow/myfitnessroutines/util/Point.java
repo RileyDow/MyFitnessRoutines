@@ -33,7 +33,8 @@ public class Point implements Serializable {
 	}
 
 	public Point offset(float distance, Point towards) { // Offsets by a distance towards another Point
-		return null;
+		Angle angle = new Angle(this, towards);
+		return new Point(x - distance * (float)angle.cos(), y - distance * (float)angle.sin());
 	}
 
 	public Point mirror() {

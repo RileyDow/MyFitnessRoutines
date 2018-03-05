@@ -53,4 +53,14 @@ public class Arrow {
 		canvas.drawLine(end.x, end.y, tip2.x, tip2.y, paint);
 	}
 
+	public void shorten(boolean head, boolean tail, float distance) {
+		if (head) {
+			start.offset(distance, end);
+		}
+
+		if (tail) {
+			end.offset(distance, start);
+		}
+	}
+
 }
