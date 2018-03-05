@@ -11,7 +11,7 @@ public class Arrow {
 
 	// Constants
 	public static final float width = 0.5f;
-	public static final float headSize = 3;
+	public static final float headSize = 2;
 
 
 	// Public Fields
@@ -35,6 +35,10 @@ public class Arrow {
 
 
 	// Public Methods
+	public void draw(Canvas canvas) {
+		draw(canvas, false);
+	}
+
 	public void draw(Canvas canvas, boolean mirror) {
 		Paint paint = new Paint();
 		Colors.setFootColor(paint, feet, true, mirror);
@@ -53,13 +57,17 @@ public class Arrow {
 		canvas.drawLine(end.x, end.y, tip2.x, tip2.y, paint);
 	}
 
-	public void shorten(boolean head, boolean tail, float distance) {
+	public void shorten(float distance) {
+		shorten(distance, true, true);
+	}
+
+	public void shorten(float distance, boolean head, boolean tail) {
 		if (head) {
-			start.offset(distance, end);
+			start = start.offset(-distance, end);
 		}
 
 		if (tail) {
-			end.offset(distance, start);
+			end = end.offset(-distance, start);
 		}
 	}
 

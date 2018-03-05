@@ -26,7 +26,7 @@ public class SoccerMove extends Move {
 	public static final float footWidth = 6;
 	public static final float footLength = 7;
 	public static final float footTurnOut = 1;
-	public static final float footGap = 15;
+	public static final float footGap = 22;
 	public static final float ballSize = 8.65f;
 
 

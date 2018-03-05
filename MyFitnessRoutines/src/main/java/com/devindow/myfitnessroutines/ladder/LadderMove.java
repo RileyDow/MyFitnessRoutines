@@ -94,22 +94,21 @@ public class LadderMove extends Move implements Serializable {
 		Step lastLeft = start;
 		Step lastRight = start;
 
-		Paint arrowPaint = new Paint();
-		arrowPaint.setStrokeWidth(0.5f);
-
 		for (int i=1; i<steps.size(); i++) {
 			Step step = steps.get(i);
 
 			// Draw line from last Step to the Step
 			if (step.hasLeft()) {
-				Colors.setFootColor(arrowPaint, Feet.LEFT, true);
-				canvas.drawLine(lastLeft.getLeft().x, lastLeft.getLeft().y, step.getLeft().x, step.getLeft().y, arrowPaint);
+				Arrow arrow = new Arrow(lastLeft.getLeft(), step.getLeft(), Feet.LEFT);
+				arrow.shorten(Step.radius + 1, false, true);
+				arrow.draw(canvas);
 				lastLeft = step;
 			}
 
 			if (step.hasRight()) {
-				Colors.setFootColor(arrowPaint, Feet.RIGHT, true);
-				canvas.drawLine(lastRight.getRight().x, lastRight.getRight().y, step.getRight().x, step.getRight().y, arrowPaint);
+				Arrow arrow = new Arrow(lastRight.getRight(), step.getRight(), Feet.RIGHT);
+				arrow.shorten(Step.radius + 1, false, true);
+				arrow.draw(canvas);
 				lastRight = step;
 			}
 
