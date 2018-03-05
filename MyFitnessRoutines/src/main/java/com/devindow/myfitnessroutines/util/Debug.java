@@ -17,21 +17,9 @@ public final class Debug {
 
 	public static final boolean on = true; // Set to false to allow compiler to identify and eliminate unreachable code.
 
-	public static final boolean colors = false; // Set to true to help debug Pose bitmap issues using unique colors for body parts.
-
 	public static final String TAG_ENTER = " ** ENTER ** ";
 	public static final String TAG_EXIT = " -- EXIT  -- ";
 	public static final String TAG_TIME = " ## TIME ## ";
-
-
-	// Public Static Methods
-	public static void setPenColor(Paint paint) {
-		if (colors) {
-			paint.setColor(Colors.random());
-		} else {
-			paint.setColor(Colors.body);
-		}
-	}
 
 
 	// Logging

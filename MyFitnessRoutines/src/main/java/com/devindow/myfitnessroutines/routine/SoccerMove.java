@@ -91,9 +91,9 @@ public class SoccerMove extends Move {
 
 		drawBall(canvas);
 
-		drawBody(canvas);
+		drawBody(canvas, secondSide);
 
-		drawArrows(canvas);
+		drawArrows(canvas, secondSide);
 
 		return bitmap;
 	}
@@ -114,7 +114,7 @@ public class SoccerMove extends Move {
 		canvas.drawPoint(ball.x, ball.y, paint);
 	}
 
-	private void drawBody(Canvas canvas) {
+	private void drawBody(Canvas canvas, boolean mirror) {
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
@@ -122,23 +122,22 @@ public class SoccerMove extends Move {
 		// Draw Feet
 		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
-		paint.setColor(Colors.left);
+		Colors.setFootColor(paint, true, false, mirror);
 		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
-		paint.setColor(Colors.right);
+		Colors.setFootColor(paint, false, false, mirror);
 		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
-		paint.setColor(Colors.bodyTrans);
+		Colors.setBodyColor(paint, true);
 		paint.setStrokeWidth(torsoThickness);
 		canvas.drawLine(-shoulderWidth/2, 0, shoulderWidth/2, 0, paint);
 
 		// Draw Head
-		paint.setColor(Colors.bodyTrans);
 		paint.setStrokeWidth(headSize);
 		canvas.drawPoint(0, 0, paint);
 	}
 
-	private void drawArrows(Canvas canvas) {
+	private void drawArrows(Canvas canvas, boolean mirror) {
 		for (Arrow arrow : arrows) {
 			arrow.draw(canvas);
 		}

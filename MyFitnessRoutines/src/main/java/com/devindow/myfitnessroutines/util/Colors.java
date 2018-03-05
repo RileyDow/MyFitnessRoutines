@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines.util;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 
 import java.util.Random;
 
@@ -11,17 +12,59 @@ import java.util.Random;
 public class Colors {
 
 	// Constants
+	public static final boolean random = false; // Set to true to help debug Pose bitmap issues using unique colors for body parts.
+
 	public static final int body = Colors.generate(0,0, 0);
 	public static final int bodyTrans = Colors.generate(.8f, 0,0, 0);
 
-	public static final int left = Colors.generate(0,1, 0);
+	public static final int leftOpaque = Colors.generate(0,1, 0);
 	public static final int leftTrans = Colors.generate(.5f, 0,1, 0);
 
-	public static final int right = Colors.generate(1,0, 0);
+	public static final int rightOpaque = Colors.generate(1,0, 0);
 	public static final int rightTrans = Colors.generate(.5f, 1,0, 0);
 
 
 	// Static Methods
+	public static void setBodyColor(Paint paint) {
+		setBodyColor(paint, false);
+	}
+
+	public static void setBodyColor(Paint paint, boolean translucent) {
+		if (random) {
+			paint.setColor(Colors.random());
+		} else if (translucent) {
+			paint.setColor(Colors.bodyTrans);
+		} else {
+			paint.setColor(Colors.body);
+		}
+	}
+
+
+	public static void setFootColor(Paint paint, boolean left) {
+		setFootColor(paint, left, false);
+	}
+
+	public static void setFootColor(Paint paint, boolean left, boolean translucent) {
+		setFootColor(paint, left, translucent, false);
+	}
+
+	public static void setFootColor(Paint paint, boolean left, boolean translucent, boolean mirror) {
+		if (left ^ mirror) {
+			if (translucent) {
+				paint.setColor(leftTrans);
+			} else {
+				paint.setColor(leftOpaque);
+			}
+		} else {
+			if (translucent) {
+				paint.setColor(rightTrans);
+			} else {
+				paint.setColor(rightOpaque);
+			}
+		}
+	}
+
+
 	public static int generate(int r, int g, int b) {
 		if (r <= 1 && g <=1 && b <=1) { // if all params are 1 or 0 then use the float version.
 			return generate(1f, 1f*r, 1f*g, 1f*b);
@@ -45,6 +88,7 @@ public class Colors {
 
 		return (a & 0xff) << 24 | (r & 0xff) << 16 | (g & 0xff) << 8 | (b & 0xff);
 	}
+
 
 	public static int random() {
 		Random random = new Random();
