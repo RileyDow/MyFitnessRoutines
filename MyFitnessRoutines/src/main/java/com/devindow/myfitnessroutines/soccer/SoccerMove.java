@@ -1,10 +1,11 @@
-package com.devindow.myfitnessroutines.routine;
+package com.devindow.myfitnessroutines.soccer;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.devindow.myfitnessroutines.routine.*;
 import com.devindow.myfitnessroutines.util.*;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class SoccerMove extends Move {
 
 	// Public Fields
 	public Point ball;
-	public ArrayList<Arrow> arrows = new ArrayList<>();
+	public ArrayList<Motion> motions = new ArrayList<>();
 
 
 	// Public Properties
@@ -93,7 +94,7 @@ public class SoccerMove extends Move {
 
 		drawBody(canvas, secondSide);
 
-		drawArrows(canvas, secondSide);
+		drawMotions(canvas, secondSide);
 
 		return bitmap;
 	}
@@ -137,9 +138,10 @@ public class SoccerMove extends Move {
 		canvas.drawPoint(0, 0, paint);
 	}
 
-	private void drawArrows(Canvas canvas, boolean mirror) {
-		for (Arrow arrow : arrows) {
-			arrow.draw(canvas, mirror);
+	private void drawMotions(Canvas canvas, boolean mirror) {
+		for (int i=0; i<motions.size(); i++) {
+			Motion motion = motions.get(i);
+			motion.draw(canvas, i+1, mirror);
 		}
 	}
 

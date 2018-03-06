@@ -2,7 +2,6 @@ package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 
 import com.devindow.myfitnessroutines.routine.*;
 import com.devindow.myfitnessroutines.util.*;

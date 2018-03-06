@@ -17,7 +17,7 @@ public class Arrow {
 	// Public Fields
 	public Point start;
 	public Point end;
-	public Feet	feet;
+	public Feet feet;
 
 
 	// Constructors
@@ -36,10 +36,14 @@ public class Arrow {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		draw(canvas, false);
+		draw(canvas, 0);
 	}
 
-	public void draw(Canvas canvas, boolean mirror) {
+	public void draw(Canvas canvas, int stepNum) {
+		draw(canvas, stepNum, false);
+	}
+
+	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		Paint paint = new Paint();
 		Colors.setFootColor(paint, feet, true, mirror);
 		paint.setStrokeWidth(width);

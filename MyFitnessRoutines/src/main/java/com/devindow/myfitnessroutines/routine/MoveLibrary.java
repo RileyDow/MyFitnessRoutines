@@ -1,7 +1,8 @@
 package com.devindow.myfitnessroutines.routine;
 
-import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
+import com.devindow.myfitnessroutines.ladder.*;
+import com.devindow.myfitnessroutines.soccer.*;
 import com.devindow.myfitnessroutines.util.*;
 
 import java.util.Dictionary;
@@ -1558,8 +1559,8 @@ public class MoveLibrary {
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1573,8 +1574,8 @@ public class MoveLibrary {
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1589,8 +1590,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-5, 0);
 			Point p3 = p2.offset(20, 10);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1605,8 +1606,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p3 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1621,9 +1622,9 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1638,8 +1639,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p3 = new Point(0, -20);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1654,17 +1655,17 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
 
 			Point p4 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p5 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false)));
 
 			Point p6 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p7 = new Point(0, -20);
-			move.arrows.add(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1678,7 +1679,7 @@ public class MoveLibrary {
 
 			Point p1 = move.ball;
 			Point p2 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1692,7 +1693,7 @@ public class MoveLibrary {
 
 			Point p1 = move.ball;
 			Point p2 = new Point(-4, -20);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
