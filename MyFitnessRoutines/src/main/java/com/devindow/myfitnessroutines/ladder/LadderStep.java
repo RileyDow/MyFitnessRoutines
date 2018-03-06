@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by Devin on 3/2/2018.
  */
 
-public abstract class Step implements Serializable {
+public abstract class LadderStep implements Serializable {
 
 	// Constants
 	public static final float radius = 3;

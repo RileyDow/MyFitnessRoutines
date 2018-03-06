@@ -1,7 +1,6 @@
 package com.devindow.myfitnessroutines.ladder;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.devindow.myfitnessroutines.util.Colors;
@@ -12,7 +11,7 @@ import com.devindow.myfitnessroutines.util.Text;
  * Created by Devin on 3/2/2018.
  */
 
-public class DoubleStep extends Step {
+public class TwoPointLadderStep extends LadderStep {
 
 	// Public Fields
 	public Point left;
@@ -20,7 +19,7 @@ public class DoubleStep extends Step {
 
 
 	// Constructors
-	public DoubleStep(Point left, Point right) {
+	public TwoPointLadderStep(Point left, Point right) {
 		this.left = left;
 		this.right = right;
 	}
@@ -30,7 +29,7 @@ public class DoubleStep extends Step {
 	public void draw(Canvas canvas, int stepNum) {
 		Paint bodyPaint = new Paint();
 		bodyPaint.setColor(Colors.bodyTrans);
-		bodyPaint.setStrokeWidth(Step.radius*2);
+		bodyPaint.setStrokeWidth(LadderStep.radius*2);
 		bodyPaint.setStrokeCap(Paint.Cap.ROUND);
 		canvas.drawLine(left.x, left.y, right.x, right.y, bodyPaint);
 

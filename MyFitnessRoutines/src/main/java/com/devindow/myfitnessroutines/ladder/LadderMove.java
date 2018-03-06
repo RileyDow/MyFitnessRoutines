@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class LadderMove extends Move implements Serializable {
 
 	// Constants
-	public static final int BITMAP_INCHES = (int)Math.round(2.5*Ladder.rungGap + Step.radius + Step.radius);
+	public static final int BITMAP_INCHES = (int)Math.round(2.5*Ladder.rungGap + LadderStep.radius + LadderStep.radius);
 	public static final int PIXELS_PER_INCH = 10;
 	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
 
 
 	// Public Fields
-	public ArrayList<Step> steps = new ArrayList<>();
+	public ArrayList<LadderStep> ladderSteps = new ArrayList<>();
 
 
 	// Constructors
@@ -69,7 +69,7 @@ public class LadderMove extends Move implements Serializable {
 		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS-1); // Origin at bottom center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
-		canvas.translate(0, Ladder.rungGap/2 + Step.radius); // Origin moved up for starting point
+		canvas.translate(0, Ladder.rungGap/2 + LadderStep.radius); // Origin moved up for starting point
 
 		Ladder.draw(canvas);
 
@@ -81,38 +81,38 @@ public class LadderMove extends Move implements Serializable {
 
 	// Private Methods
 	private void drawSteps(Canvas canvas) {
-		if (steps.size() == 0) {
+		if (ladderSteps.size() == 0) {
 			return;
 		}
 
 		// Draw start Step
-		Step start = steps.get(0);
+		LadderStep start = ladderSteps.get(0);
 		start.draw(canvas, 0);
 
 		// Pre-set last Step to start Step
-		Step lastLeft = start;
-		Step lastRight = start;
+		LadderStep lastLeft = start;
+		LadderStep lastRight = start;
 
-		for (int i=1; i<steps.size(); i++) {
-			Step step = steps.get(i);
+		for (int i = 1; i< ladderSteps.size(); i++) {
+			LadderStep ladderStep = ladderSteps.get(i);
 
 			// Draw line from last Step to the Step
-			if (step.hasLeft()) {
-				Arrow arrow = new Arrow(lastLeft.getLeft(), step.getLeft(), Feet.LEFT);
-				arrow.shorten(Step.radius + 1, false, true);
+			if (ladderStep.hasLeft()) {
+				Arrow arrow = new Arrow(lastLeft.getLeft(), ladderStep.getLeft(), Feet.LEFT);
+				arrow.shorten(LadderStep.radius + 1, false, true);
 				arrow.draw(canvas);
-				lastLeft = step;
+				lastLeft = ladderStep;
 			}
 
-			if (step.hasRight()) {
-				Arrow arrow = new Arrow(lastRight.getRight(), step.getRight(), Feet.RIGHT);
-				arrow.shorten(Step.radius + 1, false, true);
+			if (ladderStep.hasRight()) {
+				Arrow arrow = new Arrow(lastRight.getRight(), ladderStep.getRight(), Feet.RIGHT);
+				arrow.shorten(LadderStep.radius + 1, false, true);
 				arrow.draw(canvas);
-				lastRight = step;
+				lastRight = ladderStep;
 			}
 
 			// Draw Step
-			step.draw(canvas, i);
+			ladderStep.draw(canvas, i);
 		}
 	}
 

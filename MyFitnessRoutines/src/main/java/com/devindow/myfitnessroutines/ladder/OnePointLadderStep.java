@@ -10,7 +10,7 @@ import com.devindow.myfitnessroutines.util.*;
  * Created by Devin on 3/2/2018.
  */
 
-public class OnePointStep extends Step {
+public class OnePointLadderStep extends LadderStep {
 
 	// Public Fields
 	public Feet feet;
@@ -18,11 +18,11 @@ public class OnePointStep extends Step {
 
 
 	// Constructors
-	public OnePointStep(Point point) {
+	public OnePointLadderStep(Point point) {
 		this(Feet.BOTH, point);
 	}
 
-	public OnePointStep(Feet feet, Point point) {
+	public OnePointLadderStep(Feet feet, Point point) {
 		this.feet = feet;
 		this.point = point;
 	}
