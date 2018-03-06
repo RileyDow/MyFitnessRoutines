@@ -22,17 +22,9 @@ public class OnePointStep extends Step {
 		this(Feet.BOTH, point);
 	}
 
-	public OnePointStep(Point point, float xRadiiOffset, float yRadiiOffset) {
-		this(Feet.BOTH, point, xRadiiOffset, yRadiiOffset);
-	}
-
 	public OnePointStep(Feet feet, Point point) {
-		this(feet, point, 0, 0);
-	}
-
-	public OnePointStep(Feet feet, Point point, float xRadiiOffset, float yRadiiOffset) {
 		this.feet = feet;
-		this.point = point.offset(xRadiiOffset * radius, yRadiiOffset * radius);
+		this.point = point;
 	}
 
 

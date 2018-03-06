@@ -5,10 +5,6 @@ TODO
   - Draw Arrow Numbers?  Steps?  Both derived from abstract Drawable?
     - soccer package SoccerStep.draw() or ladder package.OnePointStep.draw()?
   - Arc Arrow for Step-Over
-  - Mirroring
-    - Mirror -x, swap colors?
-* Ladder drawings
-  - Use Arrow.shorten()
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
