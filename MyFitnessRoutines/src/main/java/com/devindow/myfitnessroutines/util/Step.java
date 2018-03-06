@@ -10,10 +10,13 @@ import android.graphics.RectF;
 
 public class Step {
 
+	// Constants
+	public static final float radius = 3;
+
+
 	// Public Fields
 	public Feet feet;
 	public Point point;
-	public float radius;
 
 
 	// Constructors

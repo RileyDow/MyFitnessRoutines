@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class LadderMove extends Move implements Serializable {
 
 	// Constants
-	public static final int BITMAP_INCHES = (int)Math.round(2.5*Ladder.rungGap + LadderStep.radius + LadderStep.radius);
+	public static final int BITMAP_INCHES = (int)Math.round(2.5*Ladder.rungGap + Step.radius + Step.radius);
 	public static final int PIXELS_PER_INCH = 10;
 	public static final int BITMAP_PIXELS = BITMAP_INCHES * PIXELS_PER_INCH;
 
@@ -69,7 +69,7 @@ public class LadderMove extends Move implements Serializable {
 		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS-1); // Origin at bottom center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
-		canvas.translate(0, Ladder.rungGap/2 + LadderStep.radius); // Origin moved up for starting point
+		canvas.translate(0, Ladder.rungGap/2 + Step.radius); // Origin moved up for starting point
 
 		Ladder.draw(canvas);
 
@@ -99,14 +99,14 @@ public class LadderMove extends Move implements Serializable {
 			// Draw line from last Step to the Step
 			if (ladderStep.hasLeft()) {
 				Arrow arrow = new Arrow(lastLeft.getLeft(), ladderStep.getLeft(), Feet.LEFT);
-				arrow.shorten(LadderStep.radius + 1, false, true);
+				arrow.shorten(Step.radius + 1, false, true);
 				arrow.draw(canvas);
 				lastLeft = ladderStep;
 			}
 
 			if (ladderStep.hasRight()) {
 				Arrow arrow = new Arrow(lastRight.getRight(), ladderStep.getRight(), Feet.RIGHT);
-				arrow.shorten(LadderStep.radius + 1, false, true);
+				arrow.shorten(Step.radius + 1, false, true);
 				arrow.draw(canvas);
 				lastRight = ladderStep;
 			}

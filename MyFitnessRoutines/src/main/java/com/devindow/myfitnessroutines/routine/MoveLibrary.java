@@ -1547,6 +1547,7 @@ public class MoveLibrary {
 		}
 	}
 
+
 	private static void generateSoccerMoves() {
 		final float sh = 3;
 
@@ -1676,6 +1677,8 @@ public class MoveLibrary {
 
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y))));
 
 			Point p1 = move.ball;
 			Point p2 = toe.offset(16, 0);
