@@ -2,8 +2,7 @@ TODO
 ----
 
 * Soccer drawings
-  - Draw Arrow Numbers?  Steps?  Both derived from abstract Drawable?
-    - soccer package SoccerStep.draw() or ladder package.OnePointStep.draw()?
+  - Draw Arrow Numbers
   - Arc Arrow for Step-Over
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)

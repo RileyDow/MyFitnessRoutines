@@ -3,9 +3,7 @@ package com.devindow.myfitnessroutines.ladder;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.devindow.myfitnessroutines.util.Colors;
-import com.devindow.myfitnessroutines.util.Point;
-import com.devindow.myfitnessroutines.util.Text;
+import com.devindow.myfitnessroutines.util.*;
 
 /**
  * Created by Devin on 3/2/2018.
@@ -14,14 +12,14 @@ import com.devindow.myfitnessroutines.util.Text;
 public class TwoPointLadderStep extends LadderStep {
 
 	// Public Fields
-	public Point left;
-	public Point right;
+	public Step left;
+	public Step right;
 
 
 	// Constructors
 	public TwoPointLadderStep(Point left, Point right) {
-		this.left = left;
-		this.right = right;
+		this.left = new Step(Feet.LEFT, left);
+		this.right = new Step(Feet.RIGHT, right);
 	}
 
 
@@ -31,19 +29,11 @@ public class TwoPointLadderStep extends LadderStep {
 		bodyPaint.setColor(Colors.bodyTrans);
 		bodyPaint.setStrokeWidth(LadderStep.radius*2);
 		bodyPaint.setStrokeCap(Paint.Cap.ROUND);
-		canvas.drawLine(left.x, left.y, right.x, right.y, bodyPaint);
+		canvas.drawLine(left.point.x, left.point.y, right.point.x, right.point.y, bodyPaint);
 
-		Paint paint = new Paint();
+		left.draw(canvas, stepNum);
 
-		String text = Integer.toString(stepNum);
-
-		paint.setColor(Colors.generate(0, 1, 0));
-		canvas.drawCircle(left.x, left.y, radius, paint);
-		Text.draw(canvas, text + "-L", left);
-
-		paint.setColor(Colors.generate(1, 0, 0));
-		canvas.drawCircle(right.x, right.y, radius, paint);
-		Text.draw(canvas, text + "-R", right);
+		right.draw(canvas, stepNum);
 	}
 
 
@@ -66,17 +56,17 @@ public class TwoPointLadderStep extends LadderStep {
 
 	@Override
 	public Point getLeft() {
-		return left;
+		return left.point;
 	}
 
 	@Override
 	public Point getRight() {
-		return right;
+		return right.point;
 	}
 
 
 	@Override
 	public String toString() {
-		return left.toString() + "L, " + right.toString() + "R";
+		return left.toString() + ", " + right.toString();
 	}
 }
