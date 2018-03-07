@@ -1680,6 +1680,8 @@ public class MoveLibrary {
 
 			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y))));
 
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
+
 			Point p1 = move.ball;
 			Point p2 = toe.offset(16, 0);
 			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));

@@ -13,6 +13,7 @@ public class Text {
 
 	// Constants
 	public static final float textHeight = 3;
+	public static final float textHalfHeight = .4f*textHeight;
 
 
 	// Static Methods
@@ -32,9 +33,9 @@ public class Text {
 		textPaint.setColor(Color.BLACK);
 		textPaint.setTextAlign(Paint.Align.CENTER);
 
-		canvas.drawText(text, 0, textHeight/2, textPaint);
+		canvas.drawText(text, 0, textHalfHeight, textPaint);
 
 		canvas.restore();
 	}
-	
+
 }
