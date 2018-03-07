@@ -62,13 +62,7 @@ public class Step {
 			}
 		}
 
-		canvas.save();
-		canvas.translate(point.x, point.y);
-		if (mirror) {
-			canvas.scale(-1, 1);
-		}
-		Text.draw(canvas, text, new Point(0, 0));
-		canvas.restore();
+		Text.draw(canvas, text, point, mirror);
 	}
 
 
