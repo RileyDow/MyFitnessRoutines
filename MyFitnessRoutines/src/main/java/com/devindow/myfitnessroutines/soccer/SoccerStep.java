@@ -22,7 +22,7 @@ public class SoccerStep extends Motion {
 
 	// Motion implementation
 	public void draw(Canvas canvas, int stepNum, boolean mirror) {
-		step.draw(canvas, stepNum);
+		step.draw(canvas, stepNum, mirror);
 	}
 
 }

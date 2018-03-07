@@ -1,6 +1,8 @@
 TODO
 ----
 
+** Clear instruction during Rest
+
 * Soccer drawings
   - Draw Arrow Numbers
   - Arc Arrow for Step-Over
