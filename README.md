@@ -50,7 +50,9 @@ Android app to guide you through fitness routines.
 #### Motion
     - draw()
 ##### Touch : Motion
+    - arrow
 ##### SoccerStep : Motion
+    - step
 ## Pose
     - torso
     - rLeg
