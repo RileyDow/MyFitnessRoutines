@@ -1689,7 +1689,7 @@ public class MoveLibrary {
 
 		// Cruyff Turn
 		{
-			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
+			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint kick, pull ball between legs");
 
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);

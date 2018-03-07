@@ -22,9 +22,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
 	interface PlayRoutineCallbacks {
-		void displayTask(boolean startTimer);
+		void displayTask(boolean resetSecondsRemaining);
 		void displayMove(Move move, boolean secondSide);
 		void updateTimer();
+		void clearInstructions();
 	}
 
 
@@ -142,6 +143,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 					runMove2Timer();
 				} else if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
+						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();
@@ -177,6 +179,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 				if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
+						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();

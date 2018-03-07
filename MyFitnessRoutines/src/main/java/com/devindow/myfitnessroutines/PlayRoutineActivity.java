@@ -136,6 +136,14 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+	public void clearInstructions() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearInstructions()");
+		final TextView txtInstructions = findViewById(R.id.txtInstructions);
+		if (txtInstructions != null) {
+			txtInstructions.setText("");
+		}
+	}
+
 	private void clearNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextTask = findViewById(R.id.txtNextTask);
