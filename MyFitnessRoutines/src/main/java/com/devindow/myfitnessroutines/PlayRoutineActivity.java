@@ -108,9 +108,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
-					txtMoveName.setText(move.name + " ->");
-				} else {
 					txtMoveName.setText(move.name + " <-");
+				} else {
+					txtMoveName.setText(move.name + " ->");
 				}
 			} else {
 				txtMoveName.setText(move.name);
