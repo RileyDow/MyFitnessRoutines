@@ -10,7 +10,6 @@ TODO
   - Warrior 3
 
 * Soccer drawings
-  - Draw Arrow Numbers
   - Arc Arrow for Step-Over
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)

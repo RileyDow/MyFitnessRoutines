@@ -1573,10 +1573,9 @@ public class MoveLibrary {
 			Point toe = move.getToe();
 			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 
-			Point arrowRight = move.ball;
-			Point arrowLeft = arrowRight.mirror();
-			move.motions.add(new Touch(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new Touch(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false)));
+			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
+			move.motions.add(new Touch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
+			move.motions.add(new Touch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
 
 			moves.put(move.name, move);
 		}
