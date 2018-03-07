@@ -35,8 +35,22 @@ Android app to guide you through fitness routines.
     - description
     - category
     - twoSides
-    - Poses or other drawables
     - getBitmap()
+- MoveWithPose : Move
+    - pose
+- LadderMove : Move
+    - ladderSteps
+- LadderStep (OnePointLadderStep, TwoPointLadderStep)
+    - draw()
+    - hasLeft(), hasRight(), hasBoth()
+    - getLeft(), getRight()
+- SoccerMove : Move
+    - ball
+    - motions
+- Motion
+    - draw()
+- Touch : Motion
+- SoccerStep : Motion
 - Pose
     - torso
     - rLeg
