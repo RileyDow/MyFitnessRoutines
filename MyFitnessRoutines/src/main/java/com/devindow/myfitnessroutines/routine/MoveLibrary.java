@@ -1672,7 +1672,7 @@ public class MoveLibrary {
 
 		// Ziko Turn
 		{
-			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
+			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over & plant, plant, escape outside");
 
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
@@ -1681,9 +1681,7 @@ public class MoveLibrary {
 
 			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
 
-			Point p1 = move.ball;
-			Point p2 = toe.offset(16, 0);
-			move.motions.add(new Touch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new Touch(new Arrow(move.ball, toe.offset(16, 0), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}
@@ -1706,12 +1704,25 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "Outward step-over, escape with other foot");
 
+			move.ball = new Point(0, 14);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+
+			move.motions.add(new Touch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
+
 			moves.put(move.name, move);
 		}
 
 		// 2 Step-Overs, Escape Out
 		{
 			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "Double outside step-over, escape");
+
+			move.ball = new Point(0, 14);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2))));
+
+			move.motions.add(new Touch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}
