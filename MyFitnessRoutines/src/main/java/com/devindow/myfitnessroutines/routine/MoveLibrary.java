@@ -1556,12 +1556,16 @@ public class MoveLibrary {
 			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "Sole, sole");
 
 			Point toe = move.getToe();
-			move.ball = new Point(toe).offset(0, SoccerMove.ballSize/2);
+			move.ball = new Point(toe).offset(0, 8);
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.motions.add(new SoccerTouch(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false)));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.RIGHT, arrowRight),
+					new Arrow(arrowRight, arrowLeft, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.LEFT, arrowLeft.offset(0, -2)),
+					new Arrow(arrowLeft.offset(0, -2), arrowRight.offset(0, -2), Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1746,7 +1750,9 @@ public class MoveLibrary {
 			move.ball = new Point(0, 12);
 
 			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(3, 0))));
-			move.motions.add(new SoccerStepAndTouch(new Step(Feet.LEFT, move.ball.offset(-3, 0)), new Arrow(move.ball, move.ball.offset(20, 0), Feet.LEFT)));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.LEFT, move.ball.offset(-3, 0)),
+					new Arrow(move.ball, move.ball.offset(20, 0), Feet.LEFT)));
 
 			moves.put(move.name, move);
 		}
