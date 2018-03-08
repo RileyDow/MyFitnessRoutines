@@ -8,14 +8,14 @@ import com.devindow.myfitnessroutines.util.Arrow;
  * Created by Devin on 3/6/2018.
  */
 
-public class Touch extends Motion {
+public class SoccerTouch extends Motion {
 
 	// Public Fields
 	public Arrow arrow;
 
 
 	// Constructor
-	public Touch(Arrow arrow) {
+	public SoccerTouch(Arrow arrow) {
 		this.arrow = arrow;
 	}
 

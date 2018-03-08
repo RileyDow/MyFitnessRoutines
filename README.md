@@ -38,28 +38,33 @@ Android app to guide you through fitness routines.
     - getBitmap()
 ### MoveWithPose : Move
     - pose
-### LadderMove : Move
-    - ladderSteps
-#### LadderStep (OnePointLadderStep, TwoPointLadderStep)
-    - draw()
-    - hasLeft(), hasRight(), hasBoth()
-    - getLeft(), getRight()
-### SoccerMove : Move
-    - ball
-    - motions
-#### Motion
-    - draw()
-##### Touch : Motion
-    - arrow
-##### SoccerStep : Motion
-    - step
-## Pose
+#### Pose
     - torso
     - rLeg
     - lLeg
     - rArm
     - lArm
     - prop
+### LadderMove : Move
+    - ladderSteps
+#### LadderStep (OnePointLadderStep, TwoPointLadderStep)
+    - draw()
+    - hasLeft(), hasRight(), hasBoth()
+    - getLeft(), getRight()
+##### OnePointLadderStep
+    - step
+##### TwoPointLadderStep
+    - left
+    - right
+### SoccerMove : Move
+    - ball
+    - motions
+#### Motion (SoccerTouch, SoccerStep)
+    - draw()
+##### SoccerTouch : Motion
+    - arrow
+##### SoccerStep : Motion
+    - step
 ## Log
     - Session
         - Date
