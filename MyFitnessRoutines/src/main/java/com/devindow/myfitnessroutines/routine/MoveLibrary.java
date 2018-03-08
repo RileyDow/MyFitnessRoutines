@@ -1759,7 +1759,15 @@ public class MoveLibrary {
 
 		// 2 touches then across
 		{
-			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bell then push and move");
+			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bells then push and move, reverse");
+
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+
+			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-30, 0), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}
