@@ -33,7 +33,7 @@ public class SoccerMove extends Move {
 
 	// Public Fields
 	public Point ball;
-	public ArrayList<Motion> motions = new ArrayList<>();
+	public ArrayList<SoccerMotion> motions = new ArrayList<>();
 
 
 	// Public Properties
@@ -140,7 +140,7 @@ public class SoccerMove extends Move {
 
 	private void drawMotions(Canvas canvas, boolean mirror) {
 		for (int i=0; i<motions.size(); i++) {
-			Motion motion = motions.get(i);
+			SoccerMotion motion = motions.get(i);
 			motion.draw(canvas, i+1, mirror);
 		}
 	}

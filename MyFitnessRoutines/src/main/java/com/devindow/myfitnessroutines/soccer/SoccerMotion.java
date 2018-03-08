@@ -6,7 +6,7 @@ import android.graphics.Canvas;
  * Created by Devin on 3/6/2018.
  */
 
-public abstract class Motion {
+public abstract class SoccerMotion {
 
 	// Methods
 	public void draw(Canvas canvas) {

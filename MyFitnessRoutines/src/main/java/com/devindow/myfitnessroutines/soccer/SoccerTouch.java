@@ -8,7 +8,7 @@ import com.devindow.myfitnessroutines.util.Arrow;
  * Created by Devin on 3/6/2018.
  */
 
-public class SoccerTouch extends Motion {
+public class SoccerTouch extends SoccerMotion {
 
 	// Public Fields
 	public Arrow arrow;
@@ -20,7 +20,7 @@ public class SoccerTouch extends Motion {
 	}
 
 
-	// Motion implementation
+	// SoccerMotion implementation
 	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		arrow.draw(canvas, stepNum, mirror);
 	}

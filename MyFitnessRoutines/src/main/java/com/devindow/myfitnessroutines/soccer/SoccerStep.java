@@ -8,7 +8,7 @@ import com.devindow.myfitnessroutines.util.Step;
  * Created by Devin on 3/6/2018.
  */
 
-public class SoccerStep extends Motion {
+public class SoccerStep extends SoccerMotion {
 
 	// Public Fields
 	public Step step;
@@ -20,7 +20,7 @@ public class SoccerStep extends Motion {
 	}
 
 
-	// Motion implementation
+	// SoccerMotion implementation
 	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		step.draw(canvas, stepNum, mirror);
 	}
