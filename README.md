@@ -18,6 +18,7 @@ Android app to guide you through fitness routines.
     - v0.4.1-beta-feature
     - Mark it as *pre-release*
 1. Upload to App Store
+1. Reverse-Merge *master* to *develop*
 
 ## Object-Oriented Design
 ### Routine
