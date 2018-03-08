@@ -17,7 +17,7 @@ public class Arrow {
 	// Public Fields
 	public Point start;
 	public Point end;
-	public Feet	feet;
+	public Feet feet;
 
 
 	// Constructors
@@ -36,18 +36,24 @@ public class Arrow {
 
 	// Public Methods
 	public void draw(Canvas canvas) {
-		draw(canvas, false);
+		draw(canvas, 0);
 	}
 
-	public void draw(Canvas canvas, boolean mirror) {
+	public void draw(Canvas canvas, int stepNum) {
+		draw(canvas, stepNum, false);
+	}
+
+	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		Paint paint = new Paint();
 		Colors.setFootColor(paint, feet, true, mirror);
 		paint.setStrokeWidth(width);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 
+		// Draw shaft
 		canvas.drawLine(start.x, start.y, end.x, end.y, paint);
 
+		// Draw arrowhead
 		Angle angle = new Angle(start.y - end.y, start.x - end.x);
 		Angle angle1 = angle.add(45);
 		Angle angle2 = angle.add(-45);
@@ -55,6 +61,19 @@ public class Arrow {
 		Point tip2 = angle2.polar(end, headSize);
 		canvas.drawLine(end.x, end.y, tip1.x, tip1.y, paint);
 		canvas.drawLine(end.x, end.y, tip2.x, tip2.y, paint);
+
+		// Draw text
+		if (stepNum > 0) {
+			String text = Integer.toString(stepNum);
+			/*if (feet.hasBoth()) {
+			} else if (feet.hasLeft() ^ mirror) {
+				text += "-L";
+			} else {
+				text += "-R";
+			}*/
+
+			Text.draw(canvas, text, Point.getMiddle(start, end), mirror);
+		}
 	}
 
 	public void shorten(float distance) {

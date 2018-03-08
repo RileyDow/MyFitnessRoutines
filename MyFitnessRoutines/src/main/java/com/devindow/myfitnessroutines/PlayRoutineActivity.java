@@ -108,9 +108,9 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		} else {
 			if (move.twoSides) {
 				if (secondSide) {
-					txtMoveName.setText(move.name + " ->");
-				} else {
 					txtMoveName.setText(move.name + " <-");
+				} else {
+					txtMoveName.setText(move.name + " ->");
 				}
 			} else {
 				txtMoveName.setText(move.name);
@@ -133,6 +133,14 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
 			Debug.d(Debug.TAG_TIME, timeRemaining);
 			txtTimer.setText(timeRemaining);
+		}
+	}
+
+	public void clearInstructions() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearInstructions()");
+		final TextView txtInstructions = findViewById(R.id.txtInstructions);
+		if (txtInstructions != null) {
+			txtInstructions.setText("");
 		}
 	}
 

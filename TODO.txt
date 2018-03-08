@@ -1,14 +1,16 @@
 TODO
 ----
 
+** Match two-sided drawings to ->
+  - Reclined Twist
+  - Thoracic Roll-outs
+  - Standing Side Bend
+  - Reach Back
+  - Warrior 2
+  - Warrior 3
+
 * Soccer drawings
-  - Draw Arrow Numbers?  Steps?  Both derived from abstract Drawable?
-    - soccer package SoccerStep.draw() or ladder package.OnePointStep.draw()?
   - Arc Arrow for Step-Over
-  - Mirroring
-    - Mirror -x, swap colors?
-* Ladder drawings
-  - Use Arrow.shorten()
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"

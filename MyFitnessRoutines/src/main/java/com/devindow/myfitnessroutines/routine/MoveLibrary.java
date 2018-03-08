@@ -1,7 +1,8 @@
 package com.devindow.myfitnessroutines.routine;
 
-import com.devindow.myfitnessroutines.ladder.*;
 import com.devindow.myfitnessroutines.pose.*;
+import com.devindow.myfitnessroutines.ladder.*;
+import com.devindow.myfitnessroutines.soccer.*;
 import com.devindow.myfitnessroutines.util.*;
 
 import java.util.Dictionary;
@@ -73,7 +74,7 @@ public class MoveLibrary {
 	public static final String HIP_OPEN = "Hip Open";
 	public static final String RECLINED_COBBLER_POSE = "Reclined Cobbler Pose";
 	// Bending Poses
-	public static final String TOUCH_TOES = "Touch Toes";
+	public static final String TOUCH_TOES = "SoccerTouch Toes";
 	public static final String DOWN_DOG = "Down Dog";
 	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
@@ -1047,7 +1048,7 @@ public class MoveLibrary {
 	}
 
 	private static void generateForwardBendingMoves() {
-		// Touch Toes
+		// SoccerTouch Toes
 		{
 			MoveWithPose move = new MoveWithPose(TOUCH_TOES, Category.STRETCH);
 			move.pose = new Pose();
@@ -1406,11 +1407,11 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SPRINT, Category.AGILITY, "One foot in each square");
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0, true), -.1f, 0));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .1f, 0));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -.1f, 0));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), .1f, 0));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(4, true), -.1f, 0));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0, true).offset(-.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(4, true).offset(-.2f, 0)));
 
 			moves.put(move.name, move);
 		}
@@ -1419,16 +1420,16 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_LATERAL, Category.AGILITY, "Sideways, both feet in each square, high knees");
 
-			move.steps.add(new DoubleStep(Ladder.getLocation(0, true), 0, -.5f, Ladder.getLocation(0, true), 0, 1.5f));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0, true).offset(0, -LadderStep.radius*.5f), Ladder.getLocation(0, true).offset(0, LadderStep.radius*1.5f)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), .1f, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -.1f, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(-.2f, -LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), .1f, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -.1f, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-.2f, -LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), .1f, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), -.1f, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(-.2f, -LadderStep.radius)));
 
 			moves.put(move.name, move);
 		}
@@ -1437,20 +1438,20 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_LATERAL_IN_OUT, Category.AGILITY, "Sideways, both feet in, both feet out");
 
-			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false), 0, -1, Ladder.getLocation(0.5f, false), 0, 1));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false).offset(0, -LadderStep.radius), Ladder.getLocation(0.5f, false).offset(0, LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), 0, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), 0, -1));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1.5f, false), 0, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1.5f, false), 0, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1.5f, false).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1.5f, false).offset(0, -LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), 0, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), 0, -1));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2.5f, false), 0, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2.5f, false), 0, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2.5f, false).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2.5f, false).offset(0, -LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), 0, 1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), 0, -1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(0, -LadderStep.radius)));
 
 			moves.put(move.name, move);
 		}
@@ -1459,16 +1460,16 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_JUMPING_JACK, Category.AGILITY, "Both feet out, both feet in");
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(0, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(1, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(2, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(2, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
@@ -1477,16 +1478,16 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_HOPSCOTCH, Category.AGILITY, "Both feet out, alternate foot in");
 
-			move.steps.add(new OnePointStep(Ladder.getLocation(0, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(0, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true)));
-			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
@@ -1495,11 +1496,11 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SLALOM, Category.AGILITY, "Slalom with alternate foot in");
 
-			move.steps.add(new DoubleStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(1, true)));
 
-			move.steps.add(new DoubleStep(Ladder.getLocation(2, true), Ladder.getLocation(1.5f, false, false)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(2, true), Ladder.getLocation(1.5f, false, false)));
 
-			move.steps.add(new DoubleStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
@@ -1508,18 +1509,18 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY, "Shuffle across");
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0.5f, false, true), 1, 0));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0.5f, false, true).offset(LadderStep.radius, 0)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true), 1, 0));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, true), -1, 0));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1.5f, false, false), -1, 0));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1.5f, false, false).offset(-LadderStep.radius, 0)));
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true), -1, 0));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, true), 1, 0));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2.5f, false, true), 1, 0));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2.5f, false, true).offset(LadderStep.radius, 0)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true), 1, 0));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, true), -1, 0));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(-LadderStep.radius, 0)));
 
 			moves.put(move.name, move);
 		}
@@ -1528,23 +1529,24 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_CROSS_BEHIND, Category.AGILITY);
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(0, false, true), 1, 1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0, false, true).offset(LadderStep.radius, LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, true)));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(1, false, false), -1, -1));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(1, false, false), 1, 1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, false, false).offset(-LadderStep.radius, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, false, false).offset(LadderStep.radius, LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, true)));
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(2, false, true), 1, -1));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(2, false, true), -1, 1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, false, true).offset(LadderStep.radius, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, false, true).offset(-LadderStep.radius, LadderStep.radius)));
 
-			move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, true)));
-			move.steps.add(new OnePointStep(Feet.LEFT, Ladder.getLocation(3, false, false), 1, -1));
-			//move.steps.add(new OnePointStep(Feet.RIGHT, Ladder.getLocation(3, false, false), -1, 1));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, false, false).offset(LadderStep.radius, -LadderStep.radius)));
+			//move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, false, false), -1, 1));
 
 			moves.put(move.name, move);
 		}
 	}
+
 
 	private static void generateSoccerMoves() {
 		final float sh = 3;
@@ -1554,12 +1556,16 @@ public class MoveLibrary {
 			SoccerMove move = new SoccerMove(SOCCER_INSIDE_ROLLS, Category.SOCCER, "Sole, sole");
 
 			Point toe = move.getToe();
-			move.ball = new Point(toe).offset(0, SoccerMove.ballSize/2);
+			move.ball = new Point(toe).offset(0, 8);
 
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.RIGHT, arrowRight),
+					new Arrow(arrowRight, arrowLeft, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.LEFT, arrowLeft.offset(0, -2)),
+					new Arrow(arrowLeft.offset(0, -2), arrowRight.offset(0, -2), Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1571,10 +1577,9 @@ public class MoveLibrary {
 			Point toe = move.getToe();
 			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 
-			Point arrowRight = move.ball;
-			Point arrowLeft = arrowRight.mirror();
-			move.arrows.add(new Arrow(arrowRight.offset(0, 1), arrowLeft.offset(0, 1), Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(arrowLeft.offset(0, -1), arrowRight.offset(0, -1), Feet.LEFT).shortened(sh, true, false));
+			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
 
 			moves.put(move.name, move);
 		}
@@ -1589,8 +1594,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-5, 0);
 			Point p3 = p2.offset(20, 10);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1605,8 +1610,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p3 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1621,9 +1626,9 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1638,8 +1643,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p3 = new Point(0, -20);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1654,45 +1659,47 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false));
-			move.arrows.add(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
 
 			Point p4 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p5 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false)));
 
 			Point p6 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p7 = new Point(0, -20);
-			move.arrows.add(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
 
 		// Ziko Turn
 		{
-			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over, plant, plant, escape outside");
+			SoccerMove move = new SoccerMove(SOCCER_ZIKO_TURN, Category.SOCCER, true, "Step over & plant, plant, escape outside");
 
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
-			Point p1 = move.ball;
-			Point p2 = toe.offset(16, 0);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y))));
+
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
+
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, toe.offset(16, 0), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}
 
 		// Cruyff Turn
 		{
-			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint to inside between");
+			SoccerMove move = new SoccerMove(SOCCER_CRUYFF_TURN, Category.SOCCER, true, "Feint kick, pull ball between legs");
 
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
 			Point p1 = move.ball;
 			Point p2 = new Point(-4, -20);
-			move.arrows.add(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1701,12 +1708,25 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_STEP_OVER_ESCAPE_OUT, Category.SOCCER, true, "Outward step-over, escape with other foot");
 
+			move.ball = new Point(0, 14);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
+
 			moves.put(move.name, move);
 		}
 
 		// 2 Step-Overs, Escape Out
 		{
 			SoccerMove move = new SoccerMove(SOCCER_2_STEP_OVERS_ESCAPE_OUT, Category.SOCCER, true, "Double outside step-over, escape");
+
+			move.ball = new Point(0, 14);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2))));
+
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}
@@ -1715,6 +1735,11 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "Tap ball with alternating soles");
 
+			move.ball = new Point(0, 12);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(3, 0))));
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-3, 0))));
+
 			moves.put(move.name, move);
 		}
 
@@ -1722,12 +1747,27 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE_CIRCLE, Category.SOCCER, true, "Hat Dance moving the ball");
 
+			move.ball = new Point(0, 12);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(3, 0))));
+			move.motions.add(new SoccerStepAndTouch(
+					new Step(Feet.LEFT, move.ball.offset(-3, 0)),
+					new Arrow(move.ball, move.ball.offset(20, 0), Feet.LEFT)));
+
 			moves.put(move.name, move);
 		}
 
 		// 2 touches then across
 		{
-			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bell then push and move");
+			SoccerMove move = new SoccerMove(SOCCER_2_TOUCHES_THEN_ACROSS, Category.SOCCER, "Bells then push and move, reverse");
+
+			Point toe = move.getToe();
+			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
+
+			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-30, 0), Feet.RIGHT)));
 
 			moves.put(move.name, move);
 		}

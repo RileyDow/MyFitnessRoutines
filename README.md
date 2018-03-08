@@ -20,31 +20,52 @@ Android app to guide you through fitness routines.
 1. Upload to App Store
 
 ## Object-Oriented Design
-- Routine
+### Routine
     - name
     - description
     - category
     - tasks
     - getDuration()
-- Task
+## Task
     - move
     - moveSeconds
     - restSeconds
-- Move (MoveWithPose, LadderMove, SoccerMove)
+## Move (MoveWithPose, LadderMove, SoccerMove)
     - name
     - description
     - category
     - twoSides
-    - Poses or other drawables
     - getBitmap()
-- Pose
+### MoveWithPose : Move
+    - pose
+#### Pose
     - torso
     - rLeg
     - lLeg
     - rArm
     - lArm
     - prop
-- Log
+### LadderMove : Move
+    - ladderSteps
+#### LadderStep (OnePointLadderStep, TwoPointLadderStep)
+    - draw()
+    - hasLeft(), hasRight(), hasBoth()
+    - getLeft(), getRight()
+##### OnePointLadderStep
+    - step
+##### TwoPointLadderStep
+    - left
+    - right
+### SoccerMove : Move
+    - ball
+    - motions
+#### Motion (SoccerTouch, SoccerStep)
+    - draw()
+##### SoccerTouch : Motion
+    - arrow
+##### SoccerStep : Motion
+    - step
+## Log
     - Session
         - Date
         - Routine Name
