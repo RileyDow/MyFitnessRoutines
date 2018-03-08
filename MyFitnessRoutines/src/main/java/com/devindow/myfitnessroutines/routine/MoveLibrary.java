@@ -1731,6 +1731,11 @@ public class MoveLibrary {
 		{
 			SoccerMove move = new SoccerMove(SOCCER_HAT_DANCE, Category.SOCCER, "Tap ball with alternating soles");
 
+			move.ball = new Point(0, 12);
+
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(2, 0))));
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-2, 0))));
+
 			moves.put(move.name, move);
 		}
 
