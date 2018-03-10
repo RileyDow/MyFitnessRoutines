@@ -191,10 +191,10 @@ public class MoveLibrary {
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
 
-			Angle armProximalAngle = Angle.W.add(-30);
-			Angle armDistalAngle = Angle.N.add(10);
-			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
-			move.pose.lArm = new Arm(Angle.S.add(45), Angle.S.add(-45));
+			Angle armProximalAngle = Angle.E.add(30);
+			Angle armDistalAngle = Angle.N.add(-10);
+			move.pose.lArm = new Arm(armProximalAngle, armDistalAngle);
+			move.pose.rArm = new Arm(Angle.S.add(-45), Angle.S.add(45));
 
 			moves.put(move.name, move);
 		}
@@ -228,11 +228,11 @@ public class MoveLibrary {
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
 
-			int torsoAngle = 15;
+			int torsoAngle = -15;
 			move.pose.torso = new Torso(Angle.N.add(torsoAngle));
 
-			move.pose.lArm = new Arm(Angle.N.add(torsoAngle-5), Angle.N.add(torsoAngle+25));
-			move.pose.rArm = new Arm(Angle.S.add(torsoAngle-45), Angle.S.add(torsoAngle+45));
+			move.pose.rArm = new Arm(Angle.N.add(torsoAngle+5), Angle.N.add(torsoAngle-5));
+			move.pose.lArm = new Arm(Angle.S.add(torsoAngle+45), Angle.S.add(torsoAngle-45));
 
 			moves.put(move.name, move);
 		}
@@ -296,12 +296,12 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S.add(5));
-			move.pose.lLeg = new Leg(Angle.S.add(45), Angle.S.add(55));
+			move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S.add(-5));
+			move.pose.rLeg = new Leg(Angle.S.add(-45), Angle.S.add(-55));
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2);
 
-			move.pose.lArm = new Arm(Angle.E);
 			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E);
 
 			moves.put(move.name, move);
 		}
@@ -429,14 +429,14 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Leg straight back then knee up, repeat.");
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+			move.pose.rLeg = new Leg(Angle.S.add(15), Angle.S.add(-15));
 
-			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.E.add(5));
+			move.pose.lLeg = new Leg(Angle.W.add(5), Angle.W.add(-5));
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E, true);
 
-			move.pose.lArm = new Arm(Angle.W.add(20), Angle.W.add(-10));
-			move.pose.rArm = new Arm(Angle.E.add(20), Angle.E.add(-10));
+			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E.add(10));
+			move.pose.lArm = new Arm(Angle.W.add(-20), Angle.W.add(10));
 
 			moves.put(move.name, move);
 		}
@@ -962,8 +962,8 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
+			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
@@ -980,8 +980,8 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
+			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
@@ -998,14 +998,14 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.rLeg = new Leg(Angle.S);
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
+			move.pose.lLeg = new Leg(Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
 
-			move.pose.rArm = new Arm(Angle.W.add(55));
-			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E.add(-55));
 
 			moves.put(move.name, move);
 		}

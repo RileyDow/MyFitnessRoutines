@@ -1,14 +1,6 @@
 TODO
 ----
 
-** Match two-sided drawings to ->
-  - Reclined Twist
-  - Thoracic Roll-outs
-  - Standing Side Bend
-  - Reach Back
-  - Warrior 2
-  - Warrior 3
-
 * Soccer drawings
   - Arc Arrow for Step-Over
 
