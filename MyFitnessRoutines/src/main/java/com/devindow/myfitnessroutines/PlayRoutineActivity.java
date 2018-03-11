@@ -48,6 +48,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		taskFragment.routine = (Routine)intent.getSerializableExtra("routine");
 
 		// txtRoutineName
+		setTitle(taskFragment.routine.name);
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(taskFragment.routine.name);
 

@@ -13,6 +13,7 @@ TODO
   - Paid app for adding new Routine?
   - Paid & Free versions
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
+    - Multiple free apps and consolidated paid app?  My Yoga, My Agility Ladder, My Soccer Touches
 
 - Routines
   - Sun Salutation
@@ -27,9 +28,11 @@ TODO
   - Draw Nose in Profile?
   - ProfilePose use Z to show depth in 3D?
 
-- Play Routine activity
-  + Disable/Hide Next/Prev button
-  + Should we just pass Routine.name and have Routines be a Hashtable?
+- UI
+  - Play Routine activity
+    + Disable/Hide Next/Prev button
+  - Main activity
+    - dropdown for Routine Category / All
 
 - Startup
   + MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
