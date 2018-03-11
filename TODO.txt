@@ -1,6 +1,8 @@
 TODO
 ----
 
+* Repeat routine? Hit Play?
+
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
   - "Ching......"

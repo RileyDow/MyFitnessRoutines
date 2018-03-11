@@ -28,6 +28,8 @@ public class MoveLibrary {
 	public static final String ROMAN_LUNGES = "Roman Lunges";
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
+	public static final String PRAYER = "Prayer";
+	public static final String ARMS_UP = "Arms Up";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String FAST_FEET = "Fast Feet";
 	public static final String HIGH_KNEES = "High Knees";
@@ -74,7 +76,7 @@ public class MoveLibrary {
 	public static final String HIP_OPEN = "Hip Open";
 	public static final String RECLINED_COBBLER_POSE = "Reclined Cobbler Pose";
 	// Bending Poses
-	public static final String TOUCH_TOES = "SoccerTouch Toes";
+	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String DOWN_DOG = "Down Dog";
 	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
@@ -84,7 +86,8 @@ public class MoveLibrary {
 	public static final String CAT_POSE = "Cat Pose";
 	public static final String CHILD_POSE = "Child Pose";
 	public static final String PUSH_UPS = "Push-Ups";
-	public static final String PLANK = "Plank";
+	public static final String HANDS_PLANK = "Hands Plank";
+	public static final String ELBOWS_PLANK = "Elbows Plank";
 	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
 	public static final String SIDE_PLANK = "Side Plank";
 	public static final String FOAM_ROLLER = "Foam Roller";
@@ -320,6 +323,35 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.E.add(7));
 			move.pose.rArm = new Arm(Angle.E.add(-8));
+
+			moves.put(move.name, move);
+		}
+
+		// Prayer
+		{
+			MoveWithPose move = new MoveWithPose(PRAYER, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
+			move.pose.lArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
+
+			moves.put(move.name, move);
+		}
+
+		// Arms Up
+		{
+			MoveWithPose move = new MoveWithPose(ARMS_UP, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.N);
 
 			moves.put(move.name, move);
 		}
@@ -1214,9 +1246,29 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Plank
+		// Hands Plank
 		{
-			MoveWithPose move = new MoveWithPose(PLANK, Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(HANDS_PLANK, Category.STRENGTH);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(25);
+
+			move.pose.rLeg = new Leg(angle.opposite());
+
+			move.pose.rArm = new Arm(Angle.S.add(15));
+
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					//new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					angle,
+					true);
+
+			moves.put(move.name, move);
+		}
+
+		// Elbows Plank
+		{
+			MoveWithPose move = new MoveWithPose(ELBOWS_PLANK, Category.STRENGTH);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(12);

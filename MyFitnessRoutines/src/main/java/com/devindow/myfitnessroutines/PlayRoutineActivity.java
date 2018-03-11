@@ -65,6 +65,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void displayTask(boolean resetSecondsRemaining) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTask()");
 
+		clearInstructions();
 		clearNextMoveName();
 
 		if (taskFragment.taskNum > taskFragment.routine.tasks.size()) { // Finished, so show DONE & kill timer

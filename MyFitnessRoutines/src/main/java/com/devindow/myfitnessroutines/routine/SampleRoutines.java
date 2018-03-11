@@ -19,6 +19,7 @@ public class SampleRoutines {
 		defaultRoutines.add(generate7MinuteWorkout());
 
 		defaultRoutines.add(generateMorningYogaRoutine());
+		defaultRoutines.add(generateSunSalutation());
 
 		defaultRoutines.add(generateWarmupRoutine());
 
@@ -39,8 +40,6 @@ public class SampleRoutines {
 		if (Debug.on) {
 /*
 			defaultRoutines.add(generateStretchRoutine());
-
-			defaultRoutines.add(generateSunSalutation());
 
 			defaultRoutines.add(generateLiftRoutine());
 
@@ -65,7 +64,7 @@ public class SampleRoutines {
 		routine.tasks.add(new Task(MoveLibrary.STEP_UPS, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.SQUATS, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.CHAIR_DIPS, 30, 5));
-		routine.tasks.add(new Task(MoveLibrary.PLANK, 30, 5));
+		routine.tasks.add(new Task(MoveLibrary.ELBOWS_PLANK, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.HIGH_KNEES, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.LUNGES, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.PUSH_UP_ROTATE, 30, 5));
@@ -101,6 +100,28 @@ public class SampleRoutines {
 		routine.tasks.add(new Task(MoveLibrary.SAGE_POSE, 10, "Sit Tall. Legs together. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.TWISTED_SAGE_POSE, 30, "Sit Tall. Pretzel. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.LOTUS, 60, "Meditate & Breathe. Namaste."));
+
+		return routine;
+	}
+
+	private static Routine generateSunSalutation() {
+		Routine routine = new Routine("Sun Salutation", Category.YOGA, "Yoga warmup of folding & unfolding along with your breath");
+
+		int poseSeconds = 5;
+		for (int i=1; i<=2; i++) { // 2 times
+			routine.tasks.add(new Task(MoveLibrary.PRAYER, poseSeconds, "Exhale"));
+			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, poseSeconds, "Inhale, reach up and back"));
+			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));
+			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step back to lunge"));
+			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, poseSeconds, "Exhale, step back to plank"));
+			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
+			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, poseSeconds, "Exhale, Downward Dog"));
+			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step forward to lunge"));
+			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));
+			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, poseSeconds, "Inhale, roll spine up and reach up and back"));
+		}
+
+		routine.tasks.add(new Task(MoveLibrary.PRAYER, poseSeconds, "Exhale. Namaste"));
 
 		return routine;
 	}
@@ -264,14 +285,6 @@ public class SampleRoutines {
 
 		routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.WIDE_LEG_BEND, 30, "Breathe."));
-
-		return routine;
-	}
-
-	private static Routine generateSunSalutation() {
-		Routine routine = new Routine("Sun Salutation", Category.YOGA);
-
-		routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, 30, 5));
 
 		return routine;
 	}
