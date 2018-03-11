@@ -1681,7 +1681,7 @@ public class MoveLibrary {
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y))));
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y)), toe));
 
 			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
 
@@ -1710,7 +1710,8 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+			Point from = move.ball.offset(-SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), from));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
 
@@ -1723,8 +1724,10 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
-			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2))));
+			Point fromR = move.ball.offset(-SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), fromR));
+			Point fromL = move.ball.offset(SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2)), fromL));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
 

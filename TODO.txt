@@ -1,9 +1,6 @@
 TODO
 ----
 
-* Soccer drawings
-  - Arc Arrow for Step-Over
-
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
   - "Ching......"
@@ -35,7 +32,7 @@ TODO
     - dropdown for Routine Category / All
 
 - Startup
-  + MainActivity calls generatePoses() every time it runs; It passes serialized Routine to PlayRoutineActivity.
+  + MainActivity calls generatePoses() every time it runs;
     - Derive a class from Application that overrides onCreate() calling super.onCreate().
 
 - Headset

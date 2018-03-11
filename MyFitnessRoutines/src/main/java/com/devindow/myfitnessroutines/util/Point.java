@@ -54,4 +54,12 @@ public class Point implements Serializable {
 		return new Point((p1.x + p2.x)/2, (p1.y + p2.y)/2);
 	}
 
+	public static float getDistance(Point p1, Point p2) {
+		return (float)Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)); // A^2 + B^2 = C^2
+	}
+
+	public static float getAngle(Point p1, Point p2) {
+		return (float)Math.atan2(p2.y - p1.y, p2.x - p1.x);
+	}
+
 }
