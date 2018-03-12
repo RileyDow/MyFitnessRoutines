@@ -1,14 +1,14 @@
 TODO
 ----
 
-- Sun Salutation
+* Sun Salutation
   - Lunge
   - Chaturanga
   - Cobra
   - Chair
   - Arms up
 
-- Step-Over translucency
+* Step-Over translucency
 - Torso.Arc or Torso.midpoints ArrayList
 - Torso.profileHips & profileShoulders constructors
   - Poses
