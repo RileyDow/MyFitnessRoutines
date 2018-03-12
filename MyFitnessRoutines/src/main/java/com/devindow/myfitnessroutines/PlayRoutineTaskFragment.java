@@ -99,11 +99,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
 		super.onDetach();
 
-		// kill running timer
-		if (countDownTimer != null) {
-			countDownTimer.cancel();
-		}
-
 		// set playRoutineActivity to NULL
 		playRoutineActivity = null;
 
