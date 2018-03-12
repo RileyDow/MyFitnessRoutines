@@ -24,7 +24,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	interface PlayRoutineCallbacks {
 		void displayTask(boolean resetSecondsRemaining);
 		void displayMove(Move move, boolean secondSide);
-		void updateTimer();
+		void updateTimer(int secondsRemaining);
 		void clearInstructions();
 	}
 
@@ -78,7 +78,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// Need to set SecondsRemaining when showing first Task.
 		resetSecondsRemaining();
-		playRoutineActivity.updateTimer();
+		playRoutineActivity.updateTimer(getSecondsRemaining());
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
@@ -211,7 +211,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				move1SecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimer();
+					playRoutineActivity.updateTimer(move1SecondsRemaining + move2SecondsRemaining);
 				}
 			}
 
@@ -250,7 +250,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				move2SecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimer();
+					playRoutineActivity.updateTimer(move2SecondsRemaining);
 				}
 			}
 
@@ -282,7 +282,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onTick(long millisRemaining) {
 				restSecondsRemaining = (int)(millisRemaining / 1000);
 				if (playRoutineActivity != null) {
-					playRoutineActivity.updateTimer();
+					playRoutineActivity.updateTimer(restSecondsRemaining);
 				}
 			}
 

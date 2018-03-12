@@ -87,7 +87,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		if (resetSecondsRemaining) {
 			taskFragment.resetSecondsRemaining();
 		}
-		updateTimer();
+		updateTimer(taskFragment.getSecondsRemaining());
 
 		displayMove(taskFragment.move, false);
 
@@ -124,12 +124,11 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void updateTimer() {
+	public void updateTimer(int secondsRemaining) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
 
 		TextView txtTimer = findViewById(R.id.txtTimer);
 		if (txtTimer != null) {
-			int secondsRemaining = taskFragment.getSecondsRemaining();
 			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
 			Debug.d(Debug.TAG_TIME, timeRemaining);
 			txtTimer.setText(timeRemaining);

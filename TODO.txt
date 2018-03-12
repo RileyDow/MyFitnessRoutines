@@ -1,6 +1,9 @@
 TODO
 ----
 
+- PlayRoutine layout
+  - remove Routine name
+
 - Sun Salutation
   - Lunge
   - Chaturanga
