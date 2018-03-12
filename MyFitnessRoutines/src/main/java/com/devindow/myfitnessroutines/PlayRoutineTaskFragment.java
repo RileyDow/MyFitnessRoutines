@@ -80,7 +80,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		// Retain this fragment across configuration changes.
 		setRetainInstance(true);
 
-		// Set move
+		// set move
 		Task currentTask = getCurrentTask();
 		if (currentTask == null) { // Finished, so show DONE & kill timer
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
@@ -90,7 +90,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		}
 		playRoutineActivity.displayTask();
 
-		// Need to set SecondsRemaining when showing first Task.
+		// need to set SecondsRemaining when showing first Task
 		resetSecondsRemaining();
 		playRoutineActivity.updateTimer(getSecondsRemaining());
 

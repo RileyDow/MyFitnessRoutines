@@ -9,30 +9,17 @@
     tools:context="com.devindow.myfitnessroutines.PlayRoutineActivity">
 
     <TextView
-        android:id="@+id/txtRoutineName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="Routine"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtMoveName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/txtMoveName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="Pose"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtInstructions"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRoutineName" />
+        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/txtInstructions" />
 
     <TextView
         android:id="@+id/txtInstructions"
@@ -40,7 +27,7 @@
         android:layout_height="wrap_content"
         android:maxLines="3"
         android:text="Instructions"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/imgMove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

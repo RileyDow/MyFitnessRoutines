@@ -32,7 +32,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
 
-		// Keep Screen On
+		// keep Screen ON
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		// If the Fragment is non-null, then it is currently being retained across a configuration change.
@@ -43,19 +43,17 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			fragmentManager.beginTransaction().add(taskFragment, PLAY_ROUTINE_TASK_FRAGMENT).commit();
 		}
 
-		// Get Routine passed in by Intent
+		// get Routine passed in by Intent
 		Intent intent = getIntent();
 		taskFragment.routine = (Routine)intent.getSerializableExtra("routine");
 
-		// txtRoutineName
+		// Routine Name in Title
 		setTitle(taskFragment.routine.name);
-		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
-		txtRoutineName.setText(taskFragment.routine.name);
 
-		// Show the current Task.
+		// show the current Task
 		displayTask();
 
-		// Update btnPlay in case it is running.
+		// update btnPlay in case it is running
 		updatePlayButton();
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
