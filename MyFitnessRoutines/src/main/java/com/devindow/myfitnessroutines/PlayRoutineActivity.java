@@ -70,7 +70,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		if (taskFragment.taskNum > taskFragment.routine.tasks.size()) { // Finished, so show DONE & kill timer
 			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
-			taskFragment.countDownTimer = null;
+			taskFragment.pause();
 			updatePlayButton();
 		} else {
 			Task currentTask = taskFragment.getCurrentTask();
@@ -209,7 +209,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		} else if (taskFragment.taskNum > taskFragment.routine.tasks.size()) {
 			taskFragment.restart();
 		} else {
-			taskFragment.play();
+			taskFragment.resume();
 		}
 
 		updatePlayButton();

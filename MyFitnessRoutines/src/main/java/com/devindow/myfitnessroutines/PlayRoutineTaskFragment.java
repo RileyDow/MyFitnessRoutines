@@ -130,11 +130,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void pause() {
-		countDownTimer.cancel();
+		cancelTimer();
 		countDownTimer = null;
 	}
 
-	public void play() {
+	public void resume() {
 		if (move1SecondsRemaining > 0) {
 			runMove1Timer();
 		} else if (move2SecondsRemaining > 0) {
@@ -153,11 +153,13 @@ public class PlayRoutineTaskFragment extends Fragment {
 			taskNum = 1; // Restart ended Routine
 		}
 
-		playRoutineActivity.displayTask(true);
+		if (playRoutineActivity != null) {
+			playRoutineActivity.displayTask(true);
 
-		// If timer was running then run.
-		if (!isPaused()) {
-			play();
+			// If timer was running then run.
+			if (!isPaused()) {
+				resume();
+			}
 		}
 	}
 
@@ -168,18 +170,20 @@ public class PlayRoutineTaskFragment extends Fragment {
 			taskNum--;
 		}
 
-		playRoutineActivity.displayTask(true);
+		if (playRoutineActivity != null) {
+			playRoutineActivity.displayTask(true);
 
-		// If timer was running then run.
-		if (!isPaused()) {
-			play();
+			// If timer was running then run.
+			if (!isPaused()) {
+				resume();
+			}
 		}
 	}
 
 	public void restart() {
 		taskNum = 1; // Restart ended Routine
 		playRoutineActivity.displayTask(true);
-		play();
+		resume();
 	}
 
 	public void runMove1Timer() {
@@ -197,27 +201,24 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onFinish() {
 				playChime();
 
+				// second side
 				if (move2SecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.displayMove(move, true);
 					}
 					runMove2Timer();
+
+				// rest
 				} else if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();
-				} else {
-					taskNum++;
-					if (playRoutineActivity != null) {
-						playRoutineActivity.displayTask(true);
 
-						// If timer was running then run.
-						if (countDownTimer != null) {
-							runMove1Timer();
-						}
-					}
+				// next Task
+				} else {
+					next();
 				}
 			}
 		}.start();
@@ -238,22 +239,17 @@ public class PlayRoutineTaskFragment extends Fragment {
 			public void onFinish() {
 				playChime();
 
+				// rest
 				if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
 					}
 					runRestTimer();
-				} else {
-					taskNum++;
-					if (playRoutineActivity != null) {
-						playRoutineActivity.displayTask(true);
 
-						// If timer was running then run.
-						if (countDownTimer != null) {
-							runMove1Timer();
-						}
-					}
+				// next Task
+				} else {
+					next();
 				}
 			}
 		}.start();
@@ -273,15 +269,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 			@Override
 			public void onFinish() {
 				playChime();
-				taskNum++;
-				if (playRoutineActivity != null) {
-					playRoutineActivity.displayTask(true);
 
-					// If timer was running then run.
-					if (countDownTimer != null) {
-						runMove1Timer();
-					}
-				}
+				next();
 			}
 		}.start();
 	}
