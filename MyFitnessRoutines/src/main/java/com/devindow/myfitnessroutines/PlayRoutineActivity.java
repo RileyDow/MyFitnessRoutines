@@ -89,7 +89,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 		updateTimer(taskFragment.getSecondsRemaining());
 
-		displayMove(taskFragment.move, false);
+		displayMove();
 
 		displayNextMoveName();
 
@@ -99,26 +99,26 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void displayMove(Move move, boolean secondSide) {
+	public void displayMove() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
 
 		final TextView txtMoveName = findViewById(R.id.txtMoveName);
 		final ImageView imgMove = findViewById(R.id.imgMove);
 
-		if (move == null) {
+		if (taskFragment.move == null) {
 			txtMoveName.setText("NULL");
 			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
-			if (move.twoSides) {
-				if (secondSide) {
-					txtMoveName.setText(move.name + " <-");
+			if (taskFragment.move.twoSides) {
+				if (taskFragment.secondSide) {
+					txtMoveName.setText(taskFragment.move.name + " <-");
 				} else {
-					txtMoveName.setText(move.name + " ->");
+					txtMoveName.setText(taskFragment.move.name + " ->");
 				}
 			} else {
-				txtMoveName.setText(move.name);
+				txtMoveName.setText(taskFragment.move.name);
 			}
-			imgMove.setImageBitmap(move.getBitmap(secondSide));
+			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.secondSide));
 		}
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}

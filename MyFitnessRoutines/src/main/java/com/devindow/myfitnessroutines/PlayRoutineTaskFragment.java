@@ -23,7 +23,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
 	interface PlayRoutineCallbacks {
 		void displayTask(boolean resetSecondsRemaining);
-		void displayMove(Move move, boolean secondSide);
+		void displayMove();
 		void updateTimer(int secondsRemaining);
 		void clearInstructions();
 	}
@@ -32,6 +32,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	// Public Fields
 	public Routine routine;
 	public Move move;
+	public boolean secondSide = false;
 	public int move1SecondsRemaining;
 	public int move2SecondsRemaining;
 	public int restSecondsRemaining;
@@ -221,8 +222,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 				// second side
 				if (move2SecondsRemaining > 0) {
+					secondSide = true;
 					if (playRoutineActivity != null) {
-						playRoutineActivity.displayMove(move, true);
+						playRoutineActivity.displayMove();
 					}
 					runMove2Timer();
 
@@ -230,7 +232,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 				} else if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
-						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+						move = MoveLibrary.moves.get(MoveLibrary.REST);
+						playRoutineActivity.displayMove();
 					}
 					runRestTimer();
 
@@ -262,7 +265,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 				if (restSecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
-						playRoutineActivity.displayMove(MoveLibrary.moves.get(MoveLibrary.REST), false);
+						move = MoveLibrary.moves.get(MoveLibrary.REST);
+						playRoutineActivity.displayMove();
 					}
 					runRestTimer();
 
