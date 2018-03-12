@@ -52,8 +52,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		final TextView txtRoutineName = findViewById(R.id.txtRoutineName);
 		txtRoutineName.setText(taskFragment.routine.name);
 
-		// Show the current Task w/o affecting PlayRoutineTaskFragment's countDownTimer.
-		displayTask(false);
+		// Show the current Task.
+		displayTask();
 
 		// Update btnPlay in case it is running.
 		updatePlayButton();
@@ -62,7 +62,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void displayTask(boolean resetSecondsRemaining) {
+	public void displayTask() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTask()");
 
 		clearInstructions();
@@ -74,8 +74,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			taskFragment.pause();
 			updatePlayButton();
 		} else {
-			taskFragment.move = MoveLibrary.moves.get(currentTask.moveName);
-
 			final TextView txtInstructions = findViewById(R.id.txtInstructions);
 			if (!currentTask.instructions.isEmpty()) {
 				txtInstructions.setText(currentTask.instructions);
@@ -84,9 +82,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			}
 		}
 
-		if (resetSecondsRemaining) {
-			taskFragment.resetSecondsRemaining();
-		}
 		updateTimer(taskFragment.getSecondsRemaining());
 
 		displayMove();
@@ -110,7 +105,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
 			if (taskFragment.move.twoSides) {
-				if (taskFragment.secondSide) {
+				if (taskFragment.isSecondSide()) {
 					txtMoveName.setText(taskFragment.move.name + " <-");
 				} else {
 					txtMoveName.setText(taskFragment.move.name + " ->");
@@ -118,7 +113,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			} else {
 				txtMoveName.setText(taskFragment.move.name);
 			}
-			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.secondSide));
+			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.isSecondSide()));
 		}
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}

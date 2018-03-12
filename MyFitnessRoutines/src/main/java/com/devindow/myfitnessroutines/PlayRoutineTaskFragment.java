@@ -22,7 +22,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// PlayRoutineCallbacks Interface (PlayRoutineTaskFragment calls to update PlayRoutineActivity)
 	interface PlayRoutineCallbacks {
-		void displayTask(boolean resetSecondsRemaining);
+		void displayTask();
 		void displayMove();
 		void updateTimer(int secondsRemaining);
 		void clearInstructions();
@@ -32,7 +32,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 	// Public Fields
 	public Routine routine;
 	public Move move;
-	public boolean secondSide = false;
 	public int move1SecondsRemaining;
 	public int move2SecondsRemaining;
 	public int restSecondsRemaining;
@@ -52,7 +51,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public Task getNextTask() {
-		return routine.getTask(taskNum +1);
+		return routine.getTask(taskNum+1);
 	}
 
 	public String getTasksRemaining() {
@@ -67,6 +66,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 		return secondsRemaining;
 	}
 
+	public boolean isSecondSide() {
+		return move1SecondsRemaining == 0;
+	}
+
 
 	// Fragment Class Overrides
 	@Override
@@ -76,6 +79,16 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// Retain this fragment across configuration changes.
 		setRetainInstance(true);
+
+		// Set move
+		Task currentTask = getCurrentTask();
+		if (currentTask == null) { // Finished, so show DONE & kill timer
+			move = MoveLibrary.moves.get(MoveLibrary.DONE);
+			pause();
+		} else {
+			move = MoveLibrary.moves.get(currentTask.moveName);
+		}
+		playRoutineActivity.displayTask();
 
 		// Need to set SecondsRemaining when showing first Task.
 		resetSecondsRemaining();
@@ -167,8 +180,16 @@ public class PlayRoutineTaskFragment extends Fragment {
 			taskNum = 1; // Restart ended Routine
 		}
 
+		Task currentTask = getCurrentTask();
+		if (currentTask == null) {
+			move = null;
+		} else {
+			move = MoveLibrary.moves.get(currentTask.moveName);
+		}
+		resetSecondsRemaining();
+
 		if (playRoutineActivity != null) {
-			playRoutineActivity.displayTask(true);
+			playRoutineActivity.displayTask();
 
 			// If timer was running then run.
 			if (!isPaused()) {
@@ -186,8 +207,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 			taskNum--;
 		}
 
+		move = MoveLibrary.moves.get(getCurrentTask().moveName);
+		resetSecondsRemaining();
+
 		if (playRoutineActivity != null) {
-			playRoutineActivity.displayTask(true);
+			playRoutineActivity.displayTask();
 
 			// If timer was running then run.
 			if (!isPaused()) {
@@ -200,7 +224,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.restart()");
 
 		taskNum = 1; // Restart ended Routine
-		playRoutineActivity.displayTask(true);
+		move = MoveLibrary.moves.get(getCurrentTask().moveName);
+		resetSecondsRemaining();
+
+		playRoutineActivity.displayTask();
 		resume();
 	}
 
@@ -222,7 +249,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 				// second side
 				if (move2SecondsRemaining > 0) {
-					secondSide = true;
 					if (playRoutineActivity != null) {
 						playRoutineActivity.displayMove();
 					}
