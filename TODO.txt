@@ -1,6 +1,11 @@
 TODO
 ----
 
+- Step-Over translucency
+- Torso.Arc or Torso.midpoints ArrayList
+- Torso.profileHips & profileShoulders constructors
+  - Poses
+
 * Repeat routine? Hit Play?
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
@@ -23,7 +28,6 @@ TODO
   - Safety Jacks use 2 Poses
   - Pose improvements
     - "High Knee": add arms
-  - Torso.Arc
   - Draw Nose in Profile?
   - ProfilePose use Z to show depth in 3D?
 
