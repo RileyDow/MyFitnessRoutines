@@ -39,7 +39,13 @@ public class PlayRoutineTaskFragment extends Fragment {
 	public int restSecondsRemaining;
 
 
+	// Private Fields
+	private PlayRoutineCallbacks playRoutineActivity;
+
+
 	// Public Properties
+	public boolean isPaused() { return countDownTimer == null; }
+
 	public Task getCurrentTask() {
 		return routine.getTask(taskNum);
 	}
@@ -51,10 +57,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 	public String getRemaining() {
 		return routine.getRemainingString(taskNum);
 	}
-
-
-	// Private Fields
-	private PlayRoutineCallbacks playRoutineActivity;
 
 
 	// Fragment Class Overrides
@@ -102,6 +104,12 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 
 	// Public Methods
+	public void cancelTimer() {
+		if (countDownTimer != null) {
+			countDownTimer.cancel();
+		}
+	}
+
 	public void resetSecondsRemaining() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resetSecondsRemaining()");
 
@@ -119,6 +127,59 @@ public class PlayRoutineTaskFragment extends Fragment {
 		}
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.resetSecondsRemaining()");
+	}
+
+	public void pause() {
+		countDownTimer.cancel();
+		countDownTimer = null;
+	}
+
+	public void play() {
+		if (move1SecondsRemaining > 0) {
+			runMove1Timer();
+		} else if (move2SecondsRemaining > 0) {
+			runMove2Timer();
+		} else {
+			runRestTimer();
+		}
+	}
+
+	public void next() {
+		cancelTimer();
+
+		if (taskNum <= routine.tasks.size()) {
+			taskNum++;
+		} else {
+			taskNum = 1; // Restart ended Routine
+		}
+
+		playRoutineActivity.displayTask(true);
+
+		// If timer was running then run.
+		if (!isPaused()) {
+			play();
+		}
+	}
+
+	public void prev() {
+		cancelTimer();
+
+		if (taskNum > 1) {
+			taskNum--;
+		}
+
+		playRoutineActivity.displayTask(true);
+
+		// If timer was running then run.
+		if (!isPaused()) {
+			play();
+		}
+	}
+
+	public void restart() {
+		taskNum = 1; // Restart ended Routine
+		playRoutineActivity.displayTask(true);
+		play();
 	}
 
 	public void runMove1Timer() {

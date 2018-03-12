@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onScreenClick"
     android:orientation="vertical"
     tools:context="com.devindow.myfitnessroutines.PlayRoutineActivity">
 
@@ -12,27 +12,27 @@
         android:id="@+id/txtRoutineName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:text="Routine"
         android:textSize="36sp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtMoveName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/txtMoveName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtMoveName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:text="Pose"
         android:textSize="24sp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtInstructions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRoutineName"
-        app:layout_constraintBottom_toTopOf="@+id/txtInstructions" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRoutineName" />
 
     <TextView
         android:id="@+id/txtInstructions"
@@ -41,10 +41,10 @@
         android:maxLines="3"
         android:text="Instructions"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imgMove"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMoveName"
-        app:layout_constraintBottom_toTopOf="@+id/imgMove" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMoveName" />
 
     <ImageView
         android:id="@+id/imgMove"
@@ -55,10 +55,10 @@
         android:adjustViewBounds="true"
         android:contentDescription="Move"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInstructions"
         app:layout_constraintBottom_toTopOf="@+id/txtTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInstructions"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
@@ -67,50 +67,50 @@
         android:layout_height="wrap_content"
         android:text="0:00"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linButtons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgMove"
-        app:layout_constraintBottom_toTopOf="@+id/linButtons" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMove" />
 
     <LinearLayout
         android:id="@+id/linButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txtNextTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTimer"
-        app:layout_constraintBottom_toTopOf="@id/txtNextTask">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTimer">
 
         <ImageButton
             android:id="@+id/btnPrev"
-            android:contentDescription="Previous"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="?attr/colorPrimary"
+            android:contentDescription="Previous"
             android:elevation="2dp"
             android:onClick="onPrevClick"
             app:srcCompat="@android:drawable/ic_media_previous" />
 
         <ImageButton
             android:id="@+id/btnPlay"
-            android:contentDescription="Play"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:backgroundTint="?attr/colorPrimary"
+            android:contentDescription="Play"
             android:elevation="2dp"
             android:onClick="onPlayClick"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <ImageButton
             android:id="@+id/btnNext"
-            android:contentDescription="Next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="?attr/colorPrimary"
+            android:contentDescription="Next"
             android:elevation="2dp"
             android:onClick="onNextClick"
             app:srcCompat="@android:drawable/ic_media_next" />
@@ -121,25 +121,25 @@
         android:id="@+id/txtNextTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:text="Next: "
         android:textSize="18sp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/txtRemaining"
-        app:layout_constraintTop_toBottomOf="@+id/linButtons"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linButtons" />
 
     <TextView
         android:id="@+id/txtRemaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="Remaining:"
-        app:layout_constraintStart_toEndOf="@+id/txtNextTask"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linButtons"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/txtNextTask"
+        app:layout_constraintTop_toBottomOf="@+id/linButtons" />
 
 </android.support.constraint.ConstraintLayout>

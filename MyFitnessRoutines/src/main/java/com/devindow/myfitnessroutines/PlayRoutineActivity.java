@@ -182,36 +182,34 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		ImageButton btnPlay = findViewById(R.id.btnPlay);
 
-		if (taskFragment.countDownTimer == null) {
-			// No timer, so it is paused, so set btnPlay image to Play
+		if (taskFragment.isPaused()) {
 			btnPlay.setImageResource(android.R.drawable.ic_media_play);
 		} else {
-			// Timer is running, so it is playing, so set btnPlay image to Pause
 			btnPlay.setImageResource(android.R.drawable.ic_media_pause);
 		}
+	}
+
+	public void onScreenClick(View v) {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onScreenClick()");
+
+		if (!taskFragment.isPaused()) {
+			taskFragment.pause();
+		} else {
+			taskFragment.next();
+		}
+
+		updatePlayButton();
 	}
 
 	public void onPlayClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPlayClick()");
 
-		if (taskFragment.countDownTimer != null) {
-			// Pause Routine
-			taskFragment.countDownTimer.cancel();
-			taskFragment.countDownTimer = null;
+		if (!taskFragment.isPaused()) {
+			taskFragment.pause();
+		} else if (taskFragment.taskNum > taskFragment.routine.tasks.size()) {
+			taskFragment.restart();
 		} else {
-			// Play Routine
-			if (taskFragment.taskNum > taskFragment.routine.tasks.size()) {
-				taskFragment.taskNum = 1; // Restart ended Routine
-				displayTask(true);
-			}
-
-			if (taskFragment.move1SecondsRemaining > 0) {
-				taskFragment.runMove1Timer();
-			} else if (taskFragment.move2SecondsRemaining > 0) {
-				taskFragment.runMove2Timer();
-			} else {
-				taskFragment.runRestTimer();
-			}
+			taskFragment.play();
 		}
 
 		updatePlayButton();
@@ -220,35 +218,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	public void onNextClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onNextClick()");
 
-		if (taskFragment.taskNum <= taskFragment.routine.tasks.size()) {
-			if (taskFragment.countDownTimer != null) {
-				taskFragment.countDownTimer.cancel();
-			}
-			taskFragment.taskNum++;
-			displayTask(true);
-
-			// If timer was running then run.
-			if (taskFragment.countDownTimer != null) {
-				taskFragment.runMove1Timer();
-			}
-		}
+		taskFragment.next();
 	}
 
 	public void onPrevClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onPrevClick()");
 
-		if (taskFragment.taskNum > 1) {
-			if (taskFragment.countDownTimer != null) {
-				taskFragment.countDownTimer.cancel();
-			}
-			taskFragment.taskNum--;
-			displayTask(true);
-
-			// If timer was running then run.
-			if (taskFragment.countDownTimer != null) {
-				taskFragment.runMove1Timer();
-			}
-		}
+		taskFragment.prev();
 	}
 
 }

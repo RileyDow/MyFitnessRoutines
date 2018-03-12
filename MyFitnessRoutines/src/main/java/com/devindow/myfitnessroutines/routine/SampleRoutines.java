@@ -114,7 +114,8 @@ public class SampleRoutines {
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step back to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, poseSeconds, "Exhale, step back to plank"));
-			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
+			routine.tasks.add(new Task(MoveLibrary.CHATURANGA, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
+			routine.tasks.add(new Task(MoveLibrary.COBRA, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
 			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, poseSeconds, "Exhale, Downward Dog"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step forward to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));

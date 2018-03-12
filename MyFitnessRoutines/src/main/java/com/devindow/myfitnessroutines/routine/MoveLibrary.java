@@ -88,6 +88,7 @@ public class MoveLibrary {
 	public static final String PUSH_UPS = "Push-Ups";
 	public static final String HANDS_PLANK = "Hands Plank";
 	public static final String ELBOWS_PLANK = "Elbows Plank";
+	public static final String COBRA = "Cobra";
 	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
 	public static final String SIDE_PLANK = "Side Plank";
 	public static final String FOAM_ROLLER = "Foam Roller";
@@ -125,6 +126,7 @@ public class MoveLibrary {
 	public static final String SOCCER_HAT_DANCE = "Hat Dance";
 	public static final String SOCCER_HAT_DANCE_CIRCLE = "Hat Dance Circle";
 	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
+	public static final String CHATURANGA = "Chaturanga";
 
 
 	// Public Static Fields
@@ -1276,6 +1278,38 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(angle.opposite());
 
 			move.pose.rArm = new Arm(Angle.S.add(15), Angle.E);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+
+			moves.put(move.name, move);
+		}
+
+		// Cobra
+		{
+			MoveWithPose move = new MoveWithPose(COBRA, Category.YOGA);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(5);
+
+			move.pose.rLeg = new Leg(angle.opposite());
+
+			move.pose.rArm = new Arm(Angle.W.add(-25), Angle.S);
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+
+			moves.put(move.name, move);
+		}
+
+		// Chaturanga
+		{
+			MoveWithPose move = new MoveWithPose(CHATURANGA, Category.YOGA);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(5);
+
+			move.pose.rLeg = new Leg(angle.opposite());
+
+			move.pose.rArm = new Arm(Angle.W.add(-25), Angle.S);
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
 

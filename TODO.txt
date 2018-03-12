@@ -1,12 +1,19 @@
 TODO
 ----
 
+- Sun Salutation
+  - Lunge
+  - Chaturanga
+  - Cobra
+  - Chair
+  - Arms up
+
 - Step-Over translucency
 - Torso.Arc or Torso.midpoints ArrayList
 - Torso.profileHips & profileShoulders constructors
   - Poses
 
-* Repeat routine? Hit Play?
+* Repeat routine? Hit Play?  instructions
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
@@ -19,8 +26,6 @@ TODO
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
     - Multiple free apps and consolidated paid app?  My Yoga, My Agility Ladder, My Soccer Touches
 
-- Routines
-  - Sun Salutation
 
 ----------------------------------------------------------------------------------------------------
 
