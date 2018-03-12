@@ -68,12 +68,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		clearInstructions();
 		clearNextMoveName();
 
-		if (taskFragment.taskNum > taskFragment.routine.tasks.size()) { // Finished, so show DONE & kill timer
+		Task currentTask = taskFragment.getCurrentTask();
+		if (currentTask == null) { // Finished, so show DONE & kill timer
 			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			taskFragment.pause();
 			updatePlayButton();
 		} else {
-			Task currentTask = taskFragment.getCurrentTask();
 			taskFragment.move = MoveLibrary.moves.get(currentTask.moveName);
 
 			final TextView txtInstructions = findViewById(R.id.txtInstructions);
@@ -206,8 +206,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		if (!taskFragment.isPaused()) {
 			taskFragment.pause();
-		} else if (taskFragment.taskNum > taskFragment.routine.tasks.size()) {
-			taskFragment.restart();
 		} else {
 			taskFragment.resume();
 		}

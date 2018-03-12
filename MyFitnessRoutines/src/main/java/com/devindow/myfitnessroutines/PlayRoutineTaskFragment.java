@@ -30,8 +30,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 
 	// Public Fields
-	public CountDownTimer countDownTimer;
-	public int taskNum = 1;
 	public Routine routine;
 	public Move move;
 	public int move1SecondsRemaining;
@@ -41,6 +39,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// Private Fields
 	private PlayRoutineCallbacks playRoutineActivity;
+	private int taskNum = 1;
+	private CountDownTimer countDownTimer;
 
 
 	// Public Properties
@@ -139,8 +139,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 			runMove1Timer();
 		} else if (move2SecondsRemaining > 0) {
 			runMove2Timer();
-		} else {
+		} else if (restSecondsRemaining > 0) {
 			runRestTimer();
+		}
+		else {
+			restart();
 		}
 	}
 
