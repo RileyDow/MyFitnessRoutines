@@ -93,7 +93,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		displayNextMoveName();
 
-		displayRemaining();
+		displayTasksRemaining();
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayTask()");
 	}
@@ -101,6 +101,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	@Override
 	public void displayMove(Move move, boolean secondSide) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayMove()");
+
 		final TextView txtMoveName = findViewById(R.id.txtMoveName);
 		final ImageView imgMove = findViewById(R.id.imgMove);
 
@@ -128,10 +129,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		TextView txtTimer = findViewById(R.id.txtTimer);
 		if (txtTimer != null) {
-			long secondsRemaining = taskFragment.move1SecondsRemaining + taskFragment.move2SecondsRemaining;
-			if (secondsRemaining == 0) {
-				secondsRemaining = taskFragment.restSecondsRemaining;
-			}
+			int secondsRemaining = taskFragment.getSecondsRemaining();
 			String timeRemaining = String.format("%d:%02d", secondsRemaining / 60, secondsRemaining % 60);
 			Debug.d(Debug.TAG_TIME, timeRemaining);
 			txtTimer.setText(timeRemaining);
@@ -168,12 +166,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
-	private void displayRemaining() {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayRemaining()");
+	private void displayTasksRemaining() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTasksRemaining()");
 
 		final TextView txtRemaining = findViewById(R.id.txtRemaining);
 		if (txtRemaining != null) {
-			txtRemaining.setText(taskFragment.getRemaining());
+			txtRemaining.setText(taskFragment.getTasksRemaining());
 		}
 	}
 

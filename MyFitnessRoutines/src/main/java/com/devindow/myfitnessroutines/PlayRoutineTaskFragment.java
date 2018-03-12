@@ -54,8 +54,16 @@ public class PlayRoutineTaskFragment extends Fragment {
 		return routine.getTask(taskNum +1);
 	}
 
-	public String getRemaining() {
-		return routine.getRemainingString(taskNum);
+	public String getTasksRemaining() {
+		return routine.getTasksRemainingString(taskNum);
+	}
+
+	public int getSecondsRemaining() {
+		int secondsRemaining = move1SecondsRemaining + move2SecondsRemaining;
+		if (secondsRemaining == 0) {
+			secondsRemaining = restSecondsRemaining;
+		}
+		return secondsRemaining;
 	}
 
 
@@ -118,7 +126,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
 			if (move != null && move.twoSides) {
-				move1SecondsRemaining = move2SecondsRemaining = currentTask.moveSeconds / 2;
+				move2SecondsRemaining = currentTask.moveSeconds / 2;
+				move1SecondsRemaining = currentTask.moveSeconds - move2SecondsRemaining;
 			} else {
 				move1SecondsRemaining = currentTask.moveSeconds;
 				move2SecondsRemaining = 0;
@@ -130,11 +139,15 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void pause() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.pause()");
+
 		cancelTimer();
 		countDownTimer = null;
 	}
 
 	public void resume() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resume()");
+
 		if (move1SecondsRemaining > 0) {
 			runMove1Timer();
 		} else if (move2SecondsRemaining > 0) {
@@ -148,6 +161,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void next() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.next()");
+
 		cancelTimer();
 
 		if (taskNum <= routine.tasks.size()) {
@@ -167,6 +182,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void prev() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.prev()");
+
 		cancelTimer();
 
 		if (taskNum > 1) {
@@ -184,6 +201,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 	}
 
 	public void restart() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.restart()");
+
 		taskNum = 1; // Restart ended Routine
 		playRoutineActivity.displayTask(true);
 		resume();
@@ -191,6 +210,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runMove1Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
+
 		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
@@ -229,6 +249,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runMove2Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
+
 		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {
@@ -260,6 +281,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runRestTimer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
+
 		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
 			@Override
 			public void onTick(long millisRemaining) {

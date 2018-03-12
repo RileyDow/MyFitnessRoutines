@@ -38,6 +38,8 @@ public class SampleRoutines {
 		defaultRoutines.add(generateSoccerTouches());
 
 		if (Debug.on) {
+			defaultRoutines.add(generateTestRoutine());
+
 /*
 			defaultRoutines.add(generateStretchRoutine());
 
@@ -314,4 +316,14 @@ public class SampleRoutines {
 
 		return routine;
 	}
+
+	private static Routine generateTestRoutine() {
+		Routine routine = new Routine("Test Routine");
+
+		routine.tasks.add(new Task(MoveLibrary.KNEE_CROSS_OVER, 9, 3));
+		routine.tasks.add(new Task(MoveLibrary.HIP_OPEN, 9, 3));
+
+		return routine;
+	}
+
 }
