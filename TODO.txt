@@ -11,12 +11,12 @@ TODO
 
 ----------------------------------------------------------------------------------------------------
 
-- Poses
-  - Chair
-
 - Torso.Arc or Torso.midpoints ArrayList
 - Torso.profileHips & profileShoulders constructors
   - Poses
+
+- Poses
+  - Chair
 
 ----------------------------------------------------------------------------------------------------
 
