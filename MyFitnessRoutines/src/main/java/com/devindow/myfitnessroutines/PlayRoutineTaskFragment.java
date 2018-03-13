@@ -88,11 +88,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 		} else {
 			move = MoveLibrary.moves.get(currentTask.moveName);
 		}
-		playRoutineActivity.displayTask();
 
 		// need to set SecondsRemaining when showing first Task
 		resetSecondsRemaining();
-		playRoutineActivity.updateTimer(getSecondsRemaining());
+
+		playRoutineActivity.displayTask();
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
