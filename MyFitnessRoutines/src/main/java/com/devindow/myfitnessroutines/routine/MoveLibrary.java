@@ -30,6 +30,7 @@ public class MoveLibrary {
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String PRAYER = "Prayer";
 	public static final String ARMS_UP = "Arms Up";
+	public static final String BACK_BEND = "Back Bend";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String FAST_FEET = "Fast Feet";
 	public static final String HIGH_KNEES = "High Knees";
@@ -355,6 +356,20 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.S);
 
 			move.pose.rArm = new Arm(Angle.N);
+
+			moves.put(move.name, move);
+		}
+
+		// Back Bend
+		{
+			MoveWithPose move = new MoveWithPose(BACK_BEND, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Angle.N.add(10), true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.N.add(30));
 
 			moves.put(move.name, move);
 		}
@@ -1329,7 +1344,7 @@ public class MoveLibrary {
 			move.pose.torso.headX -= 5;
 			move.pose.torso.headY += 2;
 
-			move.pose.rArm = new Arm(Angle.S.add(15), Angle.S.add(30));
+			move.pose.rArm = new Arm(Angle.S.add(10), Angle.S.add(35));
 
 			moves.put(move.name, move);
 		}

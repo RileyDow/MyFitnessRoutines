@@ -111,8 +111,8 @@ public class SampleRoutines {
 
 		int breathSeconds = 5;
 		for (int i=1; i<=2; i++) { // 2 times
-			routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds, "Exhale"));
-			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, breathSeconds, "Inhale, reach up and back"));
+			routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds * 2, "Breathe"));
+			routine.tasks.add(new Task(MoveLibrary.BACK_BEND, breathSeconds, "Inhale, reach up and back"));
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step back to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, breathSeconds, "Retain, step back to plank"));
@@ -121,10 +121,10 @@ public class SampleRoutines {
 			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Breathe, Downward Dog"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step forward to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
-			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, breathSeconds, "Inhale, roll spine up and reach up and back"));
+			routine.tasks.add(new Task(MoveLibrary.BACK_BEND, breathSeconds, "Inhale, roll spine up, reach up and back"));
 		}
 
-		routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds, "Exhale. Namaste"));
+		routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds * 3, "Breathe. Namaste"));
 
 		return routine;
 	}

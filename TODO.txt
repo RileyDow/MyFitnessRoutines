@@ -1,9 +1,7 @@
 TODO
 ----
 
-* Sun Salutation
-  - Arms up
-
+- Poses
   - Chair
 
 * Step-Over translucency
