@@ -1829,7 +1829,7 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			Point from = move.ball.offset(-SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			Point from = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
 			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), from));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
@@ -1843,9 +1843,9 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			Point fromR = move.ball.offset(-SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			Point fromR = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
 			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), fromR));
-			Point fromL = move.ball.offset(SoccerMove.ballSize/2, -SoccerMove.ballSize/2);
+			Point fromL = move.ball.offset(SoccerMove.ballSize/2+4, -SoccerMove.ballSize/2-2);
 			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2)), fromL));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
