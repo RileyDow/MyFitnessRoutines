@@ -28,6 +28,15 @@ public class Point implements Serializable {
 
 
 	// Public Methods
+	public void shift(float dx, float dy) {
+		x += dx;
+		y += dy;
+	}
+
+	public Point clone() {
+		return new Point(x, y);
+	}
+
 	public Point offset(float x, float y) {
 		return new Point(this.x + x, this.y + y);
 	}
