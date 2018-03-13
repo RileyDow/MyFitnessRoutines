@@ -130,6 +130,7 @@ public class MoveLibrary {
 	public static final String SOCCER_HAT_DANCE_CIRCLE = "Hat Dance Circle";
 	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
 	public static final String CHATURANGA = "Chaturanga";
+	public static final String DAB = "Dab";
 
 
 	// Public Static Fields
@@ -165,6 +166,23 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(-2));
 			move.pose.lArm = new Arm(Angle.S.add(2));
+
+			moves.put(move.name, move);
+		}
+
+		// Dab
+		{
+			MoveWithPose move = new MoveWithPose(DAB, Category.NONE, "Dab it");
+			move.pose = new Pose();
+
+			Angle legAngle = Angle.S.add(3);
+			move.pose.lLeg = new Leg(legAngle);
+			move.pose.rLeg = new Leg(legAngle.mirror());
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			move.pose.rArm = new Arm(Angle.W.add(-2));
+			move.pose.lArm = new Arm(Angle.E.add(2), Angle.W.add(-15));
 
 			moves.put(move.name, move);
 		}

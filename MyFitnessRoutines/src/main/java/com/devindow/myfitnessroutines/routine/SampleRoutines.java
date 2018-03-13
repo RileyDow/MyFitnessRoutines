@@ -320,7 +320,7 @@ public class SampleRoutines {
 	private static Routine generateTestRoutine() {
 		Routine routine = new Routine("Test Routine");
 
-		routine.tasks.add(new Task(MoveLibrary.KNEE_CROSS_OVER, 5, 5));
+		routine.tasks.add(new Task(MoveLibrary.DAB, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.HIP_OPEN, 9, 5));
 
 		return routine;

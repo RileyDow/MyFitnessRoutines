@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyFitnessRoutines.iml" filepath="$PROJECT_DIR$/MyFitnessRoutines.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyFitnessRoutines/MyFitnessRoutines-MyFitnessRoutines.iml" filepath="$PROJECT_DIR$/MyFitnessRoutines/MyFitnessRoutines-MyFitnessRoutines.iml" />
+      <module fileurl="file://C:\Users\Riley\AndroidStudioProjects\MyFitnessRoutines\MyFitnessRoutines\MyFitnessRoutines-MyFitnessRoutines.iml" filepath="C:\Users\Riley\AndroidStudioProjects\MyFitnessRoutines\MyFitnessRoutines\MyFitnessRoutines-MyFitnessRoutines.iml" />
     </modules>
   </component>
 </project>
