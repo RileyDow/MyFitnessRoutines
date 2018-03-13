@@ -88,6 +88,7 @@ public class MoveLibrary {
 	public static final String PUSH_UPS = "Push-Ups";
 	public static final String HANDS_PLANK = "Hands Plank";
 	public static final String ELBOWS_PLANK = "Elbows Plank";
+	public static final String LUNGE = "Lunge";
 	public static final String COBRA = "Cobra";
 	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
 	public static final String SIDE_PLANK = "Side Plank";
@@ -1284,18 +1285,19 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Cobra
+		// Lunge
 		{
-			MoveWithPose move = new MoveWithPose(COBRA, Category.YOGA);
+			MoveWithPose move = new MoveWithPose(LUNGE, Category.YOGA);
 			move.pose = new Pose();
 
-			Angle angle = new Angle(5);
+			move.pose.lLeg = new Leg(Angle.W.add(30), Angle.W.add(3));
+			move.pose.rLeg = new Leg(Angle.E.add(25), Angle.S.add(-15));
 
-			move.pose.rLeg = new Leg(angle.opposite());
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E.add(43), true);
+			move.pose.torso.headX -= 5;
+			move.pose.torso.headY += 4;
 
-			move.pose.rArm = new Arm(Angle.W.add(-25), Angle.S);
-
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+			move.pose.rArm = new Arm(Angle.S.add(10));
 
 			moves.put(move.name, move);
 		}
@@ -1309,9 +1311,25 @@ public class MoveLibrary {
 
 			move.pose.rLeg = new Leg(angle.opposite());
 
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+
 			move.pose.rArm = new Arm(Angle.W.add(-25), Angle.S);
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+			moves.put(move.name, move);
+		}
+
+		// Cobra
+		{
+			MoveWithPose move = new MoveWithPose(COBRA, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.W.add(3));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E.add(50), true);
+			move.pose.torso.headX -= 5;
+			move.pose.torso.headY += 2;
+
+			move.pose.rArm = new Arm(Angle.S.add(15), Angle.S.add(30));
 
 			moves.put(move.name, move);
 		}

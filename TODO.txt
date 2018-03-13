@@ -2,30 +2,30 @@ TODO
 ----
 
 * Sun Salutation
-  - Lunge
-  - Chaturanga
-  - Cobra
-  - Chair
   - Arms up
+
+  - Chair
 
 * Step-Over translucency
 - Torso.Arc or Torso.midpoints ArrayList
 - Torso.profileHips & profileShoulders constructors
   - Poses
 
-* Repeat routine? Hit Play?  instructions
+- Text-to-Speech
+  - https://android-developers.googleblog.com/2009/09/introduction-to-text-to-speech-in.html
 
 * Sound or recording for next move based on Category.  (Beep is good for switch sides.)
   - "Switch"
   - "Ching......"
   - "Meh Meh Mehhhhhh"
 
+----------------------------------------------------------------------------------------------------
+
 * App Store
   - Paid app for adding new Routine?
   - Paid & Free versions
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
     - Multiple free apps and consolidated paid app?  My Yoga, My Agility Ladder, My Soccer Touches
-
 
 ----------------------------------------------------------------------------------------------------
 
@@ -47,7 +47,6 @@ TODO
     - Derive a class from Application that overrides onCreate() calling super.onCreate().
 
 - Headset
-  - Text-to-Speech
     - Bluetooth Headset button pauses?
   - Notifications?
 

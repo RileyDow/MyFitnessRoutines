@@ -109,22 +109,22 @@ public class SampleRoutines {
 	private static Routine generateSunSalutation() {
 		Routine routine = new Routine("Sun Salutation", Category.YOGA, "Yoga warmup of folding & unfolding along with your breath");
 
-		int poseSeconds = 5;
+		int breathSeconds = 5;
 		for (int i=1; i<=2; i++) { // 2 times
-			routine.tasks.add(new Task(MoveLibrary.PRAYER, poseSeconds, "Exhale"));
-			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, poseSeconds, "Inhale, reach up and back"));
-			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));
-			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step back to lunge"));
-			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, poseSeconds, "Exhale, step back to plank"));
-			routine.tasks.add(new Task(MoveLibrary.CHATURANGA, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
-			routine.tasks.add(new Task(MoveLibrary.COBRA, poseSeconds, "Inhale, Chaturanga parallel to ground then up to Cobra"));
-			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, poseSeconds, "Exhale, Downward Dog"));
-			routine.tasks.add(new Task(MoveLibrary.LUNGES, poseSeconds, "Inhale, step forward to lunge"));
-			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, poseSeconds, "Exhale, fold forward"));
-			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, poseSeconds, "Inhale, roll spine up and reach up and back"));
+			routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds, "Exhale"));
+			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, breathSeconds, "Inhale, reach up and back"));
+			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
+			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step back to lunge"));
+			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, breathSeconds, "Retain, step back to plank"));
+			routine.tasks.add(new Task(MoveLibrary.CHATURANGA, breathSeconds, "Exhale, Chaturanga parallel to ground"));
+			routine.tasks.add(new Task(MoveLibrary.COBRA, breathSeconds, "Inhale, up to Cobra"));
+			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Breathe, Downward Dog"));
+			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step forward to lunge"));
+			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
+			routine.tasks.add(new Task(MoveLibrary.ARMS_UP, breathSeconds, "Inhale, roll spine up and reach up and back"));
 		}
 
-		routine.tasks.add(new Task(MoveLibrary.PRAYER, poseSeconds, "Exhale. Namaste"));
+		routine.tasks.add(new Task(MoveLibrary.PRAYER, breathSeconds, "Exhale. Namaste"));
 
 		return routine;
 	}
