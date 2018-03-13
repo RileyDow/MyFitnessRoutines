@@ -28,6 +28,9 @@ public class MoveLibrary {
 	public static final String ROMAN_LUNGES = "Roman Lunges";
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
+	public static final String PRAYER = "Prayer";
+	public static final String ARMS_UP = "Arms Up";
+	public static final String BACK_BEND = "Back Bend";
 	public static final String BEHIND_THE_BACK_GRAB = "Behind the Back Grab";
 	public static final String FAST_FEET = "Fast Feet";
 	public static final String HIGH_KNEES = "High Knees";
@@ -74,7 +77,7 @@ public class MoveLibrary {
 	public static final String HIP_OPEN = "Hip Open";
 	public static final String RECLINED_COBBLER_POSE = "Reclined Cobbler Pose";
 	// Bending Poses
-	public static final String TOUCH_TOES = "SoccerTouch Toes";
+	public static final String TOUCH_TOES = "Touch Toes";
 	public static final String DOWN_DOG = "Down Dog";
 	public static final String DOWN_DOG_ALTERNATING_CALVES = "Down Dog Alternating Calves";
 	public static final String INCH_WORMS = "Inch Worms";
@@ -84,7 +87,10 @@ public class MoveLibrary {
 	public static final String CAT_POSE = "Cat Pose";
 	public static final String CHILD_POSE = "Child Pose";
 	public static final String PUSH_UPS = "Push-Ups";
-	public static final String PLANK = "Plank";
+	public static final String HANDS_PLANK = "Hands Plank";
+	public static final String ELBOWS_PLANK = "Elbows Plank";
+	public static final String LUNGE = "Lunge";
+	public static final String COBRA = "Cobra";
 	public static final String PUSH_UP_ROTATE = "Push-Up & Rotate";
 	public static final String SIDE_PLANK = "Side Plank";
 	public static final String FOAM_ROLLER = "Foam Roller";
@@ -122,6 +128,7 @@ public class MoveLibrary {
 	public static final String SOCCER_HAT_DANCE = "Hat Dance";
 	public static final String SOCCER_HAT_DANCE_CIRCLE = "Hat Dance Circle";
 	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
+	public static final String CHATURANGA = "Chaturanga";
 
 
 	// Public Static Fields
@@ -191,10 +198,10 @@ public class MoveLibrary {
 
 			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
 
-			Angle armProximalAngle = Angle.W.add(-30);
-			Angle armDistalAngle = Angle.N.add(10);
-			move.pose.rArm = new Arm(armProximalAngle, armDistalAngle);
-			move.pose.lArm = new Arm(Angle.S.add(45), Angle.S.add(-45));
+			Angle armProximalAngle = Angle.E.add(30);
+			Angle armDistalAngle = Angle.N.add(-10);
+			move.pose.lArm = new Arm(armProximalAngle, armDistalAngle);
+			move.pose.rArm = new Arm(Angle.S.add(-45), Angle.S.add(45));
 
 			moves.put(move.name, move);
 		}
@@ -228,11 +235,11 @@ public class MoveLibrary {
 			move.pose.lLeg = new Leg(legAngle);
 			move.pose.rLeg = new Leg(legAngle.mirror());
 
-			int torsoAngle = 15;
+			int torsoAngle = -15;
 			move.pose.torso = new Torso(Angle.N.add(torsoAngle));
 
-			move.pose.lArm = new Arm(Angle.N.add(torsoAngle-5), Angle.N.add(torsoAngle+25));
-			move.pose.rArm = new Arm(Angle.S.add(torsoAngle-45), Angle.S.add(torsoAngle+45));
+			move.pose.rArm = new Arm(Angle.N.add(torsoAngle+5), Angle.N.add(torsoAngle-5));
+			move.pose.lArm = new Arm(Angle.S.add(torsoAngle+45), Angle.S.add(torsoAngle-45));
 
 			moves.put(move.name, move);
 		}
@@ -296,12 +303,12 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true);
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S.add(5));
-			move.pose.lLeg = new Leg(Angle.S.add(45), Angle.S.add(55));
+			move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S.add(-5));
+			move.pose.rLeg = new Leg(Angle.S.add(-45), Angle.S.add(-55));
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2);
 
-			move.pose.lArm = new Arm(Angle.E);
 			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E);
 
 			moves.put(move.name, move);
 		}
@@ -320,6 +327,49 @@ public class MoveLibrary {
 
 			move.pose.lArm = new Arm(Angle.E.add(7));
 			move.pose.rArm = new Arm(Angle.E.add(-8));
+
+			moves.put(move.name, move);
+		}
+
+		// Prayer
+		{
+			MoveWithPose move = new MoveWithPose(PRAYER, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
+			move.pose.lArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
+
+			moves.put(move.name, move);
+		}
+
+		// Arms Up
+		{
+			MoveWithPose move = new MoveWithPose(ARMS_UP, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.N);
+
+			moves.put(move.name, move);
+		}
+
+		// Back Bend
+		{
+			MoveWithPose move = new MoveWithPose(BACK_BEND, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Angle.N.add(10), true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.N.add(30));
 
 			moves.put(move.name, move);
 		}
@@ -429,14 +479,14 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Leg straight back then knee up, repeat.");
 			move.pose = new Pose();
 
-			move.pose.lLeg = new Leg(Angle.S.add(-15), Angle.S.add(15));
+			move.pose.rLeg = new Leg(Angle.S.add(15), Angle.S.add(-15));
 
-			move.pose.rLeg = new Leg(Angle.E.add(-5), Angle.E.add(5));
+			move.pose.lLeg = new Leg(Angle.W.add(5), Angle.W.add(-5));
 
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E, true);
 
-			move.pose.lArm = new Arm(Angle.W.add(20), Angle.W.add(-10));
-			move.pose.rArm = new Arm(Angle.E.add(20), Angle.E.add(-10));
+			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E.add(10));
+			move.pose.lArm = new Arm(Angle.W.add(-20), Angle.W.add(10));
 
 			moves.put(move.name, move);
 		}
@@ -962,8 +1012,8 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
+			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
@@ -980,8 +1030,8 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
-			//move.pose.rLeg = new Leg(Angle.W.add(15), Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
+			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
@@ -998,14 +1048,14 @@ public class MoveLibrary {
 			move.pose = new Pose();
 			move.pose.centerExtents = false;
 
-			move.pose.rLeg = new Leg(Angle.S);
-			move.pose.lLeg = new Leg(Angle.W.add(-10), Angle.S.add(10));
+			move.pose.lLeg = new Leg(Angle.S);
+			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
 
 			move.pose.torso = new Torso(waistY);
 			move.pose.torso.mat = true;
 
-			move.pose.rArm = new Arm(Angle.W.add(55));
-			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+			move.pose.lArm = new Arm(Angle.E.add(-55));
 
 			moves.put(move.name, move);
 		}
@@ -1214,9 +1264,29 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
-		// Plank
+		// Hands Plank
 		{
-			MoveWithPose move = new MoveWithPose(PLANK, Category.STRENGTH);
+			MoveWithPose move = new MoveWithPose(HANDS_PLANK, Category.STRENGTH);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(25);
+
+			move.pose.rLeg = new Leg(angle.opposite());
+
+			move.pose.rArm = new Arm(Angle.S.add(15));
+
+			move.pose.torso = new Torso(
+					move.pose.rLeg.getHeight() + Leg.thickness / 2,
+					//new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
+					angle,
+					true);
+
+			moves.put(move.name, move);
+		}
+
+		// Elbows Plank
+		{
+			MoveWithPose move = new MoveWithPose(ELBOWS_PLANK, Category.STRENGTH);
 			move.pose = new Pose();
 
 			Angle angle = new Angle(12);
@@ -1226,6 +1296,55 @@ public class MoveLibrary {
 			move.pose.rArm = new Arm(Angle.S.add(15), Angle.E);
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+
+			moves.put(move.name, move);
+		}
+
+		// Lunge
+		{
+			MoveWithPose move = new MoveWithPose(LUNGE, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.W.add(30), Angle.W.add(3));
+			move.pose.rLeg = new Leg(Angle.E.add(25), Angle.S.add(-15));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E.add(43), true);
+			move.pose.torso.headX -= 5;
+			move.pose.torso.headY += 4;
+
+			move.pose.rArm = new Arm(Angle.S.add(10));
+
+			moves.put(move.name, move);
+		}
+
+		// Chaturanga
+		{
+			MoveWithPose move = new MoveWithPose(CHATURANGA, Category.YOGA);
+			move.pose = new Pose();
+
+			Angle angle = new Angle(5);
+
+			move.pose.rLeg = new Leg(angle.opposite());
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, angle, true);
+
+			move.pose.rArm = new Arm(Angle.W.add(-25), Angle.S);
+
+			moves.put(move.name, move);
+		}
+
+		// Cobra
+		{
+			MoveWithPose move = new MoveWithPose(COBRA, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.W.add(15), Angle.W.add(3));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E.add(50), true);
+			move.pose.torso.headX -= 5;
+			move.pose.torso.headY += 2;
+
+			move.pose.rArm = new Arm(Angle.S.add(10), Angle.S.add(35));
 
 			moves.put(move.name, move);
 		}
@@ -1681,7 +1800,7 @@ public class MoveLibrary {
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y))));
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y)), toe));
 
 			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
 
@@ -1710,7 +1829,8 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
+			Point from = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), from));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
 
@@ -1723,8 +1843,10 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 14);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2))));
-			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2))));
+			Point fromR = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
+			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), fromR));
+			Point fromL = move.ball.offset(SoccerMove.ballSize/2+4, -SoccerMove.ballSize/2-2);
+			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2)), fromL));
 
 			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
 

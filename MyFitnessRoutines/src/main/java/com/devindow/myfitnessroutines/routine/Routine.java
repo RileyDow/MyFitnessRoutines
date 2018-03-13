@@ -37,7 +37,7 @@ public class Routine implements Serializable {
 		return minutes + " min";
 	}
 
-	public String getRemainingString(int taskNum) {
+	public String getTasksRemainingString(int taskNum) {
 		if (taskNum >= tasks.size()) {
 			return "";
 		}

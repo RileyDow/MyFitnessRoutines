@@ -18,10 +18,10 @@ public class Colors {
 	public static final int bodyTrans = Colors.generate(.8f, 0,0, 0);
 
 	public static final int leftOpaque = Colors.generate(0,1, 0);
-	public static final int leftTrans = Colors.generate(.5f, 0,1, 0);
+	public static final int leftTrans = Colors.generate(.3f, 0,1, 0);
 
 	public static final int rightOpaque = Colors.generate(1,0, 0);
-	public static final int rightTrans = Colors.generate(.5f, 1,0, 0);
+	public static final int rightTrans = Colors.generate(.3f, 1,0, 0);
 
 
 	// Static Methods
