@@ -1,14 +1,6 @@
 TODO
 ----
 
-- Poses
-  - Chair
-
-* Step-Over translucency
-- Torso.Arc or Torso.midpoints ArrayList
-- Torso.profileHips & profileShoulders constructors
-  - Poses
-
 - Text-to-Speech
   - https://android-developers.googleblog.com/2009/09/introduction-to-text-to-speech-in.html
 
@@ -16,6 +8,15 @@ TODO
   - "Switch"
   - "Ching......"
   - "Meh Meh Mehhhhhh"
+
+----------------------------------------------------------------------------------------------------
+
+- Poses
+  - Chair
+
+- Torso.Arc or Torso.midpoints ArrayList
+- Torso.profileHips & profileShoulders constructors
+  - Poses
 
 ----------------------------------------------------------------------------------------------------
 
