@@ -68,7 +68,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 		Task currentTask = taskFragment.getCurrentTask();
 		if (currentTask == null) { // Finished, so show DONE & kill timer
-			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			taskFragment.pause();
 			updatePlayButton();
 		} else {
@@ -117,7 +116,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void updateTimer(int secondsRemaining) {
+	public void updateTimer(int secondsRemaining) { // pass in secondsRemaining because otherwise it would show Rest Time instead of 0 at the end of Move
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
 
 		TextView txtTimer = findViewById(R.id.txtTimer);
