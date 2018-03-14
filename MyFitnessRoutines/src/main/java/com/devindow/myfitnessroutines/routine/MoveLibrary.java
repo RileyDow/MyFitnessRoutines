@@ -1201,12 +1201,12 @@ public class MoveLibrary {
 
 		// Cat Pose
 		{
-			MoveWithPose move = new MoveWithPose(CAT_POSE, Category.STRETCH);
+			MoveWithPose move = new MoveWithPose(CAT_POSE, Category.STRETCH, "Arch back, then bow back");
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.W);
+			move.pose.rLeg = new Leg(Angle.S.add(-10), Angle.W);
 
-			move.pose.rArm = new Arm(Angle.S.add(8), .9f);
+			move.pose.rArm = new Arm(Angle.S.add(2), .84f);
 
 			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness/2,
@@ -1214,9 +1214,11 @@ public class MoveLibrary {
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
 					true);
 			move.pose.torso.points = new ArrayList<>();
-			move.pose.torso.points.add(move.pose.torso.waist.offset(7, 5));
-			move.pose.torso.points.add(move.pose.torso.collar.offset(-5, 2));
-			move.pose.torso.head.shift(-3, -10);
+			move.pose.torso.points.add(move.pose.torso.waist.offset(7, 3.5f));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(9, 4));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(12, 5));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(16, 4));
+			move.pose.torso.head.shift(-4, -9);
 
 			moves.put(move.name, move);
 		}
