@@ -46,8 +46,6 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 				int result = speech.setLanguage(Locale.US);
 				if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
 					Debug.e(Debug.TAG_ERROR, "This Language is not supported");
-				} else {
-					speech.speak("Text to say aloud", TextToSpeech.QUEUE_ADD, null);
 				}
 			}
 		});

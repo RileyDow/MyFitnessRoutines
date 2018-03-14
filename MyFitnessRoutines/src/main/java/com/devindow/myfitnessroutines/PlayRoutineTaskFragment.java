@@ -122,6 +122,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		if (playRoutineActivity != null) {
 			playRoutineActivity.displayTask();
+			playRoutineActivity.speak(move.name);
 		}
 	}
 
@@ -234,7 +235,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 			@Override
 			public void onFinish() {
 				Debug.d(Debug.TAG_TIME, "Move1Timer onFinish()");
-				playChime();
 
 				// second side
 				if (move2SecondsRemaining > 0) {
@@ -250,6 +250,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove();
+						playRoutineActivity.speak("rest");
 					}
 					runRestTimer();
 
@@ -279,7 +280,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 			@Override
 			public void onFinish() {
 				Debug.d(Debug.TAG_TIME, "Move2Timer onFinish()");
-				playChime();
 
 				// rest
 				if (restSecondsRemaining > 0) {
@@ -287,6 +287,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove();
+						playRoutineActivity.speak("rest");
 					}
 					runRestTimer();
 
@@ -316,7 +317,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 			@Override
 			public void onFinish() {
 				Debug.d(Debug.TAG_TIME, "RestTimer onFinish()");
-				playChime();
 
 				next();
 			}
