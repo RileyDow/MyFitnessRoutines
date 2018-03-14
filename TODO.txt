@@ -4,14 +4,6 @@ TODO
 ** BUG: kill Timer when back to MainActivity
   - https://medium.com/@JoseAlcerreca/the-android-lifecycle-cheat-sheet-part-iii-fragments-afc87d4f37fd
 
-- Text-to-Speech
-  - https://android-developers.googleblog.com/2009/09/introduction-to-text-to-speech-in.html
-
-* Sound or recording for next move based on Category.  (Beep is good for switch sides.)
-  - "Switch"
-  - "Ching......"
-  - "Meh Meh Mehhhhhh"
-
 ----------------------------------------------------------------------------------------------------
 
 - Torso.profileHips & profileShoulders constructors

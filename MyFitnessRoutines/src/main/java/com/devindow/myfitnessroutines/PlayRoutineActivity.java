@@ -27,6 +27,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	// Private Fields
 	private PlayRoutineTaskFragment taskFragment;
 	private TextToSpeech speech;
+	private boolean speechInitialized = false;
+	private String textToSpeak;
 
 
 	// Lifecycle Overrides
@@ -39,6 +41,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		speech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
 			@Override
 			public void onInit(int status) {
+				Debug.d(Debug.TAG_ENTER, "TextToSpeech.onInit()");
 				if (status != TextToSpeech.SUCCESS) {
 					Debug.e(Debug.TAG_ERROR, "TTS Initialization Failed");
 					return;
@@ -47,6 +50,12 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 				if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
 					Debug.e(Debug.TAG_ERROR, "This Language is not supported");
 				}
+				speechInitialized = true;
+				if (textToSpeak != null) {
+					speech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
+					textToSpeak = null;
+				}
+				Debug.d(Debug.TAG_EXIT, "TextToSpeech.onInit()");
 			}
 		});
 
@@ -165,7 +174,14 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	@Override
 	public void speak(String text) {
-		speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.speak()");
+
+		if (speechInitialized) {
+			speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+			textToSpeak = null;
+		} else {
+			textToSpeak = text;
+		}
 	}
 
 
