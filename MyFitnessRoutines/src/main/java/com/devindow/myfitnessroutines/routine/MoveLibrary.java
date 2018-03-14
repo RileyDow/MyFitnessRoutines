@@ -131,6 +131,7 @@ public class MoveLibrary {
 	public static final String SOCCER_2_TOUCHES_THEN_ACROSS = "2 touches then across";
 	public static final String CHATURANGA = "Chaturanga";
 	public static final String DAB = "Dab";
+	public static final String SITTING_SPLITS = "Sitting Splits";
 
 
 	// Public Static Fields
@@ -166,6 +167,22 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S.add(-2));
 			move.pose.lArm = new Arm(Angle.S.add(2));
+
+			moves.put(move.name, move);
+		}
+
+		// Sitting Splits
+		{
+			MoveWithPose move = new MoveWithPose(SITTING_SPLITS, Category.STRETCH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.W);
+			move.pose.lLeg = new Leg(Angle.E);
+
+			move.pose.torso = new Torso(Leg.thickness/2);
+
+			move.pose.rArm = new Arm(Angle.W, Angle.N);
+			move.pose.lArm = new Arm(Angle.E, Angle.N);
 
 			moves.put(move.name, move);
 		}

@@ -16,6 +16,20 @@ public class SampleRoutines {
 
 		ArrayList<Routine> defaultRoutines = new ArrayList<>();
 
+		if (Debug.on) {
+			defaultRoutines.add(generateTestRoutine());
+
+/*
+			defaultRoutines.add(generateStretchRoutine());
+
+			defaultRoutines.add(generateLiftRoutine());
+
+			defaultRoutines.add(generateCardioRoutine());
+
+			defaultRoutines.add(generateRileyRoutine());
+*/
+		}
+
 		defaultRoutines.add(generate7MinuteWorkout());
 
 		defaultRoutines.add(generateMorningYogaRoutine());
@@ -36,20 +50,6 @@ public class SampleRoutines {
 
 		defaultRoutines.add(generateLadderDrills());
 		defaultRoutines.add(generateSoccerTouches());
-
-		if (Debug.on) {
-			defaultRoutines.add(generateTestRoutine());
-
-/*
-			defaultRoutines.add(generateStretchRoutine());
-
-			defaultRoutines.add(generateLiftRoutine());
-
-			defaultRoutines.add(generateCardioRoutine());
-
-			defaultRoutines.add(generateRileyRoutine());
-*/
-		}
 
 		return defaultRoutines;
 	}
@@ -320,6 +320,7 @@ public class SampleRoutines {
 	private static Routine generateTestRoutine() {
 		Routine routine = new Routine("Test Routine");
 
+		routine.tasks.add(new Task(MoveLibrary.SITTING_SPLITS, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.DAB, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.HIP_OPEN, 9, 5));
 
