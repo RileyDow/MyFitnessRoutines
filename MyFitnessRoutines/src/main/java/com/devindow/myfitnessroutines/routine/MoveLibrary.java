@@ -132,6 +132,7 @@ public class MoveLibrary {
 	public static final String CHATURANGA = "Chaturanga";
 	public static final String DAB = "Dab";
 	public static final String SITTING_SPLITS = "Sitting Splits";
+	public static final String RUNNER_SPLITS = "Runner Splits";
 
 
 	// Public Static Fields
@@ -390,6 +391,21 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(true);
 
 			move.pose.rLeg = new Leg(Angle.S);
+
+			move.pose.rArm = new Arm(Angle.N);
+
+			moves.put(move.name, move);
+		}
+
+		// Runner Splits
+		{
+			MoveWithPose move = new MoveWithPose(RUNNER_SPLITS, Category.STRETCH);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(Leg.thickness/2,true);
+
+			move.pose.rLeg = new Leg(Angle.W);
+			move.pose.lLeg = new Leg(Angle.E);
 
 			move.pose.rArm = new Arm(Angle.N);
 
