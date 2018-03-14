@@ -29,7 +29,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	private TextToSpeech speech;
 
 
-	// Methods
+	// Lifecycle Overrides
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
@@ -86,6 +86,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		speech.shutdown();
 	}
 
+
+	// PlayRoutineCallbacks implementation
 	@Override
 	public void displayTask() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTask()");
@@ -154,6 +156,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+	@Override
 	public void clearInstructions() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearInstructions()");
 		final TextView txtInstructions = findViewById(R.id.txtInstructions);
@@ -162,6 +165,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+	@Override
+	public void speak(String text) {
+		speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+	}
+
+
+	// Private Methods
 	private void clearNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextTask = findViewById(R.id.txtNextTask);
@@ -205,6 +215,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+
+	// Event Handlers
 	public void onScreenClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onScreenClick()");
 

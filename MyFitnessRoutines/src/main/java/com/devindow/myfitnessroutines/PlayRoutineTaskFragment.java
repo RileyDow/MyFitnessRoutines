@@ -26,6 +26,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		void displayMove();
 		void updateTimer(int secondsRemaining);
 		void clearInstructions();
+		void speak(String text);
 	}
 
 
@@ -217,7 +218,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runMove1Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
-		playRoutineActivity.updateTimer(move1SecondsRemaining + move2SecondsRemaining);
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(move1SecondsRemaining + move2SecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
@@ -236,6 +239,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 				// second side
 				if (move2SecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
+						playRoutineActivity.speak("switch");
 						playRoutineActivity.displayMove();
 					}
 					runMove2Timer();
@@ -259,7 +263,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runMove2Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
-		playRoutineActivity.updateTimer(move2SecondsRemaining);
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(move2SecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
 			@Override
@@ -294,7 +300,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runRestTimer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
-		playRoutineActivity.updateTimer(restSecondsRemaining);
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(restSecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
 			@Override
