@@ -3,6 +3,7 @@ package com.devindow.myfitnessroutines;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.devindow.myfitnessroutines.pose.MoveWithPose;
 import com.devindow.myfitnessroutines.routine.*;
 import com.devindow.myfitnessroutines.util.Debug;
 
+import java.util.Locale;
+
 public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 
 	// Constants
@@ -23,6 +26,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	// Private Fields
 	private PlayRoutineTaskFragment taskFragment;
+	private TextToSpeech speech;
 
 
 	// Methods
@@ -31,6 +35,22 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
+
+		speech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+			@Override
+			public void onInit(int status) {
+				if (status != TextToSpeech.SUCCESS) {
+					Debug.e(Debug.TAG_ERROR, "TTS Initialization Failed");
+					return;
+				}
+				int result = speech.setLanguage(Locale.US);
+				if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+					Debug.e(Debug.TAG_ERROR, "This Language is not supported");
+				} else {
+					speech.speak("Text to say aloud", TextToSpeech.QUEUE_ADD, null);
+				}
+			}
+		});
 
 		// keep Screen ON
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -57,6 +77,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		updatePlayButton();
 
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
+	}
+
+	@Override protected void onDestroy() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onDestroy()");
+		super.onDestroy();
+
+		speech.shutdown();
 	}
 
 	@Override
