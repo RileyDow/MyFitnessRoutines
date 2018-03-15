@@ -148,7 +148,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		if (playRoutineActivity != null) {
 			playRoutineActivity.displayTask();
-			playRoutineActivity.speak(move.name);
+			playRoutineActivity.speak(move.name + ". " + getInstructions());
 		}
 	}
 

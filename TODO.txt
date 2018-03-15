@@ -2,8 +2,7 @@ TODO
 ----
 
 * Speak Instructions?
-  - Fragment.setMove()
-    - speak(move.name, currentTask.instruction or move.description)
+  - Should be optional
 
 ----------------------------------------------------------------------------------------------------
 
