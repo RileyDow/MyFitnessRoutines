@@ -9,10 +9,14 @@ import java.io.Serializable;
 public class Angle implements Serializable {
 
 	// Constants
-	public static final Angle N = new Angle(90);
-	public static final Angle S = new Angle(-90);
 	public static final Angle E = new Angle(0);
+	public static final Angle NE = E.add(45);
+	public static final Angle N = new Angle(90);
+	public static final Angle NW = N.add(45);
 	public static final Angle W = new Angle(180);
+	public static final Angle SW = W.add(45);
+	public static final Angle S = new Angle(270);
+	public static final Angle SE = S.add(45);
 
 
 	// Public Fields

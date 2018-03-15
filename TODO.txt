@@ -1,13 +1,12 @@
 TODO
 ----
 
-* Speak Instructions?
-  - Should be optional
+* Speak Instructions should be optional
 
 ----------------------------------------------------------------------------------------------------
 
 - Torso.profileHips & profileShoulders constructors
-  - Poses
+  - Twisted Poses should use this
 
 - Poses
   - Chair
