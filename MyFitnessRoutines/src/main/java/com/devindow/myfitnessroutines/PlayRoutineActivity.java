@@ -102,22 +102,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		clearInstructions();
 		clearNextMoveName();
 
-		Task currentTask = taskFragment.getCurrentTask();
-		if (currentTask == null) { // Finished, so show DONE & kill timer
-			taskFragment.pause();
-			updatePlayButton();
-		} else {
-			final TextView txtInstructions = findViewById(R.id.txtInstructions);
-			if (!currentTask.instructions.isEmpty()) {
-				txtInstructions.setText(currentTask.instructions);
-			} else if (taskFragment.move != null) {
-				txtInstructions.setText(taskFragment.move.description);
-			}
-		}
-
-		updateTimer(taskFragment.getSecondsRemaining());
+		displayInstructions();
 
 		displayMove();
+
+		updatePlayButton(); // taskFragment.next() might have reached DONE and paused it
+
+		updateTimer(taskFragment.getSecondsRemaining());
 
 		displayNextMoveName();
 
@@ -186,6 +177,15 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 
 	// Private Methods
+	private void displayInstructions() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayInstructions()");
+
+		final TextView txtInstructions = findViewById(R.id.txtInstructions);
+		if (txtInstructions != null) {
+			txtInstructions.setText(taskFragment.getInstructions());
+		}
+	}
+
 	private void clearNextMoveName() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearNextMoveName()");
 		final TextView txtNextTask = findViewById(R.id.txtNextTask);

@@ -51,6 +51,19 @@ public class PlayRoutineTaskFragment extends Fragment {
 		return routine.getTask(taskNum);
 	}
 
+	public String getInstructions() {
+		Task currentTask = getCurrentTask();
+		if (currentTask != null && !currentTask.instructions.isEmpty()) {
+			return currentTask.instructions;
+		}
+
+		if (move != null) {
+			return move.description;
+		}
+
+		return "";
+	}
+
 	public Task getNextTask() {
 		return routine.getTask(taskNum+1);
 	}
@@ -128,12 +141,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (currentTask == null) {
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			pause();
-			return;
+		} else {
+			move = MoveLibrary.moves.get(currentTask.moveName);
+			resetSecondsRemaining();
 		}
-
-		move = MoveLibrary.moves.get(currentTask.moveName);
-
-		resetSecondsRemaining();
 
 		if (playRoutineActivity != null) {
 			playRoutineActivity.displayTask();
