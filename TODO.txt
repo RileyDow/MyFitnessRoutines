@@ -1,8 +1,9 @@
 TODO
 ----
 
-** BUG: kill Timer when back to MainActivity
-  - https://medium.com/@JoseAlcerreca/the-android-lifecycle-cheat-sheet-part-iii-fragments-afc87d4f37fd
+* Speak Instructions?
+  - Fragment.setMove()
+    - speak(move.name, currentTask.instruction or move.description)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -15,6 +16,7 @@ TODO
 ----------------------------------------------------------------------------------------------------
 
 * App Store
+  - Free version only has "7 min" and can see other Routines and direct user to paid.
   - Paid app for adding new Routine?
   - Paid & Free versions
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously

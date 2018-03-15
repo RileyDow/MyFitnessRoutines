@@ -74,6 +74,18 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// Fragment Class Overrides
 	@Override
+	public void onAttach(Activity activity) {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
+		super.onAttach(activity);
+
+		// set playRoutineActivity to Activity
+		playRoutineActivity = (PlayRoutineCallbacks)activity;
+
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
+	}
+
+	// TaskFragment.onCreate() happens after TaskFragment.onAttach()
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
 		super.onCreate(savedInstanceState);
@@ -86,17 +98,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
 	}
 
-	@Override
-	public void onAttach(Activity activity) {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
-		super.onAttach(activity);
-
-		// set playRoutineActivity to Activity
-		playRoutineActivity = (PlayRoutineCallbacks)activity;
-
-		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
-	}
-
+	// TaskFragment.onDetach() happens on BACK or when ROTATED.
 	@Override
 	public void onDetach() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
@@ -108,15 +110,28 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
 	}
 
+	// TaskFragment.onDestroy() only happens for Retained Fragment when BACK is hit, not when ROTATED.
+	@Override
+	public void onDestroy() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDestroy()");
+		super.onDestroy();
+
+		// kill the timer
+		pause();
+
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDestroy()");
+	}
 
 	// Public Methods
 	public void setMove() {
 		Task currentTask = getCurrentTask();
 		if (currentTask == null) {
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
-		} else {
-			move = MoveLibrary.moves.get(currentTask.moveName);
+			pause();
+			return;
 		}
+
+		move = MoveLibrary.moves.get(currentTask.moveName);
 
 		resetSecondsRemaining();
 
@@ -159,8 +174,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 		countDownTimer = null;
 	}
 
-	public void resume() {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resume()");
+	public void play() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.play()");
 
 		if (move1SecondsRemaining > 0) {
 			runMove1Timer();
@@ -188,7 +203,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// If timer was running then run.
 		if (!isPaused()) {
-			resume();
+			play();
 		}
 	}
 
@@ -204,7 +219,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		// If timer was running then run.
 		if (!isPaused()) {
-			resume();
+			play();
 		}
 	}
 
@@ -214,7 +229,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		taskNum = 1; // Restart ended Routine
 		setMove();
 
-		resume();
+		play();
 	}
 
 	public void runMove1Timer() {

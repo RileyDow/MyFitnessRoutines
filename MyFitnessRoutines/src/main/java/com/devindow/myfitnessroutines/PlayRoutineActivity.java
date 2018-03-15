@@ -249,7 +249,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		if (!taskFragment.isPaused()) {
 			taskFragment.pause();
 		} else {
-			taskFragment.resume();
+			taskFragment.play();
 		}
 
 		updatePlayButton();
