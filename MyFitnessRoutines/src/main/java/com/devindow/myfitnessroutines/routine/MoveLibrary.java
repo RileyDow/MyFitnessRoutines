@@ -38,6 +38,7 @@ public class MoveLibrary {
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
 	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String WARRIOR_1 = "Warrior 1";
 	public static final String WARRIOR_3 = "Warrior 3";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
@@ -301,7 +302,7 @@ public class MoveLibrary {
 
 		// Warrior 2
 		{
-			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true, "Gaze over front fingertips");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S.add(-5));
@@ -471,19 +472,32 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Warrior 1
+		{
+			MoveWithPose move = new MoveWithPose(WARRIOR_1, Category.YOGA, true, "Arms up, look up");
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E, Angle.S);
+			move.pose.rLeg = new Leg(Angle.SW.add(-10), Angle.SW.add(-20));
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, true);
+			move.pose.torso.head.shift(-4, -2);
+
+			move.pose.rArm = new Arm(Angle.N);
+
+			moves.put(move.name, move);
+		}
+
 		// Warrior 3
 		{
-			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Leg straight back then knee up, repeat.");
+			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Chest & leg parallel to floor");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(15), Angle.S.add(-15));
-
 			move.pose.lLeg = new Leg(Angle.W.add(5), Angle.W.add(-5));
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E, true);
 
 			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E.add(10));
-			move.pose.lArm = new Arm(Angle.W.add(-20), Angle.W.add(10));
 
 			moves.put(move.name, move);
 		}
