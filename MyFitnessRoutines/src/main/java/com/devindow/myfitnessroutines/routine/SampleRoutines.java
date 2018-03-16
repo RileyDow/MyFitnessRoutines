@@ -322,6 +322,7 @@ public class SampleRoutines {
 
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 5, 5));
+		routine.tasks.add(new Task(MoveLibrary.TRIANGLE, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3, 9, 5));
 
 		return routine;

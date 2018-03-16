@@ -25,8 +25,9 @@ public class MoveLibrary {
 	public static final String JOG_LATERALLY = "Jog Laterally";
 	public static final String SKIP = "Skip";
 	public static final String LEG_SWINGS = "Leg Swings";
-	public static final String WARRIOR_2 = "Warrior 2";
 	public static final String ROMAN_LUNGES = "Roman Lunges";
+	public static final String WARRIOR_2 = "Warrior 2";
+	public static final String TRIANGLE = "Triangle";
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String PRAYER = "Prayer";
@@ -120,7 +121,7 @@ public class MoveLibrary {
 	public static final String SOCCER_BELLS = "Bells";
 	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
 	public static final String SOCCER_OUTSIDE_TURN = "Outside Turn";
-	public static final String SOCCER_TRIANGLE = "Triangle";
+	public static final String SOCCER_TRIANGLE = "Triangle touches";
 	public static final String SOCCER_ADVANCED_TURN = "Advanced Turn";
 	public static final String SOCCER_TRIANGLE_OUTSIDE_ADVANCED = "Triangle, Outside, Advanced";
 	public static final String SOCCER_ZIKO_TURN = "Ziko Turn";
@@ -300,6 +301,22 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Roman Lunges
+		{
+			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, Category.CARDIO, "Opposite Arm & Leg go back");
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
+
 		// Warrior 2
 		{
 			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true, "Gaze over front fingertips");
@@ -311,6 +328,21 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle
+		{
+			MoveWithPose move = new MoveWithPose(TRIANGLE, Category.YOGA, true, "Gaze up over your thumb");
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SW.add(-5));
+			move.pose.lLeg = new Leg(Angle.SE.add(-5));
+			move.pose.torso = new Torso(-Torso.distanceWaistToHip + move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W);
+
+			move.pose.rArm = new Arm(Angle.S);
+			move.pose.lArm = new Arm(Angle.N);
 
 			moves.put(move.name, move);
 		}
@@ -640,22 +672,6 @@ public class MoveLibrary {
 
 			float stepSize = move.pose.rLeg.getDistalPointY(move.pose.torso.rHip.y) - Leg.thickness / 2;
 			move.pose.prop = new Ledge(move.pose.rLeg.getDistalPointX(move.pose.torso.rHip.x) - Leg.thickness / 2, move.pose.rLeg.getDistalPointX(move.pose.torso.rHip.x) + stepSize, stepSize);
-
-			moves.put(move.name, move);
-		}
-
-		// Roman Lunges
-		{
-			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, Category.CARDIO, "Opposite Arm & Leg go back");
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
-			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
-
-			move.pose.lArm = new Arm(Angle.E);
-			move.pose.rArm = new Arm(Angle.W);
 
 			moves.put(move.name, move);
 		}

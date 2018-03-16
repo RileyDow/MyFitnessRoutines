@@ -21,8 +21,8 @@ public class Torso implements Serializable {
 	public static final float thickness = 10;
 	public static final float length = 20;
 	public static final float lengthWithHead = length + headSize;
-	private static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
-	private static final float distanceWaistToHip = Leg.thickness/2 - 1;
+	public static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
+	public static final float distanceWaistToHip = Leg.thickness/2 - 1;
 
 
 	// Public Fields
