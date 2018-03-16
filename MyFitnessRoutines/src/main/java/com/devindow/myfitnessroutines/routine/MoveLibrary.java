@@ -72,6 +72,7 @@ public class MoveLibrary {
 	public static final String BRIDGE_POSE = "Bridge Pose";
 	public static final String SINGLE_LEG_BRIDGES = "Single-Leg Bridges";
 	public static final String SHOULDER_PRESS = "Shoulder Press";
+	public static final String PLOW = "Plow";
 	// Back-Lying Top View Poses
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String HEAD_TO_KNEES_TOPVIEW = "Head to Knees";
@@ -988,10 +989,28 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.N);
 
 			move.pose.torso = new Torso(Torso.length + Torso.thickness/2 + 2, Angle.S.add(-5),true);
-			move.pose.torso.head.x -= Torso.thickness/2 + Torso.headSize/2 - 2;
-			move.pose.torso.head.y += Torso.headSize - 2;
+			move.pose.torso.head.shift(-8, 8);
 
 			move.pose.rArm = new Arm(Angle.E.add(-25), Angle.N.add(25));
+
+			moves.put(move.name, move);
+		}
+
+		// Plow
+		{
+			MoveWithPose move = new MoveWithPose(PLOW, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SW.add(-15));
+
+			float torsoLengthRatio = .8f;
+			move.pose.torso = new Torso(Torso.length * torsoLengthRatio + Torso.thickness/2, torsoLengthRatio, Angle.S.add(-5),true);
+			move.pose.torso.head.shift(-8, 10);
+			move.pose.torso.points = new ArrayList<>();
+			move.pose.torso.points.add(new Point(2, 18));
+			move.pose.torso.points.add(new Point(1, 9));
+
+			move.pose.rArm = new Arm(Angle.E.add(-7));
 
 			moves.put(move.name, move);
 		}
