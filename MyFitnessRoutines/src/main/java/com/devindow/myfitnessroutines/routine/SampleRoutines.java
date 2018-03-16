@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines.routine;
 
 import com.devindow.myfitnessroutines.util.Debug;
+import com.devindow.myfitnessroutines.util.Side;
 
 import java.util.ArrayList;
 
@@ -323,12 +324,16 @@ public class SampleRoutines {
 		Routine routine = new Routine("Test Routine");
 
 		routine.tasks.add(new Task(MoveLibrary.SHOULDER_PRESS, 15, "Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.PLOW, 10, "Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.TRIANGLE, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3, 9, 5));
+		routine.tasks.add(new Task(MoveLibrary.PLOW,10, "Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE,5));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.TRIANGLE,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3,9, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.TRIANGLE,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3,9, Side.LEFT));
 
 		return routine;
 	}

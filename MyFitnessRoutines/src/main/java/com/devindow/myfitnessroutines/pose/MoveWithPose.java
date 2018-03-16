@@ -58,7 +58,7 @@ public class MoveWithPose extends Move {
 
 	// Overrides
 	@Override
-	public Bitmap getBitmap(boolean secondSide) {
+	public Bitmap getBitmap(boolean mirrored) {
 		Bitmap bitmap = Bitmap.createBitmap(BITMAP_PIXELS, BITMAP_PIXELS, Bitmap.Config.ARGB_8888);
 
 		Canvas canvas = new Canvas(bitmap);
@@ -66,7 +66,7 @@ public class MoveWithPose extends Move {
 		canvas.translate(BITMAP_PIXELS /2, BITMAP_PIXELS -1); // Origin at floor center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
-		if (secondSide) {
+		if (mirrored) {
 			canvas.scale(-1, 1); // mirror X
 		}
 

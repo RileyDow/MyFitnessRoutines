@@ -339,12 +339,12 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(TRIANGLE, Category.YOGA, true, "Gaze up over your thumb");
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.SW.add(-5));
-			move.pose.lLeg = new Leg(Angle.SE.add(-5));
-			move.pose.torso = new Torso(-Torso.distanceWaistToHip + move.pose.lLeg.getHeight() + Leg.thickness / 2, Angle.W);
+			move.pose.rLeg = new Leg(Angle.SW.add(5));
+			move.pose.lLeg = new Leg(Angle.SE.add(5));
+			move.pose.torso = new Torso(-Torso.distanceWaistToHip + move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E);
 
-			move.pose.rArm = new Arm(Angle.S);
-			move.pose.lArm = new Arm(Angle.N);
+			move.pose.rArm = new Arm(Angle.N);
+			move.pose.lArm = new Arm(Angle.S);
 
 			moves.put(move.name, move);
 		}

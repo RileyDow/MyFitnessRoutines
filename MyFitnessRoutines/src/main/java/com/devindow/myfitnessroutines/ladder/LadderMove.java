@@ -61,7 +61,7 @@ public class LadderMove extends Move implements Serializable {
 
 	// Overrides
 	@Override
-	public Bitmap getBitmap(boolean secondSide) {
+	public Bitmap getBitmap(boolean mirrored) {
 		Bitmap bitmap = Bitmap.createBitmap(BITMAP_PIXELS, BITMAP_PIXELS, Bitmap.Config.ARGB_8888);
 
 		Canvas canvas = new Canvas(bitmap);

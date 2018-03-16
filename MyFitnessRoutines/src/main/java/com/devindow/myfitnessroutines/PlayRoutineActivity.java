@@ -128,16 +128,26 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			txtMoveName.setText("NULL");
 			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
+			Task currentTask = taskFragment.getCurrentTask();
+			String moveName = taskFragment.move.name;
+			boolean mirrored = false;
 			if (taskFragment.move.twoSides) {
-				if (taskFragment.isSecondSide()) {
-					txtMoveName.setText(taskFragment.move.name + " <-");
-				} else {
-					txtMoveName.setText(taskFragment.move.name + " ->");
+				if (currentTask.side.hasBoth()) {
+					if (taskFragment.isSecondSide()) {
+						moveName += " <-";
+						mirrored = true;
+					} else {
+						moveName += " ->";
+					}
+				} else if (currentTask.side.hasRight()) {
+					moveName += " ->";
+				} else if (currentTask.side.hasLeft()) {
+					moveName += " <-";
+					mirrored = true;
 				}
-			} else {
-				txtMoveName.setText(taskFragment.move.name);
 			}
-			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.isSecondSide()));
+			txtMoveName.setText(moveName);
+			imgMove.setImageBitmap(taskFragment.move.getBitmap(mirrored));
 		}
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}

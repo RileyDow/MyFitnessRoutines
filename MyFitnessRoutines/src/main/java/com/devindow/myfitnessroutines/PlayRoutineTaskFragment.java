@@ -165,7 +165,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (currentTask == null) {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
-			if (move != null && move.twoSides) {
+			if (move != null && move.twoSides && currentTask.side.hasBoth()) {
 				move1SecondsRemaining = currentTask.moveSeconds / 2;
 				move2SecondsRemaining = currentTask.moveSeconds - move1SecondsRemaining;
 			} else {

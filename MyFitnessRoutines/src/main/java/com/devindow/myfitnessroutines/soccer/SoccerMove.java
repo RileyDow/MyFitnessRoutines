@@ -78,7 +78,7 @@ public class SoccerMove extends Move {
 
 	// Overrides
 	@Override
-	public Bitmap getBitmap(boolean secondSide) {
+	public Bitmap getBitmap(boolean mirrored) {
 		Bitmap bitmap = Bitmap.createBitmap(BITMAP_PIXELS, BITMAP_PIXELS, Bitmap.Config.ARGB_8888);
 
 		Canvas canvas = new Canvas(bitmap);
@@ -86,15 +86,15 @@ public class SoccerMove extends Move {
 		canvas.translate(BITMAP_PIXELS/2, BITMAP_PIXELS/3*2); // Origin to lower center
 		canvas.scale(PIXELS_PER_INCH, PIXELS_PER_INCH); // Scale to Inches
 		canvas.scale(1, -1); // up is positive Y
-		if (secondSide) {
+		if (mirrored) {
 			canvas.scale(-1, 1); // mirror X
 		}
 
 		drawBall(canvas);
 
-		drawBody(canvas, secondSide);
+		drawBody(canvas, mirrored);
 
-		drawMotions(canvas, secondSide);
+		drawMotions(canvas, mirrored);
 
 		return bitmap;
 	}
@@ -115,7 +115,7 @@ public class SoccerMove extends Move {
 		canvas.drawPoint(ball.x, ball.y, paint);
 	}
 
-	private void drawBody(Canvas canvas, boolean mirror) {
+	private void drawBody(Canvas canvas, boolean mirrored) {
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
@@ -123,9 +123,9 @@ public class SoccerMove extends Move {
 		// Draw Feet
 		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
-		Colors.setFootColor(paint, Side.LEFT, false, mirror);
+		Colors.setFootColor(paint, Side.LEFT, false, mirrored);
 		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
-		Colors.setFootColor(paint, Side.RIGHT, false, mirror);
+		Colors.setFootColor(paint, Side.RIGHT, false, mirrored);
 		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
