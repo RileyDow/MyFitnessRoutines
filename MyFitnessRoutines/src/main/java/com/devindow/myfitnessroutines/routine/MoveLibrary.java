@@ -41,6 +41,7 @@ public class MoveLibrary {
 	public static final String TWIST_PIVOT = "Twist & Pivot";
 	public static final String WARRIOR_1 = "Warrior 1";
 	public static final String WARRIOR_3 = "Warrior 3";
+	public static final String CHAIR_POSE = "Chair Pose";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String SQUATS = "Squats";
@@ -530,6 +531,21 @@ public class MoveLibrary {
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E, true);
 
 			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E.add(10));
+
+			moves.put(move.name, move);
+		}
+
+		// Chair Pose
+		{
+			MoveWithPose move = new MoveWithPose(CHAIR_POSE, Category.YOGA, "Palms together overhead, navel towards spine");
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SE.add(15), Angle.SW.add(15));
+
+			Angle torsoAngle = Angle.NE.add(15);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, torsoAngle, true);
+
+			move.pose.rArm = new Arm(torsoAngle);
 
 			moves.put(move.name, move);
 		}

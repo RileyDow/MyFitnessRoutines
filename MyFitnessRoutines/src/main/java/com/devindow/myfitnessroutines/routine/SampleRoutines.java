@@ -96,6 +96,7 @@ public class SampleRoutines {
 		routine.tasks.add(new Task(MoveLibrary.CHILD_POSE, 20, "Walk your fingers out. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.WIDE_LEG_BEND, 30, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.MOUNTAIN_POSE, 15, "Roll up slowly. Stand tall. Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE, 15, "Palms together, navel towards spine. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.STANDING_SIDE_BEND, 20, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 30, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.HIP_STRETCH, 40, "Breathe."));
@@ -320,6 +321,7 @@ public class SampleRoutines {
 	private static Routine generateTestRoutine() {
 		Routine routine = new Routine("Test Routine");
 
+		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 5, 5));
 		routine.tasks.add(new Task(MoveLibrary.TRIANGLE, 5, 5));
