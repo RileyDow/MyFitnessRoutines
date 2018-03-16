@@ -5,9 +5,6 @@ TODO
 
 ----------------------------------------------------------------------------------------------------
 
-- Torso.profileHips & profileShoulders constructors
-  - Twisted Poses should use this
-
 - Poses
   - Chair
 

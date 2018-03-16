@@ -463,7 +463,7 @@ public class MoveLibrary {
 
 			move.pose.lLeg = new Leg(Angle.S.add(25), Angle.S.add(35), 1.2f);
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true, false);
 
 			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
 			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
@@ -1026,7 +1026,7 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
 			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
-			move.pose.torso = new Torso(waistY);
+			move.pose.torso = new Torso(waistY, false, true);
 			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W);
@@ -1499,13 +1499,13 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(TWISTED_SAGE_POSE, Category.YOGA, true, "Sit Tall. Pretzel.");
 			move.pose = new Pose();
 
-			move.pose.torso = new Torso(Torso.thickness / 2 - 2);
+			move.pose.torso = new Torso(Torso.thickness / 2 - 2, false, true);
 
 			move.pose.lLeg = new Leg(Angle.E);
-			move.pose.rLeg = new Leg(Angle.N.add(-40), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.NE.add(5), Angle.S.add(10));
 
-			move.pose.rArm = new Arm(Angle.S.add(-25));
-			move.pose.lArm = new Arm(Angle.S.add(20), Angle.N.add(-10));
+			move.pose.rArm = new Arm(Angle.SW.add(20));
+			move.pose.lArm = new Arm(Angle.SE.add(0), Angle.N);
 
 			moves.put(move.name, move);
 		}
