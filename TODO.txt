@@ -3,13 +3,17 @@ TODO
 
 * Speak Instructions should be optional
 
+- Log the day's activity
+  - Green for routines completed today
+  - DB or File?
+    - File named with date?
+
+- Free Version
+  - Grey other routines but respond to click?
+
 ----------------------------------------------------------------------------------------------------
 
 - Poses
-
-----------------------------------------------------------------------------------------------------
-
-- Can I do L Warrior 1 then L Warrior 2 before moving to R?
 
 ----------------------------------------------------------------------------------------------------
 
@@ -41,7 +45,6 @@ TODO
 
 - Headset
     - Bluetooth Headset button pauses?
-  - Notifications?
 
 - Log Activity
   - Saving to Google Doc or persistent storage
