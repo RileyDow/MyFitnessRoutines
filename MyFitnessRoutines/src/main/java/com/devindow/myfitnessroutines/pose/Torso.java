@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import com.devindow.myfitnessroutines.util.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Devin on 2/16/2018.
@@ -20,29 +21,24 @@ public class Torso implements Serializable {
 	public static final float thickness = 10;
 	public static final float length = 20;
 	public static final float lengthWithHead = length + headSize;
-	private static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
-	private static final float distanceWaistToHip = Leg.thickness/2 - 1;
+	public static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
+	public static final float distanceWaistToHip = Leg.thickness/2 - 1;
 
 
 	// Public Fields
-	public float headX;
-	public float headY;
-
-	public float collarX;
-	public float collarY;
-
-	public float rShoulderX;
-	public float rShoulderY;
-	public float lShoulderX;
-	public float lShoulderY;
-
-	public float waistY;
+	public Point waist;
 	public float lengthRatio;
+	public ArrayList<Point> points;
 
-	public float rHipX;
-	public float rHipY;
-	public float lHipX;
-	public float lHipY;
+	public Point head;
+
+	public Point collar;
+
+	public Point rShoulder;
+	public Point lShoulder;
+
+	public Point rHip;
+	public Point lHip;
 
 	public boolean mat = false;
 
@@ -50,10 +46,10 @@ public class Torso implements Serializable {
 	// Public Properties
 	public Extents getExtents() {
 		return new Extents(
-				Math.min(0 - thickness/2, headX - headSize/2),
-				Math.max(waistY + thickness/2, headY + headSize/2),
-				Math.max(0 + thickness/2, headX + headSize/2),
-				Math.min(waistY - thickness/2, headY - headSize/2));
+				Math.min(waist.x - thickness/2, head.x - headSize/2),
+				Math.max(waist.y + thickness/2, head.y + headSize/2),
+				Math.max(waist.x + thickness/2, head.x + headSize/2),
+				Math.min(waist.y - thickness/2, head.y - headSize/2));
 	}
 
 
@@ -83,57 +79,78 @@ public class Torso implements Serializable {
 	}
 
 	public Torso(boolean isProfile) {
-		this(Angle.N, isProfile);
+		this(isProfile, isProfile);
+	}
+
+	public Torso(boolean isShoulderProfile, boolean isHipsProfile) {
+		this(Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(Angle angle, boolean isProfile) {
-		this(Leg.segmentLength*2 + Leg.thickness/2, angle, isProfile);
+		this(angle, isProfile, isProfile);
+	}
+
+	public Torso(Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(Leg.segmentLength*2 + Leg.thickness/2, angle, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, boolean isProfile) {
-		this(waistY, Angle.N, isProfile);
+		this(waistY, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, float lengthRatio, boolean isProfile) {
-		this(waistY, lengthRatio, Angle.N, isProfile);
+		this(waistY, lengthRatio, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, float lengthRatio, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, lengthRatio, Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, Angle angle, boolean isProfile) {
-		this(waistY, 1.0f, angle, isProfile);
+		this(waistY, angle, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, 1.0f, angle, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, float lengthRatio, Angle angle, boolean isProfile) {
+		this(waistY, lengthRatio, angle, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, float lengthRatio, Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
 
 		// Waist
-		this.waistY = waistY;
+		waist = new Point(0, waistY);
 		this.lengthRatio = lengthRatio;
 
 		// Collar
-		collarX = Math.round(length * lengthRatio * angle.getCos());
-		collarY = waistY + Math.round(length * lengthRatio * angle.getSin());
+		collar = new Point(Math.round(length * lengthRatio * angle.getCos()), waistY + Math.round(length * lengthRatio * angle.getSin()));
 
 		// Head
 		float waistToHead = length * lengthRatio + thickness/2 + headSize/2;
-		headX = Math.round(waistToHead * angle.getCos());
-		headY = waistY + Math.round(waistToHead * angle.getSin());
+		head = new Point(Math.round(waistToHead * angle.getCos()), waistY + Math.round(waistToHead * angle.getSin()));
 
-		// Shoulders & Hips
-		if (isProfile) {
-			rShoulderX = lShoulderX = collarX;
-			rShoulderY = lShoulderY = collarY;
-
-			rHipX = lHipX = 0;
-			rHipY = lHipY = waistY;
+		// Shoulders
+		if (isShoulderProfile) {
+			rShoulder = collar.clone();
+			lShoulder = collar.clone();
 		} else {
-			rShoulderX = collarX - distanceNeckToShoulder * angle.getSin();
-			rShoulderY = collarY + distanceNeckToShoulder * angle.getCos();
-			lShoulderX = collarX + distanceNeckToShoulder * angle.getSin();
-			lShoulderY = collarY - distanceNeckToShoulder * angle.getCos();
+			rShoulder = collar.offset(-distanceNeckToShoulder * angle.getSin(), distanceNeckToShoulder * angle.getCos());
+			lShoulder = collar.offset(distanceNeckToShoulder * angle.getSin(), -distanceNeckToShoulder * angle.getCos());
+		}
 
-			rHipX = -distanceWaistToHip * angle.getSin();
-			rHipY = waistY + distanceWaistToHip * angle.getCos();
-			lHipX = distanceWaistToHip * angle.getSin();
-			lHipY = waistY - distanceWaistToHip * angle.getCos();
+		// Hips
+		if (isHipsProfile) {
+			rHip = waist.clone();
+			lHip = waist.clone();
+		} else {
+			rHip = waist.offset(-distanceWaistToHip * angle.getSin(), distanceWaistToHip * angle.getCos());
+			lHip = waist.offset(distanceWaistToHip * angle.getSin(), -distanceWaistToHip * angle.getCos());
 		}
 	}
 
@@ -151,12 +168,20 @@ public class Torso implements Serializable {
 		// Draw Head
 		Colors.setBodyColor(paint);
 		paint.setStrokeWidth(headSize);
-		canvas.drawPoint(headX, headY, paint);
+		canvas.drawPoint(head.x, head.y, paint);
 
 		// Draw Torso
 		Colors.setBodyColor(paint);
 		paint.setStrokeWidth(thickness);
-		canvas.drawLine(collarX, collarY, 0, waistY, paint);
+		Point prevPoint = waist;
+		if (points != null) {
+			for (Point point : points) {
+				canvas.drawLine(prevPoint.x, prevPoint.y, point.x, point.y, paint);
+				prevPoint = point;
+				Colors.setBodyColor(paint);
+			}
+		}
+		canvas.drawLine(prevPoint.x, prevPoint.y, collar.x, collar.y, paint);
 	}
 
 
@@ -167,7 +192,7 @@ public class Torso implements Serializable {
 
 		float width = 36;
 		float height = 80;
-		RectF mat = new RectF(-width/2, waistY + height/2, width/2, waistY - height/2);
+		RectF mat = new RectF(waist.x - width/2, waist.y + height/2, waist.x + width/2, waist.y - height/2);
 		canvas.drawRect(mat, paint);
 	}
 

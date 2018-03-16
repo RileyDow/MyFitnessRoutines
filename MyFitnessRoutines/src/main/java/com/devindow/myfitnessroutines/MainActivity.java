@@ -123,11 +123,13 @@ public class MainActivity extends AppCompatActivity {
 			textView.setText("Some Poses have a Left and a Right component.  The app will signal you to switch half way through.\n" +
 					"\n" +
 					"I like to:\n" +
-					"- do \"Morning Yoga\" then \"Warmup\" then \"Pre-Activation\" before playing soccer\n" +
-					"- go for a 3 mile walk where I stop in the middle at the park and do \"7 Minute Workout\" 1 or 2 times\n" +
+					"- do \"Morning Yoga\" then \"Warmup\" then \"Pre-Activation\" before playing soccer.\n" +
+					"- go for a 3 mile walk where I stop in the middle at the park and do \"7 Minute Workout\" 1 or 2 times.\n" +
 					"\n" +
-					"Sometimes I hit Play and follow the timer, sometimes I just use the Next button at my own pace.\n" +
-					"(I recommend getting familiar with a Routine and its Poses before working with the timer.)");
+					"Sometimes I hit Play and follow the timer, sometimes I just use the >> button to progress at my own pace.\n" +
+					"(I recommend first getting familiar with a routine and its poses before working with the timer.)\n" +
+					"\n" +
+					"Tapping the screen while playing will pause.  Tapping while paused will manually advance to the next move.");
 			int padding = 30;
 			textView.setPadding(padding, padding, padding, padding);
 			alertDialogBuilder.setView(textView);

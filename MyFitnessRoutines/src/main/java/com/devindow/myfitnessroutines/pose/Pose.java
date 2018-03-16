@@ -32,19 +32,19 @@ public class Pose implements Serializable {
 		Extents extents = torso.getExtents();
 
 		if (lArm != null) {
-			extents.union(lArm.getExtents(torso.lShoulderX, torso.lShoulderY));
+			extents.union(lArm.getExtents(torso.lShoulder));
 		}
 
 		if (rArm != null) {
-			extents.union(rArm.getExtents(torso.rShoulderX, torso.rShoulderY));
+			extents.union(rArm.getExtents(torso.rShoulder));
 		}
 
 		if (lLeg != null) {
-			extents.union(lLeg.getExtents(torso.lHipX, torso.lHipY));
+			extents.union(lLeg.getExtents(torso.lHip));
 		}
 
 		if (rLeg != null) {
-			extents.union(rLeg.getExtents(torso.rHipX, torso.rHipY));
+			extents.union(rLeg.getExtents(torso.rHip));
 		}
 
 		return extents;
@@ -64,17 +64,17 @@ public class Pose implements Serializable {
 		}
 
 		if (lArm != null) {
-			lArm.draw(canvas, torso.lShoulderX, torso.lShoulderY);
+			lArm.draw(canvas, torso.lShoulder);
 		}
 		if (rArm != null) {
-			rArm.draw(canvas, torso.rShoulderX, torso.rShoulderY);
+			rArm.draw(canvas, torso.rShoulder);
 		}
 
 		if (lLeg != null) {
-			lLeg.draw(canvas, torso.lHipX, torso.lHipY);
+			lLeg.draw(canvas, torso.lHip);
 		}
 		if (rLeg != null) {
-			rLeg.draw(canvas, torso.rHipX, torso.rHipY);
+			rLeg.draw(canvas, torso.rHip);
 		}
 
 		if (prop != null) {

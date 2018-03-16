@@ -26,20 +26,20 @@ public abstract class Appendage implements Serializable {
 	public abstract float getSegmentLength();
 
 	// Public Properties
-	public Extents getExtents(float attachmentPointX, float attachmentPointY) {
-		float proximalPointX = getProximalPointX(attachmentPointX);
-		float proximalPointY = getProximalPointY(attachmentPointY);
+	public Extents getExtents(Point attachmentPoint) {
+		float proximalPointX = getProximalPointX(attachmentPoint.x);
+		float proximalPointY = getProximalPointY(attachmentPoint.y);
 
-		float distalPointX = getDistalPointX(attachmentPointX);
-		float distalPointY = getDistalPointY(attachmentPointY);
+		float distalPointX = getDistalPointX(attachmentPoint.x);
+		float distalPointY = getDistalPointY(attachmentPoint.y);
 
 		float radius = getThickness()/2;
 
 		return new Extents(
-				Math.min(attachmentPointX, Math.min(proximalPointX, distalPointX )) - radius,
-				Math.max(attachmentPointY, Math.max(proximalPointY, distalPointY)) + radius,
-				Math.max(attachmentPointX, Math.max(proximalPointX, distalPointX )) + radius,
-				Math.min(attachmentPointY, Math.min(proximalPointY, distalPointY)) - radius);
+				Math.min(attachmentPoint.x, Math.min(proximalPointX, distalPointX )) - radius,
+				Math.max(attachmentPoint.y, Math.max(proximalPointY, distalPointY)) + radius,
+				Math.max(attachmentPoint.x, Math.max(proximalPointX, distalPointX )) + radius,
+				Math.min(attachmentPoint.y, Math.min(proximalPointY, distalPointY)) - radius);
 	}
 
 
@@ -103,20 +103,20 @@ public abstract class Appendage implements Serializable {
 
 
 	// Public Methods
-	public void draw(Canvas canvas, float attachmentPointX, float attachmentPointY) {
+	public void draw(Canvas canvas, Point attachmentPoint) {
 		Paint paint = new Paint();
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeWidth(getThickness());
 		Colors.setBodyColor(paint);
 
-		float proximalPointX = getProximalPointX(attachmentPointX);
-		float proximalPointY = getProximalPointY(attachmentPointY);
-		canvas.drawLine(attachmentPointX, attachmentPointY, proximalPointX, proximalPointY, paint);
+		float proximalPointX = getProximalPointX(attachmentPoint.x);
+		float proximalPointY = getProximalPointY(attachmentPoint.y);
+		canvas.drawLine(attachmentPoint.x, attachmentPoint.y, proximalPointX, proximalPointY, paint);
 
 		Colors.setBodyColor(paint);
-		float distalPointX = getDistalPointX(attachmentPointX);
-		float distalPointY = getDistalPointY(attachmentPointY);
+		float distalPointX = getDistalPointX(attachmentPoint.x);
+		float distalPointY = getDistalPointY(attachmentPoint.y);
 		canvas.drawLine(proximalPointX, proximalPointY, distalPointX, distalPointY, paint);
 	}
 

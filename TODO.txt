@@ -1,26 +1,20 @@
 TODO
 ----
 
-- Text-to-Speech
-  - https://android-developers.googleblog.com/2009/09/introduction-to-text-to-speech-in.html
-
-* Sound or recording for next move based on Category.  (Beep is good for switch sides.)
-  - "Switch"
-  - "Ching......"
-  - "Meh Meh Mehhhhhh"
+* Speak Instructions should be optional
 
 ----------------------------------------------------------------------------------------------------
 
 - Poses
-  - Chair
 
-- Torso.Arc or Torso.midpoints ArrayList
-- Torso.profileHips & profileShoulders constructors
-  - Poses
+----------------------------------------------------------------------------------------------------
+
+- Can I do L Warrior 1 then L Warrior 2 before moving to R?
 
 ----------------------------------------------------------------------------------------------------
 
 * App Store
+  - Free version only has "7 min" and can see other Routines and direct user to paid.
   - Paid app for adding new Routine?
   - Paid & Free versions
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
@@ -28,7 +22,7 @@ TODO
 
 ----------------------------------------------------------------------------------------------------
 
-- Poses
+- Pose improvement ideas
   - Safety Jacks use 2 Poses
   - Pose improvements
     - "High Knee": add arms
