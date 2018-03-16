@@ -17,20 +17,20 @@ public class Arrow {
 	// Public Fields
 	public Point start;
 	public Point end;
-	public Feet feet;
+	public Side side;
 
 
 	// Constructors
-	public Arrow(float startX, float startY, float endX, float endY, Feet feet) {
+	public Arrow(float startX, float startY, float endX, float endY, Side side) {
 		this.start = new Point(startX, startY);
 		this.end = new Point(endX, endY);
-		this.feet = feet;
+		this.side = side;
 	}
 
-	public Arrow(Point start, Point end, Feet feet) {
+	public Arrow(Point start, Point end, Side side) {
 		this.start = start;
 		this.end = end;
-		this.feet = feet;
+		this.side = side;
 	}
 
 
@@ -45,7 +45,7 @@ public class Arrow {
 
 	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		Paint paint = new Paint();
-		Colors.setFootColor(paint, feet, true, mirror);
+		Colors.setFootColor(paint, side, true, mirror);
 		paint.setStrokeWidth(width);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
@@ -65,8 +65,8 @@ public class Arrow {
 		// Draw text
 		if (stepNum > 0) {
 			String text = Integer.toString(stepNum);
-			/*if (feet.hasBoth()) {
-			} else if (feet.hasLeft() ^ mirror) {
+			/*if (side.hasBoth()) {
+			} else if (side.hasLeft() ^ mirror) {
 				text += "-L";
 			} else {
 				text += "-R";
@@ -105,7 +105,7 @@ public class Arrow {
 			start = this.start.offset(-distance, this.end);
 		}
 
-		return new Arrow(start, end, feet);
+		return new Arrow(start, end, side);
 	}
 
 }

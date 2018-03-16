@@ -123,9 +123,9 @@ public class SoccerMove extends Move {
 		// Draw Feet
 		Point toe = getToe();
 		paint.setStrokeWidth(footWidth);
-		Colors.setFootColor(paint, Feet.LEFT, false, mirror);
+		Colors.setFootColor(paint, Side.LEFT, false, mirror);
 		canvas.drawLine(-footGap/2, 0, -toe.x, toe.y, paint);
-		Colors.setFootColor(paint, Feet.RIGHT, false, mirror);
+		Colors.setFootColor(paint, Side.RIGHT, false, mirror);
 		canvas.drawLine(footGap/2, 0, toe.x, toe.y, paint);
 
 		// Draw Torso
