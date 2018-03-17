@@ -18,7 +18,7 @@ import com.devindow.myfitnessroutines.util.Debug;
 
 import java.util.Locale;
 
-public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
+public class PlayRoutineActivity extends OptionsMenuActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 
 	// Constants
 	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";

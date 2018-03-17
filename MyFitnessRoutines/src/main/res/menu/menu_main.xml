@@ -2,9 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.devindow.myfitnessroutines.MainActivity">
+
     <item
         android:id="@+id/action_tips"
-        android:orderInCategory="100"
-        android:title="Tips"
-        app:showAsAction="never" />
+        android:title="Tips" />
+
+    <item
+        android:id="@+id/action_speakMoveNames"
+        android:checkable="true"
+        android:title="Speak Move Names" />
+
+    <item
+        android:id="@+id/action_speakMoveInstructions"
+        android:checkable="true"
+        android:title="Speak Move Instructions" />
+
 </menu>
