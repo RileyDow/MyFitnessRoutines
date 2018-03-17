@@ -31,24 +31,24 @@ public class OptionsMenuActivity extends AppCompatActivity {
 		switch (id) {
 
 			case R.id.action_speakMoveNames: {
-				if (Preferences.getSpeakMoveNames(this)) {
+				if (Preferences.getSpeakMoveNames()) {
 					item.setChecked(false);
-					Preferences.setSpeakMoveNames(this, false);
+					Preferences.setSpeakMoveNames(false);
 				} else {
 					item.setChecked(true);
-					Preferences.setSpeakMoveNames(this, true);
+					Preferences.setSpeakMoveNames(true);
 				}
 
 				return true;
 			}
 
 			case R.id.action_speakMoveInstructions: {
-				if (Preferences.getSpeakMoveInstructions(this)) {
+				if (Preferences.getSpeakMoveInstructions()) {
 					item.setChecked(false);
-					Preferences.setSpeakMoveInstructions(this, false);
+					Preferences.setSpeakMoveInstructions(false);
 				} else {
 					item.setChecked(true);
-					Preferences.setSpeakMoveInstructions(this, true);
+					Preferences.setSpeakMoveInstructions(true);
 				}
 
 				return true;
@@ -93,7 +93,7 @@ public class OptionsMenuActivity extends AppCompatActivity {
 		MenuItem mnuSpeakNames = menu.findItem(R.id.action_speakMoveNames);
 		MenuItem mnuSpeakInstructions = menu.findItem(R.id.action_speakMoveInstructions);
 
-		if (Preferences.getSpeakMoveNames(this)) {
+		if (Preferences.getSpeakMoveNames()) {
 			mnuSpeakNames.setChecked(true);
 			mnuSpeakInstructions.setEnabled(true);
 		} else {
@@ -101,7 +101,7 @@ public class OptionsMenuActivity extends AppCompatActivity {
 			mnuSpeakInstructions.setEnabled(false);
 		}
 
-		mnuSpeakInstructions.setChecked(Preferences.getSpeakMoveInstructions(this));
+		mnuSpeakInstructions.setChecked(Preferences.getSpeakMoveInstructions());
 
 		return true;
 	}
