@@ -1,8 +1,6 @@
 TODO
 ----
 
-* Speak Instructions should be optional
-
 - Log the day's activity
   - Green for routines completed today
   - DB or File?

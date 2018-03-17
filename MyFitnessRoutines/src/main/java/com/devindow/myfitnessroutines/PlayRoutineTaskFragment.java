@@ -26,7 +26,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		void displayMove();
 		void updateTimer(int secondsRemaining);
 		void clearInstructions();
-		void speak(String text);
+		void speak(String moveName, String moveInstructions);
 	}
 
 
@@ -148,7 +148,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 		if (playRoutineActivity != null) {
 			playRoutineActivity.displayTask();
-			playRoutineActivity.speak(move.name + ". " + getInstructions());
+			playRoutineActivity.speak(move.name, getInstructions());
 		}
 	}
 
@@ -265,7 +265,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 				// second side
 				if (move2SecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
-						playRoutineActivity.speak("switch");
+						playRoutineActivity.speak("switch", null);
 						playRoutineActivity.displayMove();
 					}
 					runMove2Timer();
@@ -276,7 +276,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove();
-						playRoutineActivity.speak("rest");
+						playRoutineActivity.speak("rest", null);
 					}
 					runRestTimer();
 
@@ -313,7 +313,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
 						playRoutineActivity.displayMove();
-						playRoutineActivity.speak("rest");
+						playRoutineActivity.speak("rest", null);
 					}
 					runRestTimer();
 

@@ -174,14 +174,21 @@ public class PlayRoutineActivity extends OptionsMenuActivity implements PlayRout
 	}
 
 	@Override
-	public void speak(String text) {
+	public void speak(String moveName, String moveInstructions) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.speak()");
 
-		if (speechInitialized) {
-			speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-			textToSpeak = null;
-		} else {
-			textToSpeak = text;
+		if (Preferences.getSpeakMoveNames(this)) {
+			String text = moveName;
+			if (moveInstructions != null && Preferences.getSpeakMoveInstructions(this)) {
+				text += ". " + moveInstructions;
+			}
+
+			if (speechInitialized) {
+				speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+				textToSpeak = null;
+			} else {
+				textToSpeak = text;
+			}
 		}
 	}
 
