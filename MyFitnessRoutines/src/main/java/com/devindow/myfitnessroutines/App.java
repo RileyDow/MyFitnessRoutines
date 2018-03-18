@@ -3,7 +3,7 @@ package com.devindow.myfitnessroutines;
 import android.app.Application;
 import android.content.Context;
 
-import com.devindow.myfitnessroutines.db.Database;
+import com.devindow.myfitnessroutines.db.AppDatabase;
 
 /**
  * Created by Devin on 3/17/2018.
@@ -32,7 +32,7 @@ public class App extends Application {
 
 		instance = this;
 
-		Database.init();
+		AppDatabase.init();
 	}
 
 }

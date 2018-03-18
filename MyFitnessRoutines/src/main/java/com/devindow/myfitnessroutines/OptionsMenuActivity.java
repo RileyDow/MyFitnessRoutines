@@ -7,6 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.devindow.myfitnessroutines.db.AppDatabase;
+import com.devindow.myfitnessroutines.routine.Session;
+import com.devindow.myfitnessroutines.routine.SessionDao;
+
+import java.util.List;
+
 /**
  * Created by Devin on 3/17/2018.
  */
@@ -68,6 +74,10 @@ public class OptionsMenuActivity extends AppCompatActivity {
 						"(I recommend first getting familiar with a routine and its poses before working with the timer.)\n" +
 						"\n" +
 						"Tapping the screen while playing will pause.  Tapping while paused will manually advance to the next move.");
+
+				List<Session> sessions = AppDatabase.instance.sessionDao().getAll();
+				textView.setText(sessions.toString());
+
 				int padding = 30;
 				textView.setPadding(padding, padding, padding, padding);
 				alertDialogBuilder.setView(textView);

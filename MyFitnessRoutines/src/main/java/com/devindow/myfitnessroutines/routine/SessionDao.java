@@ -16,8 +16,8 @@ public interface SessionDao {
 	@Query("SELECT * from sessions")
 	List<Session> getAll();
 
-	@Query("SELECT * from sessions WHERE CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, date))) = CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, :date)))")
-	List<Session> getAllByDate(Date date);
+	/*@Query("SELECT * from sessions WHERE CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, timestamp))) = CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, :date)))")
+	List<Session> getAllByDate(Date date);*/
 
 	@Insert
 	void insert(Session session);
