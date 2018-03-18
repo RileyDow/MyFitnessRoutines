@@ -34,6 +34,7 @@ public class Session {
 
 	public long getTimestamp() { return timestamp; }
 	public void setTimestamp(long val) { timestamp = val; }
+	public Date getDate() { return new Date(timestamp); }
 
 	public String getRoutineName() { return routineName; }
 	public void setRoutineName(String val) { routineName = val; }
@@ -57,4 +58,10 @@ public class Session {
 		this.durationSeconds = durationSeconds;
 	}
 
+
+	// Overrides
+	@Override
+	public String toString() {
+		return String.format("uid=%d, routine=%s, duration=%d, date=%s", uid, routineName, durationSeconds, getDate().toString());
+	}
 }

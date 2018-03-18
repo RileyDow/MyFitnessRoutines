@@ -75,6 +75,9 @@ public class OptionsMenuActivity extends AppCompatActivity {
 						"\n" +
 						"Tapping the screen while playing will pause.  Tapping while paused will manually advance to the next move.");
 
+				/*Session session = new Session("Test", 1);
+				AppDatabase.instance.sessionDao().insert(session);*/
+
 				List<Session> sessions = AppDatabase.instance.sessionDao().getAll();
 				textView.setText(sessions.toString());
 
