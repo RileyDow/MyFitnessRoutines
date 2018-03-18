@@ -14,7 +14,7 @@ public abstract class Database extends RoomDatabase {
 	private static Database instance;
 
 	public static void init() {
-		//instance = Room.databaseBuilder(App.getContext(), Database.class, "App.db");
+		//instance = Room.databaseBuilder(App.getContext(), Database.class, "App.db").build();
 		int i=0;
 	}
 }
