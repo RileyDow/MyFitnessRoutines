@@ -18,8 +18,8 @@ public class TwoPointLadderStep extends LadderStep {
 
 	// Constructors
 	public TwoPointLadderStep(Point left, Point right) {
-		this.left = new Step(Feet.LEFT, left);
-		this.right = new Step(Feet.RIGHT, right);
+		this.left = new Step(Side.LEFT, left);
+		this.right = new Step(Side.RIGHT, right);
 	}
 
 

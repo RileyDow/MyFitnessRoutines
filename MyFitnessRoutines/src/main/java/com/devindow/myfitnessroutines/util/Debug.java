@@ -1,10 +1,6 @@
 package com.devindow.myfitnessroutines.util;
 
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.util.Log;
-
-import java.util.Random;
 
 /**
  * Created by Devin on 2/12/2018.
@@ -17,6 +13,7 @@ public final class Debug {
 
 	public static final boolean on = true; // Set to false to allow compiler to identify and eliminate unreachable code.
 
+	public static final String TAG_ERROR = " **** ERROR **** ";
 	public static final String TAG_ENTER = " ** ";
 	public static final String TAG_EXIT = "     -> ";
 	public static final String TAG_TIME = " ## TIME ## ";

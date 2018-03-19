@@ -1,26 +1,23 @@
 TODO
 ----
 
-- Text-to-Speech
-  - https://android-developers.googleblog.com/2009/09/introduction-to-text-to-speech-in.html
+- Log the day's activity
+  - Green for routines completed today
+  - DB or File?
+    - File named with date?
+    - https://developer.android.com/training/data-storage/room/index.html
 
-* Sound or recording for next move based on Category.  (Beep is good for switch sides.)
-  - "Switch"
-  - "Ching......"
-  - "Meh Meh Mehhhhhh"
+- Free Version
+  - Grey other routines but respond to click?
 
 ----------------------------------------------------------------------------------------------------
 
-- Torso.Arc or Torso.midpoints ArrayList
-- Torso.profileHips & profileShoulders constructors
-  - Poses
-
 - Poses
-  - Chair
 
 ----------------------------------------------------------------------------------------------------
 
 * App Store
+  - Free version only has "7 min" and can see other Routines and direct user to paid.
   - Paid app for adding new Routine?
   - Paid & Free versions
     - https://developer.android.com/studio/build/index.html  #The Module-level Build File  #productFlavors=free/paid  use different applicationId to exist in Play Store/Device simultaneously
@@ -28,7 +25,7 @@ TODO
 
 ----------------------------------------------------------------------------------------------------
 
-- Poses
+- Pose improvement ideas
   - Safety Jacks use 2 Poses
   - Pose improvements
     - "High Knee": add arms
@@ -47,9 +44,11 @@ TODO
 
 - Headset
     - Bluetooth Headset button pauses?
-  - Notifications?
 
 - Log Activity
   - Saving to Google Doc or persistent storage
 
 - Coaching Marks
+
+- Settings UI
+  - https://developer.android.com/guide/topics/ui/settings.html

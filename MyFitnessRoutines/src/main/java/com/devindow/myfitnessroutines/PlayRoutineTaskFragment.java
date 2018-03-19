@@ -26,6 +26,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		void displayMove();
 		void updateTimer(int secondsRemaining);
 		void clearInstructions();
+		void speak(String moveName, String moveInstructions);
 	}
 
 
@@ -48,6 +49,19 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public Task getCurrentTask() {
 		return routine.getTask(taskNum);
+	}
+
+	public String getInstructions() {
+		Task currentTask = getCurrentTask();
+		if (currentTask != null && !currentTask.instructions.isEmpty()) {
+			return currentTask.instructions;
+		}
+
+		if (move != null) {
+			return move.description;
+		}
+
+		return "";
 	}
 
 	public Task getNextTask() {
@@ -73,31 +87,6 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	// Fragment Class Overrides
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
-		super.onCreate(savedInstanceState);
-
-		// Retain this fragment across configuration changes.
-		setRetainInstance(true);
-
-		// set move
-		Task currentTask = getCurrentTask();
-		if (currentTask == null) { // Finished, so show DONE & kill timer
-			move = MoveLibrary.moves.get(MoveLibrary.DONE);
-			pause();
-		} else {
-			move = MoveLibrary.moves.get(currentTask.moveName);
-		}
-
-		// need to set SecondsRemaining when showing first Task
-		resetSecondsRemaining();
-
-		playRoutineActivity.displayTask();
-
-		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
-	}
-
-	@Override
 	public void onAttach(Activity activity) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onAttach()");
 		super.onAttach(activity);
@@ -108,6 +97,21 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onAttach()");
 	}
 
+	// TaskFragment.onCreate() happens after TaskFragment.onAttach()
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onCreate()");
+		super.onCreate(savedInstanceState);
+
+		// Retain this fragment across configuration changes.
+		setRetainInstance(true);
+
+		setMove();
+
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onCreate()");
+	}
+
+	// TaskFragment.onDetach() happens on BACK or when ROTATED.
 	@Override
 	public void onDetach() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDetach()");
@@ -119,8 +123,35 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDetach()");
 	}
 
+	// TaskFragment.onDestroy() only happens for Retained Fragment when BACK is hit, not when ROTATED.
+	@Override
+	public void onDestroy() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.onDestroy()");
+		super.onDestroy();
+
+		// kill the timer
+		pause();
+
+		Debug.d(Debug.TAG_EXIT, "PlayRoutineTaskFragment.onDestroy()");
+	}
 
 	// Public Methods
+	public void setMove() {
+		Task currentTask = getCurrentTask();
+		if (currentTask == null) {
+			move = MoveLibrary.moves.get(MoveLibrary.DONE);
+			pause();
+		} else {
+			move = MoveLibrary.moves.get(currentTask.moveName);
+			resetSecondsRemaining();
+		}
+
+		if (playRoutineActivity != null) {
+			playRoutineActivity.displayTask();
+			playRoutineActivity.speak(move.name, getInstructions());
+		}
+	}
+
 	public void cancelTimer() {
 		if (countDownTimer != null) {
 			countDownTimer.cancel();
@@ -134,7 +165,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (currentTask == null) {
 			move1SecondsRemaining = move2SecondsRemaining = restSecondsRemaining = 0;
 		} else {
-			if (move != null && move.twoSides) {
+			if (move != null && move.twoSides && currentTask.side.hasBoth()) {
 				move1SecondsRemaining = currentTask.moveSeconds / 2;
 				move2SecondsRemaining = currentTask.moveSeconds - move1SecondsRemaining;
 			} else {
@@ -154,8 +185,8 @@ public class PlayRoutineTaskFragment extends Fragment {
 		countDownTimer = null;
 	}
 
-	public void resume() {
-		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.resume()");
+	public void play() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.play()");
 
 		if (move1SecondsRemaining > 0) {
 			runMove1Timer();
@@ -179,22 +210,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 		} else {
 			taskNum = 1; // Restart ended Routine
 		}
+		setMove();
 
-		Task currentTask = getCurrentTask();
-		if (currentTask == null) {
-			move = null;
-		} else {
-			move = MoveLibrary.moves.get(currentTask.moveName);
-		}
-		resetSecondsRemaining();
-
-		if (playRoutineActivity != null) {
-			playRoutineActivity.displayTask();
-
-			// If timer was running then run.
-			if (!isPaused()) {
-				resume();
-			}
+		// If timer was running then run.
+		if (!isPaused()) {
+			play();
 		}
 	}
 
@@ -206,17 +226,11 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (taskNum > 1) {
 			taskNum--;
 		}
+		setMove();
 
-		move = MoveLibrary.moves.get(getCurrentTask().moveName);
-		resetSecondsRemaining();
-
-		if (playRoutineActivity != null) {
-			playRoutineActivity.displayTask();
-
-			// If timer was running then run.
-			if (!isPaused()) {
-				resume();
-			}
+		// If timer was running then run.
+		if (!isPaused()) {
+			play();
 		}
 	}
 
@@ -224,15 +238,16 @@ public class PlayRoutineTaskFragment extends Fragment {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.restart()");
 
 		taskNum = 1; // Restart ended Routine
-		move = MoveLibrary.moves.get(getCurrentTask().moveName);
-		resetSecondsRemaining();
+		setMove();
 
-		playRoutineActivity.displayTask();
-		resume();
+		play();
 	}
 
 	public void runMove1Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove1Timer()");
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(move1SecondsRemaining + move2SecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(move1SecondsRemaining * 1000, 1000) {
 			@Override
@@ -245,21 +260,23 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 			@Override
 			public void onFinish() {
-				playChime();
+				Debug.d(Debug.TAG_TIME, "Move1Timer onFinish()");
 
 				// second side
 				if (move2SecondsRemaining > 0) {
 					if (playRoutineActivity != null) {
+						playRoutineActivity.speak("switch", null);
 						playRoutineActivity.displayMove();
 					}
 					runMove2Timer();
 
 				// rest
 				} else if (restSecondsRemaining > 0) {
+					move = MoveLibrary.moves.get(MoveLibrary.REST);
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
-						move = MoveLibrary.moves.get(MoveLibrary.REST);
 						playRoutineActivity.displayMove();
+						playRoutineActivity.speak("rest", null);
 					}
 					runRestTimer();
 
@@ -273,6 +290,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runMove2Timer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runMove2Timer()");
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(move2SecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(move2SecondsRemaining * 1000, 1000) {
 			@Override
@@ -285,14 +305,15 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 			@Override
 			public void onFinish() {
-				playChime();
+				Debug.d(Debug.TAG_TIME, "Move2Timer onFinish()");
 
 				// rest
 				if (restSecondsRemaining > 0) {
+					move = MoveLibrary.moves.get(MoveLibrary.REST);
 					if (playRoutineActivity != null) {
 						playRoutineActivity.clearInstructions();
-						move = MoveLibrary.moves.get(MoveLibrary.REST);
 						playRoutineActivity.displayMove();
+						playRoutineActivity.speak("rest", null);
 					}
 					runRestTimer();
 
@@ -306,6 +327,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 	public void runRestTimer() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineTaskFragment.runRestTimer()");
+		if (playRoutineActivity != null) {
+			playRoutineActivity.updateTimer(restSecondsRemaining);
+		}
 
 		countDownTimer = new CountDownTimer(restSecondsRemaining * 1000, 1000) {
 			@Override
@@ -318,7 +342,7 @@ public class PlayRoutineTaskFragment extends Fragment {
 
 			@Override
 			public void onFinish() {
-				playChime();
+				Debug.d(Debug.TAG_TIME, "RestTimer onFinish()");
 
 				next();
 			}

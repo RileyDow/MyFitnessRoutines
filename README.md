@@ -1,7 +1,8 @@
 # My Fitness Routines
 Android app to guide you through fitness routines.
 
-## Steps to release
+## Steps to release from *master* branch
+1. Pull Request & Merge to *master*
 1. File Changes
     - **TODO.txt** up to date
     - Commit these on *master*:

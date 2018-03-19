@@ -21,8 +21,8 @@ public class Torso implements Serializable {
 	public static final float thickness = 10;
 	public static final float length = 20;
 	public static final float lengthWithHead = length + headSize;
-	private static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
-	private static final float distanceWaistToHip = Leg.thickness/2 - 1;
+	public static final float distanceNeckToShoulder = thickness/2 + Arm.thickness/2;
+	public static final float distanceWaistToHip = Leg.thickness/2 - 1;
 
 
 	// Public Fields
@@ -79,26 +79,50 @@ public class Torso implements Serializable {
 	}
 
 	public Torso(boolean isProfile) {
-		this(Angle.N, isProfile);
+		this(isProfile, isProfile);
+	}
+
+	public Torso(boolean isShoulderProfile, boolean isHipsProfile) {
+		this(Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(Angle angle, boolean isProfile) {
-		this(Leg.segmentLength*2 + Leg.thickness/2, angle, isProfile);
+		this(angle, isProfile, isProfile);
+	}
+
+	public Torso(Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(Leg.segmentLength*2 + Leg.thickness/2, angle, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, boolean isProfile) {
-		this(waistY, Angle.N, isProfile);
+		this(waistY, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, float lengthRatio, boolean isProfile) {
-		this(waistY, lengthRatio, Angle.N, isProfile);
+		this(waistY, lengthRatio, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, float lengthRatio, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, lengthRatio, Angle.N, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, Angle angle, boolean isProfile) {
-		this(waistY, 1.0f, angle, isProfile);
+		this(waistY, angle, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
+		this(waistY, 1.0f, angle, isShoulderProfile, isHipsProfile);
 	}
 
 	public Torso(float waistY, float lengthRatio, Angle angle, boolean isProfile) {
+		this(waistY, lengthRatio, angle, isProfile, isProfile);
+	}
+
+	public Torso(float waistY, float lengthRatio, Angle angle, boolean isShoulderProfile, boolean isHipsProfile) {
 
 		// Waist
 		waist = new Point(0, waistY);
@@ -111,17 +135,20 @@ public class Torso implements Serializable {
 		float waistToHead = length * lengthRatio + thickness/2 + headSize/2;
 		head = new Point(Math.round(waistToHead * angle.getCos()), waistY + Math.round(waistToHead * angle.getSin()));
 
-		// Shoulders & Hips
-		if (isProfile) {
+		// Shoulders
+		if (isShoulderProfile) {
 			rShoulder = collar.clone();
 			lShoulder = collar.clone();
-
-			rHip = waist.clone();
-			lHip = waist.clone();
 		} else {
 			rShoulder = collar.offset(-distanceNeckToShoulder * angle.getSin(), distanceNeckToShoulder * angle.getCos());
 			lShoulder = collar.offset(distanceNeckToShoulder * angle.getSin(), -distanceNeckToShoulder * angle.getCos());
+		}
 
+		// Hips
+		if (isHipsProfile) {
+			rHip = waist.clone();
+			lHip = waist.clone();
+		} else {
 			rHip = waist.offset(-distanceWaistToHip * angle.getSin(), distanceWaistToHip * angle.getCos());
 			lHip = waist.offset(distanceWaistToHip * angle.getSin(), -distanceWaistToHip * angle.getCos());
 		}

@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines.routine;
 
 import com.devindow.myfitnessroutines.util.Debug;
+import com.devindow.myfitnessroutines.util.Side;
 
 import java.util.ArrayList;
 
@@ -88,15 +89,17 @@ public class SampleRoutines {
 		routine.tasks.add(new Task(MoveLibrary.BRIDGE_POSE, 20, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.COBBLER_POSE, 20, "Sit. Butterfly. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.BOAT_POSE, 15, "Body & legs in a V. Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.SHOULDER_PRESS, 20, "Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.LOCUST_POSE, 15, "On Belly. Lift legs & chest. Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.SHOULDER_PRESS, 15, "Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.PLOW, 10, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.ROTATE_ON_ALL_FOURS, 20, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.CAT_POSE, 20, "Arch back, then bow back. Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES, 40, "Alternate calves. Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.LOCUST_POSE, 15, "On Belly. Lift legs & chest. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.CHILD_POSE, 20, "Walk your fingers out. Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.DOWN_DOG_ALTERNATING_CALVES, 40, "Alternate calves. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.WIDE_LEG_BEND, 30, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.MOUNTAIN_POSE, 15, "Roll up slowly. Stand tall. Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.STANDING_SIDE_BEND, 20, "Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE, 15, "Palms together, navel towards spine. Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.STANDING_SIDE_BEND, 20, "Feet shoulder-width apart. Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 30, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.HIP_STRETCH, 40, "Breathe."));
 		routine.tasks.add(new Task(MoveLibrary.SAGE_POSE, 10, "Sit Tall. Legs together. Breathe."));
@@ -118,7 +121,7 @@ public class SampleRoutines {
 			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, breathSeconds, "Retain, step back to plank"));
 			routine.tasks.add(new Task(MoveLibrary.CHATURANGA, breathSeconds, "Exhale, Chaturanga parallel to ground"));
 			routine.tasks.add(new Task(MoveLibrary.COBRA, breathSeconds, "Inhale, up to Cobra"));
-			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Breathe, Downward Dog"));
+			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Exhale up to Downward Dog, stay for 5 breaths"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step forward to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
 			routine.tasks.add(new Task(MoveLibrary.BACK_BEND, breathSeconds, "Inhale, roll spine up, reach up and back"));

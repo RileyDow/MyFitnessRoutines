@@ -3,6 +3,7 @@ package com.devindow.myfitnessroutines;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,9 @@ import com.devindow.myfitnessroutines.pose.MoveWithPose;
 import com.devindow.myfitnessroutines.routine.*;
 import com.devindow.myfitnessroutines.util.Debug;
 
-public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
+import java.util.Locale;
+
+public class PlayRoutineActivity extends OptionsMenuActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 
 	// Constants
 	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";
@@ -23,14 +26,38 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 
 	// Private Fields
 	private PlayRoutineTaskFragment taskFragment;
+	private TextToSpeech speech;
+	private boolean speechInitialized = false;
+	private String textToSpeak;
 
 
-	// Methods
+	// Lifecycle Overrides
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_routine);
+
+		speech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+			@Override
+			public void onInit(int status) {
+				Debug.d(Debug.TAG_ENTER, "TextToSpeech.onInit()");
+				if (status != TextToSpeech.SUCCESS) {
+					Debug.e(Debug.TAG_ERROR, "TTS Initialization Failed");
+					return;
+				}
+				int result = speech.setLanguage(Locale.US);
+				if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+					Debug.e(Debug.TAG_ERROR, "This Language is not supported");
+				}
+				speechInitialized = true;
+				if (textToSpeak != null) {
+					speech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
+					textToSpeak = null;
+				}
+				Debug.d(Debug.TAG_EXIT, "TextToSpeech.onInit()");
+			}
+		});
 
 		// keep Screen ON
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -59,6 +86,15 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.onCreate()");
 	}
 
+	@Override protected void onDestroy() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onDestroy()");
+		super.onDestroy();
+
+		speech.shutdown();
+	}
+
+
+	// PlayRoutineCallbacks implementation
 	@Override
 	public void displayTask() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayTask()");
@@ -66,23 +102,13 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		clearInstructions();
 		clearNextMoveName();
 
-		Task currentTask = taskFragment.getCurrentTask();
-		if (currentTask == null) { // Finished, so show DONE & kill timer
-			taskFragment.move = MoveLibrary.moves.get(MoveLibrary.DONE);
-			taskFragment.pause();
-			updatePlayButton();
-		} else {
-			final TextView txtInstructions = findViewById(R.id.txtInstructions);
-			if (!currentTask.instructions.isEmpty()) {
-				txtInstructions.setText(currentTask.instructions);
-			} else if (taskFragment.move != null) {
-				txtInstructions.setText(taskFragment.move.description);
-			}
-		}
-
-		updateTimer(taskFragment.getSecondsRemaining());
+		displayInstructions();
 
 		displayMove();
+
+		updatePlayButton(); // taskFragment.next() might have reached DONE and paused it
+
+		updateTimer(taskFragment.getSecondsRemaining());
 
 		displayNextMoveName();
 
@@ -102,22 +128,32 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			txtMoveName.setText("NULL");
 			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
+			Task currentTask = taskFragment.getCurrentTask();
+			String moveName = taskFragment.move.name;
+			boolean mirrored = false;
 			if (taskFragment.move.twoSides) {
-				if (taskFragment.isSecondSide()) {
-					txtMoveName.setText(taskFragment.move.name + " <-");
-				} else {
-					txtMoveName.setText(taskFragment.move.name + " ->");
+				if (currentTask.side.hasBoth()) {
+					if (taskFragment.isSecondSide()) {
+						moveName += " <-";
+						mirrored = true;
+					} else {
+						moveName += " ->";
+					}
+				} else if (currentTask.side.hasRight()) {
+					moveName += " ->";
+				} else if (currentTask.side.hasLeft()) {
+					moveName += " <-";
+					mirrored = true;
 				}
-			} else {
-				txtMoveName.setText(taskFragment.move.name);
 			}
-			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.isSecondSide()));
+			txtMoveName.setText(moveName);
+			imgMove.setImageBitmap(taskFragment.move.getBitmap(mirrored));
 		}
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
 
 	@Override
-	public void updateTimer(int secondsRemaining) {
+	public void updateTimer(int secondsRemaining) { // pass in secondsRemaining because otherwise it would show Rest Time instead of 0 at the end of Move
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.updateTimer()");
 
 		TextView txtTimer = findViewById(R.id.txtTimer);
@@ -128,11 +164,42 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+	@Override
 	public void clearInstructions() {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.clearInstructions()");
 		final TextView txtInstructions = findViewById(R.id.txtInstructions);
 		if (txtInstructions != null) {
 			txtInstructions.setText("");
+		}
+	}
+
+	@Override
+	public void speak(String moveName, String moveInstructions) {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.speak()");
+
+		if (Preferences.getSpeakMoveNames()) {
+			String text = moveName;
+			if (moveInstructions != null && Preferences.getSpeakMoveInstructions()) {
+				text += ". " + moveInstructions;
+			}
+
+			if (speechInitialized) {
+				speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+				textToSpeak = null;
+			} else {
+				textToSpeak = text;
+			}
+		}
+	}
+
+
+	// Private Methods
+	private void displayInstructions() {
+		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.displayInstructions()");
+
+		final TextView txtInstructions = findViewById(R.id.txtInstructions);
+		if (txtInstructions != null) {
+			txtInstructions.setText(taskFragment.getInstructions());
 		}
 	}
 
@@ -179,6 +246,8 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		}
 	}
 
+
+	// Event Handlers
 	public void onScreenClick(View v) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.onScreenClick()");
 
@@ -197,7 +266,7 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 		if (!taskFragment.isPaused()) {
 			taskFragment.pause();
 		} else {
-			taskFragment.resume();
+			taskFragment.play();
 		}
 
 		updatePlayButton();

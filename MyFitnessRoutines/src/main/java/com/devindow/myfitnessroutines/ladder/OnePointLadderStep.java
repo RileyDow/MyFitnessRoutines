@@ -16,11 +16,11 @@ public class OnePointLadderStep extends LadderStep {
 
 	// Constructors
 	public OnePointLadderStep(Point point) {
-		this(Feet.BOTH, point);
+		this(Side.BOTH, point);
 	}
 
-	public OnePointLadderStep(Feet feet, Point point) {
-		this.step = new Step(feet, point);
+	public OnePointLadderStep(Side side, Point point) {
+		this.step = new Step(side, point);
 	}
 
 
@@ -33,17 +33,17 @@ public class OnePointLadderStep extends LadderStep {
 	// Overrides
 	@Override
 	public boolean hasLeft() {
-		return step.feet.hasLeft();
+		return step.side.hasLeft();
 	}
 
 	@Override
 	public boolean hasRight() {
-		return step.feet.hasRight();
+		return step.side.hasRight();
 	}
 
 	@Override
 	public boolean hasBoth() {
-		return step.feet.hasBoth();
+		return step.side.hasBoth();
 	}
 
 

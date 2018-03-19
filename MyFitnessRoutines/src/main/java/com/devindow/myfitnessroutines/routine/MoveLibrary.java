@@ -25,8 +25,9 @@ public class MoveLibrary {
 	public static final String JOG_LATERALLY = "Jog Laterally";
 	public static final String SKIP = "Skip";
 	public static final String LEG_SWINGS = "Leg Swings";
-	public static final String WARRIOR_2 = "Warrior 2";
 	public static final String ROMAN_LUNGES = "Roman Lunges";
+	public static final String WARRIOR_2 = "Warrior 2";
+	public static final String TRIANGLE = "Triangle";
 	// Standing Profile Poses
 	public static final String SAFETY_JACKS = "Safety Jacks";
 	public static final String PRAYER = "Prayer";
@@ -38,7 +39,9 @@ public class MoveLibrary {
 	public static final String STANDING_HURDLES_W_BAND = "Standing Hurdles w/ Band";
 	public static final String LATERAL_WALK_W_BAND = "Lateral Walk w/ Band";
 	public static final String TWIST_PIVOT = "Twist & Pivot";
+	public static final String WARRIOR_1 = "Warrior 1";
 	public static final String WARRIOR_3 = "Warrior 3";
+	public static final String CHAIR_POSE = "Chair Pose";
 	// Squatting Poses
 	public static final String WALL_SIT = "Wall Sit";
 	public static final String SQUATS = "Squats";
@@ -69,6 +72,7 @@ public class MoveLibrary {
 	public static final String BRIDGE_POSE = "Bridge Pose";
 	public static final String SINGLE_LEG_BRIDGES = "Single-Leg Bridges";
 	public static final String SHOULDER_PRESS = "Shoulder Press";
+	public static final String PLOW = "Plow";
 	// Back-Lying Top View Poses
 	public static final String CORPSE_POSE = "Corpse Pose";
 	public static final String HEAD_TO_KNEES_TOPVIEW = "Head to Knees";
@@ -119,7 +123,7 @@ public class MoveLibrary {
 	public static final String SOCCER_BELLS = "Bells";
 	public static final String SOCCER_PULL_OPEN_OUTWARD = "Pull & Open Outward";
 	public static final String SOCCER_OUTSIDE_TURN = "Outside Turn";
-	public static final String SOCCER_TRIANGLE = "Triangle";
+	public static final String SOCCER_TRIANGLE = "Triangle touches";
 	public static final String SOCCER_ADVANCED_TURN = "Advanced Turn";
 	public static final String SOCCER_TRIANGLE_OUTSIDE_ADVANCED = "Triangle, Outside, Advanced";
 	public static final String SOCCER_ZIKO_TURN = "Ziko Turn";
@@ -335,9 +339,25 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Roman Lunges
+		{
+			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, Category.CARDIO, "Opposite Arm & Leg go back");
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
+
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
+
+			move.pose.lArm = new Arm(Angle.E);
+			move.pose.rArm = new Arm(Angle.W);
+
+			moves.put(move.name, move);
+		}
+
 		// Warrior 2
 		{
-			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true);
+			MoveWithPose move = new MoveWithPose(WARRIOR_2, Category.YOGA, true, "Gaze over front fingertips");
 			move.pose = new Pose();
 
 			move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S.add(-5));
@@ -346,6 +366,21 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.W);
 			move.pose.lArm = new Arm(Angle.E);
+
+			moves.put(move.name, move);
+		}
+
+		// Triangle
+		{
+			MoveWithPose move = new MoveWithPose(TRIANGLE, Category.YOGA, true, "Gaze up over your thumb");
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SW.add(5));
+			move.pose.lLeg = new Leg(Angle.SE.add(5));
+			move.pose.torso = new Torso(-Torso.distanceWaistToHip + move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E);
+
+			move.pose.rArm = new Arm(Angle.N);
+			move.pose.lArm = new Arm(Angle.S);
 
 			moves.put(move.name, move);
 		}
@@ -514,7 +549,7 @@ public class MoveLibrary {
 
 			move.pose.lLeg = new Leg(Angle.S.add(25), Angle.S.add(35), 1.2f);
 
-			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, true, false);
 
 			move.pose.lArm = new Arm(Angle.W.add(20), .9f, Angle.W.add(-10), .9f);
 			move.pose.rArm = new Arm(Angle.W.add(-20), .9f, Angle.W.add(10), .9f);
@@ -522,19 +557,47 @@ public class MoveLibrary {
 			moves.put(move.name, move);
 		}
 
+		// Warrior 1
+		{
+			MoveWithPose move = new MoveWithPose(WARRIOR_1, Category.YOGA, true, "Arms up, look up");
+			move.pose = new Pose();
+
+			move.pose.lLeg = new Leg(Angle.E, Angle.S);
+			move.pose.rLeg = new Leg(Angle.SW.add(-10), Angle.SW.add(-20));
+			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2, true);
+			move.pose.torso.head.shift(-4, -2);
+
+			move.pose.rArm = new Arm(Angle.N);
+
+			moves.put(move.name, move);
+		}
+
 		// Warrior 3
 		{
-			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Leg straight back then knee up, repeat.");
+			MoveWithPose move = new MoveWithPose(WARRIOR_3, Category.YOGA, true, "Chest & leg parallel to floor");
 			move.pose = new Pose();
 
 			move.pose.rLeg = new Leg(Angle.S.add(15), Angle.S.add(-15));
-
 			move.pose.lLeg = new Leg(Angle.W.add(5), Angle.W.add(-5));
 
 			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, Angle.E, true);
 
 			move.pose.rArm = new Arm(Angle.E.add(-20), Angle.E.add(10));
-			move.pose.lArm = new Arm(Angle.W.add(-20), Angle.W.add(10));
+
+			moves.put(move.name, move);
+		}
+
+		// Chair Pose
+		{
+			MoveWithPose move = new MoveWithPose(CHAIR_POSE, Category.YOGA, "Palms together overhead, navel towards spine");
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SE.add(15), Angle.SW.add(15));
+
+			Angle torsoAngle = Angle.NE.add(15);
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness / 2, torsoAngle, true);
+
+			move.pose.rArm = new Arm(torsoAngle);
 
 			moves.put(move.name, move);
 		}
@@ -677,22 +740,6 @@ public class MoveLibrary {
 
 			float stepSize = move.pose.rLeg.getDistalPointY(move.pose.torso.rHip.y) - Leg.thickness / 2;
 			move.pose.prop = new Ledge(move.pose.rLeg.getDistalPointX(move.pose.torso.rHip.x) - Leg.thickness / 2, move.pose.rLeg.getDistalPointX(move.pose.torso.rHip.x) + stepSize, stepSize);
-
-			moves.put(move.name, move);
-		}
-
-		// Roman Lunges
-		{
-			MoveWithPose move = new MoveWithPose(ROMAN_LUNGES, Category.CARDIO, "Opposite Arm & Leg go back");
-			move.pose = new Pose();
-
-			move.pose.lLeg = new Leg(Angle.S.add(-50), Angle.S.add(10));
-			move.pose.rLeg = new Leg(Angle.S.add(36), Angle.S.add(50), 1.2f);
-
-			move.pose.torso = new Torso(move.pose.lLeg.getHeight() + Leg.thickness / 2);
-
-			move.pose.lArm = new Arm(Angle.E);
-			move.pose.rArm = new Arm(Angle.W);
 
 			moves.put(move.name, move);
 		}
@@ -993,10 +1040,28 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.N);
 
 			move.pose.torso = new Torso(Torso.length + Torso.thickness/2 + 2, Angle.S.add(-5),true);
-			move.pose.torso.head.x -= Torso.thickness/2 + Torso.headSize/2 - 2;
-			move.pose.torso.head.y += Torso.headSize - 2;
+			move.pose.torso.head.shift(-8, 8);
 
 			move.pose.rArm = new Arm(Angle.E.add(-25), Angle.N.add(25));
+
+			moves.put(move.name, move);
+		}
+
+		// Plow
+		{
+			MoveWithPose move = new MoveWithPose(PLOW, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.SW.add(-15));
+
+			float torsoLengthRatio = .8f;
+			move.pose.torso = new Torso(Torso.length * torsoLengthRatio + Torso.thickness/2, torsoLengthRatio, Angle.S.add(-5),true);
+			move.pose.torso.head.shift(-8, 10);
+			move.pose.torso.points = new ArrayList<>();
+			move.pose.torso.points.add(new Point(2, 18));
+			move.pose.torso.points.add(new Point(1, 9));
+
+			move.pose.rArm = new Arm(Angle.E.add(-7));
 
 			moves.put(move.name, move);
 		}
@@ -1077,7 +1142,7 @@ public class MoveLibrary {
 			move.pose.rLeg = new Leg(Angle.E.add(10), Angle.S.add(-10));
 			//move.pose.lLeg = new Leg(Angle.E.add(-15), Angle.S);
 
-			move.pose.torso = new Torso(waistY);
+			move.pose.torso = new Torso(waistY, false, true);
 			move.pose.torso.mat = true;
 
 			move.pose.rArm = new Arm(Angle.W);
@@ -1252,12 +1317,12 @@ public class MoveLibrary {
 
 		// Cat Pose
 		{
-			MoveWithPose move = new MoveWithPose(CAT_POSE, Category.STRETCH);
+			MoveWithPose move = new MoveWithPose(CAT_POSE, Category.STRETCH, "Arch back, then bow back");
 			move.pose = new Pose();
 
-			move.pose.rLeg = new Leg(Angle.S.add(-15), Angle.W);
+			move.pose.rLeg = new Leg(Angle.S.add(-10), Angle.W);
 
-			move.pose.rArm = new Arm(Angle.S.add(8), .9f);
+			move.pose.rArm = new Arm(Angle.S.add(2), .84f);
 
 			move.pose.torso = new Torso(
 					move.pose.rLeg.getHeight() + Leg.thickness/2,
@@ -1265,9 +1330,11 @@ public class MoveLibrary {
 					new Angle(move.pose.rLeg.getHeight() + Leg.thickness/2, move.pose.rArm.getHeight() + Arm.thickness/2, Torso.length),
 					true);
 			move.pose.torso.points = new ArrayList<>();
-			move.pose.torso.points.add(move.pose.torso.waist.offset(7, 5));
-			move.pose.torso.points.add(move.pose.torso.collar.offset(-5, 2));
-			move.pose.torso.head.shift(-3, -10);
+			move.pose.torso.points.add(move.pose.torso.waist.offset(7, 3.5f));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(9, 4));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(12, 5));
+			move.pose.torso.points.add(move.pose.torso.waist.offset(16, 4));
+			move.pose.torso.head.shift(-4, -9);
 
 			moves.put(move.name, move);
 		}
@@ -1548,13 +1615,13 @@ public class MoveLibrary {
 			MoveWithPose move = new MoveWithPose(TWISTED_SAGE_POSE, Category.YOGA, true, "Sit Tall. Pretzel.");
 			move.pose = new Pose();
 
-			move.pose.torso = new Torso(Torso.thickness / 2 - 2);
+			move.pose.torso = new Torso(Torso.thickness / 2 - 2, false, true);
 
 			move.pose.lLeg = new Leg(Angle.E);
-			move.pose.rLeg = new Leg(Angle.N.add(-40), Angle.S.add(10));
+			move.pose.rLeg = new Leg(Angle.NE.add(5), Angle.S.add(10));
 
-			move.pose.rArm = new Arm(Angle.S.add(-25));
-			move.pose.lArm = new Arm(Angle.S.add(20), Angle.N.add(-10));
+			move.pose.rArm = new Arm(Angle.SW.add(20));
+			move.pose.lArm = new Arm(Angle.SE.add(0), Angle.N);
 
 			moves.put(move.name, move);
 		}
@@ -1566,11 +1633,11 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SPRINT, Category.AGILITY, "One foot in each square");
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0, true).offset(-.2f, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(.2f, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-.2f, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(.2f, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(4, true).offset(-.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(0, true).offset(-.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true).offset(.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true).offset(-.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true).offset(.2f, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(4, true).offset(-.2f, 0)));
 
 			moves.put(move.name, move);
 		}
@@ -1581,14 +1648,14 @@ public class MoveLibrary {
 
 			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0, true).offset(0, -LadderStep.radius*.5f), Ladder.getLocation(0, true).offset(0, LadderStep.radius*1.5f)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(.2f, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(-.2f, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(1, true).offset(-.2f, -LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(.2f, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-.2f, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(2, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true).offset(-.2f, -LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(.2f, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(-.2f, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true).offset(.2f, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(3, true).offset(-.2f, -LadderStep.radius)));
 
 			moves.put(move.name, move);
 		}
@@ -1599,18 +1666,18 @@ public class MoveLibrary {
 
 			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false).offset(0, -LadderStep.radius), Ladder.getLocation(0.5f, false).offset(0, LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(0, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(0, -LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1.5f, false).offset(0, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1.5f, false).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(1, true).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1.5f, false).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(1.5f, false).offset(0, -LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(0, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(0, -LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2.5f, false).offset(0, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2.5f, false).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(2, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(2.5f, false).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2.5f, false).offset(0, -LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(0, LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(0, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true).offset(0, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(3, true).offset(0, -LadderStep.radius)));
 
 			moves.put(move.name, move);
 		}
@@ -1640,13 +1707,13 @@ public class MoveLibrary {
 			move.ladderSteps.add(new OnePointLadderStep(Ladder.getLocation(0, true)));
 			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(0.5f, false, true), Ladder.getLocation(0.5f, false, false)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true)));
 			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(1.5f, false, true), Ladder.getLocation(1.5f, false, false)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true)));
 			move.ladderSteps.add(new TwoPointLadderStep(Ladder.getLocation(2.5f, false, true), Ladder.getLocation(2.5f, false, false)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true)));
 
 			moves.put(move.name, move);
 		}
@@ -1668,18 +1735,18 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_SHUFFLE, Category.AGILITY, "Shuffle across");
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0.5f, false, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(0.5f, false, true).offset(LadderStep.radius, 0)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true).offset(LadderStep.radius, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, true).offset(-LadderStep.radius, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1.5f, false, false).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(1, true).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1.5f, false, false).offset(-LadderStep.radius, 0)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true).offset(-LadderStep.radius, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, true).offset(LadderStep.radius, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2.5f, false, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(2, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2.5f, false, true).offset(LadderStep.radius, 0)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true).offset(LadderStep.radius, 0)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, true).offset(-LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true).offset(LadderStep.radius, 0)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(3, true).offset(-LadderStep.radius, 0)));
 
 			moves.put(move.name, move);
 		}
@@ -1688,19 +1755,19 @@ public class MoveLibrary {
 		{
 			LadderMove move = new LadderMove(LADDER_CROSS_BEHIND, Category.AGILITY);
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(0, false, true).offset(LadderStep.radius, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(0, false, true).offset(LadderStep.radius, LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, true)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(1, false, false).offset(-LadderStep.radius, -LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(1, false, false).offset(LadderStep.radius, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(1, false, false).offset(-LadderStep.radius, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(1, false, false).offset(LadderStep.radius, LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, true)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(2, false, true).offset(LadderStep.radius, -LadderStep.radius)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(2, false, true).offset(-LadderStep.radius, LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(2, false, true).offset(LadderStep.radius, -LadderStep.radius)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(2, false, true).offset(-LadderStep.radius, LadderStep.radius)));
 
-			move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, true)));
-			move.ladderSteps.add(new OnePointLadderStep(Feet.LEFT, Ladder.getLocation(3, false, false).offset(LadderStep.radius, -LadderStep.radius)));
-			//move.ladderSteps.add(new OnePointLadderStep(Feet.RIGHT, Ladder.getLocation(3, false, false), -1, 1));
+			move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, true)));
+			move.ladderSteps.add(new OnePointLadderStep(Side.LEFT, Ladder.getLocation(3, false, false).offset(LadderStep.radius, -LadderStep.radius)));
+			//move.ladderSteps.add(new OnePointLadderStep(Side.RIGHT, Ladder.getLocation(3, false, false), -1, 1));
 
 			moves.put(move.name, move);
 		}
@@ -1720,11 +1787,11 @@ public class MoveLibrary {
 			Point arrowRight = move.ball;
 			Point arrowLeft = arrowRight.mirror();
 			move.motions.add(new SoccerStepAndTouch(
-					new Step(Feet.RIGHT, arrowRight),
-					new Arrow(arrowRight, arrowLeft, Feet.RIGHT).shortened(sh, true, false)));
+					new Step(Side.RIGHT, arrowRight),
+					new Arrow(arrowRight, arrowLeft, Side.RIGHT).shortened(sh, true, false)));
 			move.motions.add(new SoccerStepAndTouch(
-					new Step(Feet.LEFT, arrowLeft.offset(0, -2)),
-					new Arrow(arrowLeft.offset(0, -2), arrowRight.offset(0, -2), Feet.LEFT).shortened(sh, true, false)));
+					new Step(Side.LEFT, arrowLeft.offset(0, -2)),
+					new Arrow(arrowLeft.offset(0, -2), arrowRight.offset(0, -2), Side.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1737,8 +1804,8 @@ public class MoveLibrary {
 			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 
 			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
-			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
-			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Side.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Side.LEFT)));
 
 			moves.put(move.name, move);
 		}
@@ -1753,8 +1820,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-5, 0);
 			Point p3 = p2.offset(20, 10);
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Side.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1769,8 +1836,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p3 = toe.offset(16, 0);
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Side.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1785,9 +1852,9 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Side.LEFT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1802,8 +1869,8 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p3 = new Point(0, -20);
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Side.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1818,17 +1885,17 @@ public class MoveLibrary {
 			Point p1 = move.ball;
 			Point p2 = toe.offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 			Point p3 = p2.mirror();
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Feet.RIGHT).shortened(sh, true, false)));
-			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Feet.LEFT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p2, p3, Side.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p3, p1, Side.LEFT).shortened(sh, true, false)));
 
 			Point p4 = toe.offset(-SoccerMove.ballSize/2, 1);
 			Point p5 = toe.offset(16, 0);
-			move.motions.add(new SoccerTouch(new Arrow(p4, p5, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p4, p5, Side.RIGHT).shortened(sh, true, false)));
 
 			Point p6 = toe.offset(-SoccerMove.ballSize/2, 0);
 			Point p7 = new Point(0, -20);
-			move.motions.add(new SoccerTouch(new Arrow(p6, p7, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p6, p7, Side.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1840,11 +1907,11 @@ public class MoveLibrary {
 			Point toe = move.getToe();
 			move.ball = new Point(3, toe.y + 3);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y)), toe));
+			move.motions.add(new SoccerStep(new Step(Side.RIGHT, new Point(move.ball.x - SoccerMove.ballSize/2 - Step.radius, move.ball.y)), toe));
 
-			move.motions.add(new SoccerStep(new Step(Feet.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
+			move.motions.add(new SoccerStep(new Step(Side.LEFT, new Point(-toe.x - SoccerMove.footWidth, move.ball.y))));
 
-			move.motions.add(new SoccerTouch(new Arrow(move.ball, toe.offset(16, 0), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, toe.offset(16, 0), Side.RIGHT)));
 
 			moves.put(move.name, move);
 		}
@@ -1858,7 +1925,7 @@ public class MoveLibrary {
 
 			Point p1 = move.ball;
 			Point p2 = new Point(-4, -20);
-			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Feet.RIGHT).shortened(sh, true, false)));
+			move.motions.add(new SoccerTouch(new Arrow(p1, p2, Side.RIGHT).shortened(sh, true, false)));
 
 			moves.put(move.name, move);
 		}
@@ -1870,9 +1937,9 @@ public class MoveLibrary {
 			move.ball = new Point(0, 14);
 
 			Point from = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), from));
+			move.motions.add(new SoccerStep(new Step(Side.RIGHT, move.ball.offset(8, -2)), from));
 
-			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Feet.LEFT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-16, 4), Side.LEFT)));
 
 			moves.put(move.name, move);
 		}
@@ -1884,11 +1951,11 @@ public class MoveLibrary {
 			move.ball = new Point(0, 14);
 
 			Point fromR = move.ball.offset(-SoccerMove.ballSize/2-4, -SoccerMove.ballSize/2-2);
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(8, -2)), fromR));
+			move.motions.add(new SoccerStep(new Step(Side.RIGHT, move.ball.offset(8, -2)), fromR));
 			Point fromL = move.ball.offset(SoccerMove.ballSize/2+4, -SoccerMove.ballSize/2-2);
-			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-8, -2)), fromL));
+			move.motions.add(new SoccerStep(new Step(Side.LEFT, move.ball.offset(-8, -2)), fromL));
 
-			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(16, 4), Side.RIGHT)));
 
 			moves.put(move.name, move);
 		}
@@ -1899,8 +1966,8 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 12);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(3, 0))));
-			move.motions.add(new SoccerStep(new Step(Feet.LEFT, move.ball.offset(-3, 0))));
+			move.motions.add(new SoccerStep(new Step(Side.RIGHT, move.ball.offset(3, 0))));
+			move.motions.add(new SoccerStep(new Step(Side.LEFT, move.ball.offset(-3, 0))));
 
 			moves.put(move.name, move);
 		}
@@ -1911,10 +1978,10 @@ public class MoveLibrary {
 
 			move.ball = new Point(0, 12);
 
-			move.motions.add(new SoccerStep(new Step(Feet.RIGHT, move.ball.offset(3, 0))));
+			move.motions.add(new SoccerStep(new Step(Side.RIGHT, move.ball.offset(3, 0))));
 			move.motions.add(new SoccerStepAndTouch(
-					new Step(Feet.LEFT, move.ball.offset(-3, 0)),
-					new Arrow(move.ball, move.ball.offset(20, 0), Feet.LEFT)));
+					new Step(Side.LEFT, move.ball.offset(-3, 0)),
+					new Arrow(move.ball, move.ball.offset(20, 0), Side.LEFT)));
 
 			moves.put(move.name, move);
 		}
@@ -1927,9 +1994,9 @@ public class MoveLibrary {
 			move.ball = new Point(toe).offset(-SoccerMove.footWidth/2 - SoccerMove.ballSize/2, 0);
 
 			Point instep = toe.offset(-SoccerMove.footWidth/2, 0);
-			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Feet.RIGHT)));
-			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Feet.LEFT)));
-			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-30, 0), Feet.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.offset(0, 1), instep.mirror().offset(0, 1), Side.RIGHT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball.mirror().offset(0, -1), instep.offset(0, -1), Side.LEFT)));
+			move.motions.add(new SoccerTouch(new Arrow(move.ball, move.ball.offset(-30, 0), Side.RIGHT)));
 
 			moves.put(move.name, move);
 		}

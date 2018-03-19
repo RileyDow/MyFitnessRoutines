@@ -60,7 +60,7 @@ public abstract class Move implements Serializable {
 
 
 	// Public Methods
-	public abstract Bitmap getBitmap(boolean secondSide);
+	public abstract Bitmap getBitmap(boolean mirrored);
 
 
 	// Protected Methods
