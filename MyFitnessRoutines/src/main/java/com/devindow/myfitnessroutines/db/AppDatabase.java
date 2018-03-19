@@ -22,7 +22,7 @@ public abstract class AppDatabase extends RoomDatabase {
 	public abstract SessionDao sessionDao();
 
 	public static void init() {
-		instance = Room.databaseBuilder(App.getContext(), AppDatabase.class, "App.db").allowMainThreadQueries().build();
+		instance = Room.databaseBuilder(App.getContext(), AppDatabase.class, "App.db").build();
 	}
 
 }

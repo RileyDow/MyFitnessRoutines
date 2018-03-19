@@ -1,6 +1,8 @@
 package com.devindow.myfitnessroutines;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,9 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.devindow.myfitnessroutines.db.AppDatabase;
 import com.devindow.myfitnessroutines.routine.*;
+import com.devindow.myfitnessroutines.util.MessageDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends OptionsMenuActivity {
 
@@ -68,9 +73,10 @@ public class MainActivity extends OptionsMenuActivity {
 	}
 
 	@Override
-	protected void onResume() { // becoming interactive
+	protected void onResume() { // becoming interactive or returning from another Activity
 		super.onResume();
 
+		new GetSessions().execute(this);
 	}
 
 	@Override
@@ -94,6 +100,28 @@ public class MainActivity extends OptionsMenuActivity {
 	@Override
 	protected void onDestroy() { // ensure resources are freed before being destroyed
 		super.onDestroy();
+
+	}
+
+
+	// GetSessions class
+	private class GetSessions extends AsyncTask<Context, Void, Void> {
+
+		private Context context;
+		private List<Session> sessions;
+
+		@Override
+		protected Void doInBackground(Context... context) {
+			this.context = context[0];
+			sessions = AppDatabase.instance.sessionDao().getAll();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			MessageDialog.show(context, sessions.toString());
+			//lstRoutines
+		}
 
 	}
 
