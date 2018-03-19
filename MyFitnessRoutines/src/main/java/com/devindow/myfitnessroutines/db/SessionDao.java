@@ -1,8 +1,10 @@
-package com.devindow.myfitnessroutines.routine;
+package com.devindow.myfitnessroutines.db;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+
+import com.devindow.myfitnessroutines.routine.Session;
 
 import java.util.Date;
 import java.util.List;

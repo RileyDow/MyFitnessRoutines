@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.devindow.myfitnessroutines.db.AppDatabase;
 import com.devindow.myfitnessroutines.routine.Session;
-import com.devindow.myfitnessroutines.routine.SessionDao;
 
 import java.util.List;
 

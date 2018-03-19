@@ -6,9 +6,6 @@ import android.arch.persistence.room.Database;
 
 import com.devindow.myfitnessroutines.App;
 import com.devindow.myfitnessroutines.routine.Session;
-import com.devindow.myfitnessroutines.routine.SessionDao;
-
-import java.util.List;
 
 /**
  * Created by Devin on 3/17/2018.

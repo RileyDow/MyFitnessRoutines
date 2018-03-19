@@ -7,6 +7,8 @@ TODO
     - File named with date?
     - https://developer.android.com/training/data-storage/room/index.html
 
+- Play Chime when TTS is not available.
+
 - Free Version
   - Grey other routines but respond to click?
 
