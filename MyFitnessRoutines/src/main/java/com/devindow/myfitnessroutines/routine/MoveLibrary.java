@@ -137,6 +137,7 @@ public class MoveLibrary {
 	public static final String DAB = "Dab";
 	public static final String SITTING_SPLITS = "Sitting Splits";
 	public static final String RUNNER_SPLITS = "Runner Splits";
+	public static final String PYRAMID_DANCE = "Pyramid Dance";
 
 
 	// Public Static Fields
@@ -414,6 +415,26 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
 			move.pose.lArm = new Arm(Angle.S, Angle.N.add(-45), .8f);
+
+			moves.put(move.name, move);
+		}
+
+		// Pyramid Dance
+		{
+			MoveWithPose move = new MoveWithPose(PYRAMID_DANCE, Category.YOGA);
+			move.pose = new Pose();
+
+			move.pose.torso = new Torso(true);
+
+			move.pose.rLeg = new Leg(Angle.S);
+			move.pose.lLeg = new Leg(Angle.S, Angle.W);
+
+			move.pose.rArm = new Arm(Angle.E, Angle.N);
+			move.pose.lArm = new Arm(Angle.W, Angle.S);
+
+			move.pose.prop = new Band(
+					new Point(move.pose.rArm.getDistalPointX(move.pose.torso.rShoulder.x), move.pose.rArm.getDistalPointY(move.pose.torso.rShoulder.y)),
+					new Point(move.pose.rArm.getDistalPointX(move.pose.torso.rShoulder.x) + 6, move.pose.rArm.getDistalPointY(move.pose.torso.rShoulder.y)));
 
 			moves.put(move.name, move);
 		}
