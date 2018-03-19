@@ -1,12 +1,6 @@
 TODO
 ----
 
-- Log the day's activity
-  - Green for routines completed today
-  - DB or File?
-    - File named with date?
-    - https://developer.android.com/training/data-storage/room/index.html
-
 - Play Chime when TTS is not available.
 
 - Free Version
