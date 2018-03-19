@@ -62,6 +62,6 @@ public class Session {
 	// Overrides
 	@Override
 	public String toString() {
-		return String.format("uid=%d, routine=%s, duration=%d, date=%s", uid, routineName, durationSeconds, getDate().toString());
+		return String.format("( uid=%d, routine=%s, duration=%d, date=%s )", uid, routineName, durationSeconds, getDate().toLocaleString());
 	}
 }
