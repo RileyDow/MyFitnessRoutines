@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import com.devindow.myfitnessroutines.App;
 import com.devindow.myfitnessroutines.routine.Session;
 
+import java.util.List;
+
 /**
  * Created by Devin on 3/17/2018.
  */
@@ -28,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
 	// Static Methods
-	public static void insert(Session session) {
+	public static void insertSession(Session session) {
 		new InsertTask().execute(session);
 	}
 
@@ -38,6 +40,12 @@ public abstract class AppDatabase extends RoomDatabase {
 			instance.sessionDao().insert(session[0]);
 			return null;
 		}
+	}
+
+
+	public static List<Session> getSessionsInLast24HoursAsync() {
+		long millisFrom24HoursAgo = System.currentTimeMillis() - 1000 * 60 * 60 * 24;
+		return AppDatabase.instance.sessionDao().getAllSinceTimestamp(millisFrom24HoursAgo);
 	}
 
 }

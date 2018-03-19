@@ -144,9 +144,9 @@ public class PlayRoutineTaskFragment extends Fragment {
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			pause();
 
-			// insert Session in DB
+			// insertSession Session in DB
 			Session session = new Session(routine.name, routine.getTotalSeconds());
-            AppDatabase.insert(session);
+            AppDatabase.insertSession(session);
 		} else {
 			move = MoveLibrary.moves.get(currentTask.moveName);
 			resetSecondsRemaining();

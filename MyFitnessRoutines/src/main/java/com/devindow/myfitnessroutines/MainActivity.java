@@ -16,7 +16,6 @@ import com.devindow.myfitnessroutines.routine.*;
 import com.devindow.myfitnessroutines.util.MessageDialog;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends OptionsMenuActivity {
@@ -117,14 +116,13 @@ public class MainActivity extends OptionsMenuActivity {
 		@Override
 		protected Void doInBackground(Context... context) {
 			this.context = context[0];
-			Date date = new Date(System.currentTimeMillis());
-			sessions = AppDatabase.instance.sessionDao().getAllSinceTimestamp(System.currentTimeMillis() - 1000 * 60 * 60 * 24);
+
+			sessions = AppDatabase.getSessionsInLast24HoursAsync();
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
-			MessageDialog.show(context, sessions.toString());
 			for (Routine routine : sampleRoutines) {
 				routine.ranToday = false;
 				for (Session session : sessions) {

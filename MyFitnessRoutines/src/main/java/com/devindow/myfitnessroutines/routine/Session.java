@@ -4,7 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
 
 import java.util.Date;
 
@@ -62,6 +61,6 @@ public class Session {
 	// Overrides
 	@Override
 	public String toString() {
-		return String.format("( uid=%d, routine=%s, duration=%d, date=%s )", uid, routineName, durationSeconds, getDate().toLocaleString());
+		return String.format("( uid=%d, routine=%s, duration=%d, date=%s )", uid, routineName, durationSeconds, getDate());
 	}
 }
