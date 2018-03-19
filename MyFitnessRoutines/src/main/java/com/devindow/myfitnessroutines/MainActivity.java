@@ -21,6 +21,7 @@ import java.util.List;
 public class MainActivity extends OptionsMenuActivity {
 
 	// Fields
+	private ArrayList<Routine> sampleRoutines;
 	private ListView lstRoutines;
 
 
@@ -39,22 +40,13 @@ public class MainActivity extends OptionsMenuActivity {
 		MoveLibrary.generateMoves();
 
 
-		// btnNewRoutine
-		FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
-		btnNewRoutine.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(view, "Creating new Routines is coming soon.", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
+		// sampleRoutines
+		sampleRoutines = SampleRoutines.generateSampleRoutines();
 
 
 		// lstRoutines
-		ArrayList<Routine> sampleRoutines = SampleRoutines.generateSampleRoutines();
 		lstRoutines = findViewById(R.id.lstRoutines);
-		RoutineAdapter adapter = new RoutineAdapter(this, R.layout.routine_row, sampleRoutines);
-		lstRoutines.setAdapter(adapter);
+		lstRoutines.setAdapter(new RoutineAdapter(this, R.layout.routine_row, sampleRoutines));
 		lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -62,6 +54,17 @@ public class MainActivity extends OptionsMenuActivity {
 				Intent intent = new Intent(view.getContext(), PlayRoutineActivity.class);
 				intent.putExtra("routine", routine);
 				startActivity(intent);
+			}
+		});
+
+
+		// btnNewRoutine
+		FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
+		btnNewRoutine.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Snackbar.make(view, "Creating new Routines is coming soon.", Snackbar.LENGTH_LONG)
+						.setAction("Action", null).show();
 			}
 		});
 	}
@@ -76,7 +79,7 @@ public class MainActivity extends OptionsMenuActivity {
 	protected void onResume() { // becoming interactive or returning from another Activity
 		super.onResume();
 
-		new GetSessions().execute(this);
+		new GetSessionsTask().execute(this);
 	}
 
 	@Override
@@ -104,8 +107,8 @@ public class MainActivity extends OptionsMenuActivity {
 	}
 
 
-	// GetSessions class
-	private class GetSessions extends AsyncTask<Context, Void, Void> {
+	// GetSessionsTask class
+	private class GetSessionsTask extends AsyncTask<Context, Void, Void> {
 
 		private Context context;
 		private List<Session> sessions;
@@ -119,8 +122,16 @@ public class MainActivity extends OptionsMenuActivity {
 
 		@Override
 		protected void onPostExecute(Void result) {
-			MessageDialog.show(context, sessions.toString());
-			//lstRoutines
+			for (Routine routine : sampleRoutines) {
+				routine.ranToday = false;
+				for (Session session : sessions) {
+					if (routine.name.equals(session.getRoutineName())) {
+						routine.ranToday = true;
+					}
+				}
+			}
+
+			lstRoutines.setAdapter(new RoutineAdapter(context, R.layout.routine_row, sampleRoutines));
 		}
 
 	}

@@ -14,6 +14,7 @@ public class Routine implements Serializable {
 	public Category category;
 	public String description;
 	public boolean isFree;
+	public boolean ranToday;
 	public ArrayList<Task> tasks = new ArrayList<>();
 
 

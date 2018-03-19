@@ -43,9 +43,14 @@ public class RoutineAdapter extends ArrayAdapter<Routine> {
 		LayoutInflater inflater = LayoutInflater.from(context);
 		convertView = inflater.inflate(resource, parent, false);
 
-		// grey background for paid Routines in free app flavor
+		// GRAY background for paid Routines in free app flavor
 		if (!routine.isFree) {
 			convertView.setBackgroundColor(Color.LTGRAY);
+		}
+
+		// GREEN background for Routines completed today
+		if (routine.ranToday) {
+			convertView.setBackgroundColor(Color.GREEN);
 		}
 
 		TextView txtName = convertView.findViewById(R.id.txtName);
