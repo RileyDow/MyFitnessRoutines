@@ -11,9 +11,11 @@ import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import com.devindow.myfitnessroutines.db.AppDatabase;
 import com.devindow.myfitnessroutines.routine.Move;
 import com.devindow.myfitnessroutines.routine.MoveLibrary;
 import com.devindow.myfitnessroutines.routine.Routine;
+import com.devindow.myfitnessroutines.routine.Session;
 import com.devindow.myfitnessroutines.routine.Task;
 import com.devindow.myfitnessroutines.util.Debug;
 
@@ -141,6 +143,10 @@ public class PlayRoutineTaskFragment extends Fragment {
 		if (currentTask == null) {
 			move = MoveLibrary.moves.get(MoveLibrary.DONE);
 			pause();
+
+			// insertSession Session in DB
+			Session session = new Session(routine.name, routine.getTotalSeconds());
+            AppDatabase.insertSession(session);
 		} else {
 			move = MoveLibrary.moves.get(currentTask.moveName);
 			resetSecondsRemaining();

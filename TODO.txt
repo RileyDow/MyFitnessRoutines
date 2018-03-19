@@ -1,11 +1,7 @@
 TODO
 ----
 
-- Log the day's activity
-  - Green for routines completed today
-  - DB or File?
-    - File named with date?
-    - https://developer.android.com/guide/topics/data/data-storage.html#pref
+- Play Chime when TTS is not available.
 
 - Free Version
   - Grey other routines but respond to click?

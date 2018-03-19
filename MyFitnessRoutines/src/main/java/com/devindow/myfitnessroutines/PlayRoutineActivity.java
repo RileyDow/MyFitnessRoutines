@@ -177,9 +177,9 @@ public class PlayRoutineActivity extends OptionsMenuActivity implements PlayRout
 	public void speak(String moveName, String moveInstructions) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.speak()");
 
-		if (Preferences.getSpeakMoveNames(this)) {
+		if (Preferences.getSpeakMoveNames()) {
 			String text = moveName;
-			if (moveInstructions != null && Preferences.getSpeakMoveInstructions(this)) {
+			if (moveInstructions != null && Preferences.getSpeakMoveInstructions()) {
 				text += ". " + moveInstructions;
 			}
 

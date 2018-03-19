@@ -7,6 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.devindow.myfitnessroutines.db.AppDatabase;
+import com.devindow.myfitnessroutines.routine.Session;
+import com.devindow.myfitnessroutines.util.MessageDialog;
+
+import java.util.List;
+
 /**
  * Created by Devin on 3/17/2018.
  */
@@ -31,34 +37,32 @@ public class OptionsMenuActivity extends AppCompatActivity {
 		switch (id) {
 
 			case R.id.action_speakMoveNames: {
-				if (Preferences.getSpeakMoveNames(this)) {
+				if (Preferences.getSpeakMoveNames()) {
 					item.setChecked(false);
-					Preferences.setSpeakMoveNames(this, false);
+					Preferences.setSpeakMoveNames(false);
 				} else {
 					item.setChecked(true);
-					Preferences.setSpeakMoveNames(this, true);
+					Preferences.setSpeakMoveNames(true);
 				}
 
 				return true;
 			}
 
 			case R.id.action_speakMoveInstructions: {
-				if (Preferences.getSpeakMoveInstructions(this)) {
+				if (Preferences.getSpeakMoveInstructions()) {
 					item.setChecked(false);
-					Preferences.setSpeakMoveInstructions(this, false);
+					Preferences.setSpeakMoveInstructions(false);
 				} else {
 					item.setChecked(true);
-					Preferences.setSpeakMoveInstructions(this, true);
+					Preferences.setSpeakMoveInstructions(true);
 				}
 
 				return true;
 			}
 
 			case R.id.action_tips: {
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-				final TextView textView = new TextView(this);
-				textView.setText("Some Poses have a Left and a Right component.  The app will signal you to switch half way through.\n" +
+				MessageDialog.show(this,
+						"Some Poses have a Left and a Right component.  The app will signal you to switch half way through.\n" +
 						"\n" +
 						"I like to:\n" +
 						"- do \"Morning Yoga\" then \"Warmup\" then \"Pre-Activation\" before playing soccer.\n" +
@@ -68,18 +72,6 @@ public class OptionsMenuActivity extends AppCompatActivity {
 						"(I recommend first getting familiar with a routine and its poses before working with the timer.)\n" +
 						"\n" +
 						"Tapping the screen while playing will pause.  Tapping while paused will manually advance to the next move.");
-				int padding = 30;
-				textView.setPadding(padding, padding, padding, padding);
-				alertDialogBuilder.setView(textView);
-
-				alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-					}
-				});
-
-				AlertDialog alertDialog = alertDialogBuilder.create();
-				alertDialog.show();
-
 				return true;
 			}
 
@@ -93,7 +85,7 @@ public class OptionsMenuActivity extends AppCompatActivity {
 		MenuItem mnuSpeakNames = menu.findItem(R.id.action_speakMoveNames);
 		MenuItem mnuSpeakInstructions = menu.findItem(R.id.action_speakMoveInstructions);
 
-		if (Preferences.getSpeakMoveNames(this)) {
+		if (Preferences.getSpeakMoveNames()) {
 			mnuSpeakNames.setChecked(true);
 			mnuSpeakInstructions.setEnabled(true);
 		} else {
@@ -101,7 +93,7 @@ public class OptionsMenuActivity extends AppCompatActivity {
 			mnuSpeakInstructions.setEnabled(false);
 		}
 
-		mnuSpeakInstructions.setChecked(Preferences.getSpeakMoveInstructions(this));
+		mnuSpeakInstructions.setChecked(Preferences.getSpeakMoveInstructions());
 
 		return true;
 	}

@@ -58,7 +58,7 @@ public class SampleRoutines {
 
 	// Private Methods
 	private static Routine generate7MinuteWorkout() {
-		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups");
+		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups", true);
 
 		routine.tasks.add(new Task(MoveLibrary.JUMPING_JACKS, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.WALL_SIT, 30, 5));

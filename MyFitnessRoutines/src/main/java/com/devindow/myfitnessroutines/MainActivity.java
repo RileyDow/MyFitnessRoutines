@@ -1,6 +1,8 @@
 package com.devindow.myfitnessroutines;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,13 +11,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.devindow.myfitnessroutines.db.AppDatabase;
 import com.devindow.myfitnessroutines.routine.*;
+import com.devindow.myfitnessroutines.util.MessageDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends OptionsMenuActivity {
 
 	// Fields
+	private ArrayList<Routine> sampleRoutines;
 	private ListView lstRoutines;
 
 
@@ -34,22 +40,13 @@ public class MainActivity extends OptionsMenuActivity {
 		MoveLibrary.generateMoves();
 
 
-		// btnNewRoutine
-		FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
-		btnNewRoutine.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(view, "Creating new Routines is coming soon.", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
+		// sampleRoutines
+		sampleRoutines = SampleRoutines.generateSampleRoutines();
 
 
 		// lstRoutines
-		ArrayList<Routine> sampleRoutines = SampleRoutines.generateSampleRoutines();
 		lstRoutines = findViewById(R.id.lstRoutines);
-		RoutineAdapter adapter = new RoutineAdapter(this, R.layout.routine_row, sampleRoutines);
-		lstRoutines.setAdapter(adapter);
+		lstRoutines.setAdapter(new RoutineAdapter(this, R.layout.routine_row, sampleRoutines));
 		lstRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -57,6 +54,17 @@ public class MainActivity extends OptionsMenuActivity {
 				Intent intent = new Intent(view.getContext(), PlayRoutineActivity.class);
 				intent.putExtra("routine", routine);
 				startActivity(intent);
+			}
+		});
+
+
+		// btnNewRoutine
+		FloatingActionButton btnNewRoutine = (FloatingActionButton) findViewById(R.id.btnNewRoutine);
+		btnNewRoutine.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Snackbar.make(view, "Creating new Routines is coming soon.", Snackbar.LENGTH_LONG)
+						.setAction("Action", null).show();
 			}
 		});
 	}
@@ -68,9 +76,10 @@ public class MainActivity extends OptionsMenuActivity {
 	}
 
 	@Override
-	protected void onResume() { // becoming interactive
+	protected void onResume() { // becoming interactive or returning from another Activity
 		super.onResume();
 
+		new GetSessionsTask().execute(this);
 	}
 
 	@Override
@@ -94,6 +103,37 @@ public class MainActivity extends OptionsMenuActivity {
 	@Override
 	protected void onDestroy() { // ensure resources are freed before being destroyed
 		super.onDestroy();
+
+	}
+
+
+	// GetSessionsTask class
+	private class GetSessionsTask extends AsyncTask<Context, Void, Void> {
+
+		private Context context;
+		private List<Session> sessions;
+
+		@Override
+		protected Void doInBackground(Context... context) {
+			this.context = context[0];
+
+			sessions = AppDatabase.getSessionsInLast24HoursAsync();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			for (Routine routine : sampleRoutines) {
+				routine.ranToday = false;
+				for (Session session : sessions) {
+					if (routine.name.equals(session.getRoutineName())) {
+						routine.ranToday = true;
+					}
+				}
+			}
+
+			lstRoutines.setAdapter(new RoutineAdapter(context, R.layout.routine_row, sampleRoutines));
+		}
 
 	}
 

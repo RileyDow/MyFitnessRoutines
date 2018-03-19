@@ -13,6 +13,8 @@ public class Routine implements Serializable {
 	public String name;
 	public Category category;
 	public String description;
+	public boolean isFree;
+	public boolean ranToday;
 	public ArrayList<Task> tasks = new ArrayList<>();
 
 
@@ -68,9 +70,14 @@ public class Routine implements Serializable {
 	}
 
 	public Routine(String name, Category category, String description) {
+		this(name, category, description, false);
+	}
+
+	public Routine(String name, Category category, String description, boolean isFree) {
 		this.name = name;
 		this.category = category;
 		this.description = description;
+		this.isFree = isFree;
 	}
 
 
