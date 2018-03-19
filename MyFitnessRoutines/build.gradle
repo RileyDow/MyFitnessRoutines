@@ -30,10 +30,10 @@ android {
         targetSdkVersion 26
 
         // Defines the version number of your app.
-        versionCode 8
+        versionCode 9
 
         // Defines a user-friendly version name for your app.
-        versionName "0.8-beta"
+        versionName "0.9-beta"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
