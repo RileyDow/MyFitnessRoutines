@@ -40,22 +40,22 @@ public class Colors {
 	}
 
 
-	public static void setFootColor(Paint paint, Feet feet) {
-		setFootColor(paint, feet, false);
+	public static void setFootColor(Paint paint, Side side) {
+		setFootColor(paint, side, false);
 	}
 
-	public static void setFootColor(Paint paint, Feet feet, boolean translucent) {
-		setFootColor(paint, feet, translucent, false);
+	public static void setFootColor(Paint paint, Side side, boolean translucent) {
+		setFootColor(paint, side, translucent, false);
 	}
 
-	public static void setFootColor(Paint paint, Feet feet, boolean translucent, boolean mirror) {
-		if (feet.hasBoth() || feet.hasNone()) {		// Body color
+	public static void setFootColor(Paint paint, Side side, boolean translucent, boolean mirror) {
+		if (side.hasBoth() || side.hasNone()) {		// Body color
 			if (translucent) {
 				paint.setColor(bodyTrans);
 			} else {
 				paint.setColor(bodyOpaque);
 			}
-		} else if (feet.hasLeft() ^ mirror) {		// Left color
+		} else if (side.hasLeft() ^ mirror) {		// Left color
 			if (translucent) {
 				paint.setColor(leftTrans);
 			} else {

@@ -1,6 +1,7 @@
 package com.devindow.myfitnessroutines.routine;
 
 import com.devindow.myfitnessroutines.util.Debug;
+import com.devindow.myfitnessroutines.util.Side;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class SampleRoutines {
 
 	// Private Methods
 	private static Routine generate7MinuteWorkout() {
-		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups");
+		Routine routine = new Routine("7 Minute Workout", Category.CARDIO, "High-intensity circuit training that alternates muscle groups", true);
 
 		routine.tasks.add(new Task(MoveLibrary.JUMPING_JACKS, 30, 5));
 		routine.tasks.add(new Task(MoveLibrary.WALL_SIT, 30, 5));
@@ -120,7 +121,7 @@ public class SampleRoutines {
 			routine.tasks.add(new Task(MoveLibrary.HANDS_PLANK, breathSeconds, "Retain, step back to plank"));
 			routine.tasks.add(new Task(MoveLibrary.CHATURANGA, breathSeconds, "Exhale, Chaturanga parallel to ground"));
 			routine.tasks.add(new Task(MoveLibrary.COBRA, breathSeconds, "Inhale, up to Cobra"));
-			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Breathe, Downward Dog"));
+			routine.tasks.add(new Task(MoveLibrary.DOWN_DOG, breathSeconds * 5, "Exhale up to Downward Dog, stay for 5 breaths"));
 			routine.tasks.add(new Task(MoveLibrary.LUNGE, breathSeconds, "Inhale, step forward to lunge"));
 			routine.tasks.add(new Task(MoveLibrary.TOUCH_TOES, breathSeconds, "Exhale, fold forward"));
 			routine.tasks.add(new Task(MoveLibrary.BACK_BEND, breathSeconds, "Inhale, roll spine up, reach up and back"));
@@ -323,12 +324,16 @@ public class SampleRoutines {
 		Routine routine = new Routine("Test Routine");
 
 		routine.tasks.add(new Task(MoveLibrary.SHOULDER_PRESS, 15, "Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.PLOW, 10, "Breathe."));
-		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.TRIANGLE, 5, 5));
-		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3, 9, 5));
+		routine.tasks.add(new Task(MoveLibrary.PLOW,10, "Breathe."));
+		routine.tasks.add(new Task(MoveLibrary.CHAIR_POSE,5));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.TRIANGLE,5, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3,9, Side.RIGHT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_1,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_2,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.TRIANGLE,5, Side.LEFT));
+		routine.tasks.add(new Task(MoveLibrary.WARRIOR_3,9, Side.LEFT));
 
 		return routine;
 	}

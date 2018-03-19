@@ -1,15 +1,14 @@
 TODO
 ----
 
-* Speak Instructions should be optional
+- Play Chime when TTS is not available.
+
+- Free Version
+  - Grey other routines but respond to click?
 
 ----------------------------------------------------------------------------------------------------
 
 - Poses
-
-----------------------------------------------------------------------------------------------------
-
-- Can I do L Warrior 1 then L Warrior 2 before moving to R?
 
 ----------------------------------------------------------------------------------------------------
 
@@ -41,9 +40,11 @@ TODO
 
 - Headset
     - Bluetooth Headset button pauses?
-  - Notifications?
 
 - Log Activity
   - Saving to Google Doc or persistent storage
 
 - Coaching Marks
+
+- Settings UI
+  - https://developer.android.com/guide/topics/ui/settings.html

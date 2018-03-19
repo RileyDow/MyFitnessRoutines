@@ -18,7 +18,7 @@ import com.devindow.myfitnessroutines.util.Debug;
 
 import java.util.Locale;
 
-public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
+public class PlayRoutineActivity extends OptionsMenuActivity implements PlayRoutineTaskFragment.PlayRoutineCallbacks {
 
 	// Constants
 	public static final String PLAY_ROUTINE_TASK_FRAGMENT = "PlayRoutineTaskFragment";
@@ -128,16 +128,26 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 			txtMoveName.setText("NULL");
 			imgMove.setImageBitmap(Bitmap.createBitmap(MoveWithPose.BITMAP_PIXELS, MoveWithPose.BITMAP_PIXELS, Bitmap.Config.ARGB_8888));
 		} else {
+			Task currentTask = taskFragment.getCurrentTask();
+			String moveName = taskFragment.move.name;
+			boolean mirrored = false;
 			if (taskFragment.move.twoSides) {
-				if (taskFragment.isSecondSide()) {
-					txtMoveName.setText(taskFragment.move.name + " <-");
-				} else {
-					txtMoveName.setText(taskFragment.move.name + " ->");
+				if (currentTask.side.hasBoth()) {
+					if (taskFragment.isSecondSide()) {
+						moveName += " <-";
+						mirrored = true;
+					} else {
+						moveName += " ->";
+					}
+				} else if (currentTask.side.hasRight()) {
+					moveName += " ->";
+				} else if (currentTask.side.hasLeft()) {
+					moveName += " <-";
+					mirrored = true;
 				}
-			} else {
-				txtMoveName.setText(taskFragment.move.name);
 			}
-			imgMove.setImageBitmap(taskFragment.move.getBitmap(taskFragment.isSecondSide()));
+			txtMoveName.setText(moveName);
+			imgMove.setImageBitmap(taskFragment.move.getBitmap(mirrored));
 		}
 		Debug.d(Debug.TAG_EXIT, "PlayRoutineActivity.displayMove()");
 	}
@@ -164,14 +174,21 @@ public class PlayRoutineActivity extends AppCompatActivity implements PlayRoutin
 	}
 
 	@Override
-	public void speak(String text) {
+	public void speak(String moveName, String moveInstructions) {
 		Debug.d(Debug.TAG_ENTER, "PlayRoutineActivity.speak()");
 
-		if (speechInitialized) {
-			speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-			textToSpeak = null;
-		} else {
-			textToSpeak = text;
+		if (Preferences.getSpeakMoveNames()) {
+			String text = moveName;
+			if (moveInstructions != null && Preferences.getSpeakMoveInstructions()) {
+				text += ". " + moveInstructions;
+			}
+
+			if (speechInitialized) {
+				speech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+				textToSpeak = null;
+			} else {
+				textToSpeak = text;
+			}
 		}
 	}
 

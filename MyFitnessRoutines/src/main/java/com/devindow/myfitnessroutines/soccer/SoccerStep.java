@@ -36,7 +36,7 @@ public class SoccerStep extends SoccerMotion {
 	public void draw(Canvas canvas, int stepNum, boolean mirror) {
 		if (from != null) {
 			Paint paint = new Paint();
-			Colors.setFootColor(paint, step.feet, true, mirror);
+			Colors.setFootColor(paint, step.side, true, mirror);
 			paint.setStrokeWidth(Arrow.width);
 			//paint.setStrokeCap(Paint.Cap.ROUND);
 			//paint.setStrokeJoin(Paint.Join.ROUND);

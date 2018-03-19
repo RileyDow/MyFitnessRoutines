@@ -4,7 +4,7 @@ package com.devindow.myfitnessroutines.util;
  * Created by Devin on 3/2/2018.
  */
 
-public enum Feet {
+public enum Side {
 	NONE(0),
 	LEFT(1<<0),
 	RIGHT(1<<1),
@@ -16,7 +16,7 @@ public enum Feet {
 
 
 	// Constructor
-	Feet(int flag) {
+	Side(int flag) {
 		this.flag = flag;
 	}
 
