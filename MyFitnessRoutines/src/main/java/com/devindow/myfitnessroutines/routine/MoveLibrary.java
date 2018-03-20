@@ -138,6 +138,7 @@ public class MoveLibrary {
 	public static final String SITTING_SPLITS = "Sitting Splits";
 	public static final String RUNNER_SPLITS = "Runner Splits";
 	public static final String PYRAMID_DANCE = "Pyramid Dance";
+	public static final String FROGGY_FROG_FROG = "Froggy Frog Frog";
 
 
 	// Public Static Fields
@@ -189,6 +190,22 @@ public class MoveLibrary {
 
 			move.pose.rArm = new Arm(Angle.W, Angle.N);
 			move.pose.lArm = new Arm(Angle.E, Angle.N);
+
+			moves.put(move.name, move);
+		}
+
+		// Froggy Frog Frog
+		{
+			MoveWithPose move = new MoveWithPose(FROGGY_FROG_FROG, Category.STRETCH);
+			move.pose = new Pose();
+
+			move.pose.rLeg = new Leg(Angle.NW.add(15), Angle.S.add(10));
+			move.pose.lLeg = new Leg(Angle.NE.add(-15), Angle.S.add(-10));
+
+			move.pose.torso = new Torso(move.pose.rLeg.getHeight() + Leg.thickness/2, .7f);
+
+			move.pose.rArm = new Arm(Angle.S);
+			move.pose.lArm = new Arm(Angle.S);
 
 			moves.put(move.name, move);
 		}
